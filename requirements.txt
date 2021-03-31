@@ -1,0 +1,12 @@
+bioc
+bllipparser==2016.9.11
+docopt
+docutils==0.15.2
+JPype1==0.6.3
+networkx==2.4
+nltk==3.4.5
+numpy
+pandas==0.25.2
+pystanforddependencies==0.3.1
+pyyaml==5.1.2
+tqdm
