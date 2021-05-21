@@ -16,7 +16,7 @@ class BioCStanza(BioCProcessor):
         del passage.sentences[:]
         for sent in doc.sentences:
             s = BioCSentence()
-            s.offset = sent.tokens[0].start_char
+            s.offset = sent.tokens[0].start_char + passage.offset
             s.text = sent.text
             for i, token in enumerate(sent.tokens):
                 offset = 0

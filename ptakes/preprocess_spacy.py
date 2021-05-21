@@ -14,7 +14,7 @@ class BioCSpacy(BioCProcessor):
         del passage.sentences[:]
         for sent in doc.sents:
             s = BioCSentence()
-            s.offset = sent.start_char
+            s.offset = sent.start_char + passage.offset
             s.text = sent.text_with_ws
             for token in sent:
                 ann = BioCAnnotation()

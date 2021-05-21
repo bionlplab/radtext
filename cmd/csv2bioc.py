@@ -28,6 +28,8 @@ if __name__ == '__main__':
     for i, row in tqdm.tqdm(df.iterrows(), total=len(df)):
         text = row[argv['--text_col']]
         id = row[argv['--id_col']]
+        if pd.isna(id) or pd.isna(text):
+            continue
         doc = bioc.utils.as_document(text)
         doc.id = id
         collection.add_document(doc)

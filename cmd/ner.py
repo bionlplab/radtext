@@ -70,13 +70,26 @@ if __name__ == '__main__':
     else:
         raise ValueError('No ontology is given')
 
+    # reader = bioc.BioCXMLDocumentReader(argv['-i'])
+    # collection = reader.get_collection_info()
+    #
+    # writer = bioc.BioCXMLDocumentWriter(argv['-o'])
+    # writer.write_collection_info(collection)
+    #
+    # for doc in tqdm.tqdm(reader):
+    #     for passage in tqdm.tqdm(doc.passages, leave=False):
+    #         processor.process_passage(passage, doc.id)
+    #     writer.write_document(doc)
+    #
+    # reader.close()
+    # writer.close()
+
     with open(argv['-i']) as fp:
         collection = bioc.load(fp)
 
     for doc in tqdm.tqdm(collection.documents):
         for passage in tqdm.tqdm(doc.passages, leave=False):
-            # if doc.id == 'CXR98' and passage.offset == 61:
-                processor.process_passage(passage, doc.id)
+            processor.process_passage(passage, doc.id)
 
     with open(argv['-o'], 'w') as fp:
         bioc.dump(collection, fp)

@@ -1,13 +1,14 @@
 import logging
 import re
 from pathlib import Path
-from typing import Pattern, List, Match, Tuple
+from typing import Pattern, List, Match
 
 import bioc
 import yaml
 from bioc import BioCPassage
 
 from ptakes.core import BioCProcessor
+from ptakes.utils import intersect
 
 
 class PTakesMatch:
@@ -31,23 +32,6 @@ class NerRegexPattern:
 def compile(pattern_str: str) -> Pattern:
     pattern_str = re.sub(' ', r'\\s+', pattern_str)
     return re.compile(pattern_str, re.I | re.M)
-
-
-def intersect(range1: Tuple[int, int], range2: Tuple[int, int]) -> bool:
-    """
-    Args:
-        range1: [begin, end)
-        range2: [begin, end)
-    """
-    if range1[0] <= range2[0] < range1[1]:
-        return True
-    elif range1[0] < range2[1] <= range1[1]:
-        return True
-    elif range2[0] <= range1[0] < range2[1]:
-        return True
-    elif range2[0] < range1[1] <= range2[1]:
-        return True
-    return False
 
 
 def remove_excludes(includes: List[Match], excludes: List[Match]) -> List[Match]:

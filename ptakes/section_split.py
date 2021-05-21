@@ -48,7 +48,7 @@ class BioCSectionSplitter(BioCProcessor):
             strip(passage)
             return passage
 
-        passages = doc.passages
+        passages = list(doc.passages)
         del doc.passages[:]
         for passage in passages:
             text = passage.text
