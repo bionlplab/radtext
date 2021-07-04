@@ -1,6 +1,7 @@
 """
 Usage:
-    split_section [options] -i FILE -o FILE
+    split_section reg [options] -i FILE -o FILE
+    split_section medspacy [options] -i FILE -o FILE
 
 Options:
     --section-titles FILE
@@ -17,7 +18,7 @@ import docopt
 import tqdm
 
 from cmd.cmd_utils import process_options
-from ptakes.section_split import BioCSectionSplitter
+from ptakes.section_split_regex import BioCSectionSplitterRegex
 
 SECTION_TITLES = [
     "ABDOMEN AND PELVIS:",
@@ -52,15 +53,21 @@ if __name__ == '__main__':
     argv = docopt.docopt(__doc__)
     process_options(argv)
 
-    if argv['--section-titles']:
-        with open(argv['--section-titles']) as fp:
-            section_titles = [line.strip() for line in fp]
+    if argv['reg']:
+        if argv['--section-titles']:
+            with open(argv['--section-titles']) as fp:
+                section_titles = [line.strip() for line in fp]
+        else:
+            section_titles = SECTION_TITLES
+        pattern = combine_patterns(section_titles)
+        sec_splitter = BioCSectionSplitterRegex(regex_pattern=pattern)
+    elif argv['medspacy']:
+        import medspacy
+        from ptakes.section_split_medspacy import BioCSectionSplitterMedSpacy
+        nlp = medspacy.load(enable=["sectionizer"])
+        sec_splitter = BioCSectionSplitterMedSpacy(nlp)
     else:
-        section_titles = SECTION_TITLES
-
-    pattern = combine_patterns(section_titles)
-
-    sec_splitter = BioCSectionSplitter(regex_pattern=pattern)
+       raise KeyError
 
     with open(argv['-i']) as fp:
         collection = bioc.load(fp)

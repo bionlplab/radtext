@@ -4,12 +4,12 @@ export PYTHONPATH=.
 
 source_dir=$HOME'/Subjects/ptakes'
 venv_dir=$HOME'/Subjects/venvs/pengyifan-wcm'
-top_dir=$HOME'/Data/ptakes_data/mimic-cxr'
+top_dir=$HOME'/Data/ptakes_data'
 
 disease=pneumoperitoneum
 phrase_file=$top_dir/../${disease}.yml
 
-prefix=reports
+prefix=7401
 csv_file=$top_dir/$prefix.csv
 bioc_file=$top_dir/$prefix.xml
 section_file=$top_dir/${prefix}_section.xml
@@ -29,7 +29,7 @@ while [ "$1" != "" ]; do
       ;;
     'split_section' )
       echo "Split section"
-      python cmd/split_section.py -i "$bioc_file" -o "$section_file"
+      python cmd/split_section.py medspacy -i "$bioc_file" -o "$section_file"
       ;;
     'preprocess' )
       echo "Preprocess"

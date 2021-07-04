@@ -25,7 +25,7 @@ def strip(passage):
     return passage
 
 
-class BioCSectionSplitter(BioCProcessor):
+class BioCSectionSplitterRegex(BioCProcessor):
     def __init__(self, regex_pattern):
         self.pattern = regex_pattern
 
