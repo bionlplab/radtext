@@ -94,5 +94,6 @@ def get_text(text: str, start: int, end: int) -> str:
     Returns text with the annotation replaced by XXXXX
     """
     text = text[:start] + 'X' * (end - start) + text[end:]
+    text = re.sub(r'\n', ' ', text)
     # text = re.sub(r'\s+', ' ', text)
     return text
