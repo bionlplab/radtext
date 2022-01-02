@@ -20,7 +20,7 @@ import yaml
 
 # Numeric constants
 from cmd.cmd_utils import process_options
-from ptakes.neg.constants import NEGATION, UNCERTAINTY
+from radtext.neg.constants import NEGATION, UNCERTAINTY
 
 POSITIVE = 'p'
 NEGATIVE = 'n'

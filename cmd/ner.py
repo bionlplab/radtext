@@ -17,8 +17,8 @@ import docopt
 import tqdm
 import en_core_web_sm
 from cmd.cmd_utils import process_options
-from ptakes.ner_regex import NerRegExExtractor, BioCNerRegex
-from ptakes.ner_spacy import NerSpacyExtractor, BioCNerSpacy
+from radtext.ner_regex import NerRegExExtractor, BioCNerRegex
+from radtext.ner_spacy import NerSpacyExtractor, BioCNerSpacy
 import pandas as pd
 
 

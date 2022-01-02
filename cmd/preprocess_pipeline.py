@@ -14,14 +14,14 @@ import bioc
 import docopt
 import tqdm
 from cmd.cmd_utils import process_options
-from ptakes.convert_ptb_to_ud import BioCPtb2DepConverter
-from ptakes.core import BioCPipeline
-from ptakes.parse_bllip import BioCParserBllip
-from ptakes.preprocess_spacy import BioCSpacy
-from ptakes.preprocess_stanza import BioCStanza
+from radtext.convert_ptb_to_ud import BioCPtb2DepConverter
+from radtext.core import BioCPipeline
+from radtext.parse_bllip import BioCParserBllip
+from radtext.preprocess_spacy import BioCSpacy
+from radtext.preprocess_stanza import BioCStanza
 
 
-from ptakes.sentence_split_nltk import BioCSSplitterNLTK
+from radtext.sentence_split_nltk import BioCSSplitterNLTK
 
 
 def get_ptakes_processors(argv):

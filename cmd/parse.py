@@ -14,7 +14,7 @@ import docopt
 import tqdm
 
 from cmd.cmd_utils import process_options
-from ptakes.parse_bllip import BioCParserBllip
+from radtext.parse_bllip import BioCParserBllip
 
 
 if __name__ == '__main__':

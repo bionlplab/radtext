@@ -18,7 +18,7 @@ import docopt
 import tqdm
 
 from cmd.cmd_utils import process_options
-from ptakes.section_split_regex import BioCSectionSplitterRegex
+from radtext.section_split_regex import BioCSectionSplitterRegex
 
 SECTION_TITLES = [
     "ABDOMEN AND PELVIS:",
@@ -63,7 +63,7 @@ if __name__ == '__main__':
         sec_splitter = BioCSectionSplitterRegex(regex_pattern=pattern)
     elif argv['medspacy']:
         import medspacy
-        from ptakes.section_split_medspacy import BioCSectionSplitterMedSpacy
+        from radtext.section_split_medspacy import BioCSectionSplitterMedSpacy
         nlp = medspacy.load(enable=["sectionizer"])
         sec_splitter = BioCSectionSplitterMedSpacy(nlp)
     else:

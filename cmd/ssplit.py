@@ -12,7 +12,7 @@ import docopt
 import tqdm
 
 from cmd.cmd_utils import process_options
-from ptakes.sentence_split_nltk import BioCSSplitterNLTK
+from radtext.sentence_split_nltk import BioCSSplitterNLTK
 
 if __name__ == '__main__':
     argv = docopt.docopt(__doc__)

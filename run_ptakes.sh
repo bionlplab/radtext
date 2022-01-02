@@ -2,7 +2,7 @@
 
 export PYTHONPATH=.
 
-source_dir=$HOME'/Subjects/ptakes'
+source_dir=$HOME'/Subjects/radtext'
 venv_dir=$HOME'/Subjects/venvs/pengyifan-wcm'
 top_dir=$HOME'/Data/ptakes_data'
 

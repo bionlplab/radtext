@@ -12,7 +12,7 @@ import docopt
 import tqdm
 
 from cmd.cmd_utils import process_options
-from ptakes.convert_ptb_to_ud import BioCPtb2DepConverter
+from radtext.convert_ptb_to_ud import BioCPtb2DepConverter
 
 
 if __name__ == '__main__':
