@@ -10,8 +10,9 @@ disease=pneumoperitoneum
 phrase_file=$top_dir/../${disease}.yml
 
 prefix=7401
-csv_file=$top_dir/$prefix.csv
-bioc_file=$top_dir/$prefix.xml
+csv_file=$top_dir/${prefix}.csv
+bioc_file=$top_dir/${}prefix}.xml
+bioc_deid_file=$top_dir/${prefix}_deid.xml
 section_file=$top_dir/${prefix}_section.xml
 ud_file=$top_dir/${prefix}_ud.xml
 ner_file=$top_dir/${prefix}_${disease}.xml
@@ -27,9 +28,13 @@ while [ "$1" != "" ]; do
       echo "CSV 2 BioC"
       python cmd/csv2bioc.py -i "$csv_file" -o "$bioc_file" --id_col subject_id --text_col text
       ;;
+    'deid' )
+      echo "de identification"
+      python cmd/deidentify.py -i "$bioc_file" -o "$bioc_deid_file"
+      ;;
     'split_section' )
       echo "Split section"
-      python cmd/split_section.py medspacy -i "$bioc_file" -o "$section_file"
+      python cmd/split_section.py medspacy -i "$bioc_deid_file" -o "$section_file"
       ;;
     'preprocess' )
       echo "Preprocess"
