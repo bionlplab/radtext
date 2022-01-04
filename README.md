@@ -2,7 +2,7 @@
 
 <img src="https://github.com/yfpeng/radtext/blob/master/radtext.png?raw=true" alt="RadText" width="700"/>
 
-Python Radiology Text Analysis System
+RadText is a high-performance Python Radiology Text Analysis System.
 
 ## Get Started
 
