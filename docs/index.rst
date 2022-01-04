@@ -17,7 +17,7 @@ Highlight Features
 
 RadText officially supports Python>=3.6.
 
-These instructions will get you a copy of the project up and run on your local machine for development and testing purposes. The package should successfully install on Linux (and possibly macOS).
+These instructions will get you a copy of the project up and run on your local machine for development and testing purposes. The package should successfully install on Linux (and possibly macOS). 
 
 .. toctree::
    :maxdepth: 5
