@@ -22,7 +22,7 @@ RadText is a high-performance Python Radiology Text Analysis System.
 2. Once you have a copy of the resource, you can prepare a virtual environment.
 
    ```bash
-   $ conda create --name radtext python==3.6
+   $ conda create --name radtext python=3.6
    $ source activate radtext 
    $ pip install --upgrade pip setuptools
    ```
