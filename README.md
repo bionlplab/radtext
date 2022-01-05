@@ -24,7 +24,6 @@ RadText is a high-performance Python Radiology Text Analysis System.
    $ python radtext/radtext_pipeline.py text2bioc --output=$BIOC_DIR/test.xml $TEXT_DIR/*.txt
    ```
 
-
 3. Run the script. See [User guide](https://radtext.readthedocs.io/en/latest/user_guide.html).
 
 ## Documentation

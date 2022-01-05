@@ -6,7 +6,7 @@ This project adheres to the [Contributor Covenant Code of Conduct](http://contri
 
 # Maintainers
 
-NegBio is maintained with :heart: by:
+RadText is maintained with :heart: by:
 
 -- **@yfpeng**
 

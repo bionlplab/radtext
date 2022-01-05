@@ -1,13 +1,13 @@
 # Quickstart
 
-Eager to get started? This page gives a good introduction in how to get started with NegBio.
+Eager to get started? This page gives a good introduction in how to get started with RadText.
 
-First, make sure that NegBio is installed.
+First, make sure that RadText is installed.
 
 
 ## Preparing the dataset
     
-The inputs of NegBio should be in the [BioC](http://bioc.sourceforge.net/>) format. 
+The inputs of RadText should be in the [BioC](http://bioc.sourceforge.net/>) format. 
 
 Briefly, a BioC-format file is an XML document as the basis of the BioC data exchange and the BioC data classes. Each file contains a group of documents. Each document should have a unique id and one or more passages. Each passage should have (1) a non-overlapping offset that specifies the location of the passage with respect to the whole document, and (2) the original text of the passage. 
 
@@ -46,11 +46,11 @@ dictating </text>
 </collection>
 ```
 
-## Running NegBio
+## Running RadText
 
 ```bash
-$ export OUTPUT_DIR=examples-local
-$ export OUTPUT_LABELS=examples-local/labels.csv
+$ export OUTPUT_DIR=/path/to/output
+$ export OUTPUT_LABELS=/path/to/output/labels.csv 
 $ export INPUT_FILES="examples/1.xml examples/2.xml"
 $ bash examples/run_negbio_examples.sh
 ```
