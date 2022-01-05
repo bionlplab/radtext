@@ -273,3 +273,12 @@
 - id: nn840
   pattern: '{}=f >{} {lemma:/new/}=k0 & >{dependency:/neg/} {lemma:/no/}=k1'
   comment: no new XXX
+- id: nn850
+  pattern: '{}=f > {dependency:/amod/} {lemma:/resolve/}'
+  comment: resolved XXX
+- id: nn860
+  pattern: '{}=f < {dependency:/nsubjpass/} ({lemma:/delineate/} > {dependency:/neg/} {})'
+  comment: not delineated XXX
+- id: nn870
+  pattern: '{}=f > {} {lemma:/visualize/} & > {dependency:/neg/} {lemma:/no/}'
+  comment: no visualized XXX

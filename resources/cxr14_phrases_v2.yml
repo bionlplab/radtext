@@ -177,19 +177,39 @@ Pneumoperitoneum:
   concept_id: RID4803
   include:
   - pneumoperitoneum
+  - aeroperitoneum
+  - peritoneal emphysema
+  - peritoneal cavity free air
+  - subdiaphragmatic free air
 Pneumomediastinum:
   concept_id: RID28523
   include:
   - pneumomediastinum
+  - mediastinal emphysema
 Subcutaneous Emphysema:
   include:
   - subcutaneous emphysema
+  - subcutaneous gas
 Tortuous Aorta:
   include:
   - tortuous aorta
+  - tortuous arteries
+  - twisted aorta
+  - twisted arteries
+  - artery tortuosity
+  - aorta tortuosity
+  - tortuosity of the thoracic aorta
 Calcification of the Aorta:
   include:
   - calcification of the aorta
+  - calcified aorta
+  - calcified artery
+  - aortic calcification 
+  - artery calcification
+  - arterial calcification
+  - aortic valve calcification
+  - atherosclerotic
+  - atherosclerosis
 No Finding:
   include:
   - density

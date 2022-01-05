@@ -37,7 +37,7 @@ RadText is a high-performance Python Radiology Text Analysis System.
    Then install the required packages:
 
    ```bash
-   $ pip install -r requirements3.txt
+   $ pip install -r requirements.txt
    ```
 
 3. Prepare the dataset. 
