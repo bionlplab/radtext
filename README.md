@@ -4,16 +4,43 @@
 
 RadText is a high-performance Python Radiology Text Analysis System.
 
+## Prerequisites
+
+1. Python >= 3.6
+2. Linux
+3. Java
+
 ## Get Started
 
 1. Download RadText
 
 	```bash
 	$ git clone https://github.com/yfpeng/radtext.git
-	$ cd /path/to/radtext
+	$ cd radtext
 	```
 
-2. Prepare the dataset. 
+2. Once you have a copy of the resource, you can prepare a virtual environment.
+
+   ```bash
+   $ conda create --name radtext python==3.6
+   $ source activate radtext 
+   $ pip install --upgrade pip setuptools
+   ```
+
+   or 
+
+   ```bash
+   $ virtualenv --python=/usr/bin/python3.6 radtext_env
+   $ source radtext_env/bin/activate
+   ```
+
+   Then install the required packages:
+
+   ```bash
+   $ pip install -r requirements3.txt
+   ```
+
+3. Prepare the dataset. 
    We recommend that you store your input reports in [BioC](http://bioc.sourceforge.net/) format. Some examples can be found in the `examples` folder. If you have lots of reports, it is recommended to put them into several BioC files, for example, 5000 reports per BioC file.
 
    You can use the following commands to convert your text files into BioC format.
@@ -24,7 +51,9 @@ RadText is a high-performance Python Radiology Text Analysis System.
    $ python radtext/radtext_pipeline.py text2bioc --output=$BIOC_DIR/test.xml $TEXT_DIR/*.txt
    ```
 
-3. Run the script. See [User guide](https://radtext.readthedocs.io/en/latest/user_guide.html).
+3. 
+
+4. Run the script. See [User guide](https://radtext.readthedocs.io/en/latest/user_guide.html).
 
 ## Documentation
 
