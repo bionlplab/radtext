@@ -1,25 +1,20 @@
 # Advanced Usage
 
-This document covers some of NegBio more advanced features.
+This document covers some more advanced features of RadText.
 
 ### Running the pipeline step-by-step
 
 The step-by-step pipeline generates all intermediate documents. You can easily rerun one step if it makes errors. The whole steps are
 
-1. `text2bioc` combines text into a BioC XML file.
-2. `normalize` removes noisy text such as `[**Patterns**]`.
-3. `section_split` splits the report into sections
-4. `ssplit` splits text into sentences.
-5. Named entity recognition
-   1. `dner_mm` detects UMLS concepts using MetaMap.
-   2. `dner_regex` detects concepts using the vocabularies such as `patterns/cxr14_phrases_v2.yml`.
+1. `csv2bioc` transforms the .csv text files into a BioC XML file.
+2. `deid` de-identifies all the reports.
+3. `split_section` splits the report into sections. User can choose to use rule-based `reg` split or [`medspacy`](https://spacy.io/universe/project/medspacy).
+4. `preprocess` splits texts into sentences. User can choose to use [`spacy`](https://spacy.io/) or [`stanza`](https://stanfordnlp.github.io/stanza/).
+5. Named entity recognition. User can choose to use rule-based `regex` or spacy. RadText also detects UMLS concepts using MetaMap. 
 6. `parse` parses sentence using the [Bllip parser](https://github.com/BLLIP/bllip-parser).
 7. `ptb2ud` converts the parse tree to universal dependencies using [Stanford converter](https://github.com/dmcc/PyStanfordDependencies).
-8. `neg2` detects negative and uncertain findings.
-9. `cleanup` removes intermediate information.
-
-<!--Steps 2-10 will process the input files one-by-one and generate the results in the output directory.-->
-<!--The 2nd and 3rd can be skipped. You can chose either step 5 or 6 for named entity recognition.-->
+8. `neg` detects negative and uncertain findings.
+9. `collect_neg_label` merges negative and uncertain labels.
 
 ### General arguments
 
@@ -42,29 +37,18 @@ Other options include
 ### Convert text files to BioC format
 
 You can skip this step if the reports are already in the [BioC]( http://bioc.sourceforge.net/) format.
-**If you have lots of reports, it is recommended to put them into several BioC files, for example, 100 reports per BioC file.**
+**If you have lots of reports, it is recommended to put them into several BioC files, for example, 5000 reports per BioC file.**
 
 ```bash
-export BIOC_DIR=/path/to/bioc
-export TEXT_DIR=/path/to/text
-python negbio/negbio_pipeline.py text2bioc --output=$BIOC_DIR/test.xml $TEXT_DIR/*.txt
+python cmd/csv2bioc.py -i /path/to/csv_file -o /path/to/bioc_file
 ```
+### De-identify reports
 
-Another most commonly used command is:
-
-```bash
-find $TEXT_DIR -type f | python negbio/negbio_pipeline.py text2bioc  --output=$BIOC_DIR
-```
-
-### Normalize reports
-
-This step removes the noisy text such as `[**Patterns**]` in the MIMIC-III reports.
+This step de-identifies the information in the reports.
 
 ### Split each report into sections
 
-This step splits the report into sections.
-The default section titles is at `patterns/section_titles.txt`.
-You can specify customized section titles using the option `--pattern=<file>`.
+This step splits the report into sections. The default section titles is at `patterns/section_titles.txt`. You can specify customized section titles using the option `--pattern=<file>`.
 
 ### Splits each report into sentences
 
