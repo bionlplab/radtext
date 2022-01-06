@@ -10,9 +10,9 @@ The step-by-step pipeline generates all intermediate documents. You can easily r
 2. `deid` de-identifies all the reports, hides patient information such as Name, Contact, Age, etc.
 3. `split_section` splits the report into sections. User can choose to use rule-based `reg` split or [`medspacy`](https://spacy.io/universe/project/medspacy).
 4. `preprocess` splits texts into sentences. User can choose to use [`spacy`](https://spacy.io/) or [`stanza`](https://stanfordnlp.github.io/stanza/).
-5. Named entity recognition. User can choose to use rule-based `regex` or spacy. RadText also detects UMLS concepts using MetaMap. 
-6. `parse` parses sentence using the [Bllip parser](https://github.com/BLLIP/bllip-parser).
-7. `neg` detects negative and uncertain findings.
+5. Named entity recognition. Users can choose to use rule-based `regex` or `spacy`. 
+6. `parse` parses sentences. Users can choose to use [Stanza](https://stanfordnlp.github.io/stanza/) or [Bllip parser](https://github.com/BLLIP/bllip-parser).
+7. `neg` detects negative and uncertain findings using [NegBio2](https://github.com/bionlplab/negbio2).
 8. `collect_neg_label` merges negative and uncertain labels.
 
 
@@ -30,7 +30,7 @@ This step de-identifies the patient information in the reports, such as Name, Co
 
 ### Split each report into sections
 
-This step splits the report into sections. Users can choose to use rule-based section splitter or medspacy. If users decide to use rule-based section splitter, simply run:
+This step splits the report into sections. Users can choose to use rule-based section splitter or [MedSpaCy](https://github.com/medspacy/medspacy). MedSpaCy is a rule-based spaCy tool for performing clinical NLP and text processing tasks. If users decide to use rule-based section splitter, simply run:
 
 ```bash
 $ python cmd/split_section.py reg [options] -i /path/to/input -o /path/to/output
@@ -64,11 +64,11 @@ or
 $ python cmd/ner.py regex -phrases "$phrase_file" -i "$ud_file" -o "$ner_file" 
 ```
 
-Spacy utilizes MetaMap ontology. In general, MetaMap is more comprehensive while vocabulary is more accurate on the findings of interest. MetaMap is also slower and easier to break down than vocabulary. All vocabularies can be found at `resources`. Each file in the folder represents one type of named entities with various text expressions. You can specify your customized patterns via `--phrases_file=<file>`.
+Spacy utilizes MetaMap ontology. In general, MetaMap is more comprehensive but at the same time MetaMap can be noisy, while vocabulary is more accurate on the findings of interest. MetaMap is also slower and easier to break down than vocabulary. All vocabularies can be found at `resources`. Each file in the folder represents one type of named entities with various text expressions. You can specify your customized patterns via `--phrases_file=<file>`.
 
 ### Parse the sentences
 
-This step parses sentences, and we provide two options that users can choose from, [Stanza](https://stanfordnlp.github.io/stanza/) and [Bllip parser](https://github.com/BLLIP/bllip-parser). The resulting parse tree of Bliip parser will be further converted to universal dependencies using [Stanford converter](https://github.com/dmcc/PyStanfordDependencies).
+This step parses sentences, and we provide two options that users can choose from, [Stanza](https://stanfordnlp.github.io/stanza/) and [Bllip parser](https://github.com/BLLIP/bllip-parser). The resulting parsing trees of Bliip parser will be further converted to universal dependencies using [Stanford converter](https://github.com/dmcc/PyStanfordDependencies).
 
 ### Detect negative and uncertain findings
 

@@ -7,7 +7,7 @@ Now that you have properly installed RadText, let's walk you through how to get 
     
 The inputs of RadText should be in the [BioC](http://bioc.sourceforge.net/>) format. 
 
-Briefly, a BioC-format file is an XML document as the basis of the BioC data exchange and the BioC data classes. Each file contains a group of documents. Each document should have a unique id and one or more passages. Each passage should have (1) a non-overlapping offset that specifies the location of the passage with respect to the whole document, and (2) the original text of the passage. 
+Briefly, a BioC-format file is an XML document as the basis of the BioC data exchange and the BioC data classes, which can meet the needs of our NLP tasks. Each file contains a group of documents. Each document should have a unique id and one or more passages. Each passage should have (1) a non-overlapping offset that specifies the location of the passage with respect to the whole document, and (2) the original text of the passage. 
 
 The text can contains special characters such as newlines. An example of BioC-format file is shown here:
    
