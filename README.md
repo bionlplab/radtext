@@ -43,12 +43,10 @@ RadText is a high-performance Python Radiology Text Analysis System.
 3. Prepare the dataset. 
    We recommend that you store your input reports in [BioC](http://bioc.sourceforge.net/) format. Some examples can be found in the `examples` folder. If you have lots of reports, it is recommended to put them into several BioC files, for example, 5000 reports per BioC file.
 
-   You can use the following commands to convert your text files into BioC format.
+   You can use the following commands to covert your .csv files (which have two columns, column named 'subject_id' for the report id, column named 'text' for the reports) into BioC format.
 
    ```bash
-   $ export TEXT_DIR=/path/to/text
-   $ export BIOC_DIR=/path/to/bioc_output
-   $ python radtext/radtext_pipeline.py text2bioc --output=$BIOC_DIR/test.xml $TEXT_DIR/*.txt
+   $ python cmd/csv2bioc.py -i /path/to/csv_file -o /path/to/bioc_file --id_col subject_id --text_col text
    ```
 
 4. Run the script to analyze radiology reports. Please refer to [User guide](https://radtext.readthedocs.io/en/latest/user_guide.html) for details.
