@@ -8,18 +8,18 @@ This part of the documentation will walk you through the proper installation of 
 *  Linux
 *  Java
 
-## Clone the source code
+## Installing RadText
 
 RadText is actively developed on GitHub, where the code is [always available](https://github.com/yfpeng/radtext).
 
-You can clone the public repository
+You can clone the public repository:
 
 ```bash
 $ git clone https://github.com/yfpeng/radtext.git
 $ cd radtext
 ```
 
-Once you have a copy of the source code, you can prepare a virtual environment
+Once you have a copy of the source code, you can prepare a virtual environment using:
 
 ```bash
 $ conda create --name radtext python=3.6

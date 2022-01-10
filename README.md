@@ -12,7 +12,7 @@ RadText is a high-performance Python Radiology Text Analysis System.
 
 ## Get Started
 
-1. Download RadText
+1. Download RadText.
 
 	```bash
 	$ git clone https://github.com/yfpeng/radtext.git
@@ -51,15 +51,16 @@ RadText is a high-performance Python Radiology Text Analysis System.
    ```
 
 3. Prepare the dataset. 
-   We recommend that you store your input reports in [BioC](http://bioc.sourceforge.net/) format. Some examples can be found in the `examples` folder. If you have lots of reports, it is recommended to put them into several BioC files, for example, 5000 reports per BioC file.
 
-   You can use the following commands to covert your .csv files (by default, column 'ID' stores the report id, and columns 'TEXT' stores the reports) into BioC format.
+   RadText uses [BioC](http://bioc.sourceforge.net/) format as the unified interface. Some examples can be found in the `examples` folder. You can store your input reports in a .csv file (by default, column 'ID' stores the report ids, and column 'TEXT' stores the reports), and then use the following command to convert your .csv file into BioC format. 
 
    ```bash
    $ python cmd/csv2bioc.py -i /path/to/csv_file -o /path/to/bioc_file
    ```
 
-4. Run the script to analyze radiology reports. Please refer to [User guide](https://radtext.readthedocs.io/en/latest/user_guide.html) for details.
+   If you have lots of reports, it is recommended to put them into several BioC files, for example, 5000 reports per BioC file. 
+
+4. Run RadText to analyze radiology reports. Please refer to [User guide](https://radtext.readthedocs.io/en/latest/user_guide.html) for details.
 
 ## Documentation
 

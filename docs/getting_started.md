@@ -5,11 +5,11 @@ Now that you have properly installed RadText, let's walk you through how to get 
 
 ## Preparing the dataset
     
-The inputs of RadText should be in the [BioC](http://bioc.sourceforge.net/>) format. 
+RadText uses [BioC](http://bioc.sourceforge.net/) format as the unified interface. 
 
 Briefly, a BioC-format file is an XML document as the basis of the BioC data exchange and the BioC data classes, which can meet the needs of our NLP tasks. Each file contains a group of documents. Each document should have a unique id and one or more passages. Each passage should have (1) a non-overlapping offset that specifies the location of the passage with respect to the whole document, and (2) the original text of the passage. 
 
-The text can contains special characters such as newlines. An example of BioC-format file is shown here:
+The text can contains special characters such as newlines. An example of BioC-format .XML file is shown here:
    
 ```xml
 <?xml version='1.0' encoding='utf-8' standalone='yes'?>
@@ -43,15 +43,16 @@ dictating </text>
   </document>
 </collection>
 ```
-If you have lots of reports, it is recommended to put them into several BioC files, for example, 5000 reports per BioC file.
 
-You can use the following commands to covert your .csv files (by default, column 'ID' stores the report id, and columns 'TEXT' stores the reports) into BioC format.
+You can store your input reports in a .csv file (by default, column 'ID' stores the report ids, and column 'TEXT' stores the reports), and then use the following command to convert your .csv file into BioC format. 
 
 ```bash
-  $ python cmd/csv2bioc.py -i /path/to/csv_file -o /path/to/bioc_file
+$ python cmd/csv2bioc.py -i /path/to/csv_file -o /path/to/bioc_file
 ```
 
-## Running RadText
+If you have lots of reports, it is recommended to put them into several BioC files, for example, 5000 reports per BioC file. 
+
+## Running RadText [TODO]
 
 ```bash
 $ export OUTPUT_DIR=/path/to/output
