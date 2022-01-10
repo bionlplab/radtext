@@ -16,7 +16,7 @@ import docopt
 import pandas as pd
 import tqdm
 
-from cmd.cmd_utils import process_options
+from cmd_utils import process_options
 
 
 if __name__ == '__main__':
