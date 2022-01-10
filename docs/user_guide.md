@@ -26,7 +26,7 @@ $ python cmd/csv2bioc.py -i /path/to/csv_file -o /path/to/bioc_file
 ```
 ### De-identify reports
 
-This step de-identifies the patient information in the reports, such as Name, Contact, Age, Email, etc. This filters out the sensitive information using whitelists, blacklists and regular expressions.
+This step de-identifies the radiology reports. Radiology reports often contain detailed sensitive information about individual patients, the nuances of their diseases, the treatment strategies and the resulting outcomes, which causes that clinical notes remain largely unused for research because they contain the protected health information (PHI) which is synonymous with individually identifying data. To address this issue, RadText uses [Philter](https://github.com/BCHSI/philter-ucsf) for de-identification, which removes PHI from the reports, such as Name, Contact, Age, Email, etc. 
 
 ### Split each report into sections
 

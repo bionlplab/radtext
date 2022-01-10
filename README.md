@@ -40,6 +40,16 @@ RadText is a high-performance Python Radiology Text Analysis System.
    $ pip install -r requirements.txt
    ```
 
+   If you encouter `Building wheel for bllipparser (setup.py) ... error` when installing bllipparser, try installing these two packages first, then restarting your virtual environment:
+   
+   ```bash
+   $ conda install gcc_linux-64
+   $ conda install gxx_linux-64
+   $ 
+   $ conda deactivate
+   $ conda activate radtext
+   ```
+
 3. Prepare the dataset. 
    We recommend that you store your input reports in [BioC](http://bioc.sourceforge.net/) format. Some examples can be found in the `examples` folder. If you have lots of reports, it is recommended to put them into several BioC files, for example, 5000 reports per BioC file.
 
