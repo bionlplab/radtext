@@ -30,7 +30,7 @@ This step de-identifies the radiology reports. Radiology reports often contain d
 
 ### Split each report into sections
 
-This step splits the report into sections. Users can choose to use rule-based section splitter or [MedSpaCy](https://github.com/medspacy/medspacy). MedSpaCy is a rule-based spaCy tool for performing clinical NLP and text processing tasks. If users decide to use rule-based section splitter, simply run:
+This step splits the report into sections. RadText splits each report into sections and only keeps the sections of interest. RadText provides two options for section split, rule-based section splitter and [MedSpaCy](https://github.com/medspacy/medspacy). MedSpaCy is a rule-based spaCy tool for performing clinical NLP and text processing tasks. If users decide to use rule-based section splitter, simply run:
 
 ```bash
 $ python cmd/split_section.py reg [options] -i /path/to/input -o /path/to/output

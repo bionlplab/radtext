@@ -39,3 +39,13 @@ Finally, install the required packages:
 ```bash
 $ pip install -r requirements.txt
 ```
+
+NOTE: If you encouter `Building wheel for bllipparser (setup.py) ... error` when installing bllipparser, try installing these two packages first, then restarting your virtual environment:
+   
+```bash
+$ conda install gcc_linux-64
+$ conda install gxx_linux-64
+$ 
+$ conda deactivate
+$ conda activate radtext
+```
