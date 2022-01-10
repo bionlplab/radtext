@@ -40,7 +40,7 @@ RadText is a high-performance Python Radiology Text Analysis System.
    $ pip install -r requirements.txt
    ```
 
-   If you encouter `Building wheel for bllipparser (setup.py) ... error` when installing bllipparser, try installing these two packages first, then restarting your virtual environment:
+NOTE: If you encouter `Building wheel for bllipparser (setup.py) ... error` when installing bllipparser, try installing these two packages first, then restarting your virtual environment:
    
    ```bash
    $ conda install gcc_linux-64
