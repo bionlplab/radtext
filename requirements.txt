@@ -13,7 +13,5 @@ pytz==2019.1
 PyYAML==5.4
 tqdm==4.48.2
 medspacy
-setuptools wheel
 spacy
-spacy download en_core_web_sm
 intervaltree
