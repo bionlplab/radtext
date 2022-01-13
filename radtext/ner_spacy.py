@@ -2,7 +2,8 @@ import collections
 import logging
 from itertools import permutations
 from typing import List, Set, Iterable, Tuple, Iterator, Any, Match
-
+import nltk
+nltk.download('stopwords')
 import tqdm
 from bioc import BioCAnnotation, BioCLocation, BioCPassage
 from intervaltree import IntervalTree
