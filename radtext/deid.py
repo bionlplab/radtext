@@ -42,8 +42,13 @@ class BioCDeidPhilter(BioCProcessor):
         return sentence
 
     def deidentify_text(self, text, offset, anns, replacement='X'):
+#         print('anns: ', anns)
         for ann in anns:
+            print('ann.infons: ', ann.infons)
             if 'phi_type' in ann.infons:
+#                 print('phi_type if is true')
                 loc = ann.total_span
+#                 print('replacement: ',replacement)
+#                 print('loc length is: ', loc.length)
                 text = text[:loc.offset - offset] + replacement * loc.length + text[loc.end - offset:]
         return text
