@@ -8,6 +8,8 @@ Options:
     -i FILE
     --start_with_findings
 """
+import sys
+sys.path.append('../../radtext')
 import collections
 import logging
 from typing import Dict, Set
@@ -19,7 +21,7 @@ import tqdm
 import yaml
 
 # Numeric constants
-from cmd.cmd_utils import process_options
+from cmd_utils import process_options
 from radtext.neg.constants import NEGATION, UNCERTAINTY
 
 POSITIVE = 'p'
