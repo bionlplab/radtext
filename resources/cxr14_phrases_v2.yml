@@ -255,6 +255,7 @@ No Finding:
   - aerophagia
   - arthropathy
 Diagnosis:
+  include:
   - aspiration pneumonia
   - fluid overload
   - hemorrhage
