@@ -8,12 +8,14 @@ Options:
     -i FILE
 """
 import os
+import sys
+sys.path.append('../../radtext')
 
 import bioc
 import docopt
 import tqdm
 
-from cmd.cmd_utils import process_options
+from cmd_utils import process_options
 from radtext.parse_bllip import BioCParserBllip
 
 
