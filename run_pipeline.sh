@@ -9,7 +9,7 @@ ner_phrase_file=$top_dir$/resources/cxr14_phrases_v2.yml
 phrase_file=$top_dir$/resources/chexpert_phrases.yml
 
 # intermediate output files
-csv_file=$top_dir/$input.csv
+csv_file=$top_dir/$input.csv 
 bioc_file=$top_dir/$bioc.xml
 bioc_deid_file=$top_dir/$deid.xml
 section_file=$top_dir/$section.xml

@@ -8,6 +8,6 @@ This project adheres to the [Contributor Covenant Code of Conduct](http://contri
 
 RadText is maintained with :heart: by:
 
--- **@yfpeng**
+-- **@**
 
-See also the list of [contributors](https://github.com/ncbi-nlp/NegBio/contributors) who participated in this project.
+See also the list of [contributors]() who participated in this project.
