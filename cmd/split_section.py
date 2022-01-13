@@ -8,6 +8,8 @@ Options:
     -o FILE
     -i FILE
 """
+import sys
+sys.path.append('../../radtext')
 import copy
 import logging
 import re
@@ -17,7 +19,7 @@ import bioc
 import docopt
 import tqdm
 
-from cmd.cmd_utils import process_options
+from cmd_utils import process_options
 from radtext.section_split_regex import BioCSectionSplitterRegex
 
 SECTION_TITLES = [
