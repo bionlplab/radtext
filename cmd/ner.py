@@ -10,13 +10,15 @@ Options:
     -i FILE
     --phrases FILE
 """
+import sys
+sys.path.append('../../radtext')
 from typing import Iterable, Tuple
 
 import bioc
 import docopt
 import tqdm
 import en_core_web_sm
-from cmd.cmd_utils import process_options
+from cmd_utils import process_options
 from radtext.ner_regex import NerRegExExtractor, BioCNerRegex
 from radtext.ner_spacy import NerSpacyExtractor, BioCNerSpacy
 import pandas as pd
