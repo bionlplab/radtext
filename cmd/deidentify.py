@@ -9,7 +9,8 @@ Options:
     --replacement char  the PHI replacement char
 """
 import sys
-sys.path.append('../../radtext')
+sys.path.append('../radtext')
+
 import bioc
 import docopt
 import tqdm

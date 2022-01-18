@@ -11,7 +11,7 @@ Options:
     --phrases FILE
 """
 import sys
-sys.path.append('../../radtext')
+sys.path.append('../radtext')
 from typing import Iterable, Tuple
 
 import bioc

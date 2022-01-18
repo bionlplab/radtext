@@ -9,7 +9,7 @@ Options:
     -i FILE
 """
 import sys
-sys.path.append('../../radtext')
+sys.path.append('../radtext')
 import copy
 import logging
 import re

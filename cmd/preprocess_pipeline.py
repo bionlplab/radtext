@@ -10,10 +10,13 @@ Options:
     -o FILE
     -i FILE
 """
+import sys
+sys.path.append('../radtext')
+
 import bioc
 import docopt
 import tqdm
-from cmd.cmd_utils import process_options
+from cmd_utils import process_options
 from radtext.convert_ptb_to_ud import BioCPtb2DepConverter
 from radtext.core import BioCPipeline
 from radtext.parse_bllip import BioCParserBllip

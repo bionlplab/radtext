@@ -8,7 +8,7 @@ from pathlib import Path
 
 import nltk
 
-from wcm.dalio.pphilter.coordinate_map import CoordinateMap
+from radtext.pphilter.coordinate_map import CoordinateMap
 
 # ucsf_include_tags = ['Date', 'Provider_Name', 'Phone_Fax', 'Patient_Name_or_Family_Member_Name',
 #                      'Patient_Address', 'Provider_Address_or_Location',

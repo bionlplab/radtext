@@ -11,7 +11,7 @@ Options:
     -i FILE
 """
 import sys
-sys.path.append('../../radtext')
+sys.path.append('../radtext')
 import bioc
 import docopt
 import tqdm
