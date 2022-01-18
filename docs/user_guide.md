@@ -8,9 +8,9 @@ The step-by-step pipeline generates all intermediate results. Users can easily r
 
 1. `csv2bioc` transforms the .csv text file into a BioC XML file.
 2. `deid` de-identifies all the reports using [Philter](https://github.com/BCHSI/philter-ucsf), hides protected health information (PHI) such as Name, Contact, Age, etc.
-3. `split_section` splits the report into sections. Users can choose to use rule-based `reg` split or [`medspacy`](https://spacy.io/universe/project/medspacy).
+3. `split_section` splits the report into sections. Users can choose to use [NegBio](https://github.com/bionlplab/negbio2) `reg` split or [`medspacy`](https://spacy.io/universe/project/medspacy).
 4. `preprocess` splits and tokenizes texts into sentences. Users can choose to use [NLTK](https://www.nltk.org/api/nltk.tokenize.html), [spaCy](https://spacy.io/) or [Stanza](https://stanfordnlp.github.io/stanza/).
-5. `ner` - Named entity recognition (NER) recognizes the named entities (e.g., disease findings) in sentences. Users can choose to use rule-based `regex` or `spacy`. 
+5. `ner` - Named entity recognition (NER) recognizes the named entities (e.g., disease findings) in sentences. Users can choose to use NegBio, MetaMap or scispaCy.
 6. `parse` parses sentences to obtain the universal dependency graph (UDG) to describe the grammatical relationships in a sentence. Users can choose to use [Stanza](https://stanfordnlp.github.io/stanza/) or [Bllip parser](https://github.com/BLLIP/bllip-parser).
 7. `neg` detects negative and uncertain findings using [NegBio](https://github.com/bionlplab/negbio2).
 8. `collect_neg_label` merges negative and uncertain labels.
