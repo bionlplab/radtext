@@ -143,8 +143,8 @@ class BioCNerRegex(BioCProcessor):
             annotation = bioc.BioCAnnotation()
             annotation.id = 'a{}'.format(start)
             annotation.infons['ner_pattern_str'] = match.pattern
-            annotation.infons["concept_id"] = match.id
-            annotation.infons["preferred_name"] = match.category
+            annotation.infons["source_concept_id"] = match.id
+            annotation.infons["source_concept"] = match.category
             annotation.add_location(bioc.BioCLocation(start + passage.offset, end - start))
             annotation.text = match.text
             passage.add_annotation(annotation)

@@ -19,7 +19,7 @@ class BioCSectionSplitterMedSpacy(BioCProcessor):
             passage.offset = start + offset
             passage.text = text[start:end]
             if title is not None:
-                passage.infons['title'] = title[:-1].strip() if title[-1] == ':' else title.strip()
+                passage.infons['section_concept'] = title[:-1].strip() if title[-1] == ':' else title.strip()
                 passage.infons['type'] = 'title_1'
             strip(passage)
             return passage

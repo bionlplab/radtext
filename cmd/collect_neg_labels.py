@@ -9,7 +9,7 @@ Options:
     --start_with_findings
 """
 import sys
-sys.path.append('../../radtext')
+sys.path.append('../radtext')
 import collections
 import logging
 from typing import Dict, Set
@@ -66,7 +66,7 @@ def find_findings(doc: bioc.BioCDocument):
         return False
 
     for i, p in enumerate(doc.passages):
-        if 'title' in p.infons and is_finding(p.infons['title']):
+        if 'section_concept' in p.infons and is_finding(p.infons['section_concept']):
             return i
     return -1
 
@@ -82,7 +82,7 @@ def aggregate(doc: bioc.BioCDocument, start_with_finding: bool=False) -> Dict[st
     no_finding = True
     for p in doc.passages[i:]:
         for ann in p.annotations:
-            category = ann.infons['preferred_name']
+            category = ann.infons['source_concept']
             # Don't add any labels for No Finding
             if category == "No Finding":
                 continue

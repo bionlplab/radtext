@@ -2,7 +2,7 @@
 
 export PYTHONPATH=.
 
-top_dir=$HOME/radtext
+top_dir=$HOME/Documents/Github/radtext
 
 # resources files
 ner_phrase_file=$top_dir/resources/cxr14_phrases_v2.yml
@@ -12,7 +12,7 @@ phrase_file=$top_dir/resources/chexpert_phrases.yml
 csv_file=$top_dir/example.csv 
 bioc_file=$top_dir/bioc.xml
 bioc_deid_file=$top_dir/Results/deid.xml
-section_file=$top_dir/Results/$section.xml
+section_file=$top_dir/Results/section.xml
 ud_file=$top_dir/Results/ud.xml
 ner_file=$top_dir/Results/ner.xml
 parse_file=$top_dir/Results/parse.xml
@@ -91,7 +91,7 @@ while [ "$1" != "" ]; do
       echo "-- Negation/Uncertainty detection --"
       python cmd/neg.py -i "$parse_file" -o "$neg_file" --overwrite
       ;;
-    'collect_neg_label' )
+    'collect_label' )
       echo "-- Collect negation/uncertainty detection --"
       python cmd/collect_neg_labels.py --phrases "$phrase_file" -i "$neg_file" -o "$neg_csv_file"
       ;;

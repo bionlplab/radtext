@@ -25,7 +25,7 @@ class BioCStanza(BioCProcessor):
                     ann = BioCAnnotation()
                     ann.id = 'T%s' % i
                     ann.infons['tag'] = word.xpos
-                    ann.infons['lemma'] = word.lemma
+                    ann.infons['note_nlp_concept_id'] = word.lemma
                     ann.text = word.text
                     ann.add_location(BioCLocation(token.start_char + offset, len(word.text)))
                     s.add_annotation(ann)

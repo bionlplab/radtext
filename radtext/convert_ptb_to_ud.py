@@ -55,7 +55,7 @@ def convert_dg(dependency_graph, text, offset, ann_index=0, rel_index=0, has_lem
         ann.text = node_form
         ann.infons['tag'] = node.pos
         if has_lemmas:
-            ann.infons['lemma'] = node.lemma.lower()
+            ann.infons['note_nlp_concept_id'] = node.lemma.lower()
 
         start = index
 

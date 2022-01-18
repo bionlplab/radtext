@@ -3,14 +3,14 @@ Usage:
     neg [options] -i FILE -o FILE
 
 Options:
-    --regex_negation FILE               [default: ../resources/patterns/regex_negation.yml]
-    --regex_uncertainty_pre_neg FILE    [default: ../resources/patterns/regex_uncertainty_pre_negation.yml]
-    --regex_uncertainty_post_neg FILE   [default: ../resources/patterns/regex_uncertainty_post_negation.yml]
-    --regex_double_neg FILE             [default: ../resources/patterns/regex_double_negation.yml]
-    --ngrex_negation FILE               [default: ../resources/patterns/ngrex_negation.yml]
-    --ngrex_uncertainty_pre_neg FILE    [default: ../resources/patterns/ngrex_uncertainty_pre_negation.yml]
-    --ngrex_uncertainty_post_neg FILE   [default: ../resources/patterns/ngrex_uncertainty_post_negation.yml]
-    --ngrex_double_neg FILE             [default: ../resources/patterns/ngrex_double_negation.yml]
+    --regex_negation FILE               [default: resources/patterns/regex_negation.yml]
+    --regex_uncertainty_pre_neg FILE    [default: resources/patterns/regex_uncertainty_pre_negation.yml]
+    --regex_uncertainty_post_neg FILE   [default: resources/patterns/regex_uncertainty_post_negation.yml]
+    --regex_double_neg FILE             [default: resources/patterns/regex_double_negation.yml]
+    --ngrex_negation FILE               [default: resources/patterns/ngrex_negation.yml]
+    --ngrex_uncertainty_pre_neg FILE    [default: resources/patterns/ngrex_uncertainty_pre_negation.yml]
+    --ngrex_uncertainty_post_neg FILE   [default: resources/patterns/ngrex_uncertainty_post_negation.yml]
+    --ngrex_double_neg FILE             [default: resources/patterns/ngrex_double_negation.yml]
     --overwrite
     --sort_anns
     -o FILE

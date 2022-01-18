@@ -162,13 +162,13 @@ class BioCNerSpacy(BioCProcessor):
         self.filter_integers = filter_integers
 
     def _find_other_ids(self, ann):
-        this_id = ann.infons['concept_id']
-        if ann.text == ann.infons['preferred_name']:
+        this_id = ann.infons['source_concept_id']
+        if ann.text == ann.infons['source_concept']:
             return
         for i, id in enumerate(self.extractor.text2ids[ann.text], 1):
             if id != this_id:
-                ann.infons['concept_id'] += ';{}'.format(id)
-                ann.infons['preferred_name'] += ';{}'.format(self.extractor.id2pref[id])
+                ann.infons['source_concept_id'] += ';{}'.format(id)
+                ann.infons['source_concept'] += ';{}'.format(self.extractor.id2pref[id])
                 # ann.infons[f'concept_id_{i}'] = id
                 # ann.infons[f'preferred_name_{i}'] = self.extractor.id2pref[id]
 
@@ -180,8 +180,8 @@ class BioCNerSpacy(BioCProcessor):
 
             ann = BioCAnnotation()
             ann.id = 'a{}'.format(match.start)
-            ann.infons['concept_id'] = match.id
-            ann.infons['preferred_name'] = match.category
+            ann.infons['source_concept_id'] = match.id
+            ann.infons['source_concept'] = match.category
             ann.add_location(BioCLocation(start + passage.offset, end - start))
             ann.text = match.text
 

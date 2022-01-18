@@ -20,7 +20,7 @@ class BioCSpacy(BioCProcessor):
                 ann = BioCAnnotation()
                 ann.id = 'T%s' % token.i
                 ann.infons['tag'] = token.tag_
-                ann.infons['lemma'] = token.lemma_
+                ann.infons['note_nlp_concept_id'] = token.lemma_
                 ann.text = token.text
                 ann.add_location(BioCLocation(token.idx, len(token)))
                 s.add_annotation(ann)

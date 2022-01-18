@@ -17,7 +17,7 @@ class BioCDeidPhilter(BioCProcessor):
             ann.id = 'A%d' % i
             ann.add_location(bioc.BioCLocation(r['start'] + offset, r['stop'] - r['start']))
             ann.text = r['word']
-            ann.infons['phi_type'] = r['phi_type']
+            ann.infons['source_concept'] = r['phi_type'] #ann.infons['phi_type'] = r['phi_type']
             anns.append(ann)
         return anns
 
@@ -45,7 +45,7 @@ class BioCDeidPhilter(BioCProcessor):
 #         print('anns: ', anns)
         for ann in anns:
             print('ann.infons: ', ann.infons)
-            if 'phi_type' in ann.infons:
+            if 'source_concept' in ann.infons: # phi_type
 #                 print('phi_type if is true')
                 loc = ann.total_span
 #                 print('replacement: ',replacement)
