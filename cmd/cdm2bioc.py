@@ -8,26 +8,23 @@ Options:
     -i FILE
     -o FILE
 """
+import sys
+sys.path.append('../radtext')
 
 import bioc
 import docopt
 import pandas as pd 
 
+from radtext.bioc_cdm_converter import CDM2BioC
+
 if __name__ == '__main__':
 	argv = docopt.docopt(__doc__)
 
 	df = pd.read_csv(argv['-i'], dtype=str)
-	collection = bioc.BioCCollection()
-	for idx, row in df.iterrows():
-		text = row['note_text']
-		note_id = row['note_id']
-
-		if pd.isna(note_id) or pd.isna(text):
-			continue
-
-		doc = bioc.utils.as_document(text)
-		doc.id = note_id
-		collection.add_document(doc)
+	# initialize CDM2BioC converter
+	cdm2bioc = CDM2BioC()
+	# convert
+	collection = cdm2bioc.convert(df)
 
 	with open(argv['-o'], 'w') as fp:
 		bioc.dump(collection, fp)
