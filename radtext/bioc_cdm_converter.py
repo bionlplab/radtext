@@ -4,9 +4,14 @@ import pandas as pd
 import tqdm
 import json
 
+NOTE_TABLE_HEADERS = ["note_id", "note_nlp_id", "offset", "lexical_variant", "note_nlp_concept_id", "nlp_date", \
+"section_concept_id", "note_nlp_source_concept_id", "nlp_system", "term_exists", "term_temporal", "term_modifiers"]
+
 class BioC2CDM:
-	def convert(self, cdm_df, collection):
+	def convert(self, collection):
 		nlp_date = collection.date
+
+		cdm_df = pd.DataFrame(columns=NOTE_TABLE_HEADERS)
 
 		for doc in tqdm.tqdm(collection.documents):
 			nlp_system = None
@@ -65,4 +70,5 @@ class CDM2BioC:
 			doc = bioc.utils.as_document(text)
 			doc.id = note_id
 			collection.add_document(doc)
+			
 		return collection
