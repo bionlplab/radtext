@@ -64,7 +64,7 @@ RadText is a high-performance Python Radiology Text Analysis System.
 
 ## Documentation
 
-Documentation is available from http://radtext.readthedocs.io
+Documentation is available [here](https://radtext.readthedocs.io/en/latest/index.html).
 
 ## Contributing
 
