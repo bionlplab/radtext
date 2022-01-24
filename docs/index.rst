@@ -3,12 +3,12 @@
    contain the root `toctree` directive.
 
 RadText documentation
-====================
+=====================
 
 **RadText** is a high-performance radiology report text analysis system.
 
 Highlight Features
-----------------
+------------------
 
 * Patterns on both universal dependency graph and regular expressions
 * Creating user patterns

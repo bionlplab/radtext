@@ -8,6 +8,4 @@ This project adheres to the [Contributor Covenant Code of Conduct](http://contri
 
 RadText is maintained with :heart: by:
 
--- **@**
-
-See also the list of [contributors]() who participated in this project.
+-- **@Song Wang**

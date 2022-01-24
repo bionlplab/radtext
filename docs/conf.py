@@ -46,7 +46,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'RadText'
-copyright = '2019, NCBI, NLM, NIH'
+copyright = '2022, NCBI, NLM, NIH'
 author = 'Yifan Peng'
 
 # The version info for the project you're documenting, acts as replacement for
