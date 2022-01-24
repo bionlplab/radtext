@@ -1,0 +1,46 @@
+- id: rub00
+  pattern: (concern for|concerning for|doubt|less likely|no convincing|possible|possibly|presumably|probable|question|questionable|suggesting|suggestive of|suspect|suspected|suspicious) XXXXX
+- id: rub10
+  pattern: suspicious for XXXXX
+#####################################
+
+#- id: rub0
+#  pattern: unchanged ([^ ]+ ){0,3}XXXXX
+#  comment: unchanged XXXXX
+- id: rub20
+  pattern: borderline size of the (cardiac )?silhouette
+  comment: overfitting to MIMIC-III CXR
+- id: rub30
+  pattern: doubt ([^ ]+ ){0,3}XXXXX
+  comment: doubt XXXXX
+- id: rub40
+  pattern: less likely ([^ ]+ ){0,3}XXXXX
+  comment: less likely XXXXX
+- id: rub50
+  pattern: possible ([^ ]+ ){0,3}XXXXX
+  comment: possible XXXXX
+- id: rub60
+  pattern: XXXXX[\w]* if any
+  comment: XXXXX if any
+- id: rub70
+  pattern: may be related to ([^ ]+ ){0,3}XXXXX
+- id: rub80
+  pattern: versus XXXXX
+- id: rub90
+  pattern: (may|could|would|might|possibly|can) (reflect|represent|indicate|include) XXXXX
+- id: rub100
+  pattern: (could be|may be) XXXXX
+- id: rub110
+  pattern: possibly represent(ing)? XXXXX
+- id: rub120
+  pattern: (may|could|would|might|possibly|can) relate to XXX
+- id: rub130
+  pattern: XXXXX (is|are) possible
+- id: rub140
+  pattern: XXXXX is suspected
+- id: rub150
+  pattern: XXXXX may be present
+- id: rub160
+  pattern: minimal(ly)? XXXXX
+- id: rub170
+  pattern: \/\?XXXXX

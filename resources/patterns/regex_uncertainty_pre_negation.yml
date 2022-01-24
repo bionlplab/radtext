@@ -1,0 +1,9 @@
+- id: rua10
+  pattern: XXXXX[\w]* cannot be ((entirely|certainly|fully) )?(excluded|evaluated|detected|identified|assessed|confirmed)
+  comment: XXXXX (cannot be|is not) excluded
+- id: rua20
+  pattern: cannot (exclude|rule out) XXXXX
+- id: rua30
+  pattern: no new( area of)? XXXXX
+- id: rua40
+  pattern: no evidence to rule out XXXXX

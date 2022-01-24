@@ -1,0 +1,284 @@
+- id: nn10
+  pattern: '{}=f >{dependency:/neg/} {}=k0'
+  comment: no XXX
+- id: nn20
+  pattern: '{}=f <{dependency:/amod/} ({}=k0 >{dependency:/neg/} {lemma:/no/}=k1)'
+  comment: no XXX k0
+- id: nn30
+  pattern: '{}=f <{} ({}=k0 <{dependency:/nsubj/} {lemma:/normal|unremarkable/}=k1)'
+  comment: XXX k0 is normal
+- id: nn40
+  pattern: '{}=f <{dependency:/nmod:for|nmod:of/} ({lemma:/evidence/}=k0 >{dependency:/neg/} {}=k1)'
+  comment: no evidence of k1 XXX
+- id: nn50
+  pattern: '{}=f <{} {lemma:/normal|unremarkable/}=k0'
+  comment: normal XXX
+- id: nn60
+  pattern: '{}=f <{dependency:/dobj/} {lemma:/exclude/}=k0'
+  comment: exclude XXX
+- id: nn70
+  pattern: '{}=f <{} ({}=k0 >{dependency:/amod/} {lemma:/normal|unremarkable/}=k1)'
+  comment: normal appearance of XXXXX
+- id: nn80
+  pattern: '{}=f <{} {lemma:/remove/}=k0'
+  comment: XXX from the right arm has been removed
+- id: nn90
+  pattern: '{}=f <{} ({}=k0 <{dependency:/nsubj/} ({lemma:/limit.*/}=k1 >{dependency:/amod/} {lemma:/normal/}=k2 & >{dependency:/case/} {lemma:/at|within/}=k3))'
+  comment: XXX k0 are within normal limits
+- id: nn100
+  pattern: '{}=f <{dependency:/nmod:without|nmod:of/} {lemma:/clear|clearing/}=k0'
+  comment: clearing of XXX
+- id: nn110
+  pattern: '{}=f <{dependency:/nsubjpass/} ({lemma:/enlarge/}=k0 >{dependency:/neg/} {}=k2)'
+  comment: XXX is not enlarged
+- id: nn120
+  pattern: '{}=f <{dependency:/amod|nsubj/} {lemma:/normal|unremarkable/}=k0'
+  comment: XXX k0 is normal
+- id: nn130
+  pattern: '{}=f <{dependency:/compound/} ({}=k0 >{dependency:/neg/} {}=k1)'
+  comment: neg XXX k0
+  example: no acute airspace disease
+- id: nn140
+  pattern: '{}=f <{dependency:/nsubj/} {lemma:/clear/}=k0'
+  comment: XXX has cleared, XXX is clear
+- id: nn150
+  pattern: '{}=f <{dependency:/dobj|nsubj/} ({}=k0 >{dependency:/nmod:within/} ({lemma:/limit.*/}=k1 >{} {lemma:/normal/}=k2))'
+  comment: XXX k0 within normal limits
+- id: nn160
+  pattern: ({}=f >{} {}=k0) >{dependency:/nmod:within/} {lemma:/limit.*/}=k1
+  comment: XXX k0 within normal limits
+  example: mediastinum within normal limits
+- id: nn170
+  pattern: '{}=f <{dependency:/nmod:for|nmod:of/} ({lemma:/evidence|finding/}=k0 <{dependency:/nmod:without/} {})'
+  comment: without evidence of XXX
+- id: nn180
+  pattern: '{}=f >{} {lemma:/no/}=k0'
+  comment: no XXX k0
+- id: nn190
+  pattern: '{}=f <{dependency:/nsubjpass/} ({lemma:/see/}=k0 >{} ({} >{dependency:/neg/} {lemma:/no/}=k1))'
+  comment: no XXX is seen
+- id: nn200
+  pattern: '{}=f <{dependency:/amod/} ({}=k0 <{dependency:/dep|nsubj/} {lemma:/normal|unremarkable/}=k1)'
+  comment: XXX k0 is normal
+- id: nn210
+  pattern: ({}=k0 >{} {}=f) <{dependency:/nsubj|dobj/} {lemma:/unremarkable|normal/}=k1
+  comment: XXX is normal
+  example: cardiomediastinal silhouette is normal
+- id: nn220
+  pattern: '{}=f <{dependency:/nmod:of/} {lemma:/disappearance|drainage|free|history|removal|resolution/}=k0'
+  comment: removal of XXX
+- id: nn230
+  pattern: '{}=f >{dependency:/case/} {lemma:/without/}=k0'
+  comment: without XXX
+- id: nn240
+  pattern: '{}=f <{dependency:/nmod:without/} {}=k0'
+  comment: k0 without XXX
+  example: clear without focal mass
+- id: nn250
+  pattern: '{}=f <{dependency:/nmod:out/} {lemma:/rule/}=k0'
+  comment: rule out XXX
+- id: nn260
+  pattern: '{}=f <{dependency:/nmod:of|nmod:for/} ({lemma:/evidence|finding/}=k0 >{} {lemma:/without/}=k1)'
+  comment: without evidence of XXX
+- id: nn270
+  pattern: '{}=f <{dependency:/dobj|nsubjpass/} ({lemma:/demonstrate|visualize/}=k0 >{dependency:/neg/} {}=k1)'
+  comment: XXX is not visualized
+- id: nn280
+  pattern: '{}=f <{dependency:/nmod:of/} ({lemma:/evidence/}=k0 <{dependency:/nmod:for/} {lemma:/negative/}=k1)'
+  comment: XXX is not visualized
+- id: nn290
+  pattern: '{}=f >{dependency:/amod|nsubj/} {lemma:/normal|unremarkable/}=k0'
+  comment: parsing error; normal cardiomediastinal contours
+- id: nn300
+  pattern: '{}=f <{dependency:/dobj/} ({}=k0 >{dependency:/nsubj/} {lemma:/no/}=k1)'
+  comment: parsing error; no developing XXX
+- id: nn310
+  pattern: '{}=f <{dependency:/advmod|dep|conj:or/} {lemma:/no/}=k0'
+  comment: parsing error; no XXX or XXX
+- id: nn320
+  pattern: '{}=f <{dependency:/dobj/} ({lemma:/develop/}=k1 <{dependency:/acl/} ({lemma:/evidence/}=k0 >{dependency:/neg/} {}=k2))'
+  comment: parsing error; no evidence for developing XXX
+- id: nn330
+  pattern: '{}=f <{dependency:/dep/} ({} <{dependency:/nmod:out/} {lemma:/rule/}=k0)'
+  comment: parsing error; rule out k0 xxx
+- id: nn340
+  pattern: '{}=f <{dependency:/nsubj/} {lemma:/exclude/}=k0'
+  comment: XXX is can`t exclude, double negation
+- id: nn350
+  pattern: '{}=f >{} {lemma:/normal|unremarkable/}=k0'
+  comment: XXX is normal
+  example: silhouette_f normal_k0
+- id: nn360
+  pattern: '{}=f <{} ({lemma:/appear|remain/}=k0 >{} {lemma:/normal|unremarkable/}=k1)'
+  comment: XXX appear normal
+- id: nn370
+  pattern: '{}=f <{dependency:/nsubj/} ({lemma:/be/}=k0 >{} {lemma:/no/}=k1)'
+  comment: there is no XXX
+- id: nn380
+  pattern: '{}=f <{dependency:/amod/} ({}=k0 <{dependency:/nmod:of/} ({lemma:/evidence/}=k1 >{dependency:/neg/} {}=k2))'
+  comment: without evidence of XXX k0
+- id: nn390
+  pattern: '{}=f <{dependency:/nsubj/} ({lemma:/resolve/}=k0 >{dependency:/aux/} {}=k1)'
+  comment: XXX has resolved
+- id: nn400
+  pattern: '{}=f <{} ({}=k0 <{dependency:/conj:or/} ({}=k1 >{} {lemma:/no/}=k2))'
+  comment: no XXX or XXX
+- id: nn410
+  pattern: '{}=f >{} ({lemma:/limit/}=k0 >{} {lemma:/normal/}=k1)'
+  comment: XXX normal limit
+  example: silhouette_f normal_k1 limit_k0
+- id: nn420
+  pattern: '{}=f >{} {lemma:/remove/}=k0'
+  comment: XXX is removed
+  example: tube_f remove_k0
+- id: nn430
+  pattern: '{}=f >{dependency:/amod/} {lemma:/resolve/}=k0'
+  comment: resolved XXX
+  example: resolve_k0 pneumothorax_f
+- id: nn440
+  pattern: '{}=f <{} ({}=k0 <{dependency:/nsubj/} ({lemma:/limit.*/}=k1 >{} {lemma:/upper/}=k2 & >{dependency:/nmod:of/} {lemma:/normal/}=k3 & >{dependency:/case/} {lemma:/at|within/}=k4))'
+  comment: XXX is at upper limit
+- id: nn450
+  pattern: '{}=f <{dependency:/conj:negcc/} {}=k0'
+  comment: rather than XXX
+  example: marking_k0 infiltrate_f
+- id: nn460
+  pattern: '{}=f <{dependency:/nsubj/} ({lemma:/limit.*/}=k0 >{} {lemma:/upper/}=k1 & >{dependency:/nmod:of/} {lemma:/normal/}=k2 & >{dependency:/case/} {lemma:/at|within/}=k3)'
+  comment: XXX is at normal limit
+  example: size_f at_k3 limit_k0
+- id: nn470
+  pattern: '{}=f <{dependency:/amod/} ({}=k0 <{dependency:/nmod:of/} ({lemma:/evidence/}=k1 >{dependency:/case/} {lemma:/without/}=k2))'
+  comment: without evidence of XXX k0
+  example: without_k2 evidence_k1 pleural_f collection_k0
+- id: nn480
+  pattern: '{}=f <{dependency:/nmod:for/} {lemma:/negative/}=k0'
+  comment: negative for XXX
+- id: nn490
+  pattern: '{}=f <{} ({lemma:/diagnose|explain|suggest/}=k0 <{} ({tag:/N.*/}=k1 >{} {lemma:/no/}=k2))'
+  comment: no NN to suggest/explain XXX
+  example: no_k2 evidence_k1 suggest_k0 pneumonia_f
+- id: nn500
+  pattern: '{}=f <{dependency:/dobj|nsubjpass/} ({lemma:/demonstrate|visualize/}=k0 >{} {lemma:/previously/}=k1)'
+  comment: XXX is previously demonstrated/visualized
+  example: previously_k1 demonstrate_k0 picc_f
+- id: nn510
+  pattern: '{}=f <{dependency:/nmod:of/} ({lemma:/focus/}=k0 >{dependency:/neg/} {}=k1)'
+  comment: no focus of XXX
+  example: no_k1 focus_k0 infiltration_f
+- id: nn520
+  pattern: '{}=f <{dependency:/conj:no/} {}=k0'
+  comment: XXX < no
+  example: marking_k0 consolidation_f
+- id: nn530
+  pattern: '{}=f <{dependency:/nmod:of/} ({lemma:/development/}=k0 >{} {lemma:/no/}=k1)'
+  comment: oo development of XXX
+  example: no_k1 development_k0 density_f
+- id: nn540
+  pattern: '{}=f <{} ({lemma:/diagnose|explain|suggest/}=k0 <{} ({tag:/V.*/}=k1 >{} ({tag:/N.*/}=k2 >{} {lemma:/no/}=k3)))'
+  comment: there is no NN to suggest/explain XXX
+  example: ct._k1 no_k3 change_k2 suggest_k0 pneumothorax_f
+- id: nn550
+  pattern: '{}=f >{} ({lemma:/resolution/}=k0 >{} {lemma:/interval/}=k1)'
+  comment: XXX with interval resolution
+  example: fluid_f interval_k1 resolution_k0
+- id: nn560
+  pattern: '{}=f <{dependency:/nsubj/} {lemma:/absent/}=k0'
+  comment: absent XXX
+  example: line_f absent_k0
+- id: nn570
+  pattern: '{}=f >{} ({lemma:/remain|appear/}=k0 >{} ({lemma:/limit/}=k1 >{} {lemma:/normal/}=k2))'
+  comment: XXX appear (now, otherwise) within normal limits
+  example: silhouette_f appear_k0 normal_k2 limit_k1
+- id: nn580
+  pattern: ({}=f >{} {}=k0) <{dependency:/nsubj|dobj/} {lemma:/unremarkable|normal/}=k1
+  comment: normal/unremarkable XXX
+  example: the_k0 contour_f unremarkable.z_k1
+- id: nn590
+  pattern: '{}=f <{dependency:/nmod:of/} ({lemma:/development/}=k0 >{} {lemma:/without/}=k1)'
+  comment: without development of XXX
+  example: without_k1 development_k0 pneumothorax_f
+- id: nn600
+  pattern: '{}=f <{} ({lemma:/see/}=k0 >{} ({}=k1 >{} ({lemma:/evidence/}=k2 >{} {lemma:/without/}=k3)))'
+  comment: without evidence seen for XXX
+  example: tube_k1 without_k3 evidence_k2 see_k0
+- id: nn610
+  pattern: '{}=f <{dependency:/nmod:of/} ({lemma:/focus/}=k0 >{} {lemma:/no/}=k1)'
+  comment: no focus of XXX
+- id: nn620
+  pattern: '{}=f <{dependency:/nmod:to/} ({lemma:/moderate/}=k0 >{dependency:/neg/} {}=k1)'
+  comment: no moderate to XXX
+- id: nn630
+  pattern: ({}=f >{} {lemma:/definite/}=k0) >{dependency:/neg/} {}=k1
+  comment: no definite XXX
+- id: nn640
+  pattern: ({}=f >{} {lemma:/obvious/}=k0) >{dependency:/neg/} {}=k1
+  comment: no obvious XXX
+- id: nn650
+  pattern: '{}=f <{} ({dependency:/exclude/}=k <{} ({}=k1 >{} {lemma:/no/}=k2))'
+  comment: no exclude
+- id: nn660
+  pattern: ({}=f >{dependency:/amod/} {lemma:/normal|unremarkable/}=k0) <{dependency:/dobj|nsubj/} {lemma:/demonstrate.*|display|present|show/}=k1
+  comment: normal XXX demonstrate
+- id: nn670
+  pattern: '{}=f <{dependency:/nmod:of/} ( {lemma:/appearance/}=k0 >{dependency:/amod/} {lemma:/normal/}=k1 & <{dependency:/dobj/} {lemma:/demonstrate.*|display|present|show/}=k2)'
+  comment: normal appearance of XXX demonstrate
+- id: nn680
+  pattern: '{}=f <{dependency:/amod/} ({lemma:/finding.*/}=k0 <{dependency:/dobj/} ({lemma:/acute/}=k1 >{dependency:/nsubj/} {lemma:/no/}=k2))'
+  comment: no acute XXX finding
+- id: nn690
+  pattern: '{}=f <{dependency:/amod/} ({lemma:/structure.*/}=k0 <{dependency:/dep|nsubj/} ({lemma:/appear/}=k1 >{dependency:/xcomp/} {lemma:/normal|unremarkable/}=k2))'
+  comment: XXX structure appear normal
+- id: nn700
+  pattern: '{}=f <{} ({}=k0 <{} ({lemma:/demonstrate|present|show/}=k1 >{dependency:/nmod:within/} ({lemma:/limit.*/}=k2 >{} {lemma:/normal/}=k3)))'
+  comment: XXX k0 demonstrate within normal limits
+- id: nn710
+  pattern: '{}=f <{dependency:/nsubj/} ({lemma:/limit.*/}=k0 >{} {lemma:/upper/}=k1 & >{dependency:/nmod:of/} {lemma:/normal/}=k2 & >{dependency:/case/} {lemma:/at|within/}=k3)'
+  comment: XXX within upper limits of normal
+- id: nn720
+  pattern: ({lemma:/vascularity/}=f >{dependency:/amod/} {lemma:/pulmonary/}=k0) >{dependency:/amod/} {lemma:/normal/}=k1
+  comment: normal pulmonary vascularity
+- id: nn730
+  pattern: '{}=f >{dependency:/nmod:within/} ({lemma:/limit.*/}=k0 >{dependency:/amod/} {lemma:/normal/}=k1)'
+  comment: XXX within normal limits
+- id: nn740
+  pattern: '{}=f <{} ({lemma:/developing/}=k0 <{} ({lemma:/evidence/}=k1 <{dependency:/nmod:without/} {}=k2))'
+  comment: without evidence of developing XXX
+- id: nn750
+  pattern: '{}=f <{} ({lemma:/developing/}=k0 <{} ({lemma:/evidence/}=k1 >{} {lemma:/no/}=k2))'
+  comment: no evidence of developing XXX
+- id: nn760
+  pattern: '{}=f <{dependency:/nmod:of/} ({lemma:/area/}=k0 >{dependency:/compound/} {lemma:/no/}=k1)'
+  comment: no area of XXX
+- id: nn770
+  pattern: '{}=f <{dependency:/nmod:of/} ({lemma:/development/}=k0 >{dependency:/case/} {lemma:/without/}=k1)'
+  comment: without development of XXX
+- id: nn780
+  pattern: '{}=f <{dependency:/nsubjpass/} ({lemma:/see/}=k0 >{} {lemma:/no/}=k1)'
+  comment: XXX is no longer seen
+- id: nn790
+  pattern: '{}=f <{} ({lemma:/see/}=k0 >{} ({lemma:/evidence/}=k1 >{} {lemma:/without/}=k2))'
+  comment: without evidence seen for XXX
+- id: nn800
+  pattern: '{}=f <{} ({lemma:/appearance/}=k0 >{} {lemma:/normal|unremarkable/}=k1)'
+  comment: normal/unremarkable appearance of XXX
+- id: nn810
+  pattern: '{}=f >{dependency:/dobj/} {lemma:/clear/}=k0'
+  comment: cleared XXX. a clear XXX is positive
+- id: nn820
+  pattern: '{}=f <{} ({lemma:/associate.*/}=k0 >{} ({lemma:/obvious/}=k1 >{dependency:/neg/} {}=k2))'
+  comment: no obvious associated XXX
+- id: nn830
+  pattern: '{}=f >{dependency:/neg/} {}=k0 & >{} {lemma:/obvious/}=k1 & >{} {lemma:/associate.*/}=k2'
+  comment: no obvious associated XXX
+- id: nn840
+  pattern: '{}=f >{} {lemma:/new/}=k0 & >{dependency:/neg/} {lemma:/no/}=k1'
+  comment: no new XXX
+- id: nn850
+  pattern: '{}=f > {dependency:/amod/} {lemma:/resolve/}'
+  comment: resolved XXX
+- id: nn860
+  pattern: '{}=f < {dependency:/nsubjpass/} ({lemma:/delineate/} > {dependency:/neg/} {})'
+  comment: not delineated XXX
+- id: nn870
+  pattern: '{}=f > {} {lemma:/visualize/} & > {dependency:/neg/} {lemma:/no/}'
+  comment: no visualized XXX
