@@ -1,6 +1,0 @@
-- id: ndn10
-  pattern: '{}=f >{} {lemma:/cannot/}=k0'
-  comment: cannot exclude
-- id: ndn20
-  pattern: '{}=f <{} ({lemma:/evidence/}=k0 > {} {lemma:/no/}=k1)'
-  comment: no evidence to exclude
