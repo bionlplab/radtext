@@ -62,6 +62,49 @@ RadText is a high-performance Python Radiology Text Analysis System.
 
 4. Run RadText to analyze radiology reports. Please refer to [User guide](https://radtext.readthedocs.io/en/latest/user_guide.html) for details.
 
+## Import RadText as a Python Library and use API
+
+This following code snippet shows an example of using radtext's pipeline to analyze radiology report.
+
+```python
+import radtext
+
+# initialize RadText's pipeline.
+nlp = radtext.Pipeline()
+
+# run RadText's pipeline on a sample report.
+collection = nlp('FINDINGS: The lungs are clear without consolidation, effusion or edema...')
+
+print(collection)
+```
+
+The annotation results are stored in a `Collection` instance, the following code snippet shows an example of accessing the detected disease findings and the corresponding negation status.
+
+```python
+for doc in collection.documents:
+   for passage in doc.passages:
+      for annotation in passage.annotations:
+         print(annotation.infon['source_concept'], annotation.infon['negation'])
+```
+
+RadText's API supports the mutual conversion between BioC format and OMOP CDM. The following code snippet shows an example of converting BioC to CDM, and then converting CDM to BioC.
+
+```python
+import bioc
+from radtext import BioC2CDM, CDM2BioC
+
+# initialize RadText's BioC2CDM converter.
+bioc2cdm = BioC2CDM()
+with open('/PATH/TO/BIOC_FILE.xml') as fp:
+    collection = bioc.load(fp)
+
+cdm_df = bioc2cdm(collection)
+
+# initialize RadText's CDM2BioC converter.
+cdm2bioc = CDM2BioC()
+bioc_collection = cdm2bioc(cdm_df)
+```
+
 ## Documentation
 
 Documentation is available [here](https://radtext.readthedocs.io/en/latest/index.html).
