@@ -112,3 +112,7 @@ Documentation is available [here](https://radtext.readthedocs.io/en/latest/index
 ## Contributing
 
 Refer to our [contribution guide](https://radtext.readthedocs.io/en/latest/contributing.html).
+
+## Acknowledgment
+
+This work is supported by the National Library of Medicine under Award No. 4R00LM013001 and the NIH Intramural Research Program, National Library of Medicine. 
