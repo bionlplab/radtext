@@ -45,7 +45,6 @@ RadText is a high-performance Python Radiology Text Analysis System.
    ```bash
    $ conda install gcc_linux-64
    $ conda install gxx_linux-64
-   $ 
    $ conda deactivate
    $ conda activate radtext
    ```
