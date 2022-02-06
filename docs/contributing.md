@@ -1,6 +1,7 @@
 # Contributing
 
-When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change. 
+When contributing to this repository, please first discuss the change you wish to make via issue, 
+email, or any other method with the owners of this repository before making a change. 
 
 This project adheres to the [Contributor Covenant Code of Conduct](http://contributor-covenant.org/). 
 
@@ -9,3 +10,4 @@ This project adheres to the [Contributor Covenant Code of Conduct](http://contri
 RadText is maintained with :heart: by:
 
 -- **@Song Wang**
+-- **@Yifan Peng**

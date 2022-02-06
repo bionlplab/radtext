@@ -30,7 +30,6 @@ These instructions will get you a copy of the project up and run on your local m
    license
    contributing
    acknowledgments
-   disclaimer
    reference
 
 

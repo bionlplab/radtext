@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# negbio documentation build configuration file, created by
+# RadText documentation build configuration file, created by
 # sphinx-quickstart on Thu Feb  8 15:24:06 2018.
 #
 # This file is execfile()d with the current directory set to its
@@ -46,7 +46,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'RadText'
-copyright = '2022, NCBI, NLM, NIH'
+copyright = '2022, BioNLP Lab at WCM'
 author = 'Yifan Peng'
 
 # The version info for the project you're documenting, acts as replacement for
