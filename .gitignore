@@ -1,12 +1,8 @@
 tmp*
 *.iml
 log/
-pynih/areds/verify/gene_info
-pynih/areds/verify/text2gene.json
-venv_windows
-venv_lmem05
 venv
-venv_biogpu11
+output
 
 # Created by .ignore support plugin (hsz.mobi)
 ### Python template

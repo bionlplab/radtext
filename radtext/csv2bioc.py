@@ -14,6 +14,6 @@ def csv2bioc(df: pd.DataFrame, id_col: str, text_col: str) -> bioc.BioCCollectio
         if pd.isna(docid) or pd.isna(text):
             continue
         doc = bioc.BioCDocument.of_text(text)
-        doc.id = id
+        doc.id = docid
         collection.add_document(doc)
     return collection

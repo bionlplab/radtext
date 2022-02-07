@@ -5,10 +5,11 @@ Usage:
     csv2bioc [options] -i FILE -o FILE
 
 Options:
-    --id_col <str>      [default: ID]
-    --text_col <str>    [default: TEXT]
+    --id_col <str>      [default: note_id]
+    --text_col <str>    [default: note_text]
     -o FILE
     -i FILE
+    --overwrite
 """
 
 import bioc

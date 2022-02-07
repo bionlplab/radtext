@@ -18,13 +18,25 @@ The step-by-step pipeline generates all intermediate results. Users can easily r
 
 ### Prepare the dataset
 
-This is the same process as [Quickstart-Preparing the dataset](https://radtext.readthedocs.io/en/latest/getting_started.html#preparing-the-dataset). You can skip this step if the reports are already in the [BioC]( http://bioc.sourceforge.net/) format. Otherwise, you can store your input reports in a .csv file (by default, column 'ID' stores the report ids, and column 'TEXT' stores the reports), and then use the following command to convert your .csv file into BioC format. 
+This is the same process as [Quickstart-Preparing the dataset](https://radtext.readthedocs.io/en/latest/getting_started.html#preparing-the-dataset). 
+You can skip this step if the reports are already in the [BioC]( http://bioc.sourceforge.net/) format. 
+Otherwise, you can store your input reports in a .csv file.
+By default, column 'note_id' stores the unique identifier for each note. 
+Column 'note_text' stores the content of the note.
+Then, you can use the following command to convert your .csv file into BioC format. 
 
 ```bash
-$ radtext-csv2bioc -i /path/to/input_file.csv -o /path/to/output_bioc_file.xml
+$ python radtext/cmd/csv2bioc -i tests/examples/1.csv -o output/1.xml
 ```
 
-**If you have lots of reports, it is recommended to put them into several BioC files, for example, 5000 reports per BioC file.**
+#### Convert from OMOP CDM NOTE table to BioC
+
+```shell
+$ python radtext/cmd/cdm2bioc -i tests/examples/note.csv -o output/note.xml
+```
+
+**If you have lots of reports, it is recommended to put them into several BioC files, 
+for example, 5000 reports per BioC file.**
 
 ### De-identification
 
@@ -37,7 +49,7 @@ To address this issue, RadText uses [Philter](https://github.com/BCHSI/philter-u
 which removes PHI from the reports, such as Name, Contact, Age, Email, etc.
 
 ```bash
-$ radtext-deid --repl=X -i /path/to/bioc_file.xml -o /path/to/deid_file.xml
+$ python radtext/cmd/deid.py --repl=X -i tests/examples/202221.xml -o output/202221-deid.xml
 ```
 
 ### Section Split
