@@ -11,7 +11,7 @@ import bioc
 import docopt
 import tqdm
 
-from cmd.cmd_utils import process_options
+from radtext.cmd.cmd_utils import process_options
 from radtext.convert_ptb_to_ud import BioCPtb2DepConverter
 
 

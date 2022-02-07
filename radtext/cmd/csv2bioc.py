@@ -14,25 +14,21 @@ Options:
 import bioc
 import docopt
 import pandas as pd
-import tqdm
 
 from cmd_utils import process_options
+from radtext.csv2bioc import csv2bioc
 
 
-if __name__ == '__main__':
+def main():
     argv = docopt.docopt(__doc__)
     process_options(argv)
 
     df = pd.read_csv(argv['-i'], dtype=str)
-    collection = bioc.BioCCollection()
-    for i, row in tqdm.tqdm(df.iterrows(), total=len(df)):
-        text = row[argv['--text_col']]
-        id = row[argv['--id_col']]
-        if pd.isna(id) or pd.isna(text):
-            continue
-        doc = bioc.utils.as_document(text)
-        doc.id = id
-        collection.add_document(doc)
+    collection = csv2bioc(df, argv['--id_col'], argv['--text_col'])
 
     with open(argv['-o'], 'w') as fp:
         bioc.dump(collection, fp)
+
+
+if __name__ == '__main__':
+    main()

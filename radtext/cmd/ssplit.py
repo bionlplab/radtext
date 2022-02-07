@@ -11,7 +11,7 @@ import bioc
 import docopt
 import tqdm
 
-from cmd.cmd_utils import process_options
+from radtext.cmd.cmd_utils import process_options
 from radtext.sentence_split_nltk import BioCSSplitterNLTK
 
 

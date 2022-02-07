@@ -9,7 +9,7 @@ Options:
     --start_with_findings
 """
 import sys
-sys.path.append('../radtext')
+sys.path.append('..')
 import collections
 import logging
 from typing import Dict, Set

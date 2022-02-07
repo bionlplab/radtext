@@ -5,14 +5,13 @@ Usage:
 
 Options:
     --overwrite
-    --model <str>   en_core_web_sm [default: en_core_web_sm]
+    --model <str>       en_core_web_sm [default: en_core_web_sm]
     --processors <str>  [default: ssplit,parse,ptb2ud]
     -o FILE
     -i FILE
 """
 import sys
-sys.path.append('../radtext')
-
+sys.path.append('..')
 import bioc
 import docopt
 import tqdm
