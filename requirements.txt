@@ -1,12 +1,13 @@
 bioc
 bllipparser==2016.9.11
+Cython
 docopt
 docutils==0.15.2
 intervaltree==3.1.0
 JPype1==0.6.3
 medspacy==0.2.0.0
 networkx==2.4
-nltk==3.6.5
+nltk
 numpy==1.17.3
 pandas
 ply==3.11

@@ -1,3 +1,4 @@
+from datetime import datetime
 from typing import Tuple, List
 
 import bioc
@@ -26,6 +27,8 @@ class BioCDeidPhilter(BioCProcessor):
             ann.add_location(bioc.BioCLocation(r['start'] + offset, r['stop'] - r['start']))
             ann.text = r['word']
             ann.infons['source_concept'] = r['phi_type']
+            ann.infons['nlp_system'] = 'Philter'
+            ann.infons['nlp_date_time'] = datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
             anns.append(ann)
 
         for ann in anns:

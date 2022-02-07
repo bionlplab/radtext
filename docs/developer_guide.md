@@ -50,3 +50,25 @@ Using TestPyPI with pip
 $ twine upload --repository testpypi dist/*
 $ pip install --index-url https://test.pypi.org/simple/ radtext
 ```
+
+
+## Windows (in progress)
+
+### Prerequisites
+
+*  python >=3.6, <3.9
+*  Java
+*  Microsoft Visual C++ >=14.0
+
+When working on Microsoft Windows OS, some packages requires Microsoft Visual C++ 14.0 or greater. 
+You can get it with "Microsoft C++ Build Tools": <https://visualstudio.microsoft.com/visual-cpp-build-tools/>
+
+After install Microsoft Build Tools for Visual Studio, select: Workloads → Desktop development with C++, 
+then for Individual Components, select only:
+
+*  Windows SDK 
+*  C++ x64/x86 build tools
+
+The build tools allow using MSVC "cl.exe" C / C++ compiler from the command line.
+
+More information can be found at <https://www.scivision.dev/python-windows-visual-c-14-required/>

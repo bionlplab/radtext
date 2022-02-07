@@ -8,6 +8,12 @@ This part of the documentation will walk you through the proper installation of 
 *  Linux
 *  Java
 
+For Windows OS
+
+*  python >=3.6, <3.9
+*  Java
+*  Microsoft Visual C++ >=14.0
+
 ## Installing RadText
 
 RadText is actively developed on GitHub, where the code is [always available](https://github.com/yfpeng/radtext).
