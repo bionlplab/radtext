@@ -150,6 +150,7 @@ class Philter:
                 print("FutureWarning: {0} in file ".format(warn) + filepath)
                 warnings.simplefilter(action="ignore", category=FutureWarning)
                 re_compiled = re.compile(regex)  # assign nevertheless
+                pass
         return re_compiled
 
     def init_set(self, filepath):

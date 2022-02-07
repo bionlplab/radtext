@@ -13,7 +13,7 @@ import copy
 import logging
 import re
 import yaml
-import en_core_web_sm
+import spacy
 
 # for deid
 from radtext.deid import BioCDeidPhilter
@@ -121,14 +121,14 @@ class Pipeline():
 		self.collection = new_collection
 
 	def preprocess(self):
-		nlp = en_core_web_sm.load()
+		nlp = spacy.load("en_core_web_sm")
 		processor = BioCSpacy(nlp)
 
 		for doc in tqdm.tqdm(self.collection.documents):
 			processor.process_document(doc)
 
 	def ner(self):
-		nlp = en_core_web_sm.load()
+		nlp = spacy.load("en_core_web_sm")
 		extractor = NerRegExExtractor(PHRASES)
 		processor = BioCNerRegex(extractor)
 

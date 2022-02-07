@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes'?>
+<collection>
+  <source></source>
+  <date>2022-02-06</date>
+  <key></key>
+  <document>
+    <id>202221</id>
+    <passage>
+      <offset>0</offset>
+      <text>Patient's Name: LATTE, MONICA
+Referred by: SAVEM, CARL MD
+Date Taken: 02/07/2016
+Date of Report: 02/07/2016
+
+Clinical statement: Shortness of breath, wheezing, and bilateral lower
+extremity edema.
+
+Technique: AP and lateral radiographs of the chest.
+
+Comparison: July 18, 2010.
+
+Findings: 
+
+Low lung volumes. There is mild interstitial edema. No focal
+consolidation, pleural effusion or pneumothorax is identified. 
+
+The cardiomediastinal silhouette is magnified by AP technique. Aortic
+calcifications are noted.
+
+Mild anterior wedge compression deformities of two consecutive vertebral
+bodies at the thoracolumbar junction are unchanged. Left rotator cuff
+repair is noted.
+
+
+Impression:
+
+Mild interstitial edema.
+
+  Prepared By: SCHAER, JOHN MD                                            
+  Study interpreted and report approved by: SCHAER, JOHN MD            
+  Electronically signed Diagnostic Report Imaging Report                      
+  02/07/2016 07:17 PM - 02/07/2016 09:34 PM                                   
+  Exam Complete - Signed-Off </text>
+    </passage>
+  </document>
+  <document>
+    <id>202221</id>
+    <passage>
+      <offset>0</offset>
+      <sentence>
+        <offset>0</offset>
+        <text>Patient's Name: LATTE, MONICA
+Referred by: SAVEM, CARL MD</text>
+      </sentence>
+    </passage>
+  </document>
+</collection>

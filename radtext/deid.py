@@ -1,3 +1,5 @@
+from typing import Tuple, List
+
 import bioc
 
 from radtext.core import BioCProcessor
@@ -6,10 +8,16 @@ from bioc import BioCPassage, BioCSentence
 
 
 class BioCDeidPhilter(BioCProcessor):
-    def __init__(self, philter: Philter):
-        self.philter = philter
+    def __init__(self, repl: str = 'X'):
+        self.philter = Philter()
+        self.repl = repl
+        if len(repl) != 1:
+            raise ValueError('The replacement repl cannot have one char: %s' % repl)
 
-    def deidentify_anns(self, text, offset):
+    def deidentify(self, text: str, offset: int) -> Tuple[str, List[bioc.BioCAnnotation]]:
+        """
+        Replace PHI with replacement repl.
+        """
         results = self.philter.deidentify(text)
         anns = []
         for i, r in enumerate(results):
@@ -17,38 +25,26 @@ class BioCDeidPhilter(BioCProcessor):
             ann.id = 'A%d' % i
             ann.add_location(bioc.BioCLocation(r['start'] + offset, r['stop'] - r['start']))
             ann.text = r['word']
-            ann.infons['source_concept'] = r['phi_type'] #ann.infons['phi_type'] = r['phi_type']
+            ann.infons['source_concept'] = r['phi_type']
             anns.append(ann)
-        return anns
+
+        for ann in anns:
+            loc = ann.total_span
+            text = text[:loc.offset - offset] + self.repl * loc.length + text[loc.end - offset:]
+        return text, anns
 
     def process_passage(self, passage: BioCPassage, docid: str = None) -> BioCPassage:
-        text = passage.text
-        anns = self.deidentify_anns(text, passage.offset)
+        text, anns = self.deidentify(passage.text, passage.offset)
         passage.annotations += anns
+        passage.text = text
+
+        for sentence in passage.sentences:
+            self.process_sentence(sentence, docid)
+
         return passage
 
     def process_sentence(self, sentence: BioCSentence, docid: str = None) -> BioCSentence:
-        text = sentence.text
-        anns = self.deidentify_anns(text, sentence.offset)
+        text, anns = self.deidentify(sentence.text, sentence.offset)
         sentence.annotations += anns
+        sentence.text = text
         return sentence
-
-    def deidentify_passage(self, passage: BioCPassage, replacement='X'):
-        passage.text = self.deidentify_text(passage.text, passage.offset, passage.annotations, replacement)
-        return passage
-
-    def deidentify_sentence(self, sentence: BioCSentence, replacement='X'):
-        sentence.text = self.deidentify_text(sentence.text, sentence.offset, sentence.annotations, replacement)
-        return sentence
-
-    def deidentify_text(self, text, offset, anns, replacement='X'):
-#         print('anns: ', anns)
-        for ann in anns:
-            print('ann.infons: ', ann.infons)
-            if 'source_concept' in ann.infons: # phi_type
-#                 print('phi_type if is true')
-                loc = ann.total_span
-#                 print('replacement: ',replacement)
-#                 print('loc length is: ', loc.length)
-                text = text[:loc.offset - offset] + replacement * loc.length + text[loc.end - offset:]
-        return text

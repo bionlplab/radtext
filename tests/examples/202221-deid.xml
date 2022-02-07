@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes'?>
+<collection>
+  <source></source>
+  <date>2022-02-06</date>
+  <key></key>
+  <document>
+    <id>202221</id>
+    <passage>
+      <offset>0</offset>
+      <text>Patient's Name: XXXXXXXXXXXXXXXXXXXXXX by: XXXXXXXXXXX XX
+Date Taken: XXXXXXXXXX
+Date of Report: XXXXXXXXXX
+
+Clinical statement: Shortness of breath, wheezing, and bilateral lower
+extremity edema.
+
+Technique: AP and lateral radiographs of the chest.
+
+Comparison: XXXXXXXXXXXXX.
+
+Findings: 
+
+Low lung volumes. There is mild interstitial edema. No focal
+consolidation, pleural effusion or pneumothorax is identified. 
+
+The cardiomediastinal silhouette is magnified by AP technique. Aortic
+calcifications are noted.
+
+Mild anterior wedge compression deformities of two consecutive vertebral
+bodies at the thoracolumbar junction are unchanged. Left rotator cuff
+repair is noted.
+
+
+Impression:
+
+Mild interstitial edema.
+
+  Prepared By: XXXXXXXXXXXX XX                                            
+  Study interpreted and report approved by: XXXXXXXXXXXX XX            
+  Electronically signed Diagnostic Report Imaging Report                      
+  XXXXXXXXXX 07:17 PM - XXXXXXXXXX 09:34 PM                                   
+  Exam Complete - Signed-Off </text>
+      <annotation id="A0">
+        <infon key="source_concept">DATE</infon>
+        <location offset="70" length="10"/>
+        <text>02/07/2016</text>
+      </annotation>
+      <annotation id="A1">
+        <infon key="source_concept">DATE</infon>
+        <location offset="97" length="10"/>
+        <text>02/07/2016</text>
+      </annotation>
+      <annotation id="A2">
+        <infon key="source_concept">DATE</infon>
+        <location offset="263" length="13"/>
+        <text>July 18, 2010</text>
+      </annotation>
+      <annotation id="A3">
+        <infon key="source_concept">DATE</infon>
+        <location offset="943" length="10"/>
+        <text>02/07/2016</text>
+      </annotation>
+      <annotation id="A4">
+        <infon key="source_concept">DATE</infon>
+        <location offset="965" length="10"/>
+        <text>02/07/2016</text>
+      </annotation>
+      <annotation id="A5">
+        <infon key="source_concept">NAME</infon>
+        <location offset="16" length="13"/>
+        <text>LATTE, MONICA</text>
+      </annotation>
+      <annotation id="A6">
+        <infon key="source_concept">NAME</infon>
+        <location offset="43" length="11"/>
+        <text>SAVEM, CARL</text>
+      </annotation>
+      <annotation id="A9">
+        <infon key="source_concept">NAME</infon>
+        <location offset="730" length="12"/>
+        <text>SCHAER, JOHN</text>
+      </annotation>
+      <annotation id="A11">
+        <infon key="source_concept">NAME</infon>
+        <location offset="834" length="12"/>
+        <text>SCHAER, JOHN</text>
+      </annotation>
+      <annotation id="A7">
+        <infon key="source_concept">OTHER</infon>
+        <location offset="55" length="2"/>
+        <text>MD</text>
+      </annotation>
+      <annotation id="A10">
+        <infon key="source_concept">OTHER</infon>
+        <location offset="743" length="2"/>
+        <text>MD</text>
+      </annotation>
+      <annotation id="A12">
+        <infon key="source_concept">OTHER</infon>
+        <location offset="847" length="2"/>
+        <text>MD</text>
+      </annotation>
+    </passage>
+  </document>
+  <document>
+    <id>202221</id>
+    <passage>
+      <offset>0</offset>
+      <sentence>
+        <offset>0</offset>
+        <text>Patient's Name: XXXXXXXXXXXXXXXXXXXXXX by: XXXXXXXXXXX XX</text>
+        <annotation id="A5">
+          <infon key="source_concept">NAME</infon>
+          <location offset="16" length="13"/>
+          <text>LATTE, MONICA</text>
+        </annotation>
+        <annotation id="A6">
+          <infon key="source_concept">NAME</infon>
+          <location offset="43" length="11"/>
+          <text>SAVEM, CARL</text>
+        </annotation>
+        <annotation id="A7">
+          <infon key="source_concept">OTHER</infon>
+          <location offset="55" length="2"/>
+          <text>MD</text>
+        </annotation>
+      </sentence>
+    </passage>
+  </document>
+</collection>
