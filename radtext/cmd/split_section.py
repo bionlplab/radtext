@@ -8,8 +8,6 @@ Options:
     -o FILE
     -i FILE
 """
-import sys
-sys.path.append('..')
 import copy
 import logging
 import re
@@ -51,7 +49,7 @@ def combine_patterns(patterns: List[str]) -> Pattern:
     return re.compile(p, re.IGNORECASE | re.MULTILINE)
 
 
-if __name__ == '__main__':
+def main():
     argv = docopt.docopt(__doc__)
     process_options(argv)
 
@@ -69,7 +67,7 @@ if __name__ == '__main__':
         nlp = medspacy.load(enable=["sectionizer"])
         sec_splitter = BioCSectionSplitterMedSpacy(nlp)
     else:
-       raise KeyError
+        raise KeyError
 
     with open(argv['-i']) as fp:
         collection = bioc.load(fp)
@@ -82,3 +80,7 @@ if __name__ == '__main__':
 
     with open(argv['-o'], 'w') as fp:
         bioc.dump(new_collection, fp)
+
+
+if __name__ == '__main__':
+    main()
