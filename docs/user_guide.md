@@ -28,19 +28,26 @@ $ python cmd/csv2bioc.py -i /path/to/input_file.csv -o /path/to/output_bioc_file
 
 ### De-identification
 
-This step de-identifies the radiology reports. Radiology reports often contain detailed sensitive information about individual patients, the nuances of their diseases, the treatment strategies and the resulting outcomes, which causes that clinical notes remain largely unused for research because they contain the protected health information (PHI) which is synonymous with individually identifying data. To address this issue, RadText uses [Philter](https://github.com/BCHSI/philter-ucsf) for de-identification, which removes PHI from the reports, such as Name, Contact, Age, Email, etc. 
+This step de-identifies the radiology reports. Radiology reports often contain detailed sensitive information about 
+individual patients, the nuances of their diseases, the treatment strategies and the resulting outcomes, 
+which causes that clinical notes remain largely unused for research because they contain the protected health 
+information (PHI) which is synonymous with individually identifying data. 
 
-To run de-identification, the output from last step (csv2bioc) is needed as the input.
+To address this issue, RadText uses [Philter](https://github.com/BCHSI/philter-ucsf) for de-identification, 
+which removes PHI from the reports, such as Name, Contact, Age, Email, etc.
 
 ```bash
-$ python cmd/deidentify.py -i /path/to/bioc_file.xml -o /path/to/deid_file.xml
+$ deidentify --repl=X -i /path/to/bioc_file.xml -o /path/to/deid_file.xml
 ```
 
 ### Section Split
 
 This step splits the report into sections. RadText provides two options for section split, rule-based section splitter and [MedSpaCy](https://github.com/medspacy/medspacy). To run section split, the output from last step (de-id) is needed as the input. 
 
-MedSpaCy is a rule-based spaCy tool for performing clinical NLP and text processing tasks. MedSpaCy includes an implementation of clinical section detection based on rule-based matching of the section titles with default rules adapted from [SecTag](https://pubmed.ncbi.nlm.nih.gov/18999303/) and expanded through practice. If users decide to use medspacy for section splitting, simply run:
+MedSpaCy is a rule-based spaCy tool for performing clinical NLP and text processing tasks. 
+MedSpaCy includes an implementation of clinical section detection based on rule-based matching of the 
+section titles with default rules adapted from [SecTag](https://pubmed.ncbi.nlm.nih.gov/18999303/) and 
+expanded through practice. If users decide to use medspacy for section splitting, simply run:
 
 ```bash
 $ pip install medspacy

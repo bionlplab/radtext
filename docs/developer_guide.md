@@ -10,8 +10,16 @@ $ make html
 
 ## Testing the code
 
-```bash
-$ python -m pytest tests
+Install pytest and pytest-cov
+
+```shell
+$ pip install pytest pytest-cov
+```
+
+Test the code
+
+```shell
+$ python -m pytest --cov-report html --cov=radtext tests
 ```
 
 ## Publish BioC to PyPI and TestPyPI
@@ -33,7 +41,7 @@ $ python -m build
 Using local package with pip
 
 ```shell
-$ pip install --force-reinstall dist/PACKAGE.whl
+$ pip install --force-reinstall /path/to/whl
 ```
 
 Using TestPyPI with pip
