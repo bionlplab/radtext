@@ -134,7 +134,9 @@ class Ptb2DepConverter:
 
 class BioCPtb2DepConverter(BioCProcessor):
     def __init__(self, representation='CCprocessed', universal=True):
+        super(BioCPtb2DepConverter, self).__init__()
         self.converter = Ptb2DepConverter(representation=representation, universal=universal)
+        self.nlp_system = 'PyStanfordDependencies'
 
     def process_sentence(self, sentence: BioCSentence, docid: str = None):
         # check for empty infons, don't process if empty
@@ -153,10 +155,16 @@ class BioCPtb2DepConverter(BioCProcessor):
             anns, rels = convert_dg(dependency_graph, sentence.text,
                                     sentence.offset,
                                     has_lemmas=self.converter._backend == 'jpype')
+            for ann in anns:
+                ann.infons['nlp_system'] = self.nlp_system
+                ann.infons['nlp_date_time'] = self.nlp_date_time
+            for rel in rels:
+                rel.infons['nlp_system'] = self.nlp_system
+                rel.infons['nlp_date_time'] = self.nlp_date_time
+
             sentence.annotations = anns
             sentence.relations = rels
         except KeyboardInterrupt:
             raise
         except:
             logging.exception("%s:%s: Cannot process sentence %s: %s", docid, sentence.offset, sentence.text)
-

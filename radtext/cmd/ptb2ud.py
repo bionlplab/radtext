@@ -1,6 +1,6 @@
 """
 Usage:
-    parse [options] -i FILE -o FILE
+    ptb2ud [options] -i FILE -o FILE
 
 Options:
     --overwrite
@@ -15,7 +15,7 @@ from radtext.cmd.cmd_utils import process_options
 from radtext.convert_ptb_to_ud import BioCPtb2DepConverter
 
 
-if __name__ == '__main__':
+def main():
     argv = docopt.docopt(__doc__)
     process_options(argv)
 
@@ -31,3 +31,7 @@ if __name__ == '__main__':
 
     with open(argv['-o'], 'w') as fp:
         bioc.dump(collection, fp)
+
+
+if __name__ == '__main__':
+    main()

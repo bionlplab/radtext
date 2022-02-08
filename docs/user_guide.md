@@ -115,9 +115,13 @@ $ radext-parse -i /path/to/input.xml -o /path/to/output.xml
 
 ### Named Entity Recognition
 
-This step recognizes the named entities (e.g., disease findings, etc.) from the reports. We provide two NER options that users can choose from, Spacy and rule-based method. RadText detects all the findings and their corresponding UMLS concepts using MetaMap and  spaCy. 
+This step recognizes the named entities (e.g., disease findings, etc.) from the reports. 
+We provide two NER options that users can choose from, Spacy and rule-based method. 
+RadText detects all the findings and their corresponding UMLS concepts using MetaMap and spaCy. 
 
-Rule-based NER methods use regular expressions that combine information from terminological resources and characteristics of the entities of interest that are manually constructed from report corpus. Run the following command to use rule-based method for NER:
+Rule-based NER methods use regular expressions that combine information from terminological 
+resources and characteristics of the entities of interest that are manually constructed from report corpus. 
+Run the following command to use rule-based method for NER:
 
 ```bash
 $ pip install intervaltree
@@ -138,41 +142,17 @@ UDG is a directed graph, which represents all universal dependency information i
 The vertices in a UDG represent the information such as the word, part-of-speech and the word lemma. 
 The edges in a UDG represent the typed dependencies from the governor to its dependent and are labeled 
 with the corresponding dependency type. UDG effectively represents the syntactic head of each word in a 
-sentence and the dependency relation between words. 
+sentence and the dependency relation between words.
 
-This step parses sentences into UDG.
-
-### spaCy
-
-[spaCy](https://spacy.io/) is an open-source Python library for Natural Language Processing.
-It provides a fast syntactic dependency parser.
-
-```bash
-$ python radtext/cmd/depparse.py -i /path/to/ner_file.xml -o /path/to/parse_file.xml 
-```
-
-### Stanza
-
-[Stanza](https://stanfordnlp.github.io/stanza/) parses each sentence for its syntactic structure. 
-Stanza's dependency parsing module builds a tree structure of words from the input sentence, 
-which represents the syntactic dependency relations between words. 
-After `tokenization`, `multi-word token (MWT) expansion`, `part-of-speech (POS) and morphological features tagging`, 
-and `lemmatization`, each sentence would have been parsed into universal dependencies structure. 
-
-
-
-
-RadText obtains the universal dependencies by applying the 
+* **spaCy**: See `Text preprocessing` > `spaCy`
+* **Stanza**: See `Text preprocessing` > `Stanza` 
+* **Bllip**: RadText obtains the universal dependencies by applying the 
 [Stanford dependency converter](https://github.com/dmcc/PyStanfordDependencies) 
 with the `CCProcessed` and `Universal` option. 
 
-
-
-RadText provides two options that users can choose from, 
- and [Bllip parser](https://github.com/BLLIP/bllip-parser). 
-
-
-
+```shell
+$ ptb2ud -i /path/to/input.xml -o /path/to/output.xml
+```
 
 ### Negation Detection
 
