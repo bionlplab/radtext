@@ -103,6 +103,16 @@ This module splits the report into sentences using [NLTK](https://www.nltk.org/a
 $ radtext-ssplit -i /path/to/input.xml -o /path/to/output.xml
 ```
 
+## Constituency Parsing
+
+radtext uses the BLLIP reranking parser to obtain the parse tree. 
+The BLLIP parser was trained on the biomedical text.
+
+```bash
+$ radext-parse -i /path/to/input.xml -o /path/to/output.xml
+```
+
+
 ### Named Entity Recognition
 
 This step recognizes the named entities (e.g., disease findings, etc.) from the reports. We provide two NER options that users can choose from, Spacy and rule-based method. RadText detects all the findings and their corresponding UMLS concepts using MetaMap and  spaCy. 
@@ -149,16 +159,14 @@ which represents the syntactic dependency relations between words.
 After `tokenization`, `multi-word token (MWT) expansion`, `part-of-speech (POS) and morphological features tagging`, 
 and `lemmatization`, each sentence would have been parsed into universal dependencies structure. 
 
-### Bllip
 
-Bllip parser trained with the biomedical model will result in a parse tree.
+
+
 RadText obtains the universal dependencies by applying the 
 [Stanford dependency converter](https://github.com/dmcc/PyStanfordDependencies) 
 with the `CCProcessed` and `Universal` option. 
 
-```bash
-$ python cmd/depparse.py -i /path/to/ner_file.xml -o /path/to/parse_file.xml 
-```
+
 
 RadText provides two options that users can choose from, 
  and [Bllip parser](https://github.com/BLLIP/bllip-parser). 
