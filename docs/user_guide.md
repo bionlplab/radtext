@@ -40,7 +40,8 @@ for example, 5000 reports per BioC file.**
 
 ### De-identification
 
-This step de-identifies the radiology reports. Radiology reports often contain detailed sensitive information about 
+This step de-identifies the radiology reports. Radiology reports often contain detailed sensitive 
+information about 
 individual patients, the nuances of their diseases, the treatment strategies and the resulting outcomes, 
 which causes that clinical notes remain largely unused for research because they contain the protected health 
 information (PHI) which is synonymous with individually identifying data. 
@@ -54,30 +55,33 @@ $ python radtext/cmd/deid.py --repl=X -i tests/examples/202221.xml -o output/202
 
 ### Section Split
 
-This step splits the report into sections. RadText provides two options for section split, rule-based section splitter and [MedSpaCy](https://github.com/medspacy/medspacy). To run section split, the output from last step (de-id) is needed as the input. 
+This step splits the report into sections. RadText provides two options for section split, 
+rule-based section splitter and [MedSpaCy](https://github.com/medspacy/medspacy). 
+To run section split, the output from last step (de-id) is needed as the input. 
 
 MedSpaCy is a rule-based spaCy tool for performing clinical NLP and text processing tasks. 
 MedSpaCy includes an implementation of clinical section detection based on rule-based matching of the 
 section titles with default rules adapted from [SecTag](https://pubmed.ncbi.nlm.nih.gov/18999303/) and 
-expanded through practice. If users decide to use medspacy for section splitting, simply run:
+expanded through practice. If users decide to use medspacy for section splitting, run:
 
 ```bash
-$ pip install medspacy
-$ python cmd/split_section.py medspacy -i /path/to/deid_file.xml -o /path/to/section_file.xml
+$ python radtext/cmd/split_section.py medspacy -i tests/examples/1.xml -o output/1.secsplit_medspacy.xml
 ```
 
-If users decide to use rule-based section splitter, simply run:
+If users decide to use rule-based section splitter, run:
 
 ```bash
-$ python cmd/split_section.py reg [option] -i /path/to/deid_file.xml -o /path/to/section_file.xml
+$ python radtext/cmd/split_section.py reg -i tests/examples/1.xml -o output/1.secsplit_regex.xml
 ```
 
-The default section titles are hard-coded in `/cmd/split_section.py`, but users can specify their customized section titles using the option `--section-titles=<file>`.
+The default section titles are hard-coded in `/cmd/split_section.py`, but users can specify their 
+customized section titles using the option `--section-titles=<file>`.
 
 
 ### Preprocess or Sentence Split
 
-This step splits the report into sentences, and RadText provides three options, [spaCy](https://spacy.io/), [Stanza](https://stanfordnlp.github.io/stanza/) and [NLTK](https://www.nltk.org/api/nltk.tokenize.html).
+This step splits the report into sentences, and RadText provides three options, [spaCy](https://spacy.io/), 
+[Stanza](https://stanfordnlp.github.io/stanza/) and [NLTK](https://www.nltk.org/api/nltk.tokenize.html).
 
 Similarly, to run sentence split, the output from last step (section_split) is needed as the input. To use spaCy for pre-processing or sentence split, simply run:
 
@@ -105,14 +109,21 @@ Spacy utilizes MetaMap ontology. In general, MetaMap is more comprehensive but a
 
 ### Dependency Parsing
 
-RadText utilizes the universal dependency graph (UDG) to describe the grammatical relationships in a sentence that can be simply understood by non-linguists and effectively used by downstream processing tasks. UDG is a directed graph, which represents all universal dependency information in a sentence. The vertices in a UDG represent the information such as the word, part-of-speech and the word lemma. The edges in a UDG represent the typed dependencies from the governor to its dependent and are labeled with the corresponding dependency type. UDG effectively represents the syntactic head of each word in a sentence and the dependency relation between words. 
+RadText utilizes the universal dependency graph (UDG) to describe the grammatical relationships in a sentence 
+that can be simply understood by non-linguists and effectively used by downstream processing tasks. 
+UDG is a directed graph, which represents all universal dependency information in a sentence. 
+The vertices in a UDG represent the information such as the word, part-of-speech and the word lemma. 
+The edges in a UDG represent the typed dependencies from the governor to its dependent and are labeled 
+with the corresponding dependency type. UDG effectively represents the syntactic head of each word in a 
+sentence and the dependency relation between words. 
 
-This step parses sentences to obtain the UDG, and RadText provides two options that users can choose from, [Stanza](https://stanfordnlp.github.io/stanza/) and [Bllip parser](https://github.com/BLLIP/bllip-parser). 
+This step parses sentences to obtain the UDG, and RadText provides two options that users can choose from, 
+[Stanza](https://stanfordnlp.github.io/stanza/) and [Bllip parser](https://github.com/BLLIP/bllip-parser). 
 
 Stanza parses each sentence for its syntactic structure. Stanza's dependency parsing module builds a tree structure of words from the input sentence, which represents the syntactic dependency relations between words. After `tokenization`, `multi-word token (MWT) expansion`, `part-of-speech (POS) and morphological features tagging`, and `lemmatization`, each sentence would have been parsed into universal dependencies structure. Bllip parser trained with the biomedical model will result in a parse tree, then RadText obtains the universal dependencies by applying the [Stanford dependency converter](https://github.com/dmcc/PyStanfordDependencies) with the `CCProcessed` and `Universal` option. 
 
 ```bash
-$ python cmd/parse.py -i /path/to/ner_file.xml -o /path/to/parse_file.xml 
+$ python cmd/depparse.py -i /path/to/ner_file.xml -o /path/to/parse_file.xml 
 ```
 
 

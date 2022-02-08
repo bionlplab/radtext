@@ -32,7 +32,8 @@ Then install the required packages:
 $ pip install -r requirements.txt
 ```
 
-NOTE: If you encounter `Building wheel for bllipparser (setup.py) ... error` when installing bllipparser, try installing these two packages first, then restarting your virtual environment:
+NOTE: If you encounter `Building wheel for bllipparser (setup.py) ... error` when installing bllipparser, 
+try installing these two packages first, then restarting your virtual environment:
    
 ```bash
 $ conda install gcc_linux-64

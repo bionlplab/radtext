@@ -1,5 +1,5 @@
 bioc
-bllipparser==2016.9.11
+bllipparser==2021.11.7
 Cython
 docopt
 docutils==0.15.2

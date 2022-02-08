@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from bioc import BioCPassage, BioCSentence, BioCAnnotation, BioCRelation, BioCNode, BioCLocation
 
 from radtext.core import BioCProcessor
@@ -21,6 +23,8 @@ class BioCSpacy(BioCProcessor):
                 ann.id = 'T%s' % token.i
                 ann.infons['tag'] = token.tag_
                 ann.infons['note_nlp_concept_id'] = token.lemma_
+                ann.infons['nlp_system'] = 'spacy'
+                ann.infons['nlp_date_time'] = datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
                 ann.text = token.text
                 ann.add_location(BioCLocation(token.idx, len(token)))
                 s.add_annotation(ann)
