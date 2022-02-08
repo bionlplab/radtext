@@ -1,0 +1,182 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes'?>
+<collection>
+  <source></source>
+  <date>2022-02-07</date>
+  <key></key>
+  <document>
+    <id>00019248</id>
+    <passage>
+      <infon key="section_concept">findings</infon>
+      <infon key="type">title_1</infon>
+      <offset>0</offset>
+      <text>findings:</text>
+      <sentence>
+        <infon key="nlp_system">bllip</infon>
+        <infon key="nlp_date_time">02/08/2022, 00:35:36</infon>
+        <infon key="parse tree">(S1 (S (NP (NNS findings) (: :))))</infon>
+        <offset>0</offset>
+        <text>findings:</text>
+      </sentence>
+    </passage>
+    <passage>
+      <offset>10</offset>
+      <text>chest: four images:
+right picc with tip within the upper svc.
+probable enlargement of the main pulmonary artery.
+mild cardiomegaly.
+no evidence of focal infiltrate, effusion or pneumothorax.
+dictating</text>
+      <sentence>
+        <infon key="nlp_system">bllip</infon>
+        <infon key="nlp_date_time">02/08/2022, 00:35:36</infon>
+        <infon key="parse tree">(S1 (S (NP (NP (NN chest)) (: :) (NP (CD four) (NNS images)) (: :) (NP (NP (JJ right) (NN picc)) (PP (IN with) (NP (NN tip))) (PP (IN within) (NP (DT the) (JJ upper) (NN svc)))) (. .))))</infon>
+        <offset>10</offset>
+        <text>chest: four images:
+right picc with tip within the upper svc.</text>
+      </sentence>
+      <sentence>
+        <infon key="nlp_system">bllip</infon>
+        <infon key="nlp_date_time">02/08/2022, 00:35:36</infon>
+        <infon key="parse tree">(S1 (S (S (NP (NP (JJ probable) (NN enlargement)) (PP (IN of) (NP (DT the) (JJ main) (JJ pulmonary) (NN artery))))) (. .)))</infon>
+        <offset>72</offset>
+        <text>probable enlargement of the main pulmonary artery.</text>
+      </sentence>
+      <sentence>
+        <infon key="nlp_system">bllip</infon>
+        <infon key="nlp_date_time">02/08/2022, 00:35:36</infon>
+        <infon key="parse tree">(S1 (S (S (VP (JJ mild) (ADVP (RB cardiomegaly)))) (. .)))</infon>
+        <offset>123</offset>
+        <text>mild cardiomegaly.</text>
+      </sentence>
+      <sentence>
+        <infon key="nlp_system">bllip</infon>
+        <infon key="nlp_date_time">02/08/2022, 00:35:36</infon>
+        <infon key="parse tree">(S1 (S (S (NP (NP (DT no) (NN evidence)) (PP (IN of) (NP (NP (JJ focal) (NN infiltrate)) (, ,) (NP (NN effusion)) (CC or) (NP (NN pneumothorax)))))) (. .)))</infon>
+        <offset>142</offset>
+        <text>no evidence of focal infiltrate, effusion or pneumothorax.</text>
+      </sentence>
+      <sentence>
+        <infon key="nlp_system">bllip</infon>
+        <infon key="nlp_date_time">02/08/2022, 00:35:36</infon>
+        <infon key="parse tree">(S1 (S (NP (VBG dictating))))</infon>
+        <offset>201</offset>
+        <text>dictating</text>
+      </sentence>
+    </passage>
+    <annotation id="S0">
+      <infon key="section_concept">findings</infon>
+      <infon key="type">title_1</infon>
+      <infon key="nlp_system">medspacy</infon>
+      <infon key="nlp_date_time">02/07/2022, 14:58:52</infon>
+      <location offset="0" length="9"/>
+      <text>findings:</text>
+    </annotation>
+  </document>
+  <document>
+    <id>00000086</id>
+    <passage>
+      <infon key="section_concept">findings</infon>
+      <infon key="type">title_1</infon>
+      <offset>0</offset>
+      <text>findings:</text>
+      <sentence>
+        <infon key="nlp_system">bllip</infon>
+        <infon key="nlp_date_time">02/08/2022, 00:35:36</infon>
+        <infon key="parse tree">(S1 (S (NP (NNS findings) (: :))))</infon>
+        <offset>0</offset>
+        <text>findings:</text>
+      </sentence>
+    </passage>
+    <passage>
+      <offset>10</offset>
+      <text>pa and lat cxr at 7:34 p.m.. heart and mediastinum are
+stable. lungs are unchanged. air- filled cystic changes. no
+pneumothorax. osseous structures unchanged scoliosis</text>
+      <sentence>
+        <infon key="nlp_system">bllip</infon>
+        <infon key="nlp_date_time">02/08/2022, 00:35:36</infon>
+        <infon key="parse tree">(S1 (S (S (NP (NP (NP (NP (NN pa)) (CC and) (NP (NN lat)) (NP (NN cxr))) (PP (IN at) (NP (CD 7:34) (NN p.m.)))) (. .) (NP (NP (NN heart)) (CC and) (NP (NN mediastinum)))) (VP (VBP are) (ADJP (JJ stable)))) (. .)))</infon>
+        <offset>10</offset>
+        <text>pa and lat cxr at 7:34 p.m.. heart and mediastinum are
+stable.</text>
+      </sentence>
+      <sentence>
+        <infon key="nlp_system">bllip</infon>
+        <infon key="nlp_date_time">02/08/2022, 00:35:36</infon>
+        <infon key="parse tree">(S1 (S (S (NP (NNS lungs)) (VP (VBP are) (ADJP (JJ unchanged)))) (. .)))</infon>
+        <offset>73</offset>
+        <text>lungs are unchanged.</text>
+      </sentence>
+      <sentence>
+        <infon key="nlp_system">bllip</infon>
+        <infon key="nlp_date_time">02/08/2022, 00:35:36</infon>
+        <infon key="parse tree">(S1 (S (S (NP (NN air-)) (VP (VBD filled) (NP (JJ cystic) (NNS changes)))) (. .)))</infon>
+        <offset>94</offset>
+        <text>air- filled cystic changes.</text>
+      </sentence>
+      <sentence>
+        <infon key="nlp_system">bllip</infon>
+        <infon key="nlp_date_time">02/08/2022, 00:35:36</infon>
+        <infon key="parse tree">(S1 (S (S (NP (DT no) (NN pneumothorax))) (. .)))</infon>
+        <offset>122</offset>
+        <text>no
+pneumothorax.</text>
+      </sentence>
+      <sentence>
+        <infon key="nlp_system">bllip</infon>
+        <infon key="nlp_date_time">02/08/2022, 00:35:36</infon>
+        <infon key="parse tree">(S1 (S (NP (NP (JJ osseous) (NNS structures)) (NP (JJ unchanged) (NN scoliosis)))))</infon>
+        <offset>139</offset>
+        <text>osseous structures unchanged scoliosis</text>
+      </sentence>
+    </passage>
+    <passage>
+      <infon key="section_concept">impression</infon>
+      <infon key="type">title_1</infon>
+      <offset>178</offset>
+      <text>impression:</text>
+      <sentence>
+        <infon key="nlp_system">bllip</infon>
+        <infon key="nlp_date_time">02/08/2022, 00:35:36</infon>
+        <infon key="parse tree">(S1 (S (NP (NN impression) (: :))))</infon>
+        <offset>178</offset>
+        <text>impression:</text>
+      </sentence>
+    </passage>
+    <passage>
+      <offset>190</offset>
+      <text>stable chest.
+dictating</text>
+      <sentence>
+        <infon key="nlp_system">bllip</infon>
+        <infon key="nlp_date_time">02/08/2022, 00:35:36</infon>
+        <infon key="parse tree">(S1 (S (NP (NP (JJ stable) (NN chest)) (. .))))</infon>
+        <offset>190</offset>
+        <text>stable chest.</text>
+      </sentence>
+      <sentence>
+        <infon key="nlp_system">bllip</infon>
+        <infon key="nlp_date_time">02/08/2022, 00:35:36</infon>
+        <infon key="parse tree">(S1 (S (NP (VBG dictating))))</infon>
+        <offset>204</offset>
+        <text>dictating</text>
+      </sentence>
+    </passage>
+    <annotation id="S0">
+      <infon key="section_concept">findings</infon>
+      <infon key="type">title_1</infon>
+      <infon key="nlp_system">medspacy</infon>
+      <infon key="nlp_date_time">02/07/2022, 14:58:52</infon>
+      <location offset="0" length="9"/>
+      <text>findings:</text>
+    </annotation>
+    <annotation id="S1">
+      <infon key="section_concept">impression</infon>
+      <infon key="type">title_1</infon>
+      <infon key="nlp_system">medspacy</infon>
+      <infon key="nlp_date_time">02/07/2022, 14:58:52</infon>
+      <location offset="178" length="11"/>
+      <text>impression:</text>
+    </annotation>
+  </document>
+</collection>

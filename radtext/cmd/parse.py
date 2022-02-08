@@ -4,7 +4,7 @@ Usage:
 
 Options:
     --overwrite
-    --bllip_model <str>     Bllip parser model path [default: ]
+    --bllip_model <str>     Bllip parser model path [default: ~/.radtext/bllipparser/BLLIP-GENIA-PubMed]
     -o FILE
     -i FILE
 """
@@ -19,7 +19,7 @@ if __name__ == '__main__':
     argv = docopt.docopt(__doc__)
     process_options(argv)
 
-    processor = BioCParserBllip(model_dir=argv['--model'])
+    processor = BioCParserBllip(model_dir=argv['--bllip_model'])
 
     with open(argv['-i']) as fp:
         collection = bioc.load(fp)

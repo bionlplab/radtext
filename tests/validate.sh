@@ -13,3 +13,5 @@ python radtext/cmd/preprocess.py spacy -i tests/examples/ex4.secsplit_medspacy.x
 python radtext/cmd/preprocess.py stanza -i tests/examples/ex4.secsplit_medspacy.xml -o output/ex4.preprocess_stanza.xml
 # ssplit
 python radtext/cmd/ssplit.py -i tests/examples/ex4.secsplit_medspacy.xml -o output/ex4.ssplit.xml
+# parse
+python radtext/cmd/parse.py -i tests/examples/ex4.ssplit.xml -o output/ex4.parse.xml
