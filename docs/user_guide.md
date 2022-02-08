@@ -2,7 +2,7 @@
 
 This document covers some more advanced features of RadText.
 
-### Running the pipeline step-by-step
+## Running the pipeline step-by-step
 
 The step-by-step pipeline generates all intermediate results. Users can easily rerun any step if it makes any errors. The system pipeline looks like:
 
@@ -16,81 +16,91 @@ The step-by-step pipeline generates all intermediate results. Users can easily r
 8. `collect_neg_label` merges negative and uncertain labels.
 
 
-### Prepare the dataset
+## Prepare the dataset
 
 This is the same process as [Quickstart-Preparing the dataset](https://radtext.readthedocs.io/en/latest/getting_started.html#preparing-the-dataset). 
 You can skip this step if the reports are already in the [BioC]( http://bioc.sourceforge.net/) format. 
 Otherwise, you can store your input reports in a .csv file.
 By default, column 'note_id' stores the unique identifier for each note. 
 Column 'note_text' stores the content of the note.
-Then, you can use the following command to convert your .csv file into BioC format. 
+Then, you can use the following module to convert your .csv file to the BioC format. 
 
 ```bash
-$ python radtext/cmd/csv2bioc -i tests/examples/1.csv -o output/1.xml
+$ radtext-csv2bioc -i /path/to/input.csv -o /path/to/output.xml
 ```
 
-#### Convert from OMOP CDM NOTE table to BioC
+## Convert from OMOP CDM NOTE table to BioC
 
 ```shell
-$ python radtext/cmd/cdm2bioc -i tests/examples/note.csv -o output/note.xml
+$ radtext-cdm2bioc -i /path/to/input.csv -o /path/to/output.xml
 ```
 
 **If you have lots of reports, it is recommended to put them into several BioC files, 
 for example, 5000 reports per BioC file.**
 
-### De-identification
+## De-identification
 
-This step de-identifies the radiology reports. Radiology reports often contain detailed sensitive 
-information about 
-individual patients, the nuances of their diseases, the treatment strategies and the resulting outcomes, 
-which causes that clinical notes remain largely unused for research because they contain the protected health 
-information (PHI) which is synonymous with individually identifying data. 
-
-To address this issue, RadText uses [Philter](https://github.com/BCHSI/philter-ucsf) for de-identification, 
-which removes PHI from the reports, such as Name, Contact, Age, Email, etc.
+Radiology reports often contain the Protected Health Information 
+([PHI](https://www.hhs.gov/hipaa/for-professionals/privacy/special-topics/de-identification/index.html#standard)).
+This module uses [Philter](https://github.com/BCHSI/philter-ucsf) to remove PHI from the reports.
 
 ```bash
-$ python radtext/cmd/deid.py --repl=X -i tests/examples/202221.xml -o output/202221-deid.xml
+$ radtext-deid --repl=X -i /path/to/input.xml -o /path/to/output.xml
 ```
 
-### Section Split
+## Section Split
 
-This step splits the report into sections. RadText provides two options for section split, 
-rule-based section splitter and [MedSpaCy](https://github.com/medspacy/medspacy). 
-To run section split, the output from last step (de-id) is needed as the input. 
+This module splits the report into sections. 
+RadText provides two options for section split.
 
-MedSpaCy is a rule-based spaCy tool for performing clinical NLP and text processing tasks. 
-MedSpaCy includes an implementation of clinical section detection based on rule-based matching of the 
+### Rule-based method
+
+This script uses a list of section titles to split the notes.
+The default section titles are hard-coded in `resources/section_titles.txt`.
+Users can also specify customized section titles using the option `--section-titles=<file>`.
+
+```shell
+$ radtext-secsplit reg -i /path/to/input.xml -o /path/to/output.xml
+```
+
+### MedSpaCy
+
+[MedSpaCy](https://github.com/medspacy/medspacy) is a spaCy tool for performing clinical 
+NLP and text processing tasks. 
+It includes an implementation of clinical section detection based on rule-based matching of the 
 section titles with default rules adapted from [SecTag](https://pubmed.ncbi.nlm.nih.gov/18999303/) and 
-expanded through practice. If users decide to use medspacy for section splitting, run:
+expanded through practice.
 
-```bash
-$ python radtext/cmd/split_section.py medspacy -i tests/examples/1.xml -o output/1.secsplit_medspacy.xml
+```shell
+$ radtext-secsplit medspacy -i /path/to/input.xml -o /path/to/output.xml
 ```
 
-If users decide to use rule-based section splitter, run:
+## Text preprocessing
+
+This module provides sentence split, tokenization, part-of-speech tagging, lemmatization and dependency parsing.
+
+### spaCy
+
+[spaCy](https://spacy.io/) is an open-source Python library for Natural Language Processing.
 
 ```bash
-$ python radtext/cmd/split_section.py reg -i tests/examples/1.xml -o output/1.secsplit_regex.xml
+$ radtext-preprocess spacy -i /path/to/input.xml -o /path/to/output.xml
 ```
 
-The default section titles are hard-coded in `/cmd/split_section.py`, but users can specify their 
-customized section titles using the option `--section-titles=<file>`.
+### Stanza
 
-
-### Preprocess or Sentence Split
-
-This step splits the report into sentences, and RadText provides three options, [spaCy](https://spacy.io/), 
-[Stanza](https://stanfordnlp.github.io/stanza/) and [NLTK](https://www.nltk.org/api/nltk.tokenize.html).
-
-Similarly, to run sentence split, the output from last step (section_split) is needed as the input. To use spaCy for pre-processing or sentence split, simply run:
+[Stanza](https://stanfordnlp.github.io/stanza/) is a collection of efficient tools for Natural Language Processing.
 
 ```bash
-$ pip install -U pip setuptools wheel
-$ pip install -U spaCy
-$ python -m spacy download en_core_web_sm
-$ 
-$ python cmd/preprocess_pipeline.py spacy -i /path/to/section_file.xml -o /path/to/ud_file.xml --overwrite
+$ radtext-preprocess stanza -i /path/to/input.xml -o /path/to/output.xml
+```
+
+## Sentence Split
+
+This module splits the report into sentences using [NLTK](https://www.nltk.org/api/nltk.tokenize.html).
+
+```shell
+$ radtext-ssplit -i /path/to/input.xml -o /path/to/output.xml
 ```
 
 ### Named Entity Recognition
@@ -109,22 +119,51 @@ Spacy utilizes MetaMap ontology. In general, MetaMap is more comprehensive but a
 
 ### Dependency Parsing
 
-RadText utilizes the universal dependency graph (UDG) to describe the grammatical relationships in a sentence 
-that can be simply understood by non-linguists and effectively used by downstream processing tasks. 
+Dependency Parsing is the process to analyze the grammatical structure in a sentence and find out related words 
+as well as the type of the relationship between them.
+
+RadText utilizes the Universal Dependency Graph ([UDG](https://universaldependencies.org/)) to describe the 
+grammatical relationships in a sentence. 
 UDG is a directed graph, which represents all universal dependency information in a sentence. 
 The vertices in a UDG represent the information such as the word, part-of-speech and the word lemma. 
 The edges in a UDG represent the typed dependencies from the governor to its dependent and are labeled 
 with the corresponding dependency type. UDG effectively represents the syntactic head of each word in a 
 sentence and the dependency relation between words. 
 
-This step parses sentences to obtain the UDG, and RadText provides two options that users can choose from, 
-[Stanza](https://stanfordnlp.github.io/stanza/) and [Bllip parser](https://github.com/BLLIP/bllip-parser). 
+This step parses sentences into UDG.
 
-Stanza parses each sentence for its syntactic structure. Stanza's dependency parsing module builds a tree structure of words from the input sentence, which represents the syntactic dependency relations between words. After `tokenization`, `multi-word token (MWT) expansion`, `part-of-speech (POS) and morphological features tagging`, and `lemmatization`, each sentence would have been parsed into universal dependencies structure. Bllip parser trained with the biomedical model will result in a parse tree, then RadText obtains the universal dependencies by applying the [Stanford dependency converter](https://github.com/dmcc/PyStanfordDependencies) with the `CCProcessed` and `Universal` option. 
+### spaCy
+
+[spaCy](https://spacy.io/) is an open-source Python library for Natural Language Processing.
+It provides a fast syntactic dependency parser.
+
+```bash
+$ python radtext/cmd/depparse.py -i /path/to/ner_file.xml -o /path/to/parse_file.xml 
+```
+
+### Stanza
+
+[Stanza](https://stanfordnlp.github.io/stanza/) parses each sentence for its syntactic structure. 
+Stanza's dependency parsing module builds a tree structure of words from the input sentence, 
+which represents the syntactic dependency relations between words. 
+After `tokenization`, `multi-word token (MWT) expansion`, `part-of-speech (POS) and morphological features tagging`, 
+and `lemmatization`, each sentence would have been parsed into universal dependencies structure. 
+
+### Bllip
+
+Bllip parser trained with the biomedical model will result in a parse tree.
+RadText obtains the universal dependencies by applying the 
+[Stanford dependency converter](https://github.com/dmcc/PyStanfordDependencies) 
+with the `CCProcessed` and `Universal` option. 
 
 ```bash
 $ python cmd/depparse.py -i /path/to/ner_file.xml -o /path/to/parse_file.xml 
 ```
+
+RadText provides two options that users can choose from, 
+ and [Bllip parser](https://github.com/BLLIP/bllip-parser). 
+
+
 
 
 ### Negation Detection

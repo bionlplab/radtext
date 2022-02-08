@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='utf-8' standalone='yes'?>
 <collection>
-  <source>ChestXray-NIHCC</source>
-  <date>2017-05-31</date>
+  <source></source>
+  <date>2022-02-07</date>
   <key></key>
   <document>
     <id>00019248</id>
     <passage>
-      <infon key="title">findings</infon>
+      <infon key="section_concept">findings</infon>
       <infon key="type">title_1</infon>
       <offset>0</offset>
       <text>findings:</text>
@@ -20,11 +20,19 @@ mild cardiomegaly.
 no evidence of focal infiltrate, effusion or pneumothorax.
 dictating</text>
     </passage>
+    <annotation id="S0">
+      <infon key="section_concept">findings</infon>
+      <infon key="type">title_1</infon>
+      <infon key="nlp_system">regex</infon>
+      <infon key="nlp_date_time">02/07/2022, 21:05:32</infon>
+      <location offset="0" length="9"/>
+      <text>findings:</text>
+    </annotation>
   </document>
   <document>
     <id>00000086</id>
     <passage>
-      <infon key="title">findings</infon>
+      <infon key="section_concept">findings</infon>
       <infon key="type">title_1</infon>
       <offset>0</offset>
       <text>findings:</text>
@@ -36,7 +44,7 @@ stable. lungs are unchanged. air- filled cystic changes. no
 pneumothorax. osseous structures unchanged scoliosis</text>
     </passage>
     <passage>
-      <infon key="title">impression</infon>
+      <infon key="section_concept">impression</infon>
       <infon key="type">title_1</infon>
       <offset>178</offset>
       <text>impression:</text>
@@ -46,5 +54,21 @@ pneumothorax. osseous structures unchanged scoliosis</text>
       <text>stable chest.
 dictating</text>
     </passage>
+    <annotation id="S0">
+      <infon key="section_concept">findings</infon>
+      <infon key="type">title_1</infon>
+      <infon key="nlp_system">regex</infon>
+      <infon key="nlp_date_time">02/07/2022, 21:05:32</infon>
+      <location offset="0" length="9"/>
+      <text>findings:</text>
+    </annotation>
+    <annotation id="S0">
+      <infon key="section_concept">impression</infon>
+      <infon key="type">title_1</infon>
+      <infon key="nlp_system">regex</infon>
+      <infon key="nlp_date_time">02/07/2022, 21:05:32</infon>
+      <location offset="178" length="11"/>
+      <text>impression:</text>
+    </annotation>
   </document>
 </collection>

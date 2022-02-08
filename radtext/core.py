@@ -1,9 +1,13 @@
+from datetime import datetime
 from typing import List
 
 from bioc import BioCDocument, BioCPassage, BioCSentence
 
 
 class BioCProcessor:
+    def __init__(self):
+        self.nlp_date_time = datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
+
     def process_document(self, doc: BioCDocument) -> BioCDocument:
         for passage in doc.passages:
             self.process_passage(passage, docid=doc.id)

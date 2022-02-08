@@ -1,4 +1,3 @@
-from datetime import datetime
 from typing import Tuple, List
 
 import bioc
@@ -10,10 +9,12 @@ from bioc import BioCPassage, BioCSentence
 
 class BioCDeidPhilter(BioCProcessor):
     def __init__(self, repl: str = 'X'):
+        super(BioCDeidPhilter, self).__init__()
         self.philter = Philter()
         self.repl = repl
         if len(repl) != 1:
             raise ValueError('The replacement repl cannot have one char: %s' % repl)
+        self.nlp_system = 'Philter'
 
     def deidentify(self, text: str, offset: int) -> Tuple[str, List[bioc.BioCAnnotation]]:
         """
@@ -27,8 +28,8 @@ class BioCDeidPhilter(BioCProcessor):
             ann.add_location(bioc.BioCLocation(r['start'] + offset, r['stop'] - r['start']))
             ann.text = r['word']
             ann.infons['source_concept'] = r['phi_type']
-            ann.infons['nlp_system'] = 'Philter'
-            ann.infons['nlp_date_time'] = datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
+            ann.infons['nlp_system'] = self.nlp_system
+            ann.infons['nlp_date_time'] = self.nlp_date_time
             anns.append(ann)
 
         for ann in anns:

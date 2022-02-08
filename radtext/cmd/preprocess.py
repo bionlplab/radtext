@@ -2,12 +2,10 @@
 Usage:
     preprocess stanza [options] -i FILE -o FILE
     preprocess spacy [options] -i FILE -o FILE
-    preprocess bllip [options] -i FILE -o FILE
 
 Options:
     --overwrite
-    --spacy-model <str>     Spacy model [default: en_core_web_sm]
-    --bllip_model <str>     Bllip parser model path [default: ]
+    --spacy-model <str>   spaCy traiend model [default: en_core_web_sm]
     -o FILE
     -i FILE
 """
@@ -15,31 +13,32 @@ import bioc
 import docopt
 import spacy
 import tqdm
+import stanza
 from cmd_utils import process_options
-from radtext.parse_bllip import BioCParserBllip
 from radtext.preprocess_spacy import BioCSpacy
 from radtext.preprocess_stanza import BioCStanza
 
 
-if __name__ == '__main__':
+def main():
     argv = docopt.docopt(__doc__)
     process_options(argv)
 
     if argv['stanza']:
-        import stanza
-        nlp = stanza.Pipeline('en', processors='tokenize,pos,lemma,depparse')
+        try:
+            nlp = stanza.Pipeline('en', processors='tokenize,pos,lemma,depparse')
+        except ResourcesFileNotFoundError:
+            print('Install spacy model using \'python -m spacy download en_core_web_sm\'')
+            return
         processor = BioCStanza(nlp)
     elif argv['spacy']:
         try:
             nlp = spacy.load(argv['--spacy-model'])
         except IOError:
             print('Install spacy model using \'python -m spacy download en_core_web_sm\'')
-            exit(1)
+            return
         processor = BioCSpacy(nlp)
-    elif argv['bllip']:
-        processor = BioCParserBllip(model_dir=argv['--model'])
     else:
-       raise KeyError
+        raise KeyError
 
     with open(argv['-i']) as fp:
         collection = bioc.load(fp)
@@ -49,3 +48,7 @@ if __name__ == '__main__':
 
     with open(argv['-o'], 'w') as fp:
         bioc.dump(collection, fp)
+
+
+if __name__ == '__main__':
+    main()

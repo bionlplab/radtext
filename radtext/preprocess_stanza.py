@@ -1,4 +1,5 @@
 import logging
+from datetime import datetime
 
 from bioc import BioCPassage, BioCSentence, BioCAnnotation, BioCRelation, BioCNode, BioCLocation
 
@@ -7,7 +8,9 @@ from radtext.core import BioCProcessor
 
 class BioCStanza(BioCProcessor):
     def __init__(self, nlp):
+        super(BioCStanza, self).__init__()
         self.nlp = nlp
+        self.nlp_system = 'stanza:' + self.nlp.lang
 
     def process_passage(self, passage: BioCPassage, docid: str = None) -> BioCPassage:
         text = passage.text
@@ -16,6 +19,8 @@ class BioCStanza(BioCProcessor):
         del passage.sentences[:]
         for sent in doc.sentences:
             s = BioCSentence()
+            s.infons['nlp_system'] = self.nlp_system
+            s.infons['nlp_date_time'] = self.nlp_date_time
             s.offset = sent.tokens[0].start_char + passage.offset
             s.text = sent.text
             for i, token in enumerate(sent.tokens):
@@ -26,6 +31,9 @@ class BioCStanza(BioCProcessor):
                     ann.id = 'T%s' % i
                     ann.infons['tag'] = word.xpos
                     ann.infons['note_nlp_concept_id'] = word.lemma
+                    ann.infons['lemma'] = word.lemma
+                    ann.infons['nlp_system'] = self.nlp_system
+                    ann.infons['nlp_date_time'] = self.nlp_date_time
                     ann.text = word.text
                     ann.add_location(BioCLocation(token.start_char + offset, len(word.text)))
                     s.add_annotation(ann)
@@ -37,6 +45,8 @@ class BioCStanza(BioCProcessor):
                     rel = BioCRelation()
                     rel.id = 'R%s' % i
                     rel.infons['dependency'] = word.deprel
+                    rel.infons['nlp_system'] = self.nlp_system
+                    rel.infons['nlp_date_time'] = self.nlp_date_time
                     rel.add_node(BioCNode(refid='T%s' % i, role="dependant"))
                     rel.add_node(BioCNode(refid='T%s' % (word.head - 1), role="governor"))
                     s.add_relation(rel)

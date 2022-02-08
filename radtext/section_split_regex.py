@@ -1,6 +1,5 @@
 import logging
 import re
-from datetime import datetime
 from typing import List, Pattern
 
 import bioc
@@ -63,10 +62,12 @@ def strip(passage: bioc.BioCPassage) -> bioc.BioCPassage:
 
 class BioCSectionSplitterRegex(BioCProcessor):
     def __init__(self, regex_pattern: Pattern=None):
+        super(BioCSectionSplitterRegex, self).__init__()
         if regex_pattern is None:
             self.pattern = _default_patterns()
         else:
             self.pattern = regex_pattern
+        self.nlp_system = 'regex'
 
     def process_document(self, doc: bioc.BioCDocument) -> bioc.BioCDocument:
         """
@@ -79,6 +80,8 @@ class BioCSectionSplitterRegex(BioCProcessor):
 
         def create_passage(text, offset, start, end, title=None):
             passage = bioc.BioCPassage()
+            passage.infons['nlp_system'] = self.nlp_system
+            passage.infons['nlp_date_time'] = self.nlp_date_time
             passage.offset = start + offset
             passage.text = text[start:end]
             if title is not None:
@@ -116,8 +119,8 @@ class BioCSectionSplitterRegex(BioCProcessor):
                     ann.text = passage.text
                     ann.infons['section_concept'] = passage.infons['section_concept']
                     ann.infons['type'] = passage.infons['type']
-                    ann.infons['nlp_system'] = 'regex'
-                    ann.infons['nlp_date_time'] = datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
+                    ann.infons['nlp_system'] = self.nlp_system
+                    ann.infons['nlp_date_time'] = self.nlp_date_time
                     ann.add_location(bioc.BioCLocation(offset + local_start, local_end - local_start))
                     anns.append(ann)
 

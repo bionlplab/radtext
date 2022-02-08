@@ -60,6 +60,7 @@ class BioCSSplitterNLTK(BioCProcessor):
         """
         super(BioCSSplitterNLTK, self).__init__()
         self.newline = newline
+        self.nlp_system = 'NLTK'
 
     def process_passage(self, passage: BioCPassage, docid: str = None) -> BioCPassage:
         """
@@ -74,6 +75,8 @@ class BioCSSplitterNLTK(BioCProcessor):
         del passage.sentences[:]
         for text, offset in sentences:
             sentence = bioc.BioCSentence()
+            sentence.infons['nlp_system'] = self.nlp_system
+            sentence.infons['nlp_date_time'] = self.nlp_date_time
             sentence.offset = offset + passage.offset
             sentence.text = text
             passage.add_sentence(sentence)

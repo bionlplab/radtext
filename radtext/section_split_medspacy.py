@@ -8,7 +8,9 @@ from radtext.section_split_regex import strip, is_empty
 
 class BioCSectionSplitterMedSpacy(BioCProcessor):
     def __init__(self, nlp):
+        super(BioCSectionSplitterMedSpacy, self).__init__()
         self.nlp = nlp
+        self.nlp_system = 'medspacy'
 
     def process_document(self, doc: bioc.BioCDocument) -> bioc.BioCDocument:
         """
@@ -17,6 +19,8 @@ class BioCSectionSplitterMedSpacy(BioCProcessor):
         """
         def create_passage(text, offset, start, end, title=None) -> bioc.BioCPassage:
             passage = bioc.BioCPassage()
+            passage.infons['nlp_system'] = self.nlp_system
+            passage.infons['nlp_date_time'] = self.nlp_date_time
             passage.offset = start + offset
             passage.text = text[start:end]
             if title is not None:
@@ -41,8 +45,8 @@ class BioCSectionSplitterMedSpacy(BioCProcessor):
                 ann.text = passage.text
                 ann.infons['section_concept'] = passage.infons['section_concept']
                 ann.infons['type'] = passage.infons['type']
-                ann.infons['nlp_system'] = 'medspacy'
-                ann.infons['nlp_date_time'] = datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
+                ann.infons['nlp_system'] = self.nlp_system
+                ann.infons['nlp_date_time'] = self.nlp_date_time
                 ann.add_location(bioc.BioCLocation(offset + title.start_char, title.end_char - title.start_char))
                 anns.append(ann)
 

@@ -1,57 +1,69 @@
-# Installation of RadText
+# Installation instructions
 
-This part of the documentation will walk you through the proper installation of RadText.
+radtext is compatible with Python 3.6+ and runs on Unix/Linux and macOS/OS X. 
+The latest radtext releases are available over [pip](https://pypi.python.org/pypi/radtext).
 
-## Prerequisites
+## pip
 
-*  python >=3.6
-*  Linux
-*  Java
+Using pip, radtext releases are available as source packages and binary wheels.
 
-For Windows OS
-
-*  python >=3.6, <3.9
-*  Java
-*  Microsoft Visual C++ >=14.0
-
-## Installing RadText
-
-RadText is actively developed on GitHub, where the code is [always available](https://github.com/yfpeng/radtext).
-
-You can clone the public repository:
-
-```bash
-$ git clone https://github.com/yfpeng/radtext.git
-$ cd radtext
+```shell
+$ pip install -U pip setuptools wheel
+$ pip install -U radtext
 ```
 
-Once you have a copy of the source code, you can prepare a virtual environment using:
+When using pip it is generally recommended to install packages in a virtual environment to avoid modifying system state:
 
-```bash
-$ conda create --name radtext python=3.6
-$ source activate radtext 
-$ pip install --upgrade pip setuptools
-```
-
-or
-
-```bash
-$ virtualenv --python=/usr/bin/python3.6 radtext_env
+```shell
+$ python -m venv radtext_env
 $ source radtext_env/bin/activate
+$ pip install -U pip setuptools wheel
+$ pip install -U radtext
 ```
 
-Finally, install the required packages:
+## Compile from source
 
-```bash
-$ pip install -r requirements.txt
+radtext is actively developed on [GitHub repository](https://github.com/bionlplab/radtext).
+The other way to install radtext is to clone its GitHub repository.
+
+```shell
+$ python -m pip install -U pip setuptools wheel   # install/update build tools
+$ git clone https://github.com/bionlplab/radtext  # clone spaCy
+$ cd radtext                                      # navigate into dir
+$ python -m venv radtext_env                      # create environment in .env
+$ source radtext_env/bin/activate                 # activate virtual env
+$ pip install -r requirements.txt                 # install requirements
+$ python -m build                                 # build the package
+$ pip install dist/path/to/wheel                  # install radtext
 ```
 
-NOTE: If you encouter `Building wheel for bllipparser (setup.py) ... error` when installing bllipparser, try installing these two packages first, then restarting your virtual environment:
-   
-```bash
-$ conda install gcc_linux-64
-$ conda install gxx_linux-64
-$ 
-$ conda deactivate
-$ conda activate radtext
+### Unix/Linux
+
+* python >=3.6
+* Linux
+* Java
+
+Install system-level dependencies via `apt`
+
+```shell
+$ sudo apt install install python3 python3-dev build-essential
 ```
+
+### Windows (experimental)
+
+* python >=3.6, <3.9
+* Java
+* Microsoft Visual C++ >=14.0
+
+When working on Microsoft Windows OS, some packages requires Microsoft Visual C++ 14.0 or greater. 
+You can get it with "Microsoft C++ Build Tools": <https://visualstudio.microsoft.com/visual-cpp-build-tools/>
+
+After install Microsoft Build Tools for Visual Studio, select: Workloads → Desktop development with C++, 
+then for Individual Components, select only:
+
+*  Windows SDK 
+*  C++ x64/x86 build tools
+
+The build tools allow using MSVC "cl.exe" C / C++ compiler from the command line.
+
+More information can be found at <https://www.scivision.dev/python-windows-visual-c-14-required/>

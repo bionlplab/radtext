@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes'?>
+<collection>
+  <source></source>
+  <date>2022-02-07</date>
+  <key></key>
+  <document>
+    <id>00000086</id>
+    <passage>
+      <offset>0</offset>
+      <text>findings: pa and lat cxr at 7:34 p.m.. heart and mediastinum are&#13;
+stable. lungs are unchanged. air- filled cystic changes. no&#13;
+pneumothorax. osseous structures unchanged scoliosis&#13;
+impression: stable chest.&#13;
+dictating</text>
+    </passage>
+  </document>
+  <document>
+    <id>00019248</id>
+    <passage>
+      <offset>0</offset>
+      <text>findings:&#13;
+chest: four images:&#13;
+right picc with tip within the upper svc.&#13;
+probable enlargement of the main pulmonary artery.&#13;
+mild cardiomegaly.&#13;
+no evidence of focal infiltrate, effusion or pneumothorax.&#13;
+dictating</text>
+    </passage>
+  </document>
+</collection>
