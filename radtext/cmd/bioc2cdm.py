@@ -17,7 +17,7 @@ import pandas as pd
 import tqdm
 import json
 
-from radtext.bioc_cdm_converter import BioC2CDM
+from radtext.models.bioc_cdm_converter import BioC2CDM
 
 
 if __name__ == '__main__':

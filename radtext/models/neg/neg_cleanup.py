@@ -3,7 +3,7 @@ from typing import List
 from bioc import BioCAnnotation, BioCPassage
 
 from radtext.core import BioCProcessor
-from radtext.neg.constants import NEGATION, UNCERTAINTY
+from radtext.models.neg.constants import NEGATION, UNCERTAINTY
 
 
 def extend_anns(annotations: List[BioCAnnotation]):

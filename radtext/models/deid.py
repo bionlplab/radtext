@@ -3,7 +3,7 @@ from typing import Tuple, List
 import bioc
 
 from radtext.core import BioCProcessor
-from radtext.pphilter.philter import Philter
+from radtext.models.pphilter.philter import Philter
 from bioc import BioCPassage, BioCSentence
 
 

@@ -7,7 +7,7 @@ from typing import Union
 from bioc import BioCSentence
 from bllipparser import RerankingParser
 
-from radtext.constants import DEFAULT_LOCAL_MODELS
+from radtext import DEFAULT_LOCAL_MODELS
 from radtext.core import BioCProcessor
 
 

@@ -49,8 +49,7 @@ Description :
 from ply import lex
 from ply import yacc
 
-from radtext.neg.ngrex import pattern
-
+from radtext.models.neg.ngrex import pattern
 
 t_ignore = ' \t\r'
 

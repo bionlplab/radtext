@@ -1,7 +1,7 @@
 from pathlib import Path
 import pandas as pd
 
-from radtext import csv2bioc
+from radtext.models import csv2bioc
 from tests import Example_Dir
 
 

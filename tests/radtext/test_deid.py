@@ -3,7 +3,7 @@ from pathlib import Path
 import bioc
 import pytest
 
-from radtext.deid import BioCDeidPhilter
+from radtext.models.deid import BioCDeidPhilter
 from tests import Example_Dir
 
 
@@ -11,12 +11,12 @@ def test_deid():
     import warnings
     warnings.filterwarnings("ignore", category=DeprecationWarning)
 
-    file = Example_Dir / '202221.xml'
+    file = Example_Dir / 'ex3.xml'
     with open(file) as fp:
         collection = bioc.load(fp)
         passage = collection.documents[0].passages[0]
 
-    file = Example_Dir / '202221-deid.xml'
+    file = Example_Dir / 'ex3.deid_philter.xml'
     with open(file) as fp:
         deid_collection = bioc.load(fp)
         deid_passage = deid_collection.documents[0].passages[0]

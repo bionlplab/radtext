@@ -5,10 +5,10 @@ import tqdm
 from bioc import BioCPassage, BioCSentence
 
 from radtext.core import BioCProcessor
-from radtext.neg import semgraph
-from radtext.neg.constants import NegResult
-from radtext.neg.match_ngrex import NegGrex
-from radtext.neg.match_regex import NegRegex
+from radtext.models.neg import semgraph
+from radtext.models.neg.constants import NegResult
+from radtext.models.neg.match_ngrex import NegGrex
+from radtext.models.neg.match_regex import NegRegex
 
 
 def mark_ann(ann, match: NegResult):

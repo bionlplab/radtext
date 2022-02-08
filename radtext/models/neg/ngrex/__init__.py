@@ -10,7 +10,7 @@ Attributes must be plain strings; values can be regular expressions blocked off 
 while /NN.* / matches "NN", "NNS", "NNP", etc.)
 """
 
-from radtext.neg.ngrex.pattern import NgrexPattern, NgrexMatch
+from radtext.models.neg.ngrex.pattern import NgrexPattern, NgrexMatch
 from . import parser
 from . import pattern
 

@@ -5,9 +5,9 @@ from typing import List
 import yaml
 
 import radtext.utils
-from radtext.neg import ngrex
-from radtext.neg.constants import NEGATION, UNCERTAINTY, NegPattern, NegResult
-from radtext.neg.ngrex import NgrexMatch, NgrexPattern
+from radtext.models.neg import ngrex
+from radtext.models.neg.constants import NEGATION, UNCERTAINTY, NegPattern, NegResult
+from radtext.models.neg.ngrex import NgrexMatch, NgrexPattern
 
 
 class NegNgrexPattern(NegPattern):

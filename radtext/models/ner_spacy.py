@@ -14,7 +14,7 @@ from spacy.tokens.doc import Doc
 from typing.re import Pattern
 
 from radtext.core import BioCProcessor
-from radtext.ner_regex import PTakesMatch, longest_matching, remove_duplicates
+from radtext.models.ner_regex import PTakesMatch, longest_matching, remove_duplicates
 
 STOP_WORDS = set(stopwords.words('english'))
 

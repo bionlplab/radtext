@@ -1,6 +1,6 @@
 import pytest
 
-from radtext.bioc_cdm_converter import cdm_note_table2bioc, NOTE_TABLE_HEADERS
+from radtext.models.bioc_cdm_converter import cdm_note_table2bioc, NOTE_TABLE_HEADERS
 from tests import Example_Dir
 import pandas as pd
 

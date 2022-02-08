@@ -16,33 +16,33 @@ import yaml
 import spacy
 
 # for deid
-from radtext.deid import BioCDeidPhilter
-from radtext.pphilter.philter import Philter
+from radtext.models.deid import BioCDeidPhilter
+from radtext.models.pphilter import Philter
 
 # for split_section
 from typing import List, Pattern
-from radtext.section_split_regex import BioCSectionSplitterRegex
+from radtext.models.section_split_regex import BioCSectionSplitterRegex
 
 # for preprocess
 from radtext.core import BioCPipeline
-from radtext.convert_ptb_to_ud import BioCPtb2DepConverter
-from radtext.preprocess_spacy import BioCSpacy
+from radtext.models.convert_ptb_to_ud import BioCPtb2DepConverter
+from radtext.models.preprocess_spacy import BioCSpacy
 
 # for ner
 from typing import Iterable, Tuple
-from radtext.ner_regex import NerRegExExtractor, BioCNerRegex
+from radtext.models.ner_regex import NerRegExExtractor, BioCNerRegex
 
 # for neg
-from radtext.neg.match_ngrex import NegGrex
-from radtext.neg.match_regex import NegRegex
-from radtext.neg.neg_cleanup import NegCleanUp
-from radtext.neg.neg_pipeline import BioCNeg
+from radtext.models.neg.match_ngrex import NegGrex
+from radtext.models.neg import NegRegex
+from radtext.models.neg import NegCleanUp
+from radtext.models.neg.neg_pipeline import BioCNeg
 
 # for collect_labels
 import collections
 from typing import Dict, Set
-from radtext.neg.constants import NEGATION, UNCERTAINTY
-from radtext.collect_neg_labels import merge_labels, is_cardiomegaly, find_findings, aggregate, create_prediction
+from radtext.models.neg import NEGATION, UNCERTAINTY
+from radtext.models.collect_neg_labels import merge_labels, is_cardiomegaly, find_findings, aggregate, create_prediction
 
 SECTION_TITLES = [
     "ABDOMEN AND PELVIS:",

@@ -12,7 +12,7 @@ import docopt
 import tqdm
 
 from radtext.cmd.cmd_utils import process_options
-from radtext.sentence_split_nltk import BioCSSplitterNLTK
+from radtext.models.sentence_split_nltk import BioCSSplitterNLTK
 
 
 def main():

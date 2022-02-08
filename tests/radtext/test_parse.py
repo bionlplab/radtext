@@ -3,7 +3,7 @@ import sys
 import bioc
 import pytest
 
-from radtext.parse_bllip import BllipParser, BioCParserBllip
+from radtext.models.parse_bllip import BllipParser, BioCParserBllip
 
 
 def test_parse():

@@ -23,10 +23,10 @@ import docopt
 import tqdm
 
 from cmd_utils import process_options
-from radtext.neg.match_ngrex import NegGrex
-from radtext.neg.match_regex import NegRegex
-from radtext.neg.neg_cleanup import NegCleanUp
-from radtext.neg.neg_pipeline import BioCNeg
+from radtext.models.neg.match_ngrex import NegGrex
+from radtext.models.neg import NegRegex
+from radtext.models.neg import NegCleanUp
+from radtext.models.neg.neg_pipeline import BioCNeg
 
 if __name__ == '__main__':
     argv = docopt.docopt(__doc__)

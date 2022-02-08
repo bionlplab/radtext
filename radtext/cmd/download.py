@@ -17,7 +17,7 @@ import nltk
 import stanza
 from bllipparser import ModelFetcher
 
-from radtext.constants import MODELS
+from radtext import MODELS
 
 
 def main():

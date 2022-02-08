@@ -5,7 +5,7 @@ from typing import List, Match, Pattern
 import yaml
 
 from bioc import BioCPassage, BioCAnnotation
-from radtext.neg.constants import NEGATION, UNCERTAINTY, NegPattern, NegResult
+from radtext.models.neg.constants import NEGATION, UNCERTAINTY, NegPattern, NegResult
 
 
 class NegRegexPattern(NegPattern):

@@ -1,7 +1,7 @@
 import bioc
 import pytest
 
-from radtext.sentence_split_nltk import split, BioCSSplitterNLTK
+from radtext.models.sentence_split_nltk import split, BioCSSplitterNLTK
 
 
 def test_split():

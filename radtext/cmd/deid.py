@@ -13,7 +13,7 @@ import docopt
 import tqdm
 
 from cmd_utils import process_options
-from radtext.deid import BioCDeidPhilter
+from radtext.models.deid import BioCDeidPhilter
 
 
 def main():

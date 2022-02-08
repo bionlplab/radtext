@@ -8,7 +8,7 @@ from pathlib import Path
 
 import nltk
 
-from radtext.pphilter.coordinate_map import CoordinateMap
+from radtext.models.pphilter.coordinate_map import CoordinateMap
 
 # ucsf_include_tags = ['Date', 'Provider_Name', 'Phone_Fax', 'Patient_Name_or_Family_Member_Name',
 #                      'Patient_Address', 'Provider_Address_or_Location',
@@ -179,7 +179,7 @@ class Philter:
         regex = self.patterns[pattern_index]["data"]
 
         # All regexes except matchall
-        if regex != re.compile('.'):
+        if regex != re.compile(''):
             # if __debug__: print("map_regex(): searching for regex with index " + str(pattern_index))
             # if __debug__ and pattern_index: print("map_regex(): regex is " + str(regex))
             matches = regex.finditer(text)
@@ -193,7 +193,7 @@ class Philter:
             self.patterns[pattern_index]["coordinate_map"] = coord_map
 
         #### MATCHALL/CATCHALL ####
-        elif regex == re.compile('.'):
+        elif regex == re.compile(''):
             # Split note the same way we would split for set or POS matching
             matchall_list = re.split(r"(\s+)", text)
             matchall_list_cleaned = []

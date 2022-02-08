@@ -12,7 +12,7 @@ import docopt
 import tqdm
 
 from radtext.cmd.cmd_utils import process_options
-from radtext.convert_ptb_to_ud import BioCPtb2DepConverter
+from radtext.models.convert_ptb_to_ud import BioCPtb2DepConverter
 
 
 def main():

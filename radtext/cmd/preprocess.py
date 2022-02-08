@@ -15,8 +15,8 @@ import spacy
 import tqdm
 import stanza
 from cmd_utils import process_options
-from radtext.preprocess_spacy import BioCSpacy
-from radtext.preprocess_stanza import BioCStanza
+from radtext.models.preprocess_spacy import BioCSpacy
+from radtext.models.preprocess_stanza import BioCStanza
 
 
 def main():

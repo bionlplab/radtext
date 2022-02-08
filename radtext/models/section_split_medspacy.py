@@ -3,7 +3,7 @@ from datetime import datetime
 import bioc
 
 from radtext.core import BioCProcessor
-from radtext.section_split_regex import strip, is_empty
+from radtext.models.section_split_regex import strip, is_empty
 
 
 class BioCSectionSplitterMedSpacy(BioCProcessor):
