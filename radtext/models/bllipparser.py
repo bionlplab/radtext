@@ -1,7 +1,6 @@
 import logging
 import os
 import string
-import tempfile
 from typing import Union
 
 from bioc import BioCSentence
