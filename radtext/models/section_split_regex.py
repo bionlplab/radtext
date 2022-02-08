@@ -2,7 +2,7 @@ import logging
 import re
 from typing import List, Pattern
 
-import bioc
+from bioc import BioCSentence, BioCPassage, BioCDocument, BioCLocation, BioCAnnotation
 
 from radtext.core import BioCProcessor
 
@@ -40,11 +40,11 @@ def _default_patterns():
     return combine_patterns(SECTION_TITLES)
 
 
-def is_empty(passage: bioc.BioCPassage) -> bool:
+def is_empty(passage: BioCPassage) -> bool:
     return len(passage.text) == 0
 
 
-def strip(passage: bioc.BioCPassage) -> bioc.BioCPassage:
+def strip(passage: BioCPassage) -> BioCPassage:
     start = 0
     while start < len(passage.text) and passage.text[start].isspace():
         start += 1
@@ -69,7 +69,7 @@ class BioCSectionSplitterRegex(BioCProcessor):
             self.pattern = regex_pattern
         self.nlp_system = 'regex'
 
-    def process_document(self, doc: bioc.BioCDocument) -> bioc.BioCDocument:
+    def process_document(self, doc: BioCDocument) -> BioCDocument:
         """
         Split one report into sections. Section splitting is a deterministic
         consequence of section titles.
@@ -79,7 +79,7 @@ class BioCSectionSplitterRegex(BioCProcessor):
         # offset = doc.passages[0].offset
 
         def create_passage(text, offset, start, end, title=None):
-            passage = bioc.BioCPassage()
+            passage = BioCPassage()
             passage.infons['nlp_system'] = self.nlp_system
             passage.infons['nlp_date_time'] = self.nlp_date_time
             passage.offset = start + offset
@@ -114,14 +114,14 @@ class BioCSectionSplitterRegex(BioCProcessor):
                 if not is_empty(passage):
                     doc.add_passage(passage)
 
-                    ann = bioc.BioCAnnotation()
+                    ann = BioCAnnotation()
                     ann.id = 'S{}'.format(i)
                     ann.text = passage.text
                     ann.infons['section_concept'] = passage.infons['section_concept']
                     ann.infons['type'] = passage.infons['type']
                     ann.infons['nlp_system'] = self.nlp_system
                     ann.infons['nlp_date_time'] = self.nlp_date_time
-                    ann.add_location(bioc.BioCLocation(offset + local_start, local_end - local_start))
+                    ann.add_location(BioCLocation(offset + local_start, local_end - local_start))
                     anns.append(ann)
 
                 local_start = local_end
@@ -135,4 +135,6 @@ class BioCSectionSplitterRegex(BioCProcessor):
             doc.annotations += anns
         return doc
 
+    def process_sentence(self, sentence: BioCSentence, docid: str = None) -> BioCSentence:
+        raise NotImplementedError
 

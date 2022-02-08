@@ -1,9 +1,8 @@
 import logging
 from typing import List, Generator, Tuple
 
-import bioc
 import nltk
-from bioc import BioCPassage
+from bioc import BioCPassage, BioCSentence
 
 from radtext.core import BioCProcessor
 
@@ -74,10 +73,13 @@ class BioCSSplitterNLTK(BioCProcessor):
 
         del passage.sentences[:]
         for text, offset in sentences:
-            sentence = bioc.BioCSentence()
+            sentence = BioCSentence()
             sentence.infons['nlp_system'] = self.nlp_system
             sentence.infons['nlp_date_time'] = self.nlp_date_time
             sentence.offset = offset + passage.offset
             sentence.text = text
             passage.add_sentence(sentence)
         return passage
+
+    def process_sentence(self, sentence: BioCSentence, docid: str = None) -> BioCSentence:
+        raise NotImplementedError

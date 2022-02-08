@@ -12,7 +12,7 @@ import bioc
 import docopt
 import tqdm
 from cmd_utils import process_options
-from radtext.models.parse_bllip import BioCParserBllip
+from radtext.models.bllipparser import BioCParserBllip
 
 
 if __name__ == '__main__':

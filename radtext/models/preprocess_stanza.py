@@ -1,5 +1,4 @@
 import logging
-from datetime import datetime
 
 from bioc import BioCPassage, BioCSentence, BioCAnnotation, BioCRelation, BioCNode, BioCLocation
 
@@ -60,3 +59,6 @@ class BioCStanza(BioCProcessor):
             passage.add_sentence(s)
 
         return passage
+
+    def process_sentence(self, sentence: BioCSentence, docid: str = None) -> BioCSentence:
+        raise NotImplementedError

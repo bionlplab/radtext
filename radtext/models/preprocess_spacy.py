@@ -48,3 +48,6 @@ class BioCSpacy(BioCProcessor):
             passage.add_sentence(s)
 
         return passage
+
+    def process_sentence(self, sentence: BioCSentence, docid: str = None) -> BioCSentence:
+        raise NotImplementedError
