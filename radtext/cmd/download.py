@@ -5,7 +5,8 @@ Usage:
     download stanza
     download ssplit
     download bllip [options]
-    download tree2dep [options]
+    download tree2dep
+    download ner
     download all [options]
 
 Options:
@@ -39,6 +40,8 @@ def main():
     if argv['tree2dep'] or argv['all']:
         import StanfordDependencies
         StanfordDependencies.StanfordDependencies(download_if_missing=True)
+    if argv['ner'] or argv['all']:
+        nltk.download('stopwords')
 
 if __name__ == '__main__':
     main()

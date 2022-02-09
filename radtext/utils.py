@@ -1,4 +1,7 @@
+import logging
 from typing import Tuple
+
+from bioc import BioCPassage
 
 
 def intersect(range1: Tuple[int, int], range2: Tuple[int, int]) -> bool:
@@ -28,3 +31,23 @@ def contains(func, iterable):
         if func(x):
             return True
     return False
+
+
+def is_passage_empty(passage: BioCPassage) -> bool:
+    return len(passage.text) == 0
+
+
+def strip_passage(passage: BioCPassage) -> BioCPassage:
+    start = 0
+    while start < len(passage.text) and passage.text[start].isspace():
+        start += 1
+
+    end = len(passage.text)
+    while end > start and passage.text[end - 1].isspace():
+        end -= 1
+
+    passage.offset += start
+    logging.debug('before: %r' % passage.text)
+    passage.text = passage.text[start:end]
+    logging.debug('after:  %r' % passage.text)
+    return passage

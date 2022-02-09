@@ -35,7 +35,7 @@ class BioC2CDM:
         for doc in tqdm.tqdm(collection.documents):
             nlp_system = None
             section_concept_id = None
-            note_id = doc.id
+            note_id = doc.concept_id
             for passage in tqdm.tqdm(doc.passages, leave=False):
                 if passage.infons != None:
                     if 'title' in passage.infons:

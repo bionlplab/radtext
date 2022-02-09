@@ -6,7 +6,6 @@ Usage:
 
 """
 import bioc
-import docopt
 import pandas as pd
 import tqdm
 import copy
@@ -21,16 +20,13 @@ from radtext.models.pphilter import Philter
 
 # for split_section
 from typing import List, Pattern
-from radtext.models.section_split_regex import BioCSectionSplitterRegex
+from radtext.models.section_split.section_split_regex import BioCSectionSplitterRegex
 
 # for preprocess
-from radtext.core import BioCPipeline
-from radtext.models.tree2dep import BioCPtb2DepConverter
 from radtext.models.preprocess_spacy import BioCSpacy
 
 # for ner
-from typing import Iterable, Tuple
-from radtext.models.ner_regex import NerRegExExtractor, BioCNerRegex
+from radtext.models.ner.ner_regex import NerRegExExtractor, BioCNerRegex
 
 # for neg
 from radtext.models.neg.match_ngrex import NegGrex
@@ -40,9 +36,7 @@ from radtext.models.neg.neg_pipeline import BioCNeg
 
 # for collect_labels
 import collections
-from typing import Dict, Set
-from radtext.models.neg import NEGATION, UNCERTAINTY
-from radtext.models.collect_neg_labels import merge_labels, is_cardiomegaly, find_findings, aggregate, create_prediction
+from radtext.models.collect_neg_labels import merge_labels, aggregate
 
 SECTION_TITLES = [
     "ABDOMEN AND PELVIS:",
@@ -92,7 +86,7 @@ class Pipeline():
 
 	def input2bioc(self):
 		doc = bioc.utils.as_document(self.input_text)
-		doc.id = self.input_id
+		doc.concept_id = self.input_id
 		self.collection.add_document(doc)
 
 	def deid(self):
@@ -100,7 +94,7 @@ class Pipeline():
 		deid = BioCDeidPhilter(philter)
 		for doc in tqdm.tqdm(self.collection.documents):
 			for passage in tqdm.tqdm(doc.passages, leave=False):
-				deid.process_passage(passage, doc.id)
+				deid.process_passage(passage, doc.concept_id)
 
 	def combine_patterns(self, patterns: List[str]) -> Pattern:
 		logger = logging.getLogger(__name__)
@@ -134,7 +128,7 @@ class Pipeline():
 
 		for doc in tqdm.tqdm(self.collection.documents):
 			for passage in tqdm.tqdm(doc.passages, leave=False):
-				processor.process_passage(passage, doc.id)
+				processor.process_passage(passage, doc.concept_id)
 
 	def parse(self):
 		nlp = en_core_web_sm.load()
@@ -160,8 +154,8 @@ class Pipeline():
 
 		for doc in tqdm.tqdm(self.collection.documents):
 			for passage in tqdm.tqdm(doc.passages, leave=False):
-				neg_actor.process_passage(passage, doc.id)
-				cleanup_actor.process_passage(passage, doc.id)
+				neg_actor.process_passage(passage, doc.concept_id)
+				cleanup_actor.process_passage(passage, doc.concept_id)
 
 	def collect_labels(self, phrases_file=COLLECT_PHRASES):
 		with open(phrases_file) as fp:
@@ -174,7 +168,7 @@ class Pipeline():
 			label_dict = aggregate(doc)
 			label_dict = merge_labels(label_dict)
 			findings = {k: v for k, v in label_dict.items() if k in phrases.keys()}
-			findings['docid'] = str(doc.id)
+			findings['docid'] = str(doc.concept_id)
 			rows.append(findings)
 
 		columns = ['docid'] + sorted(phrases.keys())

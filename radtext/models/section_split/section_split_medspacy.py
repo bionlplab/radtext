@@ -2,7 +2,7 @@ import bioc
 from bioc import BioCSentence
 
 from radtext.core import BioCProcessor
-from radtext.models.section_split_regex import strip, is_empty
+from radtext.utils import is_passage_empty, strip_passage
 
 
 class BioCSectionSplitterMedSpacy(BioCProcessor):
@@ -25,7 +25,7 @@ class BioCSectionSplitterMedSpacy(BioCProcessor):
             if title is not None:
                 passage.infons['section_concept'] = title[:-1].strip() if title[-1] == ':' else title.strip()
                 passage.infons['type'] = 'title_1'
-            strip(passage)
+            strip_passage(passage)
             return passage
 
         offset, text = bioc.utils.get_text(doc)
@@ -37,7 +37,7 @@ class BioCSectionSplitterMedSpacy(BioCProcessor):
             if len(title) == 0:
                 continue
             passage = create_passage(text, offset, title.start_char, title.end_char, title.text)
-            if not is_empty(passage):
+            if not is_passage_empty(passage):
                 doc.add_passage(passage)
                 ann = bioc.BioCAnnotation()
                 ann.id = 'S{}'.format(i)
@@ -51,7 +51,7 @@ class BioCSectionSplitterMedSpacy(BioCProcessor):
 
         for body in medspacy_doc._.section_bodies:
             passage = create_passage(text, offset, body.start_char, body.end_char)
-            if not is_empty(passage):
+            if not is_passage_empty(passage):
                 doc.add_passage(passage)
 
         doc.passages = sorted(doc.passages, key=lambda p: p.offset)

@@ -15,7 +15,7 @@ import docopt
 import tqdm
 
 from cmd_utils import process_options
-from radtext.models.section_split_regex import BioCSectionSplitterRegex, SECTION_TITLES, combine_patterns
+from radtext.models.section_split.section_split_regex import BioCSectionSplitterRegex, SECTION_TITLES, combine_patterns
 
 
 def main():

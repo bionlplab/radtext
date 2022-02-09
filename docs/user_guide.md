@@ -112,24 +112,28 @@ The BLLIP parser was trained on the biomedical text.
 $ radext-parse -i /path/to/input.xml -o /path/to/output.xml
 ```
 
+## Named Entity Recognition
 
-### Named Entity Recognition
+This module recognizes the named entities (e.g., disease findings, etc.) from the reports.
 
-This step recognizes the named entities (e.g., disease findings, etc.) from the reports. 
-We provide two NER options that users can choose from, Spacy and rule-based method. 
-RadText detects all the findings and their corresponding UMLS concepts using MetaMap and spaCy. 
+### Rule-based method
 
-Rule-based NER methods use regular expressions that combine information from terminological 
-resources and characteristics of the entities of interest that are manually constructed from report corpus. 
-Run the following command to use rule-based method for NER:
+The rule-based method uses regular expressions that combine information from terminological 
+resources and characteristics of the entities of interest.
+They are manually constructed by domain experts.
 
-```bash
-$ pip install intervaltree
-$ python cmd/ner.py regex --phrases ../resources/cxr14_phrases_v2.yml  -i /path/to/ud_file.xml -o /path/to/ner_file.xml --overwrite
-
+```shell
+$ ner regex --phrase /path/to/patterns.yml -i /path/to/input.xml -o /path/to/output.xml
 ```
 
-Spacy utilizes MetaMap ontology. In general, MetaMap is more comprehensive but at the same time MetaMap can be noisy, while vocabulary is more accurate on the findings of interest. MetaMap is also slower and easier to break down than using vocabulary. All vocabularies can be found in the folder named `resources`. Each file in the folder represents one type of named entities with various text expressions. You can specify your customized patterns via `--phrases_file=<file>`.
+[//]: # (We provide two NER options that users can choose from, Spacy and rule-based method. )
+[//]: # (RadText detects all the findings and their corresponding UMLS concepts using MetaMap and spaCy.)
+[//]: # (Spacy utilizes MetaMap ontology. In general, MetaMap is more comprehensive but at the same time MetaMap
+[//]: # (can be noisy, while vocabulary is more accurate on the findings of interest. 
+[//]: # (MetaMap is also slower and easier to break down than using vocabulary.
+[//]: # (All vocabularies can be found in the folder named `resources`. )
+[//]: # (Each file in the folder represents one type of named entities with various text expressions. )
+[//]: # (You can specify your customized patterns via `--phrases_file=<file>`.&#41;&#41;&#41;)
 
 ### Dependency Parsing
 

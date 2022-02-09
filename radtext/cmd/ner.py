@@ -10,17 +10,19 @@ Options:
     -i FILE
     --phrases FILE
 """
-import sys
-sys.path.append('..')
-from typing import Iterable, Tuple
-
+import logging
+import re
+from pathlib import Path
+from typing import Iterable, Tuple, Pattern
 import bioc
 import docopt
 import tqdm
 import en_core_web_sm
-from cmd_utils import process_options
-from radtext.models.ner_regex import NerRegExExtractor, BioCNerRegex
-from radtext.models.ner_spacy import NerSpacyExtractor, BioCNerSpacy
+import yaml
+
+from radtext.cmd.cmd_utils import process_options
+from radtext.models.ner.ner_regex import NerRegExExtractor, BioCNerRegex, NerRegexPattern
+from radtext.models.ner.ner_spacy import NerSpacyExtractor, BioCNerSpacy
 import pandas as pd
 
 
@@ -56,6 +58,33 @@ def iterparse_RadLex4(pathname) -> Iterable[Tuple[str, str, str]]:
                 yield id, label, t.strip()
 
 
+def load_yml(pathname):
+    def ner_compile(pattern_str: str) -> Pattern:
+        pattern_str = re.sub(' ', r'\\s+', pattern_str)
+        return re.compile(pattern_str, re.I | re.M)
+
+    with open(pathname) as fp:
+        phrases = yaml.load(fp, yaml.FullLoader)
+
+    patterns = []
+    for concept_id, (concept, v) in enumerate(phrases.items()):
+        npattern = NerRegexPattern()
+        npattern.concept_id = str(concept_id)
+        npattern.concept = concept
+
+        if 'include' in v:
+            npattern.include_patterns += [ner_compile(p) for p in v['include']]
+        else:
+            raise ValueError('%s: No patterns' % concept)
+
+        if 'exclude' in v:
+            npattern.exclude_patterns += [ner_compile(p) for p in v['exclude']]
+
+        patterns.append(npattern)
+    logging.debug("%s: Loading %s phrases.", pathname, len(patterns))
+    return patterns
+
+
 if __name__ == '__main__':
     argv = docopt.docopt(__doc__)
     process_options(argv)
@@ -67,8 +96,9 @@ if __name__ == '__main__':
         extractor = NerSpacyExtractor(nlp, data_itr)
         processor = BioCNerSpacy(extractor)
     elif argv['regex']:
-        extractor = NerRegExExtractor(argv['--phrases'])
-        processor = BioCNerRegex(extractor)
+        patterns = load_yml(argv['--phrases'])
+        extractor = NerRegExExtractor(patterns)
+        processor = BioCNerRegex(extractor, name=Path(argv['--phrases']).stem)
     else:
         raise ValueError('No ontology is given')
 
@@ -95,3 +125,5 @@ if __name__ == '__main__':
 
     with open(argv['-o'], 'w') as fp:
         bioc.dump(collection, fp)
+
+

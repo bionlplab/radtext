@@ -31,7 +31,7 @@ def main():
 
     for doc in tqdm.tqdm(collection.documents):
         for passage in tqdm.tqdm(doc.passages, leave=False):
-            splitter.process_passage(passage, doc.id)
+            splitter.process_passage(passage, doc.concept_id)
 
     with open(argv['-o'], 'w') as fp:
         bioc.dump(collection, fp)

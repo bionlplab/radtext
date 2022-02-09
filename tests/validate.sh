@@ -17,3 +17,5 @@ python radtext/cmd/ssplit.py -i tests/examples/ex4.secsplit_medspacy.xml -o outp
 python radtext/cmd/parse.py -i tests/examples/ex4.ssplit.xml -o output/ex4.parse.xml
 # convert constituency tree to dependencies
 python radtext/cmd/tree2dep.py -i tests/examples/ex4.parse.xml -o output/ex4.depparse_billp.xml
+# ner
+python radtext/cmd/ner.py regex --phrase radtext/resources/chexpert_phrases.yml -i tests/examples/ex4.secsplit_medspacy.xml -o output/ex4.ner_regex.xml

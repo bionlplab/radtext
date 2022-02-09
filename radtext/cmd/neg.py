@@ -50,8 +50,8 @@ if __name__ == '__main__':
 
     for doc in tqdm.tqdm(collection.documents):
         for passage in tqdm.tqdm(doc.passages, leave=False):
-            neg_actor.process_passage(passage, doc.id)
-            cleanup_actor.process_passage(passage, doc.id)
+            neg_actor.process_passage(passage, doc.concept_id)
+            cleanup_actor.process_passage(passage, doc.concept_id)
 
     with open(argv['-o'], 'w') as fp:
         bioc.dump(collection, fp)

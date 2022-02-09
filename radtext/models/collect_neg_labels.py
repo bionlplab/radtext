@@ -129,7 +129,7 @@ def create_prediction(source, dest, phrases_file, start_with_findings: bool):
         label_dict = aggregate(doc, start_with_findings)
         label_dict = merge_labels(label_dict)
         findings = {k: v for k, v in label_dict.items() if k in phrases.keys()}
-        findings['docid'] = str(doc.id)
+        findings['docid'] = str(doc.concept_id)
         rows.append(findings)
 
     columns = ['docid'] + sorted(phrases.keys())

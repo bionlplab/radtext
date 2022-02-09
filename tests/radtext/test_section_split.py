@@ -2,7 +2,7 @@ import bioc
 import medspacy
 
 from radtext.models.section_split_medspacy import BioCSectionSplitterMedSpacy
-from radtext.models.section_split_regex import BioCSectionSplitterRegex, combine_patterns
+from radtext.models.section_split.section_split_regex import BioCSectionSplitterRegex
 
 text = """findings: pa and lat cxr at 7:34 p.m.. heart and mediastinum are
 stable. lungs are unchanged. air- filled cystic changes. no
