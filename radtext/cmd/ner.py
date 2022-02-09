@@ -1,6 +1,6 @@
 """
 Usage:
-    ner spacy [options] --radlex FILE -i FILE -o FILE
+    ner radlex [options] --radlex FILE -i FILE -o FILE
     ner regex [options] --phrases FILE -i FILE -o FILE
 
 Options:
@@ -16,46 +16,86 @@ from pathlib import Path
 from typing import Iterable, Tuple, Pattern
 import bioc
 import docopt
+import spacy
 import tqdm
-import en_core_web_sm
 import yaml
+from spacy.matcher import PhraseMatcher
 
 from radtext.cmd.cmd_utils import process_options
 from radtext.models.ner.ner_regex import NerRegExExtractor, BioCNerRegex, NerRegexPattern
-from radtext.models.ner.ner_spacy import NerSpacyExtractor, BioCNerSpacy
+from radtext.models.ner.ner_spacy import NerSpacyExtractor, BioCNerSpacy, NerSpacyPhraseMatchers
 import pandas as pd
 
+# def iterparse_RadLex4(pathname) -> Iterable[Tuple[str, str, str]]:
+#     df = pd.read_excel(pathname, dtype=str)
+#     for i, row in tqdm.tqdm(df.iterrows(), total=len(df)):
+#         if not pd.isna(row['Comment']) and \
+#                 (row['Comment'].lower().startswith('duplicate') or row['Comment'].lower() == 'not needed'):
+#             continue
+#
+#         label = row['Preferred Label']
+#         if label is None or label == '':
+#             continue
+#
+#         id = row['Class ID']
+#         id = get_class_id(id)
+#         yield id, label, label
+#         synonyms = row['Synonyms']
+#         if isinstance(synonyms, str):
+#             for t in synonyms.split('|'):
+#                 yield id, label, t.strip()
 
-def get_class_id(url: str) -> str:
-    """http://www.radlex.org/RID/#RID43314"""
-    if len(url) == 0:
-        return 'ROOT'
-    elif '/#' in url:
-        return url[url.rfind('/') + 2:]
-    elif '/' in url:
-        return url[url.rfind('/') + 1:]
-    else:
-        return url
 
+def load_RadLex4(pathname, nlp, min_term_size: int=2, max_term_size: int=9):
+    def get_class_id(url: str) -> str:
+        """http://www.radlex.org/RID/#RID43314"""
+        if len(url) == 0:
+            return 'ROOT'
+        elif '/#' in url:
+            return url[url.rfind('/') + 2:]
+        elif '/' in url:
+            return url[url.rfind('/') + 1:]
+        else:
+            return url
 
-def iterparse_RadLex4(pathname) -> Iterable[Tuple[str, str, str]]:
-    df = pd.read_excel(pathname, dtype=str)
+    matchers = NerSpacyPhraseMatchers()
+    matchers.include_text_matcher = PhraseMatcher(nlp.vocab, attr='ORTH')
+    matchers.include_lemma_matcher = PhraseMatcher(nlp.vocab, attr='LEMMA')
+
+    df = pd.read_excel(pathname)
     for i, row in tqdm.tqdm(df.iterrows(), total=len(df)):
-        if not pd.isna(row['Comment']) and \
-                (row['Comment'].lower().startswith('duplicate') or row['Comment'].lower() == 'not needed'):
+        if not pd.isna(row['Comment']) \
+                and (row['Comment'].lower().startswith('duplicate') or row['Comment'].lower() == 'not needed'):
             continue
 
-        label = row['Preferred Label']
-        if label is None or label == '':
+        concept = row['Preferred Label']
+        if concept is None or concept == '':
             continue
 
-        id = row['Class ID']
-        id = get_class_id(id)
-        yield id, label, label
+        phrases = [concept]
+
+        concept_id = row['Class ID']
+        concept_id = get_class_id(concept_id)
+        matchers.id2concept[concept_id] = concept
+
         synonyms = row['Synonyms']
         if isinstance(synonyms, str):
-            for t in synonyms.split('|'):
-                yield id, label, t.strip()
+            phrases += [t.strip() for t in synonyms.split('|')]
+
+        docs = []
+        for phrase in phrases:
+            try:
+                doc = nlp(phrase.lower())
+            except:
+                logging.exception('Cannot parse row: %s' % concept_id)
+            else:
+                if min_term_size <= len(doc) <= max_term_size:
+                    docs.append(doc)
+
+        matchers.include_text_matcher.add(concept_id, docs)
+        matchers.include_lemma_matcher.add(concept_id, docs)
+
+    return matchers
 
 
 def load_yml(pathname):
@@ -89,32 +129,17 @@ if __name__ == '__main__':
     argv = docopt.docopt(__doc__)
     process_options(argv)
 
-    nlp = en_core_web_sm.load()
-
-    if argv['spacy']:
-        data_itr = iterparse_RadLex4(argv['--radlex'])
-        extractor = NerSpacyExtractor(nlp, data_itr)
-        processor = BioCNerSpacy(extractor)
+    if argv['radlex']:
+        nlp = spacy.load('en_core_web_sm', exclude=['ner', 'parser', 'tok2vec', 'senter'])
+        matchers = load_RadLex4(argv['--radlex'], nlp)
+        extractor = NerSpacyExtractor(nlp, matchers)
+        processor = BioCNerSpacy(extractor, 'RadLex')
     elif argv['regex']:
         patterns = load_yml(argv['--phrases'])
         extractor = NerRegExExtractor(patterns)
         processor = BioCNerRegex(extractor, name=Path(argv['--phrases']).stem)
     else:
         raise ValueError('No ontology is given')
-
-    # reader = bioc.BioCXMLDocumentReader(argv['-i'])
-    # collection = reader.get_collection_info()
-    #
-    # writer = bioc.BioCXMLDocumentWriter(argv['-o'])
-    # writer.write_collection_info(collection)
-    #
-    # for doc in tqdm.tqdm(reader):
-    #     for passage in tqdm.tqdm(doc.passages, leave=False):
-    #         processor.process_passage(passage, doc.id)
-    #     writer.write_document(doc)
-    #
-    # reader.close()
-    # writer.close()
 
     with open(argv['-i']) as fp:
         collection = bioc.load(fp)

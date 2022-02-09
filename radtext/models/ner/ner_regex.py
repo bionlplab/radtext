@@ -1,11 +1,10 @@
-from typing import Pattern, List, Generator
+from typing import Pattern, List, Generator, Iterable
 
 import bioc
 from bioc import BioCPassage, BioCSentence
 
 from radtext.core import BioCProcessor
-from radtext.models.ner.utils import NERMatch, remove_duplicates, longest_matching
-from radtext.utils import intersect
+from radtext.models.ner.utils import NERMatch, remove_duplicates, longest_matching, remove_excludes
 
 
 class NerRegexPattern:
@@ -35,21 +34,8 @@ class NerRegexPattern:
                 yield nermatch
 
 
-def remove_excludes(includes: List[NERMatch], excludes: List[NERMatch]) -> List[NERMatch]:
-    results = []
-    for mi in includes:
-        overlapped = False
-        for mj in excludes:
-            if intersect((mi.start, mi.end), (mj.start, mj.end)):
-                overlapped = True
-                break
-        if not overlapped:
-            results.append(mi)
-    return results
-
-
 class NerRegExExtractor:
-    def __init__(self, patterns: List[NerRegexPattern]):
+    def __init__(self, patterns: Iterable[NerRegexPattern]):
         self.patterns = patterns
 
     def findall(self, text: str) -> List[NERMatch]:

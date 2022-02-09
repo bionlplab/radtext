@@ -1,4 +1,10 @@
-from typing import List
+from itertools import permutations
+from typing import List, Set
+
+from intervaltree import IntervalTree
+from nltk.corpus import stopwords
+
+from radtext.utils import intersect
 
 
 class NERMatch:
@@ -19,7 +25,7 @@ def remove_duplicates(matches: List[NERMatch]) -> List[NERMatch]:
     return sorted(s.values(), key=lambda m: (m.start, m.end))
 
 
-def longest_matching(matches: List[NERMatch]) -> List[NERMatch]:
+def longest_matching2(matches: List[NERMatch]) -> List[NERMatch]:
     results = []
     for i, mi in enumerate(matches):
         # print(mi.start, mi.end, mi.text)
@@ -36,3 +42,48 @@ def longest_matching(matches: List[NERMatch]) -> List[NERMatch]:
         if not enclosed:
             results.append(mi)
     return results
+
+
+def longest_matching(matches: List[NERMatch]) -> List[NERMatch]:
+    tree = IntervalTree()
+    for m in matches:
+        tree[m.start:m.end] = m
+
+    nodes = list(tree)
+    for n1, n2 in permutations(nodes, 2):
+        if n2.begin <= n1.begin <= n1.end <= n2.end:
+            if n1 in tree:
+                tree.remove(n1)
+
+    results = [v.data for v in sorted(tree)]
+    return results
+
+
+def remove_excludes(includes: List[NERMatch], excludes: List[NERMatch]) -> List[NERMatch]:
+    results = []
+    for mi in includes:
+        overlapped = False
+        for mj in excludes:
+            if intersect((mi.start, mi.end), (mj.start, mj.end)) and mi.concept_id == mj.concept_id:
+                overlapped = True
+                break
+        if not overlapped:
+            results.append(mi)
+    return results
+
+
+def filter_number(matches: List[NERMatch]) -> List[NERMatch]:
+    results = []
+    for m in matches:
+        try:
+            float(m.text)
+        except:
+            results.append(m)
+    return results
+
+
+def filter_stop_words(matches: List[NERMatch], stop_words: Set) -> List[NERMatch]:
+    return [a for a in matches if a.text not in stop_words]
+
+
+STOP_WORDS = set(stopwords.words('english'))
