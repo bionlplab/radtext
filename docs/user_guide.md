@@ -151,7 +151,7 @@ sentence and the dependency relation between words.
 with the `CCProcessed` and `Universal` option. 
 
 ```shell
-$ ptb2ud -i /path/to/input.xml -o /path/to/output.xml
+$ tree2dep -i /path/to/input.xml -o /path/to/output.xml
 ```
 
 ### Negation Detection
