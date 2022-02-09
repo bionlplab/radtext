@@ -15,3 +15,5 @@ python radtext/cmd/preprocess.py stanza -i tests/examples/ex4.secsplit_medspacy.
 python radtext/cmd/ssplit.py -i tests/examples/ex4.secsplit_medspacy.xml -o output/ex4.ssplit.xml
 # parse
 python radtext/cmd/parse.py -i tests/examples/ex4.ssplit.xml -o output/ex4.parse.xml
+# convert constituency tree to dependencies
+python radtext/cmd/tree2dep.py -i tests/examples/ex4.parse.xml -o output/ex4.depparse_billp.xml

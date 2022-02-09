@@ -25,7 +25,7 @@ from radtext.models.section_split_regex import BioCSectionSplitterRegex
 
 # for preprocess
 from radtext.core import BioCPipeline
-from radtext.models.convert_ptb_to_ud import BioCPtb2DepConverter
+from radtext.models.tree2dep import BioCPtb2DepConverter
 from radtext.models.preprocess_spacy import BioCSpacy
 
 # for ner

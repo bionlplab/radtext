@@ -46,7 +46,7 @@ $ pip install dist/path/to/wheel                  # install radtext
 Install system-level dependencies via `apt`
 
 ```shell
-$ sudo apt install install python3 python3-dev build-essential
+$ sudo apt install install python3 python3-dev build-essential default-java
 ```
 
 ### Windows (experimental)

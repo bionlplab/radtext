@@ -35,9 +35,9 @@ def test_parse_doc():
 
     parser = BioCParserBllip()
     s = parser.process_sentence(sentence, '')
-    assert s.infons['parse tree'] == tree
+    assert s.infons['parse_tree'] == tree
 
     # test empty sentence
     sentence = bioc.BioCSentence.of_text('')
     s = parser.process_sentence(sentence, '')
-    assert s.infons['parse tree'] is None
+    assert s.infons['parse_tree'] is None

@@ -65,7 +65,7 @@ class BioCParserBllip(BioCProcessor):
             if not is_punct(text):
                 sentence.infons['nlp_system'] = self.nlp_system
                 sentence.infons['nlp_date_time'] = self.nlp_date_time
-                sentence.infons['parse tree'] = str(self.parser.parse(text))
+                sentence.infons['parse_tree'] = str(self.parser.parse(text))
         except Exception as e:
             logging.exception('%s:%s: Cannot parse sentence: %s. %s', docid, sentence.offset, sentence.text, e)
         return sentence

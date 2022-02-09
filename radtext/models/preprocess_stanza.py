@@ -29,7 +29,7 @@ class BioCStanza(BioCProcessor):
                     ann = BioCAnnotation()
                     ann.id = 'T%s' % i
                     ann.infons['tag'] = word.xpos
-                    ann.infons['note_nlp_concept_id'] = word.lemma
+                    # ann.infons['note_nlp_concept_id'] = word.lemma
                     ann.infons['lemma'] = word.lemma
                     ann.infons['nlp_system'] = self.nlp_system
                     ann.infons['nlp_date_time'] = self.nlp_date_time

@@ -8,6 +8,10 @@ from bioc import BioCSentence
 from radtext.core import BioCProcessor
 
 
+JPYPE = 'jpype'
+SUBPROCESS = 'subprocess'
+
+
 def adapt_value(value: str) -> str:
     """
     Adapt string in PTB
@@ -55,7 +59,8 @@ def convert_dg(dependency_graph, text, offset, ann_index=0, rel_index=0, has_lem
         ann.text = node_form
         ann.infons['tag'] = node.pos
         if has_lemmas:
-            ann.infons['note_nlp_concept_id'] = node.lemma.lower()
+            ann.infons['lemma'] = node.lemma.lower()
+            # ann.infons['note_nlp_concept_id'] = node.lemma.lower()
 
         start = index
 
@@ -104,12 +109,14 @@ class Ptb2DepConverter:
         """
         try:
             import jpype
-            self._backend = 'jpype'
+            self.backend = JPYPE
         except ImportError:
-            self._backend = 'subprocess'
-        self._sd = StanfordDependencies.get_instance(backend=self._backend)
+            self.backend = SUBPROCESS
+
+        self.sd = StanfordDependencies.get_instance(backend=self.backend)
         self.representation = representation
         self.universal = universal
+        self.has_lemma = (self.backend == JPYPE)
 
     def convert(self, parse_tree: str) -> Sentence:
         """
@@ -121,15 +128,18 @@ class Ptb2DepConverter:
         Examples:
             (ROOT (NP (JJ hello) (NN world) (. !)))
         """
-        if self._backend == 'jpype':
-            return self._sd.convert_tree(parse_tree,
-                                         representation=self.representation,
-                                         universal=self.universal,
-                                         add_lemmas=True)
+        if self.backend == JPYPE:
+            return self.sd.convert_tree(parse_tree,
+                                        representation=self.representation,
+                                        universal=self.universal,
+                                        add_lemmas=True)
+        elif self.backend == SUBPROCESS:
+            return self.sd.convert_tree(parse_tree,
+                                        representation=self.representation,
+                                        universal=self.universal)
         else:
-            return self._sd.convert_tree(parse_tree,
-                                         representation=self.representation,
-                                         universal=self.universal)
+            raise ValueError("Unknown backend: %r (known backends: 'subprocess' and 'jpype')" % self.backend)
+
 
 
 class BioCPtb2DepConverter(BioCProcessor):
@@ -141,20 +151,17 @@ class BioCPtb2DepConverter(BioCProcessor):
     def process_sentence(self, sentence: BioCSentence, docid: str = None):
         # check for empty infons, don't process if empty
         # this sometimes happens with poorly tokenized sentences
-        if not sentence.infons:
-            return
-        elif 'parse tree' not in sentence.infons:
-            return
-        elif sentence.infons['parse tree'] is None:
-            return
-        elif sentence.infons['parse tree'] == 'None':
+        if not sentence.infons \
+                or ('parse_tree' not in sentence.infons) \
+                or (sentence.infons['parse_tree'] is None) \
+                or sentence.infons['parse_tree'] == 'None':
             return
 
         try:
-            dependency_graph = self.converter.convert(sentence.infons['parse tree'])
+            dependency_graph = self.converter.convert(sentence.infons['parse_tree'])
             anns, rels = convert_dg(dependency_graph, sentence.text,
                                     sentence.offset,
-                                    has_lemmas=self.converter._backend == 'jpype')
+                                    has_lemmas=self.converter.has_lemma)
             for ann in anns:
                 ann.infons['nlp_system'] = self.nlp_system
                 ann.infons['nlp_date_time'] = self.nlp_date_time
@@ -166,5 +173,7 @@ class BioCPtb2DepConverter(BioCProcessor):
             sentence.relations = rels
         except KeyboardInterrupt:
             raise
-        except:
-            logging.exception("%s:%s: Cannot process sentence %s: %s", docid, sentence.offset, sentence.text)
+        except Exception as e:
+            logging.exception("%s:%s: Cannot process sentence: %s", docid, sentence.offset, sentence.text)
+            print(e)
+        return sentence

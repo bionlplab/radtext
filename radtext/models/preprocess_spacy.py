@@ -24,7 +24,7 @@ class BioCSpacy(BioCProcessor):
                 ann = BioCAnnotation()
                 ann.id = 'T%s' % token.i
                 ann.infons['tag'] = token.tag_
-                ann.infons['note_nlp_concept'] = token.lemma_
+                # ann.infons['note_nlp_concept'] = token.lemma_
                 ann.infons['lemma'] = token.lemma_
                 ann.infons['nlp_system'] = self.nlp_system
                 ann.infons['nlp_date_time'] = self.nlp_date_time
