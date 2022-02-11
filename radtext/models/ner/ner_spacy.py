@@ -26,7 +26,7 @@ class NerSpacyPhraseMatchers:
     def finditer_exclude(self, doc: Doc) -> Generator[NERMatch, None, None]:
         if self.exclude_text_matcher is not None:
             yield from self._finditer(doc, self.exclude_text_matcher)
-        if self.include_lemma_matcher is not None:
+        if self.exclude_lemma_matcher is not None:
             yield from self._finditer(doc, self.exclude_lemma_matcher)
 
     def _finditer(self, doc: Doc, matcher: PhraseMatcher) -> Generator[NERMatch, None, None]:
@@ -35,8 +35,9 @@ class NerSpacyPhraseMatchers:
             nermatch.concept_id = doc.vocab.strings[match_id]
             nermatch.concept = self.id2concept[nermatch.concept_id]
             nermatch.start = doc[start].idx
-            nermatch.end = doc[end].idx + len(doc[end])
+            nermatch.end = doc[end-1].idx + len(doc[end-1])
             nermatch.text = doc[start:end].text
+            print(nermatch)
             yield nermatch
 
 

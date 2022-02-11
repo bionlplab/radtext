@@ -1,0 +1,274 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes'?>
+<collection>
+  <source></source>
+  <date>2022-02-07</date>
+  <key></key>
+  <document>
+    <id>00019248</id>
+    <passage>
+      <infon key="section_concept">findings</infon>
+      <infon key="type">title_1</infon>
+      <offset>0</offset>
+      <text>findings:</text>
+    </passage>
+    <passage>
+      <offset>10</offset>
+      <text>chest: four images:
+right picc with tip within the upper svc.
+probable enlargement of the main pulmonary artery.
+mild cardiomegaly.
+no evidence of focal infiltrate, effusion or pneumothorax.
+dictating</text>
+      <annotation id="a0">
+        <infon key="note_nlp_concept_id">RID1243</infon>
+        <infon key="note_nlp_concept">thorax</infon>
+        <infon key="nlp_system">NER_Spacy:RadLex</infon>
+        <infon key="nlp_date_time">02/11/2022, 01:13:39</infon>
+        <location offset="10" length="5"/>
+        <text>chest</text>
+      </annotation>
+      <annotation id="a20">
+        <infon key="note_nlp_concept_id">RID5825</infon>
+        <infon key="note_nlp_concept">right</infon>
+        <infon key="nlp_system">NER_Spacy:RadLex</infon>
+        <infon key="nlp_date_time">02/11/2022, 01:13:39</infon>
+        <location offset="30" length="5"/>
+        <text>right</text>
+      </annotation>
+      <annotation id="a26">
+        <infon key="note_nlp_concept_id">RID5581</infon>
+        <infon key="note_nlp_concept">peripheral intravenous central catheter</infon>
+        <infon key="nlp_system">NER_Spacy:RadLex</infon>
+        <infon key="nlp_date_time">02/11/2022, 01:13:39</infon>
+        <location offset="36" length="4"/>
+        <text>picc</text>
+      </annotation>
+      <annotation id="a51">
+        <infon key="note_nlp_concept_id">RID46057</infon>
+        <infon key="note_nlp_concept">upper</infon>
+        <infon key="nlp_system">NER_Spacy:RadLex</infon>
+        <infon key="nlp_date_time">02/11/2022, 01:13:39</infon>
+        <location offset="61" length="5"/>
+        <text>upper</text>
+      </annotation>
+      <annotation id="a62">
+        <infon key="note_nlp_concept_id">RID33</infon>
+        <infon key="note_nlp_concept">probably</infon>
+        <infon key="nlp_system">NER_Spacy:RadLex</infon>
+        <infon key="nlp_date_time">02/11/2022, 01:13:39</infon>
+        <location offset="72" length="8"/>
+        <text>probable</text>
+      </annotation>
+      <annotation id="a71">
+        <infon key="note_nlp_concept_id">RID3775</infon>
+        <infon key="note_nlp_concept">enlargement</infon>
+        <infon key="nlp_system">NER_Spacy:RadLex</infon>
+        <infon key="nlp_date_time">02/11/2022, 01:13:39</infon>
+        <location offset="81" length="11"/>
+        <text>enlargement</text>
+      </annotation>
+      <annotation id="a90">
+        <infon key="note_nlp_concept_id">RID975</infon>
+        <infon key="note_nlp_concept">main pulmonary artery</infon>
+        <infon key="nlp_system">NER_Spacy:RadLex</infon>
+        <infon key="nlp_date_time">02/11/2022, 01:13:39</infon>
+        <location offset="100" length="21"/>
+        <text>main pulmonary artery</text>
+      </annotation>
+      <annotation id="a113">
+        <infon key="note_nlp_concept_id">RID5671</infon>
+        <infon key="note_nlp_concept">mild</infon>
+        <infon key="nlp_system">NER_Spacy:RadLex</infon>
+        <infon key="nlp_date_time">02/11/2022, 01:13:39</infon>
+        <location offset="123" length="4"/>
+        <text>mild</text>
+      </annotation>
+      <annotation id="a147">
+        <infon key="note_nlp_concept_id">RID5702</infon>
+        <infon key="note_nlp_concept">focal</infon>
+        <infon key="nlp_system">NER_Spacy:RadLex</infon>
+        <infon key="nlp_date_time">02/11/2022, 01:13:39</infon>
+        <location offset="157" length="5"/>
+        <text>focal</text>
+      </annotation>
+      <annotation id="a153">
+        <infon key="note_nlp_concept_id">RID39317</infon>
+        <infon key="note_nlp_concept">infiltrate</infon>
+        <infon key="nlp_system">NER_Spacy:RadLex</infon>
+        <infon key="nlp_date_time">02/11/2022, 01:13:39</infon>
+        <location offset="163" length="10"/>
+        <text>infiltrate</text>
+      </annotation>
+      <annotation id="a165">
+        <infon key="note_nlp_concept_id">RID4872</infon>
+        <infon key="note_nlp_concept">effusion</infon>
+        <infon key="nlp_system">NER_Spacy:RadLex</infon>
+        <infon key="nlp_date_time">02/11/2022, 01:13:39</infon>
+        <location offset="175" length="8"/>
+        <text>effusion</text>
+      </annotation>
+      <annotation id="a177">
+        <infon key="note_nlp_concept_id">RID5352</infon>
+        <infon key="note_nlp_concept">pneumothorax</infon>
+        <infon key="nlp_system">NER_Spacy:RadLex</infon>
+        <infon key="nlp_date_time">02/11/2022, 01:13:39</infon>
+        <location offset="187" length="12"/>
+        <text>pneumothorax</text>
+      </annotation>
+    </passage>
+    <annotation id="S0">
+      <infon key="section_concept">findings</infon>
+      <infon key="type">title_1</infon>
+      <infon key="nlp_system">medspacy</infon>
+      <infon key="nlp_date_time">02/07/2022, 14:58:52</infon>
+      <location offset="0" length="9"/>
+      <text>findings:</text>
+    </annotation>
+  </document>
+  <document>
+    <id>00000086</id>
+    <passage>
+      <infon key="section_concept">findings</infon>
+      <infon key="type">title_1</infon>
+      <offset>0</offset>
+      <text>findings:</text>
+    </passage>
+    <passage>
+      <offset>10</offset>
+      <text>pa and lat cxr at 7:34 p.m.. heart and mediastinum are
+stable. lungs are unchanged. air- filled cystic changes. no
+pneumothorax. osseous structures unchanged scoliosis</text>
+      <annotation id="a29">
+        <infon key="note_nlp_concept_id">RID1385</infon>
+        <infon key="note_nlp_concept">heart</infon>
+        <infon key="nlp_system">NER_Spacy:RadLex</infon>
+        <infon key="nlp_date_time">02/11/2022, 01:13:39</infon>
+        <location offset="39" length="5"/>
+        <text>heart</text>
+      </annotation>
+      <annotation id="a39">
+        <infon key="note_nlp_concept_id">RID1384</infon>
+        <infon key="note_nlp_concept">mediastinum</infon>
+        <infon key="nlp_system">NER_Spacy:RadLex</infon>
+        <infon key="nlp_date_time">02/11/2022, 01:13:39</infon>
+        <location offset="49" length="11"/>
+        <text>mediastinum</text>
+      </annotation>
+      <annotation id="a55">
+        <infon key="note_nlp_concept_id">RID5734</infon>
+        <infon key="note_nlp_concept">stable</infon>
+        <infon key="nlp_system">NER_Spacy:RadLex</infon>
+        <infon key="nlp_date_time">02/11/2022, 01:13:39</infon>
+        <location offset="65" length="6"/>
+        <text>stable</text>
+      </annotation>
+      <annotation id="a63">
+        <infon key="note_nlp_concept_id">RID13437</infon>
+        <infon key="note_nlp_concept">lungs</infon>
+        <infon key="nlp_system">NER_Spacy:RadLex</infon>
+        <infon key="nlp_date_time">02/11/2022, 01:13:39</infon>
+        <location offset="73" length="5"/>
+        <text>lungs</text>
+      </annotation>
+      <annotation id="a73">
+        <infon key="note_nlp_concept_id">RID39268</infon>
+        <infon key="note_nlp_concept">unchanged</infon>
+        <infon key="nlp_system">NER_Spacy:RadLex</infon>
+        <infon key="nlp_date_time">02/11/2022, 01:13:39</infon>
+        <location offset="83" length="9"/>
+        <text>unchanged</text>
+      </annotation>
+      <annotation id="a96">
+        <infon key="note_nlp_concept_id">RID5739</infon>
+        <infon key="note_nlp_concept">cystic</infon>
+        <infon key="nlp_system">NER_Spacy:RadLex</infon>
+        <infon key="nlp_date_time">02/11/2022, 01:13:39</infon>
+        <location offset="106" length="6"/>
+        <text>cystic</text>
+      </annotation>
+      <annotation id="a115">
+        <infon key="note_nlp_concept_id">RID5352</infon>
+        <infon key="note_nlp_concept">pneumothorax</infon>
+        <infon key="nlp_system">NER_Spacy:RadLex</infon>
+        <infon key="nlp_date_time">02/11/2022, 01:13:39</infon>
+        <location offset="125" length="12"/>
+        <text>pneumothorax</text>
+      </annotation>
+      <annotation id="a129">
+        <infon key="note_nlp_concept_id">RID6336</infon>
+        <infon key="note_nlp_concept">osseous</infon>
+        <infon key="nlp_system">NER_Spacy:RadLex</infon>
+        <infon key="nlp_date_time">02/11/2022, 01:13:39</infon>
+        <location offset="139" length="7"/>
+        <text>osseous</text>
+      </annotation>
+      <annotation id="a148">
+        <infon key="note_nlp_concept_id">RID39268</infon>
+        <infon key="note_nlp_concept">unchanged</infon>
+        <infon key="nlp_system">NER_Spacy:RadLex</infon>
+        <infon key="nlp_date_time">02/11/2022, 01:13:39</infon>
+        <location offset="158" length="9"/>
+        <text>unchanged</text>
+      </annotation>
+      <annotation id="a158">
+        <infon key="note_nlp_concept_id">RID4756</infon>
+        <infon key="note_nlp_concept">scoliosis</infon>
+        <infon key="nlp_system">NER_Spacy:RadLex</infon>
+        <infon key="nlp_date_time">02/11/2022, 01:13:39</infon>
+        <location offset="168" length="9"/>
+        <text>scoliosis</text>
+      </annotation>
+    </passage>
+    <passage>
+      <infon key="section_concept">impression</infon>
+      <infon key="type">title_1</infon>
+      <offset>178</offset>
+      <text>impression:</text>
+      <annotation id="a0">
+        <infon key="note_nlp_concept_id">RID49895</infon>
+        <infon key="note_nlp_concept">impression</infon>
+        <infon key="nlp_system">NER_Spacy:RadLex</infon>
+        <infon key="nlp_date_time">02/11/2022, 01:13:39</infon>
+        <location offset="178" length="10"/>
+        <text>impression</text>
+      </annotation>
+    </passage>
+    <passage>
+      <offset>190</offset>
+      <text>stable chest.
+dictating</text>
+      <annotation id="a0">
+        <infon key="note_nlp_concept_id">RID5734</infon>
+        <infon key="note_nlp_concept">stable</infon>
+        <infon key="nlp_system">NER_Spacy:RadLex</infon>
+        <infon key="nlp_date_time">02/11/2022, 01:13:39</infon>
+        <location offset="190" length="6"/>
+        <text>stable</text>
+      </annotation>
+      <annotation id="a7">
+        <infon key="note_nlp_concept_id">RID1243</infon>
+        <infon key="note_nlp_concept">thorax</infon>
+        <infon key="nlp_system">NER_Spacy:RadLex</infon>
+        <infon key="nlp_date_time">02/11/2022, 01:13:39</infon>
+        <location offset="197" length="5"/>
+        <text>chest</text>
+      </annotation>
+    </passage>
+    <annotation id="S0">
+      <infon key="section_concept">findings</infon>
+      <infon key="type">title_1</infon>
+      <infon key="nlp_system">medspacy</infon>
+      <infon key="nlp_date_time">02/07/2022, 14:58:52</infon>
+      <location offset="0" length="9"/>
+      <text>findings:</text>
+    </annotation>
+    <annotation id="S1">
+      <infon key="section_concept">impression</infon>
+      <infon key="type">title_1</infon>
+      <infon key="nlp_system">medspacy</infon>
+      <infon key="nlp_date_time">02/07/2022, 14:58:52</infon>
+      <location offset="178" length="11"/>
+      <text>impression:</text>
+    </annotation>
+  </document>
+</collection>

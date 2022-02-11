@@ -1,6 +1,6 @@
 """
 Usage:
-    ner radlex [options] --radlex FILE -i FILE -o FILE
+    ner spacy [options] --radlex FILE -i FILE -o FILE
     ner regex [options] --phrases FILE -i FILE -o FILE
 
 Options:
@@ -46,7 +46,7 @@ import pandas as pd
 #                 yield id, label, t.strip()
 
 
-def load_RadLex4(pathname, nlp, min_term_size: int=2, max_term_size: int=9):
+def load_RadLex4(pathname, nlp, min_term_size: int=1, max_term_size: int=9, min_char_size=3, max_char_size=100):
     def get_class_id(url: str) -> str:
         """http://www.radlex.org/RID/#RID43314"""
         if len(url) == 0:
@@ -69,7 +69,7 @@ def load_RadLex4(pathname, nlp, min_term_size: int=2, max_term_size: int=9):
             continue
 
         concept = row['Preferred Label']
-        if concept is None or concept == '':
+        if concept is None or type(concept) is not str or concept == '':
             continue
 
         phrases = [concept]
@@ -84,13 +84,14 @@ def load_RadLex4(pathname, nlp, min_term_size: int=2, max_term_size: int=9):
 
         docs = []
         for phrase in phrases:
-            try:
-                doc = nlp(phrase.lower())
-            except:
-                logging.exception('Cannot parse row: %s' % concept_id)
-            else:
-                if min_term_size <= len(doc) <= max_term_size:
-                    docs.append(doc)
+            if min_char_size <= len(phrase) <= max_char_size:
+                try:
+                    doc = nlp(phrase.lower())
+                except:
+                    logging.exception('Cannot parse row: %s' % concept_id)
+                else:
+                    if min_term_size <= len(doc) <= max_term_size:
+                        docs.append(doc)
 
         matchers.include_text_matcher.add(concept_id, docs)
         matchers.include_lemma_matcher.add(concept_id, docs)
@@ -129,17 +130,18 @@ if __name__ == '__main__':
     argv = docopt.docopt(__doc__)
     process_options(argv)
 
-    if argv['radlex']:
-        nlp = spacy.load('en_core_web_sm', exclude=['ner', 'parser', 'tok2vec', 'senter'])
-        matchers = load_RadLex4(argv['--radlex'], nlp)
-        extractor = NerSpacyExtractor(nlp, matchers)
-        processor = BioCNerSpacy(extractor, 'RadLex')
-    elif argv['regex']:
-        patterns = load_yml(argv['--phrases'])
-        extractor = NerRegExExtractor(patterns)
-        processor = BioCNerRegex(extractor, name=Path(argv['--phrases']).stem)
-    else:
-        raise ValueError('No ontology is given')
+    try:
+        if argv['spacy']:
+            nlp = spacy.load('en_core_web_sm', exclude=['ner', 'parser', 'tok2vec', 'senter'])
+            matchers = load_RadLex4(argv['--radlex'], nlp)
+            extractor = NerSpacyExtractor(nlp, matchers)
+            processor = BioCNerSpacy(extractor, 'RadLex')
+        elif argv['regex']:
+            patterns = load_yml(argv['--phrases'])
+            extractor = NerRegExExtractor(patterns)
+            processor = BioCNerRegex(extractor, name=Path(argv['--phrases']).stem)
+    except KeyError as e:
+        raise e
 
     with open(argv['-i']) as fp:
         collection = bioc.load(fp)
@@ -150,5 +152,3 @@ if __name__ == '__main__':
 
     with open(argv['-o'], 'w') as fp:
         bioc.dump(collection, fp)
-
-

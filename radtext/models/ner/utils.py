@@ -19,6 +19,10 @@ class NERMatch:
         self.concept = None     # type: str | None
         self.text = None        # type: str | None
 
+    def __str__(self):
+        return 'NERMatch[concept_id=%s,start=%s,end=%s,text=%s,pattern=%s,concept=%s]' \
+            % (self.concept_id, self.start, self.end, self.text, self.pattern, self.concept)
+
 
 def remove_duplicates(matches: List[NERMatch]) -> List[NERMatch]:
     s = {(m.start, m.end, m.concept_id): m for m in matches}

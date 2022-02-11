@@ -22,21 +22,22 @@ def main():
     argv = docopt.docopt(__doc__)
     process_options(argv)
 
-    if argv['reg']:
-        if argv['--section-titles']:
-            with open(argv['--section-titles']) as fp:
-                section_titles = [line.strip() for line in fp]
-        else:
-            section_titles = SECTION_TITLES
-        pattern = combine_patterns(section_titles)
-        sec_splitter = BioCSectionSplitterRegex(regex_pattern=pattern)
-    elif argv['medspacy']:
-        import medspacy
-        from radtext.models.section_split_medspacy import BioCSectionSplitterMedSpacy
-        nlp = medspacy.load(enable=["sectionizer"])
-        sec_splitter = BioCSectionSplitterMedSpacy(nlp)
-    else:
-        raise KeyError
+    try:
+        if argv['reg']:
+            if argv['--section-titles']:
+                with open(argv['--section-titles']) as fp:
+                    section_titles = [line.strip() for line in fp]
+            else:
+                section_titles = SECTION_TITLES
+            pattern = combine_patterns(section_titles)
+            sec_splitter = BioCSectionSplitterRegex(regex_pattern=pattern)
+        elif argv['medspacy']:
+            import medspacy
+            from radtext.models.section_split_medspacy import BioCSectionSplitterMedSpacy
+            nlp = medspacy.load(enable=["sectionizer"])
+            sec_splitter = BioCSectionSplitterMedSpacy(nlp)
+    except KeyError as e:
+        raise e
 
     with open(argv['-i']) as fp:
         collection = bioc.load(fp)
