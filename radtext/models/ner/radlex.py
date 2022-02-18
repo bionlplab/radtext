@@ -23,6 +23,18 @@ def get_class_id(url: str) -> str:
         return url
 
 
+def descendants(src, dst, rids: List[str]):
+    radlex = RadLex4(src)
+    G = radlex.get_graph()
+    rows = []
+    for rid in rids:
+        for n in nx.descendants(G, rid):
+            rows.append(G.nodes[n]['item'].row)
+
+    df = pd.DataFrame(rows)
+    df.to_excel(dst, index=False)
+
+
 class RadLexItem:
     def __init__(self):
         self.concept_id = None
@@ -37,26 +49,11 @@ class RadLexItem:
 
 
 class RadLex4:
-    def __init__(self, dataset: Union[pd.DataFrame, str, PathLike]):
-        if type(dataset) is str or type(dataset) is PathLike:
-            self.filename = dataset
-            self.df = pd.read_excel(self.filename)
-        elif type(dataset) is pd.DataFrame:
-            self.filename = None
-            self.df = dataset
+    def __init__(self, filename):
+        self.filename = filename
+        self.df = pd.read_excel(self.filename)
 
-    def descendants(self, rids: List[str]):
-        G = self.get_graph()
-        rows = []
-        for rid in rids:
-            for n in nx.descendants(G, rid):
-                rows.append(G.nodes[n]['item'].row)
-
-        df = pd.DataFrame(rows)
-        return RadLex4(df)
-
-
-    def iterrows(self) -> Tuple[int, Generator[RadLexItem, None, None]]:
+    def iterrows(self, need_synonyms=False, need_parents=False) -> Tuple[int, Generator[RadLexItem, None, None]]:
         for i, row in tqdm.tqdm(self.df.iterrows(), total=len(self.df)):
             if not pd.isna(row['Comment']) \
                     and (row['Comment'].lower().startswith('duplicate') or row['Comment'].lower() == 'not needed'):
@@ -74,21 +71,23 @@ class RadLex4:
             item.preferred_name = concept
             item.synonyms.append(concept)
 
-            synonyms = row['Synonyms']
-            if isinstance(synonyms, str):
-                item.synonyms += [t.strip() for t in synonyms.split('|')]
+            if need_synonyms:
+                synonyms = row['Synonyms']
+                if isinstance(synonyms, str):
+                    item.synonyms += [t.strip() for t in synonyms.split('|')]
 
-            parents = row['Parents']
-            if not pd.isna(parents):
-                for parent in parents.split(';'):
-                    parent_id = get_class_id(parent)
-                    item.parents.append(parent_id)
+            if need_parents:
+                parents = row['Parents']
+                if not pd.isna(parents):
+                    for parent in parents.split(';'):
+                        parent_id = get_class_id(parent)
+                        item.parents.append(parent_id)
 
             yield i, item
 
     def get_graph(self) -> nx.DiGraph:
         G = nx.DiGraph()
-        for i, item in self.iterrows():
+        for i, item in self.iterrows(need_parents=True):
             G.add_node(item.concept_id, item=item)
             for parent_id in item.parents:
                 G.add_edge(parent_id, item.concept_id)
@@ -100,22 +99,34 @@ class RadLex4:
     def get_spacy_matchers(self, nlp, min_term_size: int = 1, max_term_size: int = 9,
                            min_char_size=3, max_char_size=100) -> NerSpacyPhraseMatchers:
         matchers = NerSpacyPhraseMatchers()
-        matchers.include_text_matcher = PhraseMatcher(nlp.vocab, attr='ORTH')
+        matchers.include_text_matcher = PhraseMatcher(nlp.vocab, attr='LOWER')
         matchers.include_lemma_matcher = PhraseMatcher(nlp.vocab, attr='LEMMA')
 
-        for i, item in self.iterrows():
+        # for i, item in self.iterrows(need_synonyms=True):
+        #     matchers.id2concept[item.concept_id] = item.preferred_name
+        #     docs = []
+        #     for phrase in item.synonyms:
+        #         if min_char_size <= len(phrase) <= max_char_size:
+        #             try:
+        #                 doc = nlp(phrase.lower())
+        #             except:
+        #                 logging.exception('Cannot parse row: %s' % item.concept_id)
+        #             else:
+        #                 if min_term_size <= len(doc) <= max_term_size:
+        #                     docs.append(doc)
+        #     matchers.include_text_matcher.add(item.concept_id, docs)
+        #     matchers.include_lemma_matcher.add(item.concept_id, docs)
+
+
+        for i, item in self.iterrows(need_synonyms=True):
             matchers.id2concept[item.concept_id] = item.preferred_name
-            docs = []
-            for phrase in item.synonyms:
-                if min_char_size <= len(phrase) <= max_char_size:
-                    try:
-                        doc = nlp(phrase.lower())
-                    except:
-                        logging.exception('Cannot parse row: %s' % item.concept_id)
-                    else:
-                        if min_term_size <= len(doc) <= max_term_size:
-                            docs.append(doc)
-            matchers.include_text_matcher.add(item.concept_id, docs)
-            matchers.include_lemma_matcher.add(item.concept_id, docs)
+            phrases = [phrase for phrase in item.synonyms if min_char_size <= len(phrase) <= max_char_size]
+            try:
+                docs = nlp.pipe(phrases, batch_size=32, disable=["parser", "ner"])
+                docs = [doc for doc in docs if min_term_size <= len(doc) <= max_term_size]
+                matchers.include_text_matcher.add(item.concept_id, docs)
+                matchers.include_lemma_matcher.add(item.concept_id, docs)
+            except:
+                logging.exception('Cannot parse row: %s' % item.concept_id)
 
         return matchers
