@@ -1,5 +1,7 @@
 import logging
-from typing import Dict, List, Generator, Tuple
+from os import PathLike
+from pathlib import Path
+from typing import Dict, List, Generator, Tuple, Union
 
 import networkx as nx
 import pandas as pd
@@ -35,12 +37,27 @@ class RadLexItem:
 
 
 class RadLex4:
-    def __init__(self, filename):
-        self.filename = filename
+    def __init__(self, dataset: Union[pd.DataFrame, str, PathLike]):
+        if type(dataset) is str or type(dataset) is PathLike:
+            self.filename = dataset
+            self.df = pd.read_excel(self.filename)
+        elif type(dataset) is pd.DataFrame:
+            self.filename = None
+            self.df = dataset
+
+    def descendants(self, rids: List[str]):
+        G = self.get_graph()
+        rows = []
+        for rid in rids:
+            for n in nx.descendants(G, rid):
+                rows.append(G.nodes[n]['item'].row)
+
+        df = pd.DataFrame(rows)
+        return RadLex4(df)
+
 
     def iterrows(self) -> Tuple[int, Generator[RadLexItem, None, None]]:
-        df = pd.read_excel(self.filename)
-        for i, row in tqdm.tqdm(df.iterrows(), total=len(df)):
+        for i, row in tqdm.tqdm(self.df.iterrows(), total=len(self.df)):
             if not pd.isna(row['Comment']) \
                     and (row['Comment'].lower().startswith('duplicate') or row['Comment'].lower() == 'not needed'):
                 continue
