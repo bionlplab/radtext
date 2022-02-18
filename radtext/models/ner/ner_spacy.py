@@ -37,7 +37,7 @@ class NerSpacyPhraseMatchers:
             nermatch.start = doc[start].idx
             nermatch.end = doc[end-1].idx + len(doc[end-1])
             nermatch.text = doc[start:end].text
-            print(nermatch)
+            # print(nermatch)
             yield nermatch
 
 
@@ -110,6 +110,8 @@ class BioCNerSpacy(BioCProcessor):
     def process_passage(self, passage: BioCPassage, docid: str = None) -> BioCPassage:
         anns= self.ner(passage.text, passage.offset)
         passage.annotations += anns
+        for sentence in passage.sentences:
+            self.process_sentence(sentence, docid)
         return passage
 
     def process_sentence(self, sentence: BioCSentence, docid: str = None) -> BioCSentence:
