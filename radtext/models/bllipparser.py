@@ -58,7 +58,7 @@ class BioCParserBllip(BioCProcessor):
         self.nlp_system = 'bllip'
 
     def process_sentence(self, sentence: BioCSentence, docid: str = None) -> BioCSentence:
-        sentence.infons['parse tree'] = None
+        sentence.infons['parse_tree'] = None
         try:
             text = sentence.text
             print(text)

@@ -4,7 +4,7 @@ from spacy.matcher import PhraseMatcher
 from radtext.models.ner.radlex import RadLex4
 from tests import Resource_Dir
 
-phrases_file = Resource_Dir / 'Radlex.xls'
+phrases_file = Resource_Dir / 'Radlex4.1.xlsx'
 radlex = RadLex4(phrases_file)
 
 

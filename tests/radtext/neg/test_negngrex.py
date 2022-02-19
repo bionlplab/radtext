@@ -3,51 +3,53 @@ from typing import Tuple
 import bioc
 import networkx as nx
 
-from radtext.models.neg import NegGrex, semgraph
+from radtext.models.neg import NegGrexPatterns, semgraph
+from radtext.models.neg.constants import NEGATION, UNCERTAINTY
 from radtext.models.tree2dep import BioCPtb2DepConverter
 from tests import Resource_Dir
 
-negation = Resource_Dir / 'patterns/ngrex_negation.yml'
-uncertainty_pre_neg = Resource_Dir / 'patterns/ngrex_uncertainty_pre_negation.yml'
-uncertainty_post_neg = Resource_Dir / 'patterns/ngrex_uncertainty_post_negation.yml'
-double_neg = Resource_Dir / 'patterns/ngrex_double_negation.yml'
+# negation = Resource_Dir / 'patterns/ngrex_negation.yml'
+# uncertainty_pre_neg = Resource_Dir / 'patterns/ngrex_uncertainty_pre_negation.yml'
+# uncertainty_post_neg = Resource_Dir / 'patterns/ngrex_uncertainty_post_negation.yml'
+# double_neg = Resource_Dir / 'patterns/ngrex_double_negation.yml'
 ngrex_patterns = Resource_Dir / 'patterns/ngrex_patterns.yml'
 
-negregex = NegGrex()
+negregex = NegGrexPatterns()
 negregex.load_yml2(ngrex_patterns)
 
 converter = BioCPtb2DepConverter()
 
 
-def _get(text, tree, concept_start, concept_end) -> Tuple[nx.DiGraph, bioc.BioCAnnotation]:
+def _get(text, tree, concept_start, concept_end) -> Tuple[bioc.BioCPassage, bioc.BioCAnnotation]:
     sentence = bioc.BioCSentence.of_text(text, 0)
     sentence.infons['parse_tree'] = tree
     converter.process_sentence(sentence, '0')
 
-    graph = semgraph.load(sentence)
     ann = bioc.BioCAnnotation()
     ann.id = 0
     ann.text = text[concept_start:concept_end]
     ann.add_location(bioc.BioCLocation(concept_start, concept_end))
 
-    return graph, ann
+    passage = bioc.BioCPassage.of_sentences(sentence)
+
+    return passage, ann
 
 
 def test_uncertainty_pre_neg():
-    graph, ann = _get('No new effusion.', '(ROOT (NP (DT No) (JJ new) (NN effusion) (. .)))', 7, 15)
-    negregex.setup(graph, ann)
-    m = negregex.match_uncertainty_pre_neg()
+    passage, ann = _get('No new effusion.', '(ROOT (NP (DT No) (JJ new) (NN effusion) (. .)))', 7, 15)
+    assertion = negregex.assert_(passage, ann, '0')
+    m = assertion.assert_uncertainty_pre_neg()
     assert m
-    assert ann.infons['uncertainty']
+    assert ann.infons[UNCERTAINTY]
     assert 'ngrex_uncertainty_pre_neg_pattern_id' in ann.infons
 
 
 def test_uncertainty_post_neg():
-    graph, ann = _get('Possible effusion.', '(ROOT (NP (JJ Possible) (NN effusion) (. .)))', 9, 17)
-    negregex.setup(graph, ann)
-    m = negregex.match_uncertainty_post_neg()
+    passage, ann = _get('Possible effusion.', '(ROOT (NP (JJ Possible) (NN effusion) (. .)))', 9, 17)
+    assertion = negregex.assert_(passage, ann, '0')
+    m = assertion.assert_uncertainty_post_neg()
     assert m
-    assert ann.infons['uncertainty']
+    assert ann.infons[UNCERTAINTY]
     assert 'ngrex_uncertainty_post_neg_pattern_id' in ann.infons
 
 
@@ -65,10 +67,10 @@ def test_neg():
             (. .)))
     """
     passage, ann = _get('Effusion from the right arm has been removed.', tree, 0, 8)
-    negregex.setup(passage, ann)
-    m = negregex.match_neg()
+    assertion = negregex.assert_(passage, ann, '0')
+    m = assertion.assert_neg()
     assert m
-    assert ann.infons['negation']
+    assert ann.infons[NEGATION]
     assert 'ngrex_neg_pattern_id' in ann.infons
 
 

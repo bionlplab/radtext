@@ -3,7 +3,7 @@ from typing import List
 from bioc import BioCAnnotation, BioCPassage
 
 from radtext.core import BioCProcessor
-from radtext.models.neg.constants import NEGATION, UNCERTAINTY
+from radtext.models.neg.constants import UNCERTAINTY, NEGATION
 
 
 def extend_anns(annotations: List[BioCAnnotation]):
@@ -25,8 +25,9 @@ def extend_anns(annotations: List[BioCAnnotation]):
                     aj.infons[NEGATION] = ai.infons[NEGATION]
                 if UNCERTAINTY in ai.infons:
                     aj.infons[UNCERTAINTY] = ai.infons[UNCERTAINTY]
-                aj.infons['negbio_pattern_id'] = ai.infons['negbio_pattern_id']
-                aj.infons['negbio_pattern_str'] = ai.infons['negbio_pattern_str']
+                for k in ai.infons.keys():
+                    if k in (NEGATION, UNCERTAINTY) or 'pattern_id' in k or 'pattern_str' in k:
+                        aj.infons[k] = ai.infons[k]
 
 
 class NegCleanUp(BioCProcessor):

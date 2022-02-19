@@ -5,7 +5,7 @@ Usage:
 
 Options:
     --overwrite
-    --radlex FILE           RadLex file [default: radtext/resources/Radlex4.1.xlsx]
+    --radlex FILE           The RadLex file [default: radtext/resources/Radlex4.1.xlsx]
     --spacy-model DIR       spaCy traiend model [default: en_core_web_sm]
 
     -o FILE
@@ -15,7 +15,7 @@ Options:
 import logging
 import re
 from pathlib import Path
-from typing import Iterable, Tuple, Pattern
+from typing import Pattern
 import bioc
 import docopt
 import spacy
@@ -57,7 +57,7 @@ def load_yml(pathname):
     return patterns
 
 
-if __name__ == '__main__':
+def main():
     argv = docopt.docopt(__doc__)
     process_options(argv)
 
@@ -86,3 +86,7 @@ if __name__ == '__main__':
 
     with open(argv['-o'], 'w') as fp:
         bioc.dump(collection, fp)
+
+
+if __name__ == '__main__':
+    main()

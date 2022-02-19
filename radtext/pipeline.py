@@ -29,14 +29,14 @@ from radtext.models.preprocess_spacy import BioCSpacy
 from radtext.models.ner.ner_regex import NerRegExExtractor, BioCNerRegex
 
 # for neg
-from radtext.models.neg.match_ngrex import NegGrex
-from radtext.models.neg import NegRegex
+from radtext.models.neg.match_ngrex import NegGrexPatterns
+from radtext.models.neg import NegRegexPatterns
 from radtext.models.neg import NegCleanUp
-from radtext.models.neg.neg_pipeline import BioCNeg
+from radtext.models.neg.neg import BioCNeg
 
 # for collect_labels
 import collections
-from radtext.models.collect_neg_labels import merge_labels, aggregate
+from radtext.models.neg.collect_neg_labels import merge_labels, aggregate
 
 SECTION_TITLES = [
     "ABDOMEN AND PELVIS:",
@@ -138,12 +138,12 @@ class Pipeline():
 			processor.process_document(doc)
 
 	def neg(self):
-		regex_actor = NegRegex(
+		regex_actor = NegRegexPatterns(
 			REGEX_NEGATION,
 			REGEX_UNCERTAINTY_PRE_NEG,
 			REGEX_UNCERTAINTY_POST_NEG,
 			REGEX_DOUBLE_NEG)
-		ngrex_actor = NegGrex(
+		ngrex_actor = NegGrexPatterns(
 			NGREX_NEGATION,
 			NGREX_UNCERTAINTY_PRE_NEG,
 			NGREX_UNCERTAINTY_POST_NEG,

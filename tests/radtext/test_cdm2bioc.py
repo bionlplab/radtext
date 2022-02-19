@@ -6,7 +6,7 @@ import pandas as pd
 
 
 def test_cdm_note_table2bioc():
-    file = Example_Dir / 'note.csv'
+    file = Example_Dir / 'ex2.csv'
     df = pd.read_csv(file, dtype=str)
     collection = cdm_note_table2bioc(df)
     assert len(collection.documents) == 8
@@ -21,7 +21,7 @@ def test_cdm_note_table2bioc():
 
 
 def test_cdm_note_table2bioc2():
-    file = Example_Dir / 'note.csv'
+    file = Example_Dir / 'ex2.csv'
     df = pd.read_csv(file, dtype=str)
 
     df1 = df.drop(['note_text'], axis=1)

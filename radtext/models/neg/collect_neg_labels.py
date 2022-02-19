@@ -19,7 +19,7 @@ import tqdm
 import yaml
 
 # Numeric constants
-from radtext.models.neg import NEGATION, UNCERTAINTY
+from radtext.models.neg.constants import UNCERTAINTY, NEGATION
 
 POSITIVE = 'p'
 NEGATIVE = 'n'

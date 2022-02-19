@@ -7,7 +7,7 @@ from tests import Resource_Dir
 
 
 nlp = spacy.load('en_core_web_sm', exclude=['ner', 'parser', 'senter'])
-phrases_file = Resource_Dir / 'Radlex.xls'
+phrases_file = Resource_Dir / 'Radlex4.1.xlsx'
 radlex = RadLex4(phrases_file)
 matchers = radlex.get_spacy_matchers(nlp)
 extractor = NerSpacyExtractor(nlp, matchers)
