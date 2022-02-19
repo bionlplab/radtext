@@ -15,14 +15,19 @@ jobs:
       - name: Chgeckout repository code
         uses: actions/checkout@v2
 
-      - name: Set up Python ${{ matrix.python-version }}
+      - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: 3.7
+          
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
 
       - name: Install dependencies
         run: |
-          sudo apt-get install python3-dev build-essential default-java
+          sudo apt-get install python3-dev build-essential
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
