@@ -91,13 +91,12 @@ class RadLex4:
             G.add_node(item.concept_id, item=item)
             for parent_id in item.parents:
                 G.add_edge(parent_id, item.concept_id)
-
         print('Read nodes:', G.number_of_nodes())
         print('Read edges:', G.number_of_edges())
         return G
 
     def get_spacy_matchers(self, nlp, min_term_size: int = 1, max_term_size: int = 9,
-                           min_char_size=3, max_char_size=100) -> NerSpacyPhraseMatchers:
+                           min_char_size=3, max_char_size=100, lower=True) -> NerSpacyPhraseMatchers:
         matchers = NerSpacyPhraseMatchers()
         matchers.include_text_matcher = PhraseMatcher(nlp.vocab, attr='LOWER')
         matchers.include_lemma_matcher = PhraseMatcher(nlp.vocab, attr='LEMMA')
@@ -120,7 +119,9 @@ class RadLex4:
 
         for i, item in self.iterrows(need_synonyms=True):
             matchers.id2concept[item.concept_id] = item.preferred_name
-            phrases = [phrase for phrase in item.synonyms if min_char_size <= len(phrase) <= max_char_size]
+            phrases = [phrase.lower() for phrase in item.synonyms if min_char_size <= len(phrase) <= max_char_size]
+            if lower:
+                phrases = [phrase.lower() for phrase in phrases]
             try:
                 docs = nlp.pipe(phrases, batch_size=32, disable=["parser", "ner"])
                 docs = [doc for doc in docs if min_term_size <= len(doc) <= max_term_size]

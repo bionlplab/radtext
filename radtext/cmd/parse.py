@@ -4,7 +4,7 @@ Usage:
 
 Options:
     --overwrite
-    --bllip_model <str>     Bllip parser model path [default: ~/.radtext/bllipparser/BLLIP-GENIA-PubMed]
+    --bllip_model DIR     Bllip parser model path [default: ~/.radtext/bllipparser/BLLIP-GENIA-PubMed]
     -o FILE
     -i FILE
 """

@@ -4,7 +4,7 @@ from typing import Tuple
 from bioc import BioCPassage
 
 
-def intersect(range1: Tuple[int, int], range2: Tuple[int, int]) -> bool:
+def intersect(range1: Tuple[float, float], range2: Tuple[float, float]) -> bool:
     """
     Args:
         range1: [begin, end)

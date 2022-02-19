@@ -6,7 +6,7 @@ Options:
     --overwrite
     -o FILE
     -i FILE
-    --repl <char>    PHI replacement char [default: X]
+    --repl CHAR    PHI replacement char [default: X]
 """
 import bioc
 import docopt

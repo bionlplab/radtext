@@ -5,8 +5,8 @@ Usage:
 
 Options:
     --overwrite
-    --radlex FILE
-    --spacy-model <str>   spaCy traiend model [default: en_core_web_sm]
+    --radlex FILE           RadLex file [default: radtext/resources/Radlex4.1.xlsx]
+    --spacy-model DIR       spaCy traiend model [default: en_core_web_sm]
 
     -o FILE
     -i FILE

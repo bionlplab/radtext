@@ -126,6 +126,12 @@ They are manually constructed by domain experts.
 $ ner regex --phrase /path/to/patterns.yml -i /path/to/input.xml -o /path/to/output.xml
 ```
 
+### SpaCy's PhraseMatcher
+
+```shell
+$ ner spacy --radlex /path/to/Radlex.xls -i /path/to/input.xml -o /path/to/output.xml
+```
+
 [//]: # (We provide two NER options that users can choose from, Spacy and rule-based method. )
 [//]: # (RadText detects all the findings and their corresponding UMLS concepts using MetaMap and spaCy.)
 [//]: # (Spacy utilizes MetaMap ontology. In general, MetaMap is more comprehensive but at the same time MetaMap
