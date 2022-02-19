@@ -6,16 +6,8 @@ from bioc import BioCPassage, BioCSentence
 
 from radtext.core import BioCProcessor
 from radtext.models.neg import semgraph
-from radtext.models.neg.constants import NegResult
 from radtext.models.neg.match_ngrex import NegGrex
 from radtext.models.neg.match_regex import NegRegex
-
-
-def mark_ann(ann, match: NegResult):
-    ann.infons[match.category] = 'True'
-    ann.infons['negbio_pattern_id'] = match.id
-    ann.infons['negbio_pattern_str'] = match.pattern_strs
-    return ann
 
 
 def create_graph(sentence: BioCSentence, docid):
@@ -58,31 +50,25 @@ class BioCNeg(BioCProcessor):
                 continue
             self.ngrex_actor.setup(g, ann)
 
-            matchobj = self.ngrex_actor.match_uncertainty_pre_neg()
-            if matchobj:
-                mark_ann(ann, matchobj)
+            if self.ngrex_actor.match_uncertainty_pre_neg():
                 continue
 
             # double neg
             if self.regex_actor.match_double_neg():
                 continue
+            if self.ngrex_actor.match_double_neg():
+                continue
 
             # neg
             if self.regex_actor.match_neg():
                 continue
-
-            matchobj = self.ngrex_actor.match_neg()
-            if matchobj:
-                mark_ann(ann, matchobj)
+            if self.ngrex_actor.match_neg():
                 continue
 
             # uncertain post neg
             if self.regex_actor.match_uncertainty_post_neg():
                 continue
-
-            matchobj = self.ngrex_actor.match_uncertainty_post_neg()
-            if matchobj:
-                mark_ann(ann, matchobj)
+            if self.ngrex_actor.match_uncertainty_post_neg():
                 continue
 
         return passage

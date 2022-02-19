@@ -30,7 +30,7 @@ def test_uncertainty_pre_neg():
     m = negregex.match_uncertainty_pre_neg()
     assert m
     assert ann.infons['uncertainty']
-    assert 'uncertainty_pre_neg_pattern_id' in ann.infons
+    assert 'regex_uncertainty_pre_neg_pattern_id' in ann.infons
 
 
 def test_uncertainty_post_neg():
@@ -39,7 +39,7 @@ def test_uncertainty_post_neg():
     m = negregex.match_uncertainty_post_neg()
     assert m
     assert ann.infons['uncertainty']
-    assert 'uncertainty_post_neg_pattern_id' in ann.infons
+    assert 'regex_uncertainty_post_neg_pattern_id' in ann.infons
 
 
 def test_neg():
@@ -48,7 +48,7 @@ def test_neg():
     m = negregex.match_neg()
     assert m
     assert ann.infons['negation']
-    assert 'neg_pattern_id' in ann.infons
+    assert 'regex_neg_pattern_id' in ann.infons
 
 
 def test_double_neg():
@@ -57,7 +57,7 @@ def test_double_neg():
     m = negregex.match_double_neg()
     assert m
     assert ann.infons['uncertainty']
-    assert 'double_neg_pattern_id' in ann.infons
+    assert 'regex_double_neg_pattern_id' in ann.infons
 
 
 if __name__ == '__main__':
