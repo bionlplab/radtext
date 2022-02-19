@@ -33,11 +33,11 @@ jobs:
         run: |
           sudo apt-get install python3-dev build-essential
           python -m pip install --upgrade pip
-          python -m spacy download en_core_web_sm
+          pip install -r requirements.txt
 
       - name: Install packages
         run: |
-          pip install en_core_web_sm
+          python -m spacy download en_core_web_sm
           python radtext/cmd/download.py all
 
       - name: Test with pytest and generate coverage report

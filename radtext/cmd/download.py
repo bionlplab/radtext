@@ -3,6 +3,7 @@ Usage:
     download all
     download deid
     download stanza
+    dwonlaod spacy
     download ssplit
     download bllip [options]
     download tree2dep
@@ -12,6 +13,8 @@ Usage:
 Options:
     --bllip-model-dir <dir>     [default: ~/.radtext/bllipparser]
 """
+import subprocess
+import sys
 from pathlib import Path
 
 
@@ -27,6 +30,8 @@ def main():
     if argv['stanza'] or argv['all']:
         import stanza
         stanza.download('en')
+    if argv['spacy'] or argv['all']:
+        subprocess.check_call([sys.executable, '-m', 'spacy', 'download', 'en_core_web_sm'])
     if argv['ssplit'] or argv['all']:
         nltk.download('punkt')
     if argv['bllip'] or argv['all']:
