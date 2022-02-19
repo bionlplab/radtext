@@ -47,9 +47,7 @@ class BioCNeg(BioCProcessor):
             self.regex_actor.setup(passage, ann)
 
             # uncertain pre neg
-            matchobj = self.regex_actor.match_uncertainty_pre_neg()
-            if matchobj:
-                mark_ann(ann, matchobj)
+            if self.regex_actor.match_uncertainty_pre_neg():
                 continue
 
             # graph
@@ -64,20 +62,24 @@ class BioCNeg(BioCProcessor):
             if matchobj:
                 mark_ann(ann, matchobj)
                 continue
-            # neg
-            matchobj = self.regex_actor.match_neg()
-            if matchobj:
-                mark_ann(ann, matchobj)
+
+            # double neg
+            if self.regex_actor.match_double_neg():
                 continue
+
+            # neg
+            if self.regex_actor.match_neg():
+                continue
+
             matchobj = self.ngrex_actor.match_neg()
             if matchobj:
                 mark_ann(ann, matchobj)
                 continue
+
             # uncertain post neg
-            matchobj = self.regex_actor.match_uncertainty_post_neg()
-            if matchobj:
-                mark_ann(ann, matchobj)
+            if self.regex_actor.match_uncertainty_post_neg():
                 continue
+
             matchobj = self.ngrex_actor.match_uncertainty_post_neg()
             if matchobj:
                 mark_ann(ann, matchobj)

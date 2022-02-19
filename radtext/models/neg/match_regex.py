@@ -15,17 +15,17 @@ class NegRegexPattern(NegPattern):
         return re.compile(pattern_str, re.I | re.M)
 
 
-class NegRegexResult(NegResult):
-    def __init__(self, category: str, matcher: Match, pattern: NegRegexPattern, *args):
-        super(NegRegexResult, self).__init__(category, matcher, pattern, *args)
-
-    def get_span(self):
-        start = sys.maxsize
-        end = -1
-        for m in self.matchers:
-            start = min(start, m.start())
-            end = max(end, m.end())
-        return start, end
+# class NegRegexResult(NegResult):
+#     def __init__(self, category: str, matcher: Match, pattern: NegRegexPattern, *args):
+#         super(NegRegexResult, self).__init__(category, matcher, pattern, *args)
+#
+#     def get_span(self):
+#         start = sys.maxsize
+#         end = -1
+#         for m in self.matchers:
+#             start = min(start, m.start())
+#             end = max(end, m.end())
+#         return start, end
 
 
 def load_regex_yml(file, type: str) -> List[NegRegexPattern]:
@@ -43,15 +43,41 @@ def load_regex_yml(file, type: str) -> List[NegRegexPattern]:
 
 
 class NegRegex:
-    def __init__(self, negation_file, uncertainty_pre_neg_file, uncertainty_post_neg_file,
+    def __init__(self):
+        self.negation_patterns = []
+        self.uncertainty_pre_neg_patterns = []
+        self.uncertainty_post_neg_patterns = []
+        self.double_negation_patterns = []
+        # private
+        self._text = None  # type: str or None
+        self._passage = None  # type: BioCPassage or None
+        self._ann = None  # type: BioCAnnotation or None
+
+    def load_yml(self,
+                 negation_file,
+                 uncertainty_pre_neg_file,
+                 uncertainty_post_neg_file,
                  double_neg_file):
         self.negation_patterns = load_regex_yml(negation_file, NEGATION)
         self.uncertainty_pre_neg_patterns = load_regex_yml(uncertainty_pre_neg_file, UNCERTAINTY)
         self.uncertainty_post_neg_patterns = load_regex_yml(uncertainty_post_neg_file, UNCERTAINTY)
         self.double_negation_patterns = load_regex_yml(double_neg_file, UNCERTAINTY)
         # private
-        self._text = None
-        self._passage = None
+        self._text = None  # type: str or None
+        self._passage = None  # type: BioCPassage or None
+        self._ann = None  # type: BioCAnnotation or None
+
+    def load_yml2(self, regex_file):
+        with open(regex_file) as fp:
+            objs = yaml.load(fp, yaml.FullLoader)
+        for obj in objs['negation']:
+            self.negation_patterns.append(NegRegexPattern(obj['id'], NEGATION, obj['pattern']))
+        for obj in objs['uncertainty_pre']:
+            self.uncertainty_pre_neg_patterns.append(NegRegexPattern(obj['id'], UNCERTAINTY, obj['pattern']))
+        for obj in objs['uncertainty_post']:
+            self.uncertainty_post_neg_patterns.append(NegRegexPattern(obj['id'], UNCERTAINTY, obj['pattern']))
+        for obj in objs['double_negation']:
+            self.double_negation_patterns.append(NegRegexPattern(obj['id'], UNCERTAINTY, obj['pattern']))
 
     def setup(self, passage: BioCPassage, ann: BioCAnnotation):
         ann_span = ann.total_span
@@ -59,34 +85,47 @@ class NegRegex:
         end = ann_span.end - passage.offset
         self._passage = passage
         self._text = get_text(passage.text, start, end)
+        self._ann = ann
 
-    def match_neg(self):
+    def match_neg(self) -> bool:
         for p in self.negation_patterns:
             m = p.pattern_obj.search(self._text)
             if m:
-                if 'k0' in p.pattern_obj.groupindex:
-                    k0_end = m.end('k0')
-                    for p2 in self.double_negation_patterns:
-                        text2 = get_text(self._passage.text, m.start('k0'), k0_end)
-                        for m2 in p2.pattern_obj.finditer(text2, 0, k0_end):
-                            if m2.end('f') == k0_end:
-                                return NegRegexResult(UNCERTAINTY, m, p, m2, p2)
-                return NegRegexResult(NEGATION, m, p)
-        return None
+                self._ann.infons[NEGATION] = 'True'
+                self._ann.infons['neg_pattern_id'] = p.id
+                self._ann.infons['neg_pattern_str'] = p.pattern_str
+                return True
+        return False
 
-    def match_uncertainty_pre_neg(self):
+    def match_double_neg(self) -> bool:
+        for p in self.double_negation_patterns:
+            m = p.pattern_obj.search(self._text)
+            if m:
+                self._ann.infons[UNCERTAINTY] = 'True'
+                self._ann.infons['double_neg_pattern_id'] = p.id
+                self._ann.infons['double_neg_pattern_str'] = p.pattern_str
+                return True
+        return False
+
+    def match_uncertainty_pre_neg(self) -> bool:
         for p in self.uncertainty_pre_neg_patterns:
             m = p.pattern_obj.search(self._text)
             if m:
-                return NegRegexResult(UNCERTAINTY, m, p)
-        return None
+                self._ann.infons[UNCERTAINTY] = 'True'
+                self._ann.infons['uncertainty_pre_neg_pattern_id'] = p.id
+                self._ann.infons['uncertainty_pre_neg_pattern_str'] = p.pattern_str
+                return True
+        return False
 
-    def match_uncertainty_post_neg(self):
+    def match_uncertainty_post_neg(self) -> bool:
         for p in self.uncertainty_post_neg_patterns:
             m = p.pattern_obj.search(self._text)
             if m:
-                return NegRegexResult(UNCERTAINTY, m, p)
-        return None
+                self._ann.infons[UNCERTAINTY] = 'True'
+                self._ann.infons['uncertainty_post_neg_pattern_id'] = p.id
+                self._ann.infons['uncertainty_post_neg_pattern_str'] = p.pattern_str
+                return True
+        return False
 
 
 def get_text(text: str, start: int, end: int) -> str:

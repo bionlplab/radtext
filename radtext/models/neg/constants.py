@@ -31,9 +31,9 @@ class NegResult(ABC):
             self.matchers.append(args[i])
             self.patterns.append(args[i+1])
         self.__span = self.get_span()
-        self.__id = '-'.join(str(p.id) for p in self.patterns)
-        self.__pattern_strs = '; '.join(p.pattern_str for p in self.patterns)
-        self.__pattern_cats = '; '.join(p.category for p in self.patterns)
+        self.__id = ';'.join(str(p.id) for p in self.patterns)
+        self.__pattern_strs = ';'.join(p.pattern_str for p in self.patterns)
+        self.__pattern_cats = ';'.join(p.category for p in self.patterns)
 
     def start(self):
         return self.__span[0]

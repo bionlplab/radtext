@@ -31,11 +31,13 @@ from radtext.models.neg.neg_pipeline import BioCNeg
 if __name__ == '__main__':
     argv = docopt.docopt(__doc__)
     process_options(argv)
-    regex_actor = NegRegex(
+    regex_actor = NegRegex()
+    regex_actor.load_yml(
         argv['--regex_negation'],
         argv['--regex_uncertainty_pre_neg'],
         argv['--regex_uncertainty_post_neg'],
-        argv['--regex_double_neg'])
+        argv['--regex_double_neg']
+    )
     ngrex_actor = NegGrex(
         argv['--ngrex_negation'],
         argv['--ngrex_uncertainty_pre_neg'],

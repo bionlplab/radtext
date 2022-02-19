@@ -1,10 +1,11 @@
 import logging
 import sys
-from typing import List
-
+from typing import List, Generator
+import networkx as nx
+import bioc
 import yaml
 
-import radtext.utils
+from radtext.utils import intersect
 from radtext.models.neg import ngrex
 from radtext.models.neg.constants import NEGATION, UNCERTAINTY, NegPattern, NegResult
 from radtext.models.neg.ngrex import NgrexMatch, NgrexPattern
@@ -59,11 +60,11 @@ class NegGrex:
         self.uncertainty_post_neg_patterns = load_ngrex_yml(uncertainty_post_neg_file, UNCERTAINTY)
         self.double_neg_patterns = load_ngrex_yml(double_neg_file, UNCERTAINTY)
         # private
-        self.__graph = None
-        self.__start = None
-        self.__end = None
+        self.__graph = None  # type: nx.DiGraph or None
+        self.__start = None  # type: int or None
+        self.__end = None  # type: int or None
 
-    def setup(self, graph, ann):
+    def setup(self, graph: nx.DiGraph, ann: bioc.BioCAnnotation):
         self.__graph = graph
         self.__start = ann.total_span.offset
         self.__end = ann.total_span.end
@@ -103,7 +104,12 @@ class NegGrex:
         return None
 
 
-def find_nodes(graph, begin, end):
+def find_nodes(graph: nx.DiGraph, begin: int, end: int) -> Generator:
+    """
+    Find the nodes in the graph that are within [begin, end)
+    """
     for node in graph.nodes():
-        if radtext.utils.intersect((begin, end), (graph.nodes[node]['start'], graph.nodes[node]['end'])):
+        node_start = graph.nodes[node]['start']
+        node_end = graph.nodes[node]['end']
+        if intersect((begin, end), (node_start, node_end)):
             yield node

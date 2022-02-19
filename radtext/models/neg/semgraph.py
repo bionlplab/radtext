@@ -25,7 +25,7 @@ def load(sentence: bioc.BioCSentence) -> nx.DiGraph:
     graph = nx.DiGraph()
     for ann in sentence.annotations:
         loc = ann.total_span
-        graph.add_node(ann.id, tag=ann.infons['tag'], text=ann.text, lemma=ann.infons['note_nlp_concept_id'].lower(),
+        graph.add_node(ann.id, tag=ann.infons['tag'], text=ann.text, lemma=ann.infons['lemma'].lower(),
                        start=loc.offset, end=loc.offset + loc.length)
     for rel in sentence.relations:
         dependant = None
