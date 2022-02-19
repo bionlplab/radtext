@@ -49,7 +49,10 @@ def load_ngrex_yml(file, type: str) -> List[NegNgrexPattern]:
 
 
 class NegGrex:
-    def __init__(self, negation_file, uncertainty_pre_neg_file, uncertainty_post_neg_file,
+    def __init__(self,
+                 negation_file,
+                 uncertainty_pre_neg_file,
+                 uncertainty_post_neg_file,
                  double_neg_file):
         self.negation_patterns = load_ngrex_yml(negation_file, NEGATION)
         self.uncertainty_pre_neg_patterns = load_ngrex_yml(uncertainty_pre_neg_file, UNCERTAINTY)

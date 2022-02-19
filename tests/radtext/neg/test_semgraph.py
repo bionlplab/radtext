@@ -1,12 +1,8 @@
 import json
-from pathlib import Path
 
 import bioc
 from bioc import biocjson
-import tests
 from radtext.models.neg import semgraph
-
-__tests_dir = Path(tests.__file__).parent
 
 json_str = r"""
 {

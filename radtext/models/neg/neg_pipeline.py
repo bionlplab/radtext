@@ -35,6 +35,7 @@ def find_sentence(passage: BioCPassage, offset: int) -> Union[BioCSentence, None
 
 class BioCNeg(BioCProcessor):
     def __init__(self, regex_actor: NegRegex, ngrex_actor: NegGrex, verbose=False):
+        super(BioCNeg, self).__init__()
         self.regex_actor = regex_actor
         self.ngrex_actor = ngrex_actor
         self.graph_cache = {}
