@@ -58,9 +58,10 @@ $ radtext-csv2bioc -i /path/to/csv_file.csv -o /path/to/bioc_file.xml
 $ radtext-cdm2bioc -i /path/to/csv_file.csv -o /path/to/bioc_file.xml
 ```
 
-**Note**:
+```{warning}
 If you have lots of reports, it is recommended to put them into several BioC
 files, for example, 5000 reports per BioC file.
+```
 
 ## Running RadText 
 

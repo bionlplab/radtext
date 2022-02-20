@@ -2,7 +2,8 @@ import logging
 import re
 from typing import List, Pattern
 
-from bioc import BioCSentence, BioCPassage, BioCDocument, BioCLocation, BioCAnnotation
+import tqdm
+from bioc import BioCSentence, BioCPassage, BioCDocument, BioCLocation, BioCAnnotation, BioCCollection
 
 from radtext.core import BioCProcessor
 from radtext.utils import is_passage_empty, strip_passage
@@ -48,6 +49,14 @@ class BioCSectionSplitterRegex(BioCProcessor):
         else:
             self.pattern = regex_pattern
         self.nlp_system = 'regex'
+
+    def process_collection(self, collection: BioCCollection) -> BioCCollection:
+        new_docs = []
+        for doc in tqdm.tqdm(collection.documents, desc='Split Section'):
+            new_doc = self.process_document(doc)
+            new_docs.append(new_doc)
+        collection.documents = new_docs
+        return collection
 
     def process_document(self, doc: BioCDocument) -> BioCDocument:
         """

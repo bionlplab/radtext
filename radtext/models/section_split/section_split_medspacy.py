@@ -1,5 +1,8 @@
+import copy
+
 import bioc
-from bioc import BioCSentence
+import tqdm
+from bioc import BioCSentence, BioCCollection, BioCDocument, BioCPassage
 
 from radtext.core import BioCProcessor
 from radtext.utils import is_passage_empty, strip_passage
@@ -11,13 +14,21 @@ class BioCSectionSplitterMedSpacy(BioCProcessor):
         self.nlp = nlp
         self.nlp_system = 'medspacy'
 
-    def process_document(self, doc: bioc.BioCDocument) -> bioc.BioCDocument:
+    def process_collection(self, collection: BioCCollection) -> BioCCollection:
+        new_docs = []
+        for doc in tqdm.tqdm(collection.documents, desc='Split Section'):
+            new_doc = self.process_document(doc)
+            new_docs.append(new_doc)
+        collection.documents = new_docs
+        return collection
+
+    def process_document(self, doc: BioCDocument) -> BioCDocument:
         """
         Split one report into sections. Section splitting is a deterministic
         consequence of section titles.
         """
-        def create_passage(text, offset, start, end, title=None) -> bioc.BioCPassage:
-            passage = bioc.BioCPassage()
+        def create_passage(text, offset, start, end, title=None) -> BioCPassage:
+            passage = BioCPassage()
             passage.infons['nlp_system'] = self.nlp_system
             passage.infons['nlp_date_time'] = self.nlp_date_time
             passage.offset = start + offset

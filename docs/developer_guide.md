@@ -10,10 +10,11 @@ To follow these instructions you will need a Unix/Linux system, or
 (WSL)](https://docs.microsoft.com/en-us/windows/wsl/). Other operating systems
 are not supported.
 
-**Note**:
+```{warning} 
 We do not recommend following this guide to deploy an instance of Read the Docs
 for production usage. Take into account that this setup is only useful for
 developing purposes.
+```
 
 ### Set up your environment
 

@@ -11,42 +11,16 @@ Usage:
     download all [options]
 
 Options:
-    --bllip-model-dir <dir>     [default: ~/.radtext/bllipparser]
+    --bllip-model-dir DIR       [default: ~/.radtext/bllipparser]
+    --spacy-model-name NAME     [default: en_core_web_sm]
 """
-import subprocess
-import sys
-from pathlib import Path
-
-
 import docopt
-import nltk
-from radtext import MODELS
+from radtext.models.download import download
 
 
 def main():
     argv = docopt.docopt(__doc__)
-    if argv['deid'] or argv['all']:
-        nltk.download('averaged_perceptron_tagger')
-    if argv['stanza'] or argv['all']:
-        import stanza
-        stanza.download('en')
-    if argv['spacy'] or argv['all']:
-        subprocess.check_call([sys.executable, '-m', 'spacy', 'download', 'en_core_web_sm'])
-    if argv['ssplit'] or argv['all']:
-        nltk.download('punkt')
-    if argv['bllip'] or argv['all']:
-        from bllipparser import ModelFetcher
-        model_dir = Path(argv['--bllip-model-dir'])
-        if not model_dir.exists():
-            model_dir.mkdir(parents=True)
-
-        print("downloading GENIA+PubMed model ... [%s]" % model_dir)
-        ModelFetcher.download_and_install_model(MODELS['BLLIP-GENIA-PubMed'], str(model_dir))
-    if argv['tree2dep'] or argv['all']:
-        import StanfordDependencies
-        StanfordDependencies.StanfordDependencies(download_if_missing=True)
-    if argv['ner'] or argv['all']:
-        nltk.download('stopwords')
+    download(argv)
 
 if __name__ == '__main__':
     main()

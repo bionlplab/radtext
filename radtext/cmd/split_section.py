@@ -44,14 +44,10 @@ def main():
     with open(argv['-i']) as fp:
         collection = bioc.load(fp)
 
-    new_collection = bioc.BioCCollection()
-    new_collection.infons = copy.deepcopy(collection.infons)
-    for doc in tqdm.tqdm(collection.documents):
-        new_doc = sec_splitter.process_document(doc)
-        new_collection.add_document(new_doc)
+    sec_splitter.process_collection(collection)
 
     with open(argv['-o'], 'w') as fp:
-        bioc.dump(new_collection, fp)
+        bioc.dump(collection, fp)
 
 
 if __name__ == '__main__':

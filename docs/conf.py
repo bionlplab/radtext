@@ -31,7 +31,7 @@
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['recommonmark']
+extensions = ['myst_parser']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -39,7 +39,10 @@ templates_path = ['_templates']
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
 #
-source_suffix = ['.rst', '.md']
+source_suffix = {
+    '.rst': 'restructuredtext',
+    '.md': 'markdown',
+}
 
 # The master toctree document.
 master_doc = 'index'
@@ -126,8 +129,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'radtext.tex', 'radtext Documentation',
-     'Yifan Peng', 'manual'),
+    (master_doc, 'radtext.tex', 'RadText Documentation',
+     'BioNLP@WCM', 'manual'),
 ]
 
 
@@ -136,7 +139,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'radtext', 'radtext Documentation',
+    (master_doc, 'radtext', 'RadText Documentation',
      [author], 1)
 ]
 
@@ -147,8 +150,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'radtext', 'radtext Documentation',
-     author, 'radtext', 'One line description of project.',
+    (master_doc, 'radtext', 'RadText Documentation',
+     author, 'radtext', 'RadText is a high-performance radiology report text analysis system.',
      'Miscellaneous'),
 ]
 
