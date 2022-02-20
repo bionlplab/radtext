@@ -2,11 +2,18 @@
 
 <img src="https://github.com/yfpeng/radtext/blob/master/radtext.png?raw=true" alt="RadText" width="700"/>
 
+[![Build
+status](https://github.com/bionlplab/radtext/actions/workflows/pytest.yml/badge.svg)](https://github.com/bionlplab/radtext/)
+[![Latest version on
+PyPI](https://img.shields.io/pypi/v/radtext.svg)](https://pypi.python.org/pypi/radtext)
+[![Downloads](https://img.shields.io/pypi/dm/radtext.svg)](https://pypi.python.org/pypi/radtext)
+[![License](https://img.shields.io/pypi/l/radtext.svg)](https://opensource.org/licenses/MIT)
+
 RadText is a high-performance Python Radiology Text Analysis System.
 
 ## Prerequisites
 
-1. Python >= 3.6
+1. Python >= 3.6, <3.9
 2. Linux
 3. Java
 
