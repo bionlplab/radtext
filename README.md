@@ -8,6 +8,7 @@ status](https://github.com/bionlplab/radtext/actions/workflows/pytest.yml/badge.
 PyPI](https://img.shields.io/pypi/v/radtext.svg)](https://pypi.python.org/pypi/radtext)
 [![Downloads](https://img.shields.io/pypi/dm/radtext.svg)](https://pypi.python.org/pypi/radtext)
 [![License](https://img.shields.io/pypi/l/radtext.svg)](https://opensource.org/licenses/MIT)
+[![codecov](https://codecov.io/gh/bionlplab/radtext/branch/after_paper/graph/badge.svg?token=m4mJ9fD88s)](https://codecov.io/gh/bionlplab/radtext)
 
 RadText is a high-performance Python Radiology Text Analysis System.
 
