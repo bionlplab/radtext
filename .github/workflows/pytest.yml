@@ -10,7 +10,7 @@ jobs:
     strategy:
 #      max-parallel: 4
       matrix:
-        python-version: [3.7, 3.9]
+        python-version: [3.7]
     env:
       PYTHONPATH: .
     steps:
@@ -20,7 +20,7 @@ jobs:
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: '3.7'
           architecture: 'x64'
           
       - name: Set up Java
