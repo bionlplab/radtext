@@ -14,6 +14,7 @@ custom installation.
 .. toctree::
    :caption: User Guide:
    :maxdepth: 5
+   
    install
    getting_started
    user_guide
@@ -21,6 +22,7 @@ custom installation.
 .. toctree::
    :caption: Development
    :maxdepth: 5
+   
    developer_guide
    tests
    contribute
