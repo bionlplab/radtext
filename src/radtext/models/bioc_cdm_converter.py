@@ -74,7 +74,7 @@ def convert_bioc_to_note_nlp(collection: bioc.BioCCollection) -> pd.DataFrame:
     for doc in tqdm.tqdm(collection.documents):
         note_id = doc.id
         section_concept = None
-        for passage in tqdm.tqdm(doc.passages, leave=False):
+        for passage in tqdm.tqdm(doc.passages, disable=True):
             if 'section_concept' in passage.infons:
                 section_concept = passage.infons['section_concept']
             for ann in passage.annotations:

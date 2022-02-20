@@ -1,4 +1,4 @@
 from pathlib import Path
 
-Example_Dir = Path(__file__).parent / 'examples/'
-Resource_Dir = Path(__file__).parent / '../radtext/resources/'
+Resource_Dir = Path(__file__).parent / '../src/radtext/resources/'
+Example_Dir = Path(__file__).parent / '../src/radtext/examples/'
