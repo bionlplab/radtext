@@ -12,12 +12,14 @@ development, or taking the open source RadText codebase for your own
 custom installation.
 
 .. toctree::
-   :caption: User Guide:
+   :caption: User Guide
    :maxdepth: 1
    
    install
    getting_started
    user_guide
+   acknowledgments
+   reference
 
 .. toctree::
    :caption: Development
@@ -27,5 +29,4 @@ custom installation.
    tests
    contribute
    code_of_conduct
-   acknowledgments
-   reference
+

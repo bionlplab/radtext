@@ -10,9 +10,8 @@ To follow these instructions you will need a Unix/Linux system, or
 (WSL)](https://docs.microsoft.com/en-us/windows/wsl/). Other operating systems
 are not supported.
 
-> **Note**
-> 
-> We do not recommend following this guide to deploy an instance of Read the Docs
+**Note**:
+We do not recommend following this guide to deploy an instance of Read the Docs
 for production usage. Take into account that this setup is only useful for
 developing purposes.
 
@@ -54,14 +53,21 @@ radtext is actively developed on [GitHub repository](https://github.com/bionlpla
 The other way to install radtext is to clone its GitHub repository.
 
 ```shell
-$ python -m pip install -U pip setuptools wheel   # install/update build tools
-$ git clone https://github.com/bionlplab/radtext  # clone spaCy
-$ cd radtext                                      # navigate into dir
-$ python -m venv radtext_env                      # create environment in .env
-$ source radtext_env/bin/activate                 # activate virtual env
-$ pip install -r requirements.txt                 # install requirements
-$ python -m build                                 # build the package
-$ pip install dist/path/to/wheel                  # install radtext
+# Checkout repository
+$ git clone https://github.com/bionlplab/radtext.git
+$ cd radtext
+
+# Set up Python environment
+$ python -m venv venv
+$ source venv/bin/activate
+
+# Install dependencies
+$ python -m pip install --upgrade pip
+$ pip install -r requirements.txt
+
+# Install packages
+$ python -m spacy download en_core_web_sm
+$ python radtext/cmd/download.py all
 ```
 
 ## Create this documentation

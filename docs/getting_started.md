@@ -1,70 +1,87 @@
 # Quickstart
 
-Now that you have properly installed RadText, let's walk you through how to get
-started with RadText to analyze your radiology reports!
+This section runs through the API for common tasks to analyze the radiology
+reports.
 
-
-## Preparing the dataset
+## Working with data
     
 RadText uses [BioC](http://bioc.sourceforge.net/) format as the unified interface. 
-
-Briefly, a BioC-format file is an XML document as the basis of the BioC data exchange and the BioC data classes, which can meet the needs of our NLP tasks. Each file contains a group of documents. Each document should have a unique id and one or more passages. Each passage should have (1) a non-overlapping offset that specifies the location of the passage with respect to the whole document, and (2) the original text of the passage. 
-
-The text can contains special characters such as newlines. An example of BioC-format .XML file is shown here:
+BioC is a simple format to share text data and annotations. It allows a large
+number of different annotations to be represented.
+The BioC data model is capable of representing a broad range of data elements
+from a collection of documents through passages, sentences, down to annotations
+on individual tokens and relations between them. Thus it is suitable for
+reflecting information at different levels and is appropriate for a wide range
+of common tasks.
    
 ```xml
 <?xml version='1.0' encoding='utf-8' standalone='yes'?>
 <collection>
-  <source>ChestXray-NIHCC</source>
-  <date>2017-05-31</date>
-  <key></key>
+  <source>SOURCE</source>
+  <date>DATE</date>
+  <key>KEY</key>
   <document>
     <id>0001</id>
     <passage>
       <offset>0</offset>
-      <text>findings:
-chest: four images:
-right picc with tip within the upper svc.
-probable enlargement of the main pulmonary artery.
-mild cardiomegaly.
-no evidence of focal infiltrate, effusion or pneumothorax.
-dictating </text>
+      <text>FINDINGS:...</text>
     </passage>
+    <passage>
+      <offset>120</offset>
+      <text>IMPRESSION:...</text>
+    </passage>  
   </document>
   <document>
     <id>0002</id>
     <passage>
       <offset>0</offset>
-      <text>findings: pa and lat cxr at 7:34 p.m.. heart and mediastinum are
-stable. lungs are unchanged. air- filled cystic changes. no
-pneumothorax. osseous structures unchanged scoliosis
-impression: stable chest.
-dictating </text>
+      <text>FINDINGS:...</text>
+    </passage>
+    <passage>
+      <offset>170</offset>
+      <text>IMPRESSION:...</text>
     </passage>
   </document>
 </collection>
 ```
 
-You can store your input reports in a .csv file (by default, column 'ID' stores the report ids, and column 'TEXT' stores the reports), and then use the following command to convert your .csv file into BioC format. 
+RadText also offers a tool to convert from [OMOP CDM NOTE
+table](https://www.ohdsi.org/web/wiki/doku.php?id=documentation:cdm:note) (in
+the csv format) to the BioC collection. By default, column 'note_id' stores
+the report ids, and column 'note_text' stores the reports
 
-```bash
-$ python cmd/csv2bioc.py -i /path/to/csv_file.csv -o /path/to/bioc_file.xml
+```shell
+# Convert from csv to BioC
+$ radtext-csv2bioc -i /path/to/csv_file.csv -o /path/to/bioc_file.xml
+
+# Convert from NOTE table to BioC
+$ radtext-cdm2bioc -i /path/to/csv_file.csv -o /path/to/bioc_file.xml
 ```
 
-If you have lots of reports, it is recommended to put them into several BioC files, for example, 5000 reports per BioC file. 
+**Note**:
+If you have lots of reports, it is recommended to put them into several BioC
+files, for example, 5000 reports per BioC file.
 
 ## Running RadText 
 
-You can configure the input file names in `run_pipeline.sh`. Then use the following command to run RadText's pipeline:
+You can configure the input file names in `run_pipeline.sh`. Then use the
+following command to run RadText's pipeline:
 
 ```bash
 $ bash run_pipeline.sh
 ```
 
-After the script is finished, you can find the labels at `./Results/output.csv`. Each row is related to one report, and has multiple findings, such as Atelectasis and Cardiomegaly. In this file, 1 means positive findings, 0 means negative findings, and -1 means uncertain findings. The definition of findings can be found at `./resources/cxr14_phrases_v2.yml`. 
+After the script is finished, you can find the labels at `output/output.csv`.
+Each row is related to one report, and has multiple findings, such as
+Atelectasis and Cardiomegaly. In this file, 1 means positive findings, 0 means
+negative findings, and -1 means uncertain findings. The definition of findings
+can be found at `./resources/cxr14_phrases_v2.yml`.
 
-Besides the final label file, 6 intermediate files of each step, respectively. For example, the the `parse.xml` file consists of the parse tree of each sentence. The content and format of these files should be self-explained.
+The pipeline will also generate 6 intermediate files.
+For example, the the `parse.xml` file consists of the parse tree of each
+sentence. The content and format of these files should be self-explained.
 
 -----
 
-Ready for more? Check out the `Advanced Usage` section.
+Read more about [Advanced
+Usage](https://radtext.readthedocs.io/en/latest/user_guide.html).
