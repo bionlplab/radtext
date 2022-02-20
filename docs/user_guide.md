@@ -4,7 +4,8 @@ This document covers some more advanced features of RadText.
 
 ## Running the pipeline step-by-step
 
-The step-by-step pipeline generates all intermediate results. Users can easily rerun any step if it makes any errors. The system pipeline looks like:
+The step-by-step pipeline generates all intermediate results. Users can easily
+rerun any step if it makes any errors. The system pipeline looks like:
 
 1. `csv2bioc` transforms the .csv text file into a BioC XML file.
 2. `deid` de-identifies all the reports using [Philter](https://github.com/BCHSI/philter-ucsf), hides protected health information (PHI) such as Name, Contact, Age, etc.
@@ -141,7 +142,7 @@ $ ner spacy --radlex /path/to/Radlex.xls -i /path/to/input.xml -o /path/to/outpu
 [//]: # (Each file in the folder represents one type of named entities with various text expressions. )
 [//]: # (You can specify your customized patterns via `--phrases_file=<file>`.&#41;&#41;&#41;)
 
-### Dependency Parsing
+## Dependency Parsing
 
 Dependency Parsing is the process to analyze the grammatical structure in a sentence and find out related words 
 as well as the type of the relationship between them.
@@ -164,7 +165,7 @@ with the `CCProcessed` and `Universal` option.
 $ tree2dep -i /path/to/input.xml -o /path/to/output.xml
 ```
 
-### Negation Detection
+## Negation Detection
 
 For negation detection, RadText employs [NegBio](https://github.com/bionlplab/negbio2), which utilizes universal dependencies for pattern definition and subgraph matching for graph traversal search so that the scope for negation/uncertainty is not limited to the fixed word distance.
 
@@ -172,7 +173,7 @@ For negation detection, RadText employs [NegBio](https://github.com/bionlplab/ne
 $ python cmd/neg.py -i /path/to/parse_file.xml -o /path/to/neg_file.xml --overwrite
 ```
 
-### Labels Collection
+## Labels Collection
 
 The final step merges all the labels and produces the output .csv file.
 
