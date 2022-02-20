@@ -1,6 +1,6 @@
 """
 Usage:
-    split_section reg [options] -i FILE -o FILE
+    split_section regex [options] -i FILE -o FILE
     split_section medspacy [options] -i FILE -o FILE
 
 Options:
@@ -23,7 +23,7 @@ def main():
     process_options(argv)
 
     try:
-        if argv['reg']:
+        if argv['regex']:
             if argv['--section-titles']:
                 with open(argv['--section-titles']) as fp:
                     section_titles = [line.strip() for line in fp]
@@ -33,9 +33,11 @@ def main():
             sec_splitter = BioCSectionSplitterRegex(regex_pattern=pattern)
         elif argv['medspacy']:
             import medspacy
-            from radtext.models.section_split_medspacy import BioCSectionSplitterMedSpacy
+            from radtext.models.section_split.section_split_medspacy import BioCSectionSplitterMedSpacy
             nlp = medspacy.load(enable=["sectionizer"])
             sec_splitter = BioCSectionSplitterMedSpacy(nlp)
+        else:
+            raise KeyError
     except KeyError as e:
         raise e
 

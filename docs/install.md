@@ -5,13 +5,7 @@ The latest radtext releases are available over
 [pypi](https://pypi.python.org/pypi/radtext).
 
 Using pip, RadText releases are available as source packages and binary wheels.
-
-```shell
-$ pip install -U pip setuptools wheel
-$ pip install -U radtext
-```
-
-When using pip it is generally recommended installing packages in a virtual
+It is also generally recommended installing packages in a virtual
 environment to avoid modifying system state:
 
 ```shell
@@ -19,4 +13,6 @@ $ python -m venv venv
 $ source venv/bin/activate
 $ pip install -U pip setuptools wheel
 $ pip install -U radtext
+$ python -m spacy download en_core_web_sm
+$ python radtext/cmd/download.py all
 ```

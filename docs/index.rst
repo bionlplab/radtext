@@ -18,6 +18,7 @@ custom installation.
    install
    getting_started
    user_guide
+   api
    acknowledgments
    reference
 

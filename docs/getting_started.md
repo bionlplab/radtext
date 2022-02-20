@@ -1,6 +1,6 @@
 # Quickstart
 
-This section runs through the API for common tasks to analyze the radiology
+This section runs through a pipeline for common tasks to analyze the radiology
 reports.
 
 ## Working with data
@@ -47,8 +47,8 @@ of common tasks.
 
 RadText also offers a tool to convert from [OMOP CDM NOTE
 table](https://www.ohdsi.org/web/wiki/doku.php?id=documentation:cdm:note) (in
-the csv format) to the BioC collection. By default, column 'note_id' stores
-the report ids, and column 'note_text' stores the reports
+the CSV format) to the BioC collection. By default, column 'note_id' stores
+the report ids, and column 'note_text' stores the reports.
 
 ```shell
 # Convert from csv to BioC
@@ -78,7 +78,7 @@ negative findings, and -1 means uncertain findings. The definition of findings
 can be found at `./resources/cxr14_phrases_v2.yml`.
 
 The pipeline will also generate 6 intermediate files.
-For example, the the `parse.xml` file consists of the parse tree of each
+For example, the `parse.xml` file consists of the parse tree of each
 sentence. The content and format of these files should be self-explained.
 
 -----
