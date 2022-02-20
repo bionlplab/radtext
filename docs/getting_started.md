@@ -1,6 +1,7 @@
 # Quickstart
 
-Now that you have properly installed RadText, let's walk you through how to get started with RadText to analyze your radiology reports!
+Now that you have properly installed RadText, let's walk you through how to get
+started with RadText to analyze your radiology reports!
 
 
 ## Preparing the dataset

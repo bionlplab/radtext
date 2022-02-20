@@ -9,6 +9,7 @@ PyPI](https://img.shields.io/pypi/v/radtext.svg)](https://pypi.python.org/pypi/r
 [![Downloads](https://img.shields.io/pypi/dm/radtext.svg)](https://pypi.python.org/pypi/radtext)
 [![License](https://img.shields.io/pypi/l/radtext.svg)](https://opensource.org/licenses/MIT)
 [![codecov](https://codecov.io/gh/bionlplab/radtext/branch/after_paper/graph/badge.svg?token=m4mJ9fD88s)](https://codecov.io/gh/bionlplab/radtext)
+[![Documentation Status](https://readthedocs.org/projects/radtext/badge/?version=latest)](https://radtext.readthedocs.io/en/latest/?badge=latest)
 
 ## Purpose
 
@@ -62,3 +63,11 @@ page](https://radtext.readthedocs.io/en/latest/contributing.html).
 This work is supported by the National Library of Medicine under Award No.
 4R00LM013001 and the NIH Intramural Research Program, National Library of
 Medicine.
+
+You can find Acknowledgment information at our [Acknowledgment
+page](https://radtext.readthedocs.io/en/latest/acknowledgments.html).
+
+## License
+
+[MIT](https://github.com/bionlplab/radtext/blob/master/LICENSE) © 2022 BioNLP
+Lab at Weill Cornell Medicine

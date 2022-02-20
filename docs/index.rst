@@ -7,35 +7,23 @@ RadText documentation
 
 **RadText** is a high-performance radiology report text analysis system.
 
-Highlight Features
-------------------
-
-* Patterns on both universal dependency graph and regular expressions
-* Creating user patterns
-* Transparency
-* Multiprocessing
-
-RadText officially supports Python>=3.6.
-
-These instructions will get you a copy of the project up and run on your local machine for development and testing purposes. The package should successfully install on Linux (and possibly macOS).
+Documentation for running your own local version of RadText for
+development, or taking the open source RadText codebase for your own
+custom installation.
 
 .. toctree::
+   :caption: User Guide:
    :maxdepth: 5
-   :caption: The User Guide:
-
-   installation
+   install
    getting_started
    user_guide
+
+.. toctree::
+   :caption: Development
+   :maxdepth: 5
    developer_guide
-   license
-   contributing
+   tests
+   contribute
+   code_of_conduct
    acknowledgments
    reference
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
