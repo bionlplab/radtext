@@ -1,12 +1,26 @@
+from typing import Dict
+
 import bioc
-import docopt
 import pandas as pd
 import tqdm
-import json
+from radtext.models.neg.constants import NEGATION, UNCERTAINTY
 
-NOTE_NLP_TABLE_HEADERS = ["note_id", "note_nlp_id", "offset", "lexical_variant", "note_nlp_concept_id", "nlp_date", \
-                      "section_concept_id", "note_nlp_source_concept_id", "nlp_system", "term_exists", "term_temporal",
-                      "term_modifiers"]
+
+NOTE_NLP_TABLE_HEADERS = [
+    "note_nlp_id",
+    "note_id",
+    "section_concept_id",
+    "offset",
+    "lexical_variant",
+    "note_nlp_concept_id",
+    "note_nlp_source_concept_id",
+    "nlp_system",
+    "nlp_date",
+    "nlp_date_time",
+    "term_exists",
+    "term_temporal",
+    "term_modifiers"
+]
 
 NOTE_TABLE_HEADERS = [
     "note_id",
@@ -26,58 +40,64 @@ NOTE_TABLE_HEADERS = [
 ]
 
 
-class BioC2CDM:
-    def convert(self, collection):
-        nlp_date = collection.date
+def convert_ann_to_row(ann: bioc.BioCAnnotation) -> Dict:
+    row = {
+        "note_nlp_id": ann.id,
+        "offset": ann.total_span.offset,
+        "lexical_variant": ann.text
+    }
+    exists = None
+    if NEGATION in ann.infons and ann.infons[NEGATION]:
+        exists = 'Negation=True'
+    if UNCERTAINTY in ann.infons and ann.infons[UNCERTAINTY]:
+        exists = 'Uncertain=True'
+    if exists is not None:
+        row['term_exists'] = exists
+    if 'lemma' in ann.infons:
+        row['note_nlp_concept_id'] = ann.infons['lemma']
+    if 'section_concept' in ann.infons:
+        row['section_concept_id'] = ann.infons['section_concept']
 
-        cdm_df = pd.DataFrame(columns=NOTE_NLP_TABLE_HEADERS)
-
-        for doc in tqdm.tqdm(collection.documents):
-            nlp_system = None
-            section_concept_id = None
-            note_id = doc.concept_id
-            for passage in tqdm.tqdm(doc.passages, leave=False):
-                if passage.infons != None:
-                    if 'title' in passage.infons:
-                        section_concept_id = passage.infons['title']
-
-                for ann in passage.annotations:
-                    note_nlp_id, offset, lexical_variant, note_nlp_concept_id, \
-                    term_exists, term_temporal, term_modifiers = None, None, None, None, None, None, None
-
-                    note_nlp_id = None
-                    for location in ann.locations:
-                        if location.offset != None:
-                            offset = location.offset
-                    lexical_variant = ann.text
-                    if 'preferred_name' in ann.infons:
-                        note_nlp_concept_id = ann.infons['preferred_name']
-                    if 'concept_id' in ann.infons:
-                        note_nlp_source_concept_id = ann.infons['concept_id']
-                    if 'negation' in ann.infons:
-                        term_exists = ann.infons['negation']
-                    if 'temporal' in ann.infons:
-                        term_temporal = ann.infons['temporal']
-                    if 'modifiers' in ann.infons:
-                        term_modifiers = ann.infons['modifiers']
-
-                    cdm_df = cdm_df.append({"note_id": note_id, \
-                                            "note_nlp_id": note_nlp_id, \
-                                            "offset": offset, \
-                                            "lexical_variant": lexical_variant, \
-                                            "note_nlp_concept_id": note_nlp_concept_id, \
-                                            "nlp_date": nlp_date, \
-                                            "section_concept_id": section_concept_id, \
-                                            "note_nlp_source_concept_id": note_nlp_source_concept_id, \
-                                            "nlp_system": nlp_system, \
-                                            "term_exists": term_exists, \
-                                            "term_temporal": term_temporal, \
-                                            "term_modifiers": term_modifiers}, ignore_index=True)
-
-        return cdm_df
+    new_row = {}
+    for k in NOTE_NLP_TABLE_HEADERS:
+        if k in row:
+            new_row[k] = row[k]
+        elif k in ann.infons:
+            new_row[k] = ann.infons[k]
+        else:
+            new_row[k] = None
+    return new_row
 
 
-def cdm_note_table2bioc(df: pd.DataFrame) -> bioc.BioCCollection:
+def convert_bioc_to_note_nlp(collection: bioc.BioCCollection) -> pd.DataFrame:
+    rows = []
+    for doc in tqdm.tqdm(collection.documents):
+        note_id = doc.id
+        section_concept = None
+        for passage in tqdm.tqdm(doc.passages, leave=False):
+            if 'section_concept' in passage.infons:
+                section_concept = passage.infons['section_concept']
+            for ann in passage.annotations:
+                row = convert_ann_to_row(ann)
+                row['section_concept_id'] = section_concept
+                row['note_id'] = note_id
+                rows.append(row)
+            for sentence in passage.sentences:
+                for ann in sentence.annotations:
+                    row = convert_ann_to_row(ann)
+                    row['section_concept_id'] = section_concept
+                    row['note_id'] = note_id
+                    rows.append(row)
+        for ann in doc.annotations:
+            row = convert_ann_to_row(ann)
+            row['note_id'] = note_id
+            rows.append(row)
+    df = pd.DataFrame(rows)
+    # df = df[NOTE_NLP_TABLE_HEADERS]
+    return df
+
+
+def convert_note_nlp_table_to_bioc(df: pd.DataFrame) -> bioc.BioCCollection:
     """
     Convert from CDM NOTE table to bioc collection.
     https://www.ohdsi.org/web/wiki/doku.php?id=documentation:cdm:note
@@ -91,4 +111,3 @@ def cdm_note_table2bioc(df: pd.DataFrame) -> bioc.BioCCollection:
             if col not in ('note_id', 'note_text') and col in df.columns:
                 doc.infons[col] = str(row[col])
     return collection
-

@@ -8,28 +8,20 @@ Options:
     -i FILE
     -o FILE
 """
-import sys
-sys.path.append('..')
-
 import bioc
 import docopt
-import pandas as pd 
-import tqdm
-import json
 
-from radtext.models.bioc_cdm_converter import BioC2CDM
+from radtext.models.bioc_cdm_converter import convert_bioc_to_note_nlp
+
+
+def main():
+	argv = docopt.docopt(__doc__)
+	with open(argv['-i']) as fp:
+		collection = bioc.load(fp)
+	df = convert_bioc_to_note_nlp(collection)
+	df.to_csv(argv['-o'])
 
 
 if __name__ == '__main__':
-	argv = docopt.docopt(__doc__)
-
-	with open(argv['-i']) as fp:
-		collection = bioc.load(fp)
-
-	# initialize the BioC2CDM converter
-	bioc2cdm = BioC2CDM()
-	# convert
-	cdm_df = bioc2cdm.convert(collection)
-
-	cdm_df.to_csv(argv['-o'])
+	main()
 			

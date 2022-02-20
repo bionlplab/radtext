@@ -19,7 +19,6 @@
         <annotation id="T0">
           <infon key="tag">NNS</infon>
           <infon key="lemma">finding</infon>
-          <infon key="note_nlp_concept_id">finding</infon>
           <infon key="ROOT">True</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
@@ -29,7 +28,6 @@
         <annotation id="T1">
           <infon key="tag">:</infon>
           <infon key="lemma">:</infon>
-          <infon key="note_nlp_concept_id">:</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="8" length="1"/>
@@ -62,7 +60,6 @@ right picc with tip within the upper svc.</text>
         <annotation id="T0">
           <infon key="tag">NN</infon>
           <infon key="lemma">chest</infon>
-          <infon key="note_nlp_concept_id">chest</infon>
           <infon key="ROOT">True</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
@@ -72,7 +69,6 @@ right picc with tip within the upper svc.</text>
         <annotation id="T1">
           <infon key="tag">:</infon>
           <infon key="lemma">:</infon>
-          <infon key="note_nlp_concept_id">:</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="15" length="1"/>
@@ -81,7 +77,6 @@ right picc with tip within the upper svc.</text>
         <annotation id="T2">
           <infon key="tag">CD</infon>
           <infon key="lemma">four</infon>
-          <infon key="note_nlp_concept_id">four</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="17" length="4"/>
@@ -90,7 +85,6 @@ right picc with tip within the upper svc.</text>
         <annotation id="T3">
           <infon key="tag">NNS</infon>
           <infon key="lemma">image</infon>
-          <infon key="note_nlp_concept_id">image</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="22" length="6"/>
@@ -99,7 +93,6 @@ right picc with tip within the upper svc.</text>
         <annotation id="T4">
           <infon key="tag">:</infon>
           <infon key="lemma">:</infon>
-          <infon key="note_nlp_concept_id">:</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="28" length="1"/>
@@ -108,7 +101,6 @@ right picc with tip within the upper svc.</text>
         <annotation id="T5">
           <infon key="tag">JJ</infon>
           <infon key="lemma">right</infon>
-          <infon key="note_nlp_concept_id">right</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="30" length="5"/>
@@ -117,7 +109,6 @@ right picc with tip within the upper svc.</text>
         <annotation id="T6">
           <infon key="tag">NN</infon>
           <infon key="lemma">picc</infon>
-          <infon key="note_nlp_concept_id">picc</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="36" length="4"/>
@@ -126,7 +117,6 @@ right picc with tip within the upper svc.</text>
         <annotation id="T7">
           <infon key="tag">IN</infon>
           <infon key="lemma">with</infon>
-          <infon key="note_nlp_concept_id">with</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="41" length="4"/>
@@ -135,7 +125,6 @@ right picc with tip within the upper svc.</text>
         <annotation id="T8">
           <infon key="tag">NN</infon>
           <infon key="lemma">tip</infon>
-          <infon key="note_nlp_concept_id">tip</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="46" length="3"/>
@@ -144,7 +133,6 @@ right picc with tip within the upper svc.</text>
         <annotation id="T9">
           <infon key="tag">IN</infon>
           <infon key="lemma">within</infon>
-          <infon key="note_nlp_concept_id">within</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="50" length="6"/>
@@ -153,7 +141,6 @@ right picc with tip within the upper svc.</text>
         <annotation id="T10">
           <infon key="tag">DT</infon>
           <infon key="lemma">the</infon>
-          <infon key="note_nlp_concept_id">the</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="57" length="3"/>
@@ -162,7 +149,6 @@ right picc with tip within the upper svc.</text>
         <annotation id="T11">
           <infon key="tag">JJ</infon>
           <infon key="lemma">upper</infon>
-          <infon key="note_nlp_concept_id">upper</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="61" length="5"/>
@@ -171,7 +157,6 @@ right picc with tip within the upper svc.</text>
         <annotation id="T12">
           <infon key="tag">NN</infon>
           <infon key="lemma">svc</infon>
-          <infon key="note_nlp_concept_id">svc</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="67" length="3"/>
@@ -180,7 +165,6 @@ right picc with tip within the upper svc.</text>
         <annotation id="T13">
           <infon key="tag">.</infon>
           <infon key="lemma">.</infon>
-          <infon key="note_nlp_concept_id">.</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="70" length="1"/>
@@ -287,7 +271,6 @@ right picc with tip within the upper svc.</text>
         <annotation id="T0">
           <infon key="tag">JJ</infon>
           <infon key="lemma">probable</infon>
-          <infon key="note_nlp_concept_id">probable</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="72" length="8"/>
@@ -296,7 +279,6 @@ right picc with tip within the upper svc.</text>
         <annotation id="T1">
           <infon key="tag">NN</infon>
           <infon key="lemma">enlargement</infon>
-          <infon key="note_nlp_concept_id">enlargement</infon>
           <infon key="ROOT">True</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
@@ -306,7 +288,6 @@ right picc with tip within the upper svc.</text>
         <annotation id="T2">
           <infon key="tag">IN</infon>
           <infon key="lemma">of</infon>
-          <infon key="note_nlp_concept_id">of</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="93" length="2"/>
@@ -315,7 +296,6 @@ right picc with tip within the upper svc.</text>
         <annotation id="T3">
           <infon key="tag">DT</infon>
           <infon key="lemma">the</infon>
-          <infon key="note_nlp_concept_id">the</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="96" length="3"/>
@@ -324,7 +304,6 @@ right picc with tip within the upper svc.</text>
         <annotation id="T4">
           <infon key="tag">JJ</infon>
           <infon key="lemma">main</infon>
-          <infon key="note_nlp_concept_id">main</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="100" length="4"/>
@@ -333,7 +312,6 @@ right picc with tip within the upper svc.</text>
         <annotation id="T5">
           <infon key="tag">JJ</infon>
           <infon key="lemma">pulmonary</infon>
-          <infon key="note_nlp_concept_id">pulmonary</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="105" length="9"/>
@@ -342,7 +320,6 @@ right picc with tip within the upper svc.</text>
         <annotation id="T6">
           <infon key="tag">NN</infon>
           <infon key="lemma">artery</infon>
-          <infon key="note_nlp_concept_id">artery</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="115" length="6"/>
@@ -351,7 +328,6 @@ right picc with tip within the upper svc.</text>
         <annotation id="T7">
           <infon key="tag">.</infon>
           <infon key="lemma">.</infon>
-          <infon key="note_nlp_concept_id">.</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="121" length="1"/>
@@ -416,7 +392,6 @@ right picc with tip within the upper svc.</text>
         <annotation id="T0">
           <infon key="tag">JJ</infon>
           <infon key="lemma">mild</infon>
-          <infon key="note_nlp_concept_id">mild</infon>
           <infon key="ROOT">True</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
@@ -426,7 +401,6 @@ right picc with tip within the upper svc.</text>
         <annotation id="T1">
           <infon key="tag">RB</infon>
           <infon key="lemma">cardiomegaly</infon>
-          <infon key="note_nlp_concept_id">cardiomegaly</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="128" length="12"/>
@@ -435,7 +409,6 @@ right picc with tip within the upper svc.</text>
         <annotation id="T2">
           <infon key="tag">.</infon>
           <infon key="lemma">.</infon>
-          <infon key="note_nlp_concept_id">.</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="140" length="1"/>
@@ -465,7 +438,6 @@ right picc with tip within the upper svc.</text>
         <annotation id="T0">
           <infon key="tag">DT</infon>
           <infon key="lemma">no</infon>
-          <infon key="note_nlp_concept_id">no</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="142" length="2"/>
@@ -474,7 +446,6 @@ right picc with tip within the upper svc.</text>
         <annotation id="T1">
           <infon key="tag">NN</infon>
           <infon key="lemma">evidence</infon>
-          <infon key="note_nlp_concept_id">evidence</infon>
           <infon key="ROOT">True</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
@@ -484,7 +455,6 @@ right picc with tip within the upper svc.</text>
         <annotation id="T2">
           <infon key="tag">IN</infon>
           <infon key="lemma">of</infon>
-          <infon key="note_nlp_concept_id">of</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="154" length="2"/>
@@ -493,7 +463,6 @@ right picc with tip within the upper svc.</text>
         <annotation id="T3">
           <infon key="tag">JJ</infon>
           <infon key="lemma">focal</infon>
-          <infon key="note_nlp_concept_id">focal</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="157" length="5"/>
@@ -502,7 +471,6 @@ right picc with tip within the upper svc.</text>
         <annotation id="T4">
           <infon key="tag">NN</infon>
           <infon key="lemma">infiltrate</infon>
-          <infon key="note_nlp_concept_id">infiltrate</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="163" length="10"/>
@@ -511,7 +479,6 @@ right picc with tip within the upper svc.</text>
         <annotation id="T5">
           <infon key="tag">,</infon>
           <infon key="lemma">,</infon>
-          <infon key="note_nlp_concept_id">,</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="173" length="1"/>
@@ -520,7 +487,6 @@ right picc with tip within the upper svc.</text>
         <annotation id="T6">
           <infon key="tag">NN</infon>
           <infon key="lemma">effusion</infon>
-          <infon key="note_nlp_concept_id">effusion</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="175" length="8"/>
@@ -529,7 +495,6 @@ right picc with tip within the upper svc.</text>
         <annotation id="T7">
           <infon key="tag">CC</infon>
           <infon key="lemma">or</infon>
-          <infon key="note_nlp_concept_id">or</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="184" length="2"/>
@@ -538,7 +503,6 @@ right picc with tip within the upper svc.</text>
         <annotation id="T8">
           <infon key="tag">NN</infon>
           <infon key="lemma">pneumothorax</infon>
-          <infon key="note_nlp_concept_id">pneumothorax</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="187" length="12"/>
@@ -547,7 +511,6 @@ right picc with tip within the upper svc.</text>
         <annotation id="T9">
           <infon key="tag">.</infon>
           <infon key="lemma">.</infon>
-          <infon key="note_nlp_concept_id">.</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="199" length="1"/>
@@ -640,7 +603,6 @@ right picc with tip within the upper svc.</text>
         <annotation id="T0">
           <infon key="tag">VBG</infon>
           <infon key="lemma">dictate</infon>
-          <infon key="note_nlp_concept_id">dictate</infon>
           <infon key="ROOT">True</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
@@ -674,7 +636,6 @@ right picc with tip within the upper svc.</text>
         <annotation id="T0">
           <infon key="tag">NNS</infon>
           <infon key="lemma">finding</infon>
-          <infon key="note_nlp_concept_id">finding</infon>
           <infon key="ROOT">True</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
@@ -684,7 +645,6 @@ right picc with tip within the upper svc.</text>
         <annotation id="T1">
           <infon key="tag">:</infon>
           <infon key="lemma">:</infon>
-          <infon key="note_nlp_concept_id">:</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="8" length="1"/>
@@ -714,7 +674,6 @@ stable.</text>
         <annotation id="T0">
           <infon key="tag">NN</infon>
           <infon key="lemma">pa</infon>
-          <infon key="note_nlp_concept_id">pa</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="10" length="2"/>
@@ -723,7 +682,6 @@ stable.</text>
         <annotation id="T1">
           <infon key="tag">CC</infon>
           <infon key="lemma">and</infon>
-          <infon key="note_nlp_concept_id">and</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="13" length="3"/>
@@ -732,7 +690,6 @@ stable.</text>
         <annotation id="T2">
           <infon key="tag">NN</infon>
           <infon key="lemma">lat</infon>
-          <infon key="note_nlp_concept_id">lat</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="17" length="3"/>
@@ -741,7 +698,6 @@ stable.</text>
         <annotation id="T3">
           <infon key="tag">NN</infon>
           <infon key="lemma">cxr</infon>
-          <infon key="note_nlp_concept_id">cxr</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="21" length="3"/>
@@ -750,7 +706,6 @@ stable.</text>
         <annotation id="T4">
           <infon key="tag">IN</infon>
           <infon key="lemma">at</infon>
-          <infon key="note_nlp_concept_id">at</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="25" length="2"/>
@@ -759,7 +714,6 @@ stable.</text>
         <annotation id="T5">
           <infon key="tag">CD</infon>
           <infon key="lemma">7:34</infon>
-          <infon key="note_nlp_concept_id">7:34</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="28" length="4"/>
@@ -768,7 +722,6 @@ stable.</text>
         <annotation id="T6">
           <infon key="tag">NN</infon>
           <infon key="lemma">p.m.</infon>
-          <infon key="note_nlp_concept_id">p.m.</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="33" length="4"/>
@@ -777,7 +730,6 @@ stable.</text>
         <annotation id="T7">
           <infon key="tag">.</infon>
           <infon key="lemma">.</infon>
-          <infon key="note_nlp_concept_id">.</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="37" length="1"/>
@@ -786,7 +738,6 @@ stable.</text>
         <annotation id="T8">
           <infon key="tag">NN</infon>
           <infon key="lemma">heart</infon>
-          <infon key="note_nlp_concept_id">heart</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="39" length="5"/>
@@ -795,7 +746,6 @@ stable.</text>
         <annotation id="T9">
           <infon key="tag">CC</infon>
           <infon key="lemma">and</infon>
-          <infon key="note_nlp_concept_id">and</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="45" length="3"/>
@@ -804,7 +754,6 @@ stable.</text>
         <annotation id="T10">
           <infon key="tag">NN</infon>
           <infon key="lemma">mediastinum</infon>
-          <infon key="note_nlp_concept_id">mediastinum</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="49" length="11"/>
@@ -813,7 +762,6 @@ stable.</text>
         <annotation id="T11">
           <infon key="tag">VBP</infon>
           <infon key="lemma">be</infon>
-          <infon key="note_nlp_concept_id">be</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="61" length="3"/>
@@ -822,7 +770,6 @@ stable.</text>
         <annotation id="T12">
           <infon key="tag">JJ</infon>
           <infon key="lemma">stable</infon>
-          <infon key="note_nlp_concept_id">stable</infon>
           <infon key="ROOT">True</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
@@ -832,7 +779,6 @@ stable.</text>
         <annotation id="T13">
           <infon key="tag">.</infon>
           <infon key="lemma">.</infon>
-          <infon key="note_nlp_concept_id">.</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="71" length="1"/>
@@ -953,7 +899,6 @@ stable.</text>
         <annotation id="T0">
           <infon key="tag">NNS</infon>
           <infon key="lemma">lung</infon>
-          <infon key="note_nlp_concept_id">lung</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="73" length="5"/>
@@ -962,7 +907,6 @@ stable.</text>
         <annotation id="T1">
           <infon key="tag">VBP</infon>
           <infon key="lemma">be</infon>
-          <infon key="note_nlp_concept_id">be</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="79" length="3"/>
@@ -971,7 +915,6 @@ stable.</text>
         <annotation id="T2">
           <infon key="tag">JJ</infon>
           <infon key="lemma">unchanged</infon>
-          <infon key="note_nlp_concept_id">unchanged</infon>
           <infon key="ROOT">True</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
@@ -981,7 +924,6 @@ stable.</text>
         <annotation id="T3">
           <infon key="tag">.</infon>
           <infon key="lemma">.</infon>
-          <infon key="note_nlp_concept_id">.</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="92" length="1"/>
@@ -1018,7 +960,6 @@ stable.</text>
         <annotation id="T0">
           <infon key="tag">NN</infon>
           <infon key="lemma">air-_nn</infon>
-          <infon key="note_nlp_concept_id">air-_nn</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="94" length="4"/>
@@ -1027,7 +968,6 @@ stable.</text>
         <annotation id="T1">
           <infon key="tag">VBD</infon>
           <infon key="lemma">fill</infon>
-          <infon key="note_nlp_concept_id">fill</infon>
           <infon key="ROOT">True</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
@@ -1037,7 +977,6 @@ stable.</text>
         <annotation id="T2">
           <infon key="tag">JJ</infon>
           <infon key="lemma">cystic</infon>
-          <infon key="note_nlp_concept_id">cystic</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="106" length="6"/>
@@ -1046,7 +985,6 @@ stable.</text>
         <annotation id="T3">
           <infon key="tag">NNS</infon>
           <infon key="lemma">change</infon>
-          <infon key="note_nlp_concept_id">change</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="113" length="7"/>
@@ -1055,7 +993,6 @@ stable.</text>
         <annotation id="T4">
           <infon key="tag">.</infon>
           <infon key="lemma">.</infon>
-          <infon key="note_nlp_concept_id">.</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="120" length="1"/>
@@ -1100,7 +1037,6 @@ pneumothorax.</text>
         <annotation id="T0">
           <infon key="tag">DT</infon>
           <infon key="lemma">no</infon>
-          <infon key="note_nlp_concept_id">no</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="122" length="2"/>
@@ -1109,7 +1045,6 @@ pneumothorax.</text>
         <annotation id="T1">
           <infon key="tag">NN</infon>
           <infon key="lemma">pneumothorax</infon>
-          <infon key="note_nlp_concept_id">pneumothorax</infon>
           <infon key="ROOT">True</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
@@ -1119,7 +1054,6 @@ pneumothorax.</text>
         <annotation id="T2">
           <infon key="tag">.</infon>
           <infon key="lemma">.</infon>
-          <infon key="note_nlp_concept_id">.</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="137" length="1"/>
@@ -1149,7 +1083,6 @@ pneumothorax.</text>
         <annotation id="T0">
           <infon key="tag">JJ</infon>
           <infon key="lemma">osseous</infon>
-          <infon key="note_nlp_concept_id">osseous</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="139" length="7"/>
@@ -1158,7 +1091,6 @@ pneumothorax.</text>
         <annotation id="T1">
           <infon key="tag">NNS</infon>
           <infon key="lemma">structure</infon>
-          <infon key="note_nlp_concept_id">structure</infon>
           <infon key="ROOT">True</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
@@ -1168,7 +1100,6 @@ pneumothorax.</text>
         <annotation id="T2">
           <infon key="tag">JJ</infon>
           <infon key="lemma">unchanged</infon>
-          <infon key="note_nlp_concept_id">unchanged</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="158" length="9"/>
@@ -1177,7 +1108,6 @@ pneumothorax.</text>
         <annotation id="T3">
           <infon key="tag">NN</infon>
           <infon key="lemma">scoliosis</infon>
-          <infon key="note_nlp_concept_id">scoliosis</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="168" length="9"/>
@@ -1220,7 +1150,6 @@ pneumothorax.</text>
         <annotation id="T0">
           <infon key="tag">NN</infon>
           <infon key="lemma">impression</infon>
-          <infon key="note_nlp_concept_id">impression</infon>
           <infon key="ROOT">True</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
@@ -1230,7 +1159,6 @@ pneumothorax.</text>
         <annotation id="T1">
           <infon key="tag">:</infon>
           <infon key="lemma">:</infon>
-          <infon key="note_nlp_concept_id">:</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="188" length="1"/>
@@ -1258,7 +1186,6 @@ dictating</text>
         <annotation id="T0">
           <infon key="tag">JJ</infon>
           <infon key="lemma">stable</infon>
-          <infon key="note_nlp_concept_id">stable</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="190" length="6"/>
@@ -1267,7 +1194,6 @@ dictating</text>
         <annotation id="T1">
           <infon key="tag">NN</infon>
           <infon key="lemma">chest</infon>
-          <infon key="note_nlp_concept_id">chest</infon>
           <infon key="ROOT">True</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
@@ -1277,7 +1203,6 @@ dictating</text>
         <annotation id="T2">
           <infon key="tag">.</infon>
           <infon key="lemma">.</infon>
-          <infon key="note_nlp_concept_id">.</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
           <location offset="202" length="1"/>
@@ -1307,7 +1232,6 @@ dictating</text>
         <annotation id="T0">
           <infon key="tag">VBG</infon>
           <infon key="lemma">dictate</infon>
-          <infon key="note_nlp_concept_id">dictate</infon>
           <infon key="ROOT">True</infon>
           <infon key="nlp_system">PyStanfordDependencies</infon>
           <infon key="nlp_date_time">02/08/2022, 17:18:07</infon>
