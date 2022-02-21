@@ -7,8 +7,8 @@ from radtext.models.constants import DEFAULT_OPTIONS
 
 DEFAULT_CONFIG = {
     'all': True,
-    '--spacy-model-name': DEFAULT_OPTIONS['--spacy-model-name'],
-    '--bllip-model-dir': DEFAULT_OPTIONS['-bllip-model-dir'],
+    '--spacy-model': DEFAULT_OPTIONS['--spacy-model'],
+    '--bllip-model-dir': DEFAULT_OPTIONS['--bllip-model-dir'],
 }
 
 def download(argv):
@@ -19,7 +19,7 @@ def download(argv):
         stanza.download('en')
     if argv['spacy'] or argv['all']:
         subprocess.check_call([sys.executable, '-m', 'spacy', 'download',
-                               argv['--spacy-model-name']])
+                               argv['--spacy-model']])
     if argv['ssplit'] or argv['all']:
         nltk.download('punkt')
     if argv['bllip'] or argv['all']:
