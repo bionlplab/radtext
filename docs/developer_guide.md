@@ -73,8 +73,10 @@ $ python radtext/cmd/download.py all
 
 ## Create this documentation
 
-```bash
-$ pip install Sphinx sphinx_rtd_theme recommonmark
+We use Sphinx and MyST to generate documentation.
+
+```shell
+$ pip install sphinx sphinx_rtd_theme myst-parser
 $ cd docs
 $ make html
 ```
