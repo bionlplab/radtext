@@ -8,7 +8,7 @@ from radtext.models.constants import DEFAULT_OPTIONS
 DEFAULT_CONFIG = {
     'all': True,
     '--spacy-model': DEFAULT_OPTIONS['--spacy-model'],
-    '--bllip-model-dir': DEFAULT_OPTIONS['--bllip-model-dir'],
+    '---bllip_model': DEFAULT_OPTIONS['--bllip_model'],
 }
 
 def download(argv):
@@ -24,7 +24,7 @@ def download(argv):
         nltk.download('punkt')
     if argv['bllip'] or argv['all']:
         from bllipparser import ModelFetcher
-        model_dir = Path(argv['--bllip-model-dir'])
+        model_dir = Path(argv['--bllip_model'])
         if not model_dir.exists():
             model_dir.mkdir(parents=True)
 
