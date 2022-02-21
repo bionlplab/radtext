@@ -8,11 +8,10 @@ from radtext.models.neg.match_regex import NegRegexPatterns
 
 class BioCNeg(BioCProcessor):
     def __init__(self, regex_actor: NegRegexPatterns, ngrex_actor: NegGrexPatterns, verbose=False):
-        super(BioCNeg, self).__init__()
+        super(BioCNeg, self).__init__('neg:negbio')
         self.regex_actor = regex_actor
         self.ngrex_actor = ngrex_actor
         self.verbose = verbose
-        self.nlp_system = 'NegBio:' + name
 
     def process_passage(self, passage: BioCPassage, docid: str = None) -> BioCPassage:
         for ann in tqdm.tqdm(passage.annotations, disable=not self.verbose):

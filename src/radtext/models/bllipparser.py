@@ -53,9 +53,8 @@ class BllipParser:
 
 class BioCParserBllip(BioCProcessor):
     def __init__(self, model_dir: str=DEFAULT_LOCAL_MODELS['BLLIP-GENIA-PubMed']):
-        super(BioCParserBllip, self).__init__()
+        super(BioCParserBllip, self).__init__('parse:bllip')
         self.parser = BllipParser(model_dir=model_dir)
-        self.nlp_system = 'bllip'
 
     def process_sentence(self, sentence: BioCSentence, docid: str = None) -> BioCSentence:
         sentence.infons['parse_tree'] = None

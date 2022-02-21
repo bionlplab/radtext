@@ -5,9 +5,9 @@ from radtext.core import BioCProcessor
 
 class BioCSpacy(BioCProcessor):
     def __init__(self, nlp):
-        super(BioCSpacy, self).__init__()
+        super(BioCSpacy, self).__init__('preprocess:spacy')
         self.nlp = nlp
-        self.nlp_system = 'spacy:' + self.nlp.meta['name']
+        self.model = self.nlp.meta['name']
 
     def process_passage(self, passage: BioCPassage, docid: str = None) -> BioCPassage:
         text = passage.text

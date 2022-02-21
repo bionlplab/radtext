@@ -9,12 +9,11 @@ from bioc import BioCPassage, BioCSentence
 
 class BioCDeidPhilter(BioCProcessor):
     def __init__(self, repl: str = 'X'):
-        super(BioCDeidPhilter, self).__init__()
+        super(BioCDeidPhilter, self).__init__('deid:philter')
         self.philter = Philter()
         self.repl = repl
         if len(repl) != 1:
             raise ValueError('The replacement repl cannot have one char: %s' % repl)
-        self.nlp_system = 'Philter'
 
     def deidentify(self, text: str, offset: int) -> Tuple[str, List[bioc.BioCAnnotation]]:
         """

@@ -65,11 +65,10 @@ class NerSpacyExtractor:
 
 class BioCNerSpacy(BioCProcessor):
     def __init__(self, extractor: NerSpacyExtractor, name: str, filter_integers=True):
-        super(BioCNerSpacy, self).__init__()
+        super(BioCNerSpacy, self).__init__('ner:spacy')
         self.extractor = extractor
         self.filter_integers = filter_integers
-        self.name = name
-        self.nlp_system = 'NER_Spacy:' + name
+        self.model = name
 
     # def _find_other_ids(self, ann):
     #     this_id = ann.infons['source_concept_id']

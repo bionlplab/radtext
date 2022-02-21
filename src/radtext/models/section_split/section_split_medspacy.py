@@ -1,5 +1,3 @@
-import copy
-
 import bioc
 import tqdm
 from bioc import BioCSentence, BioCCollection, BioCDocument, BioCPassage
@@ -10,9 +8,8 @@ from radtext.utils import is_passage_empty, strip_passage
 
 class BioCSectionSplitterMedSpacy(BioCProcessor):
     def __init__(self, nlp):
-        super(BioCSectionSplitterMedSpacy, self).__init__()
+        super(BioCSectionSplitterMedSpacy, self).__init__('split_section:medspacy')
         self.nlp = nlp
-        self.nlp_system = 'medspacy'
 
     def process_collection(self, collection: BioCCollection) -> BioCCollection:
         new_docs = []

@@ -144,9 +144,9 @@ class Ptb2DepConverter:
 
 class BioCPtb2DepConverter(BioCProcessor):
     def __init__(self, representation='CCprocessed', universal=True):
-        super(BioCPtb2DepConverter, self).__init__()
+        super(BioCPtb2DepConverter, self).__init__('tree2dep')
         self.converter = Ptb2DepConverter(representation=representation, universal=universal)
-        self.nlp_system = 'PyStanfordDependencies'
+        self.model = 'PyStanfordDependencies'
 
     def process_sentence(self, sentence: BioCSentence, docid: str = None):
         # check for empty infons, don't process if empty

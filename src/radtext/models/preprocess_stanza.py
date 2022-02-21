@@ -7,9 +7,9 @@ from radtext.core import BioCProcessor
 
 class BioCStanza(BioCProcessor):
     def __init__(self, nlp):
-        super(BioCStanza, self).__init__()
+        super(BioCStanza, self).__init__('preprocess:stanza')
         self.nlp = nlp
-        self.nlp_system = 'stanza:' + self.nlp.lang
+        self.model = nlp.lang
 
     def process_passage(self, passage: BioCPassage, docid: str = None) -> BioCPassage:
         text = passage.text

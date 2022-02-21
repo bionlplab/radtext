@@ -54,10 +54,9 @@ class BioCNerRegex(BioCProcessor):
     punctuation = "!,.:;? \n\t()/"
 
     def __init__(self, extractor: NerRegExExtractor, name: str):
-        super(BioCNerRegex, self).__init__()
+        super(BioCNerRegex, self).__init__('ner:regex')
         self.extractor = extractor
-        self.name = name
-        self.nlp_system = 'NER_Regex:' + name
+        self.model = name
 
     def ner(self, text, offset):
         anns = []

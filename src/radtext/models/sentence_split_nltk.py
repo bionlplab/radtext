@@ -57,9 +57,8 @@ class BioCSSplitterNLTK(BioCProcessor):
         Args:
             newline: split the newline.
         """
-        super(BioCSSplitterNLTK, self).__init__()
+        super(BioCSSplitterNLTK, self).__init__('ssplit:nltk')
         self.newline = newline
-        self.nlp_system = 'NLTK'
 
     def process_passage(self, passage: BioCPassage, docid: str = None) -> BioCPassage:
         """
