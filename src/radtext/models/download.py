@@ -3,11 +3,12 @@ import subprocess
 import sys
 from pathlib import Path
 from radtext import MODELS
+from radtext.models.constants import DEFAULT_OPTIONS
 
 DEFAULT_CONFIG = {
     'all': True,
-    '--spacy-model-name': 'en_core_web_sm',
-    'bllip-model-dir': Path.home() / '.radtext/bllipparser',
+    '--spacy-model-name': DEFAULT_OPTIONS['--spacy-model-name'],
+    '--bllip-model-dir': DEFAULT_OPTIONS['-bllip-model-dir'],
 }
 
 def download(argv):
@@ -17,7 +18,8 @@ def download(argv):
         import stanza
         stanza.download('en')
     if argv['spacy'] or argv['all']:
-        subprocess.check_call([sys.executable, '-m', 'spacy', 'download', argv['--spacy-model-name']])
+        subprocess.check_call([sys.executable, '-m', 'spacy', 'download',
+                               argv['--spacy-model-name']])
     if argv['ssplit'] or argv['all']:
         nltk.download('punkt')
     if argv['bllip'] or argv['all']:
@@ -27,7 +29,8 @@ def download(argv):
             model_dir.mkdir(parents=True)
 
         print("downloading GENIA+PubMed model ... [%s]" % model_dir)
-        ModelFetcher.download_and_install_model(MODELS['BLLIP-GENIA-PubMed'], str(model_dir))
+        ModelFetcher.download_and_install_model(MODELS['BLLIP-GENIA-PubMed'],
+                                                str(model_dir))
     if argv['tree2dep'] or argv['all']:
         import StanfordDependencies
         StanfordDependencies.StanfordDependencies(download_if_missing=True)

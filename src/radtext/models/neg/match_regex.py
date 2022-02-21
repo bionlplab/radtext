@@ -1,10 +1,10 @@
 import re
-from typing import List, Pattern
+from typing import List
 
 import yaml
 
 from bioc import BioCPassage, BioCAnnotation
-from radtext.models.neg.constants import UNCERTAINTY, NEGATION
+from radtext.models.constants import UNCERTAINTY, NEGATION
 
 
 class NegRegexPattern:

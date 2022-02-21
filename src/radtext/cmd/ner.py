@@ -1,16 +1,15 @@
 """
 Usage:
-    ner spacy [options] --radlex FILE -i FILE -o FILE
-    ner regex [options] --phrases FILE -i FILE -o FILE
+    ner spacy [--overwrite --spacy-model NAME] --radlex FILE -i FILE -o FILE
+    ner regex [--overwrite] --phrases FILE -i FILE -o FILE
 
 Options:
     --overwrite
-    --radlex FILE           The RadLex file [default: radtext/resources/Radlex4.1.xlsx]
-    --spacy-model DIR       spaCy traiend model [default: en_core_web_sm]
-
     -o FILE
     -i FILE
-    --phrases FILE
+    --phrases FILE           Phrase patterns
+    --radlex FILE            The RadLex file [default: radtext/resources/Radlex4.1.xlsx]
+    --spacy-model NAME       spaCy traiend model [default: en_core_web_sm]
 """
 import logging
 import re

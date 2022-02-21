@@ -1,18 +1,18 @@
 """
 Usage:
-    split_section regex [options] -i FILE -o FILE
-    split_section medspacy [options] -i FILE -o FILE
+    split_section regex [--overwrite --section-titles FILE] -i FILE -o FILE
+    split_section medspacy [--overwrite] -i FILE -o FILE
 
 Options:
     --section-titles FILE
     -o FILE
     -i FILE
+    --overwrite
 """
 import copy
 
 import bioc
 import docopt
-import tqdm
 
 from cmd_utils import process_options
 from radtext.models.section_split.section_split_regex import BioCSectionSplitterRegex, SECTION_TITLES, combine_patterns
@@ -30,12 +30,12 @@ def main():
             else:
                 section_titles = SECTION_TITLES
             pattern = combine_patterns(section_titles)
-            sec_splitter = BioCSectionSplitterRegex(regex_pattern=pattern)
+            processor = BioCSectionSplitterRegex(regex_pattern=pattern)
         elif argv['medspacy']:
             import medspacy
             from radtext.models.section_split.section_split_medspacy import BioCSectionSplitterMedSpacy
             nlp = medspacy.load(enable=["sectionizer"])
-            sec_splitter = BioCSectionSplitterMedSpacy(nlp)
+            processor = BioCSectionSplitterMedSpacy(nlp)
         else:
             raise KeyError
     except KeyError as e:
@@ -44,7 +44,7 @@ def main():
     with open(argv['-i']) as fp:
         collection = bioc.load(fp)
 
-    sec_splitter.process_collection(collection)
+    processor.process_collection(collection)
 
     with open(argv['-o'], 'w') as fp:
         bioc.dump(collection, fp)

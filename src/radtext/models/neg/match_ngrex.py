@@ -6,10 +6,10 @@ import yaml
 
 from radtext.utils import intersect
 from radtext.models.neg import ngrex
-from radtext.models.neg.constants import UNCERTAINTY, NEGATION
+from radtext.models.constants import UNCERTAINTY, NEGATION
 
 from radtext.models.neg import semgraph
-from cachetools import cached, LRUCache, TTLCache
+from cachetools import cached, LRUCache
 
 
 class NegNgrexPattern:

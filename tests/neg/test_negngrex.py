@@ -1,10 +1,9 @@
 from typing import Tuple
 
 import bioc
-import networkx as nx
 
-from radtext.models.neg import NegGrexPatterns, semgraph
-from radtext.models.neg.constants import NEGATION, UNCERTAINTY
+from radtext.models.neg import NegGrexPatterns
+from radtext.models.constants import NEGATION, UNCERTAINTY
 from radtext.models.tree2dep import BioCPtb2DepConverter
 from tests import Resource_Dir
 

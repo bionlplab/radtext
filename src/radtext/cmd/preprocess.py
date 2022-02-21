@@ -1,11 +1,11 @@
 """
 Usage:
     preprocess stanza [options] -i FILE -o FILE
-    preprocess spacy [options] -i FILE -o FILE
+    preprocess spacy [--overwrite --spacy-model NAME] -i FILE -o FILE
 
 Options:
     --overwrite
-    --spacy-model <str>   spaCy traiend model [default: en_core_web_sm]
+    --spacy-model NAME   spaCy traiend model [default: en_core_web_sm]
     -o FILE
     -i FILE
 """

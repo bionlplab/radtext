@@ -5,10 +5,10 @@ Usage:
     download stanza
     dwonlaod spacy
     download ssplit
-    download bllip [options]
+    download bllip [--bllip-model-dir DIR]
     download tree2dep
     download ner
-    download all [options]
+    download all [--spacy-model-name NAME]
 
 Options:
     --bllip-model-dir DIR       [default: ~/.radtext/bllipparser]

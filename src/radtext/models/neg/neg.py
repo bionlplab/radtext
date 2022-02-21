@@ -1,9 +1,6 @@
-import logging
-from typing import Union
-
 import tqdm
-from bioc import BioCPassage, BioCSentence
-from radtext.models.neg.constants import POSITIVE
+from bioc import BioCPassage
+from radtext.models.constants import POSITIVE
 from radtext.core import BioCProcessor
 from radtext.models.neg.match_ngrex import NegGrexPatterns
 from radtext.models.neg.match_regex import NegRegexPatterns

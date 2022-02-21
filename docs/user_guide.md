@@ -9,7 +9,7 @@ Radiology reports often contain the Protected Health Information
 This module uses [Philter](https://github.com/BCHSI/philter-ucsf) to remove PHI
 from the reports.
 
-```bash
+```shell
 $ radtext-deid --repl=X -i /path/to/input.xml -o /path/to/output.xml
 ```
 
@@ -70,7 +70,7 @@ $ radtext-ssplit -i /path/to/input.xml -o /path/to/output.xml
 RadText uses the [Bllip parser](https://github.com/BLLIP/bllip-parser)
 to obtain the parse tree. The Bllip parser was trained on the biomedical text.
 
-```bash
+```shell
 $ radext-parse -i /path/to/input.xml -o /path/to/output.xml
 ```
 
@@ -128,7 +128,7 @@ dependencies for pattern definition and subgraph matching for graph traversal
 search so that the scope for negation/uncertainty is not limited to the fixed
 word distance.
 
-```bash
+```shell
 $ radext-neg -i /path/to/input.xml -o /path/to/output.xml
 ```
 
@@ -136,10 +136,10 @@ $ radext-neg -i /path/to/input.xml -o /path/to/output.xml
 
 The final step merges all the labels and produces the output .csv file.
 
-```bash
+```shell
 $ python radtext/cmd/collect_neg_labels.py \
-  --phrases /path/to/patterns.yml \
-  -i /path/to/input.xml \
-  -o /path/to/output_file.csv
+    --phrases /path/to/patterns.yml \
+    -i /path/to/input.xml \
+    -o /path/to/output_file.csv
 ```
 

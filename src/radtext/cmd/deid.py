@@ -20,13 +20,13 @@ def main():
     argv = docopt.docopt(__doc__)
     process_options(argv)
 
-    deid = BioCDeidPhilter(argv['--repl'])
+    processor = BioCDeidPhilter(argv['--repl'])
 
     with open(argv['-i']) as fp:
         collection = bioc.load(fp)
 
     for doc in tqdm.tqdm(collection.documents):
-        deid.process_document(doc)
+        processor.process_document(doc)
 
     with open(argv['-o'], 'w') as fp:
         bioc.dump(collection, fp)

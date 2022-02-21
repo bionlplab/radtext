@@ -14,5 +14,5 @@ $ source venv/bin/activate
 $ pip install -U pip setuptools wheel
 $ pip install -U radtext
 $ python -m spacy download en_core_web_sm
-$ python radtext/cmd/download.py all
+$ radtext-download all
 ```

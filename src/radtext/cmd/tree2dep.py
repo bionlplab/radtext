@@ -1,6 +1,6 @@
 """
 Usage:
-    ptb2ud [options] -i FILE -o FILE
+    tree2dep [options] -i FILE -o FILE
 
 Options:
     --overwrite

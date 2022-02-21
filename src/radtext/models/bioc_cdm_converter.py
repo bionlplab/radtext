@@ -3,7 +3,7 @@ from typing import Dict
 import bioc
 import pandas as pd
 import tqdm
-from radtext.models.neg.constants import NEGATION, UNCERTAINTY
+from radtext.models.constants import NEGATION, UNCERTAINTY
 
 
 NOTE_NLP_TABLE_HEADERS = [

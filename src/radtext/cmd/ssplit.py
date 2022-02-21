@@ -19,19 +19,14 @@ def main():
     argv = docopt.docopt(__doc__)
     process_options(argv)
 
-    if argv['--newline']:
-        newline = True
-    else:
-        newline = False
-
-    splitter = BioCSSplitterNLTK(newline=newline)
+    processor = BioCSSplitterNLTK(newline=argv['--newline'])
 
     with open(argv['-i']) as fp:
         collection = bioc.load(fp)
 
     for doc in tqdm.tqdm(collection.documents):
         for passage in tqdm.tqdm(doc.passages, leave=False):
-            splitter.process_passage(passage, doc.concept_id)
+            processor.process_passage(passage, doc.concept_id)
 
     with open(argv['-o'], 'w') as fp:
         bioc.dump(collection, fp)

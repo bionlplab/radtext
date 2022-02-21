@@ -3,7 +3,7 @@ from typing import Tuple
 import bioc
 
 from radtext.models.neg import NegRegexPatterns
-from radtext.models.neg.constants import UNCERTAINTY, NEGATION
+from radtext.models.constants import UNCERTAINTY, NEGATION
 from tests import Resource_Dir
 
 # negation = Resource_Dir / 'patterns/regex_negation.yml'

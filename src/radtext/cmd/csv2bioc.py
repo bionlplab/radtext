@@ -5,8 +5,8 @@ Usage:
     csv2bioc [options] -i FILE -o FILE
 
 Options:
-    --id_col <str>      [default: note_id]
-    --text_col <str>    [default: note_text]
+    --id_col STR        [default: note_id]
+    --text_col STR      [default: note_text]
     -o FILE
     -i FILE
     --overwrite

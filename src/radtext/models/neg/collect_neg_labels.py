@@ -13,13 +13,12 @@ import logging
 from typing import Dict, Set
 
 import bioc
-import docopt
 import pandas as pd
 import tqdm
 import yaml
 
 # Numeric constants
-from radtext.models.neg.constants import UNCERTAINTY, NEGATION
+from radtext.models.constants import UNCERTAINTY, NEGATION
 
 POSITIVE = 'p'
 NEGATIVE = 'n'
