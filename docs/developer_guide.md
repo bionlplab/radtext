@@ -98,7 +98,7 @@ $ python -m build
 Using local package with pip
 
 ```shell
-$ pip install --force-reinstall /path/to/whl
+$ pip install --force-reinstall --no-deps /path/to/whl
 ```
 
 Using TestPyPI with pip
