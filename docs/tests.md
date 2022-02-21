@@ -15,6 +15,7 @@ should return without any errors. You can run pytest against all of our
 environments by running:
 
 ```shell
+$ export PYTHONPATH=src:.
 $ python -m pytest --cov-report html --cov=radtext tests
 ```
 

@@ -12,7 +12,7 @@ jobs:
       matrix:
         python-version: [3.7]
     env:
-      PYTHONPATH: .
+      PYTHONPATH: src
     steps:
       - name: Chgeckout repository code
         uses: actions/checkout@v2
