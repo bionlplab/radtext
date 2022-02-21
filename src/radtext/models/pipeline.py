@@ -80,7 +80,7 @@ class Pipeline():
 			self.processors['preprocess_stanza'] = processor
 
 		if 'parse' in annotators:
-			processor = BioCParserBllip(model_dir=argv['--bllip_model'])
+			processor = BioCParserBllip(model_dir=argv['--bllip-model'])
 			self.processors['parse'] = processor
 
 		if 'ssplit' in annotators:

@@ -21,32 +21,46 @@ RadText is a high-performance Python Radiology Text Analysis System.
 * Linux 
 * Java
 
-## Quickstart for RadText
-
 ```shell
 # Set up environment
 $ sudo apt-get install python3-dev build-essential default-java
+```
 
-# Checkout repository
-$ git clone https://github.com/bionlplab/radtext.git
-$ cd radtext
+## Quickstart
 
-# Set up Python environment
+The latest radtext releases are available over
+[pypi](https://pypi.python.org/pypi/radtext).
+
+Using pip, RadText releases are available as source packages and binary wheels.
+It is also generally recommended installing packages in a virtual environment to
+avoid modifying system state:
+
+```shell
 $ python -m venv venv
 $ source venv/bin/activate
-
-# Install dependencies
-$ python -m pip install --upgrade pip
-$ pip install -r requirements.txt
-
-# Install packages
+$ pip install -U pip setuptools wheel
+$ pip install -U radtext
 $ python -m spacy download en_core_web_sm
-$ export PYTHONPATH=src
-$ python src/radtext/cmd/download.py all
+$ radtext-download all
+```
 
-# Test with pytest
-$ pip install pytest
-$ pytest tests
+To see RadText’s pipeline in action, you can launch the Python interactive
+interpreter, and try the following commands:
+
+```python
+import radtext
+nlp = radtext.Pipeline()
+doc = nlp('There is no plural effusion')
+print(doc)
+```
+
+RadText also supports command-line interfaces for specific NLP tasks (e.g.,
+de-identification, sentence split, or named entity recognition).
+
+```shell
+$ radtext-deid --repl=X -i /path/to/input.xml -o /path/to/output.xml
+$ radtext-ssplit -i /path/to/input.xml -o /path/to/output.xml
+$ radext-ner spacy --radlex /path/to/Radlex4.1.xlsx -i /path/to/input.xml -o /path/to/output.xml
 ```
 
 ## Documentation
