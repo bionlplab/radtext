@@ -3,16 +3,16 @@ Usage:
     download all
     download deid
     download stanza
-    dwonlaod spacy
+    download spacy
     download ssplit
-    download bllip [--bllip-model-dir DIR]
+    download bllip [--bllip-model DIR]
     download tree2dep
     download ner
-    download all [--spacy-model-name NAME]
+    download all [--spacy-model NAME]
 
 Options:
-    --bllip-model-dir DIR       [default: ~/.radtext/bllipparser]
-    --spacy-model-name NAME     [default: en_core_web_sm]
+    --bllip-model DIR       [default: ~/.radtext/bllipparser]
+    --spacy-model NAME     [default: en_core_web_sm]
 """
 import docopt
 from radtext.models.download import download
