@@ -41,7 +41,8 @@ $ pip install -r requirements.txt
 
 # Install packages
 $ python -m spacy download en_core_web_sm
-$ python radtext/cmd/download.py all
+$ export PYTHONPATH=src
+$ python src/radtext/cmd/download.py all
 
 # Test with pytest
 $ pip install pytest
