@@ -1,0 +1,39 @@
+- id: nua10
+  pattern: '{}=f <{} ({lemma:/exclude/}=k0 >{} {lemma:/cannot/}=k1)'
+  comment: cannot exclude some XXX
+- id: nua20
+  pattern: '{}=f <{} ({lemma:/exclude/}=k0 >{dependency:/neg/} {}=k1)'
+  comment: XXX is not excluded
+- id: nua30
+  pattern: '{}=f >{} {lemma:/new/}=k0 & >{dependency:/neg/} {lemma:/no/}=k1'
+  comment: no new XXX
+- id: nua40
+  pattern: '{}=f <{} ({lemma:/new/}=k0 >{} {lemma:/no/}=k1)'
+  comment: no new XXX
+- id: nua50
+  pattern: '{}=f <{dependency:/compound/} ({}=k0 >{} {lemma:/new/}=k1 & >{} {lemma:/no/}=k2)'
+  comment: no new XXX
+- id: nua60
+  pattern: '{}=f <{} ({lemma:/area/}=k0 >{} {lemma:/no/}=k1 >{} {lemma:/new/}=k2)'
+  comment: no new area of XXX
+- id: nua70
+  pattern: '{}=f >{} ({lemma:/area/}=k0 >{} {lemma:/no/}=k1 >{} {lemma:/new/}=k2)'
+  comment: no new area of XXX
+- id: nua80
+  pattern: '{}=f <{dependency:/nmod:out/} ({lemma:/rule/}=k0 >{} {lemma:/cannot/}=k1)'
+  comment: cannot rule out XXX
+- id: nua90
+  pattern: '{}=f <{dependency:/nmod:out/} ({lemma:/rule/}=k0 <{} ({lemma:/evidence/}=k1 > {} {lemma:/no/}=k2))'
+  comment: no evidence to rule out XXX
+- id: nua100
+  pattern: '{lemma:/cardiomediastinal|pericardial|mediastinal|mediastinum|cardiomediastinum|contour|configuration|silhouette|size|heart|shadow/}=f > {dependency:/amod/} {lemma:/stable|unchanged/}=k0'
+  comment: stable silhouette
+- id: nua110
+  pattern: '{lemma:/cardiomediastinal|pericardial|mediastinal|mediastinum|cardiomediastinum|contour|configuration|silhouette|size|heart|shadow/}=f > {dependency:/xcomp/} {lemma:/stable|unchanged/}=k0'
+  comment: silhouette unchanged
+- id: nua120
+  pattern: '{lemma:/cardiomediastinal|pericardial|mediastinal|mediastinum|cardiomediastinum|contour|configuration|silhouette|size|heart|shadow/}=f < {dependency:/nsubj/} {lemma:/stable|unchanged/}=k0'
+  comment: Silhouette/cardiomediastinal is stable
+- id: nua130
+  pattern: '{}=f < {} ({lemma:/excluded|definitive/}=k0 > {dependency:/neg/} {}=k1)'
+  comment: not excluded

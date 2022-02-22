@@ -1,0 +1,44 @@
+- id: rn10
+  pattern: (exclude|negative for|no|rather than|resolved|rule out|without) XXXXX
+- id: rn20
+  pattern: (no|without)( evidence of|developing)? XXXXX
+- id: rn21
+  pattern: (no|without) evidence (of|for) (developing|increasing) XXXXX
+- id: rn30
+  pattern: (clear|clearing) (of|without) XXXXX
+- id: rn40
+  pattern: XXXXX (is|are|appears?|remains?) (normal|stable|unchanged|unremarkable)
+- id: rn41
+  pattern: (normal|normal size|unchanged|unremarkable) XXXXX
+- id: rn42
+  pattern: normal size of( the)? XXXXX
+- id: rn50
+  pattern: XXXXX (is|are) within normal( radiographic)?( size)? limits
+- id: rn51
+  pattern: XXXXX within normal( radiographic)?( size)? limits
+- id: rn60
+  pattern: (disappearance|drainage|free|removal|resolution) of XXXXX
+- id: rn70
+  pattern: no XXXXX disease
+- id: rn80
+  pattern: XXXXX (has been|have been|was|is|has|have)( since)? (removed|resolved)
+- id: rn81
+  pattern: XXXXX (has since been|have since been) (removed|resolved)
+- id: rn90
+  pattern: XXXXX removal
+- id: rn100
+  pattern: no XXXXX (is|are) seen
+- id: rn110
+  pattern: XXXXX is at upper limit
+- id: rn120
+  pattern: healed XXXXX
+# relaxed
+#- id: 5
+#  pattern: (no|without) evidence of ([^ ]+ ){0,3}XXXXX[\\w]*
+#  comment: no evidence of XXXXX
+#- id: 7
+#  pattern: (no|without) evidence of .* XXXXX[\\w]*\.
+#  comment: no evidence of XXXXX
+#- id: 8
+#  pattern: (no|without) ([^ ]+ ){0,3}XXXXX[\\w]*
+#  comment: no XXXXX

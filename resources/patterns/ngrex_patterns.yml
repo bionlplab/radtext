@@ -1,0 +1,522 @@
+negation:
+  - id: nn10
+    pattern: '{}=f >{dependency:/neg/} {}=k0'
+    comment: no XXX
+  - id: nn20
+    pattern: '{}=f <{dependency:/amod/} ({}=k0 >{dependency:/neg/} {lemma:/no/}=k1)'
+    comment: no XXX k0
+  - id: nn30
+    pattern: '{}=f <{} ({}=k0 <{dependency:/nsubj/} {lemma:/normal|unremarkable/}=k1)'
+    comment: XXX k0 is normal
+  - id: nn40
+    pattern: '{}=f <{dependency:/nmod:for|nmod:of/} ({lemma:/evidence/}=k0 >{dependency:/neg/} {}=k1)'
+    comment: no evidence of k1 XXX
+  - id: nn50
+    pattern: '{}=f <{} {lemma:/normal|unremarkable/}=k0'
+    comment: normal XXX
+  - id: nn60
+    pattern: '{}=f <{dependency:/dobj/} {lemma:/exclude/}=k0'
+    comment: exclude XXX
+  - id: nn70
+    pattern: '{}=f <{} ({}=k0 >{dependency:/amod/} {lemma:/normal|unremarkable/}=k1)'
+    comment: normal appearance of XXXXX
+  - id: nn80
+    pattern: '{}=f <{} {lemma:/remove/}=k0'
+    comment: XXX from the right arm has been removed
+  - id: nn90
+    pattern: '{}=f <{} ({}=k0 <{dependency:/nsubj/} ({lemma:/limit.*/}=k1 >{dependency:/amod/} {lemma:/normal/}=k2 & >{dependency:/case/} {lemma:/at|within/}=k3))'
+    comment: XXX k0 are within normal limits
+  - id: nn100
+    pattern: '{}=f <{dependency:/nmod:without|nmod:of/} {lemma:/clear|clearing/}=k0'
+    comment: clearing of XXX
+  - id: nn110
+    pattern: '{}=f <{dependency:/nsubjpass/} ({lemma:/enlarge/}=k0 >{dependency:/neg/} {}=k2)'
+    comment: XXX is not enlarged
+  - id: nn120
+    pattern: '{}=f <{dependency:/amod|nsubj/} {lemma:/normal|unremarkable/}=k0'
+    comment: XXX k0 is normal
+  - id: nn130
+    pattern: '{}=f <{dependency:/compound/} ({}=k0 >{dependency:/neg/} {}=k1)'
+    comment: neg XXX k0
+    example: no acute airspace disease
+  - id: nn140
+    pattern: '{}=f <{dependency:/nsubj/} {lemma:/clear/}=k0'
+    comment: XXX has cleared, XXX is clear
+  - id: nn150
+    pattern: '{}=f <{dependency:/dobj|nsubj/} ({}=k0 >{dependency:/nmod:within/} ({lemma:/limit.*/}=k1 >{} {lemma:/normal/}=k2))'
+    comment: XXX k0 within normal limits
+  - id: nn160
+    pattern: ({}=f >{} {}=k0) >{dependency:/nmod:within/} {lemma:/limit.*/}=k1
+    comment: XXX k0 within normal limits
+    example: mediastinum within normal limits
+  - id: nn170
+    pattern: '{}=f <{dependency:/nmod:for|nmod:of/} ({lemma:/evidence|finding/}=k0 <{dependency:/nmod:without/} {})'
+    comment: without evidence of XXX
+  - id: nn180
+    pattern: '{}=f >{} {lemma:/no/}=k0'
+    comment: no XXX k0
+  - id: nn190
+    pattern: '{}=f <{dependency:/nsubjpass/} ({lemma:/see/}=k0 >{} ({} >{dependency:/neg/} {lemma:/no/}=k1))'
+    comment: no XXX is seen
+  - id: nn200
+    pattern: '{}=f <{dependency:/amod/} ({}=k0 <{dependency:/dep|nsubj/} {lemma:/normal|unremarkable/}=k1)'
+    comment: XXX k0 is normal
+  - id: nn210
+    pattern: ({}=k0 >{} {}=f) <{dependency:/nsubj|dobj/} {lemma:/unremarkable|normal/}=k1
+    comment: XXX is normal
+    example: cardiomediastinal silhouette is normal
+  - id: nn220
+    pattern: '{}=f <{dependency:/nmod:of/} {lemma:/disappearance|drainage|free|history|removal|resolution/}=k0'
+    comment: removal of XXX
+  - id: nn230
+    pattern: '{}=f >{dependency:/case/} {lemma:/without/}=k0'
+    comment: without XXX
+  - id: nn240
+    pattern: '{}=f <{dependency:/nmod:without/} {}=k0'
+    comment: k0 without XXX
+    example: clear without focal mass
+  - id: nn250
+    pattern: '{}=f <{dependency:/nmod:out/} {lemma:/rule/}=k0'
+    comment: rule out XXX
+  - id: nn260
+    pattern: '{}=f <{dependency:/nmod:of|nmod:for/} ({lemma:/evidence|finding/}=k0 >{} {lemma:/without/}=k1)'
+    comment: without evidence of XXX
+  - id: nn270
+    pattern: '{}=f <{dependency:/dobj|nsubjpass/} ({lemma:/demonstrate|visualize/}=k0 >{dependency:/neg/} {}=k1)'
+    comment: XXX is not visualized
+  - id: nn280
+    pattern: '{}=f <{dependency:/nmod:of/} ({lemma:/evidence/}=k0 <{dependency:/nmod:for/} {lemma:/negative/}=k1)'
+    comment: XXX is not visualized
+  - id: nn290
+    pattern: '{}=f >{dependency:/amod|nsubj/} {lemma:/normal|unremarkable/}=k0'
+    comment: parsing error; normal cardiomediastinal contours
+  - id: nn300
+    pattern: '{}=f <{dependency:/dobj/} ({}=k0 >{dependency:/nsubj/} {lemma:/no/}=k1)'
+    comment: parsing error; no developing XXX
+  - id: nn310
+    pattern: '{}=f <{dependency:/advmod|dep|conj:or/} {lemma:/no/}=k0'
+    comment: parsing error; no XXX or XXX
+  - id: nn320
+    pattern: '{}=f <{dependency:/dobj/} ({lemma:/develop/}=k1 <{dependency:/acl/} ({lemma:/evidence/}=k0 >{dependency:/neg/} {}=k2))'
+    comment: parsing error; no evidence for developing XXX
+  - id: nn330
+    pattern: '{}=f <{dependency:/dep/} ({} <{dependency:/nmod:out/} {lemma:/rule/}=k0)'
+    comment: parsing error; rule out k0 xxx
+  - id: nn340
+    pattern: '{}=f <{dependency:/nsubj/} {lemma:/exclude/}=k0'
+    comment: XXX is can`t exclude, double negation
+  - id: nn350
+    pattern: '{}=f >{} {lemma:/normal|unremarkable/}=k0'
+    comment: XXX is normal
+    example: silhouette_f normal_k0
+  - id: nn360
+    pattern: '{}=f <{} ({lemma:/appear|remain/}=k0 >{} {lemma:/normal|unremarkable/}=k1)'
+    comment: XXX appear normal
+  - id: nn370
+    pattern: '{}=f <{dependency:/nsubj/} ({lemma:/be/}=k0 >{} {lemma:/no/}=k1)'
+    comment: there is no XXX
+  - id: nn380
+    pattern: '{}=f <{dependency:/amod/} ({}=k0 <{dependency:/nmod:of/} ({lemma:/evidence/}=k1 >{dependency:/neg/} {}=k2))'
+    comment: without evidence of XXX k0
+  - id: nn390
+    pattern: '{}=f <{dependency:/nsubj/} ({lemma:/resolve/}=k0 >{dependency:/aux/} {}=k1)'
+    comment: XXX has resolved
+  - id: nn400
+    pattern: '{}=f <{} ({}=k0 <{dependency:/conj:or/} ({}=k1 >{} {lemma:/no/}=k2))'
+    comment: no XXX or XXX
+  - id: nn410
+    pattern: '{}=f >{} ({lemma:/limit/}=k0 >{} {lemma:/normal/}=k1)'
+    comment: XXX normal limit
+    example: silhouette_f normal_k1 limit_k0
+  - id: nn420
+    pattern: '{}=f >{} {lemma:/remove/}=k0'
+    comment: XXX is removed
+    example: tube_f remove_k0
+  - id: nn430
+    pattern: '{}=f >{dependency:/amod/} {lemma:/resolve/}=k0'
+    comment: resolved XXX
+    example: resolve_k0 pneumothorax_f
+  - id: nn440
+    pattern: '{}=f <{} ({}=k0 <{dependency:/nsubj/} ({lemma:/limit.*/}=k1 >{} {lemma:/upper/}=k2 & >{dependency:/nmod:of/} {lemma:/normal/}=k3 & >{dependency:/case/} {lemma:/at|within/}=k4))'
+    comment: XXX is at upper limit
+  - id: nn450
+    pattern: '{}=f <{dependency:/conj:negcc/} {}=k0'
+    comment: rather than XXX
+    example: marking_k0 infiltrate_f
+  - id: nn460
+    pattern: '{}=f <{dependency:/nsubj/} ({lemma:/limit.*/}=k0 >{} {lemma:/upper/}=k1 & >{dependency:/nmod:of/} {lemma:/normal/}=k2 & >{dependency:/case/} {lemma:/at|within/}=k3)'
+    comment: XXX is at normal limit
+    example: size_f at_k3 limit_k0
+  - id: nn470
+    pattern: '{}=f <{dependency:/amod/} ({}=k0 <{dependency:/nmod:of/} ({lemma:/evidence/}=k1 >{dependency:/case/} {lemma:/without/}=k2))'
+    comment: without evidence of XXX k0
+    example: without_k2 evidence_k1 pleural_f collection_k0
+  - id: nn480
+    pattern: '{}=f <{dependency:/nmod:for/} {lemma:/negative/}=k0'
+    comment: negative for XXX
+  - id: nn490
+    pattern: '{}=f <{} ({lemma:/diagnose|explain|suggest/}=k0 <{} ({tag:/N.*/}=k1 >{} {lemma:/no/}=k2))'
+    comment: no NN to suggest/explain XXX
+    example: no_k2 evidence_k1 suggest_k0 pneumonia_f
+  - id: nn500
+    pattern: '{}=f <{dependency:/dobj|nsubjpass/} ({lemma:/demonstrate|visualize/}=k0 >{} {lemma:/previously/}=k1)'
+    comment: XXX is previously demonstrated/visualized
+    example: previously_k1 demonstrate_k0 picc_f
+  - id: nn510
+    pattern: '{}=f <{dependency:/nmod:of/} ({lemma:/focus/}=k0 >{dependency:/neg/} {}=k1)'
+    comment: no focus of XXX
+    example: no_k1 focus_k0 infiltration_f
+  - id: nn520
+    pattern: '{}=f <{dependency:/conj:no/} {}=k0'
+    comment: XXX < no
+    example: marking_k0 consolidation_f
+  - id: nn530
+    pattern: '{}=f <{dependency:/nmod:of/} ({lemma:/development/}=k0 >{} {lemma:/no/}=k1)'
+    comment: oo development of XXX
+    example: no_k1 development_k0 density_f
+  - id: nn540
+    pattern: '{}=f <{} ({lemma:/diagnose|explain|suggest/}=k0 <{} ({tag:/V.*/}=k1 >{} ({tag:/N.*/}=k2 >{} {lemma:/no/}=k3)))'
+    comment: there is no NN to suggest/explain XXX
+    example: ct._k1 no_k3 change_k2 suggest_k0 pneumothorax_f
+  - id: nn550
+    pattern: '{}=f >{} ({lemma:/resolution/}=k0 >{} {lemma:/interval/}=k1)'
+    comment: XXX with interval resolution
+    example: fluid_f interval_k1 resolution_k0
+  - id: nn560
+    pattern: '{}=f <{dependency:/nsubj/} {lemma:/absent/}=k0'
+    comment: absent XXX
+    example: line_f absent_k0
+  - id: nn570
+    pattern: '{}=f >{} ({lemma:/remain|appear/}=k0 >{} ({lemma:/limit/}=k1 >{} {lemma:/normal/}=k2))'
+    comment: XXX appear (now, otherwise) within normal limits
+    example: silhouette_f appear_k0 normal_k2 limit_k1
+  - id: nn580
+    pattern: ({}=f >{} {}=k0) <{dependency:/nsubj|dobj/} {lemma:/unremarkable|normal/}=k1
+    comment: normal/unremarkable XXX
+    example: the_k0 contour_f unremarkable.z_k1
+  - id: nn590
+    pattern: '{}=f <{dependency:/nmod:of/} ({lemma:/development/}=k0 >{} {lemma:/without/}=k1)'
+    comment: without development of XXX
+    example: without_k1 development_k0 pneumothorax_f
+  - id: nn600
+    pattern: '{}=f <{} ({lemma:/see/}=k0 >{} ({}=k1 >{} ({lemma:/evidence/}=k2 >{} {lemma:/without/}=k3)))'
+    comment: without evidence seen for XXX
+    example: tube_k1 without_k3 evidence_k2 see_k0
+  - id: nn610
+    pattern: '{}=f <{dependency:/nmod:of/} ({lemma:/focus/}=k0 >{} {lemma:/no/}=k1)'
+    comment: no focus of XXX
+  - id: nn620
+    pattern: '{}=f <{dependency:/nmod:to/} ({lemma:/moderate/}=k0 >{dependency:/neg/} {}=k1)'
+    comment: no moderate to XXX
+  - id: nn630
+    pattern: ({}=f >{} {lemma:/definite/}=k0) >{dependency:/neg/} {}=k1
+    comment: no definite XXX
+  - id: nn640
+    pattern: ({}=f >{} {lemma:/obvious/}=k0) >{dependency:/neg/} {}=k1
+    comment: no obvious XXX
+  - id: nn650
+    pattern: '{}=f <{} ({dependency:/exclude/}=k <{} ({}=k1 >{} {lemma:/no/}=k2))'
+    comment: no exclude
+  - id: nn660
+    pattern: ({}=f >{dependency:/amod/} {lemma:/normal|unremarkable/}=k0) <{dependency:/dobj|nsubj/} {lemma:/demonstrate.*|display|present|show/}=k1
+    comment: normal XXX demonstrate
+  - id: nn670
+    pattern: '{}=f <{dependency:/nmod:of/} ( {lemma:/appearance/}=k0 >{dependency:/amod/} {lemma:/normal/}=k1 & <{dependency:/dobj/} {lemma:/demonstrate.*|display|present|show/}=k2)'
+    comment: normal appearance of XXX demonstrate
+  - id: nn680
+    pattern: '{}=f <{dependency:/amod/} ({lemma:/finding.*/}=k0 <{dependency:/dobj/} ({lemma:/acute/}=k1 >{dependency:/nsubj/} {lemma:/no/}=k2))'
+    comment: no acute XXX finding
+  - id: nn690
+    pattern: '{}=f <{dependency:/amod/} ({lemma:/structure.*/}=k0 <{dependency:/dep|nsubj/} ({lemma:/appear/}=k1 >{dependency:/xcomp/} {lemma:/normal|unremarkable/}=k2))'
+    comment: XXX structure appear normal
+  - id: nn700
+    pattern: '{}=f <{} ({}=k0 <{} ({lemma:/demonstrate|present|show/}=k1 >{dependency:/nmod:within/} ({lemma:/limit.*/}=k2 >{} {lemma:/normal/}=k3)))'
+    comment: XXX k0 demonstrate within normal limits
+  - id: nn710
+    pattern: '{}=f <{dependency:/nsubj/} ({lemma:/limit.*/}=k0 >{} {lemma:/upper/}=k1 & >{dependency:/nmod:of/} {lemma:/normal/}=k2 & >{dependency:/case/} {lemma:/at|within/}=k3)'
+    comment: XXX within upper limits of normal
+  - id: nn720
+    pattern: ({lemma:/vascularity/}=f >{dependency:/amod/} {lemma:/pulmonary/}=k0) >{dependency:/amod/} {lemma:/normal/}=k1
+    comment: normal pulmonary vascularity
+  - id: nn730
+    pattern: '{}=f >{dependency:/nmod:within/} ({lemma:/limit.*/}=k0 >{dependency:/amod/} {lemma:/normal/}=k1)'
+    comment: XXX within normal limits
+  - id: nn740
+    pattern: '{}=f <{} ({lemma:/developing/}=k0 <{} ({lemma:/evidence/}=k1 <{dependency:/nmod:without/} {}=k2))'
+    comment: without evidence of developing XXX
+  - id: nn750
+    pattern: '{}=f <{} ({lemma:/developing/}=k0 <{} ({lemma:/evidence/}=k1 >{} {lemma:/no/}=k2))'
+    comment: no evidence of developing XXX
+  - id: nn760
+    pattern: '{}=f <{dependency:/nmod:of/} ({lemma:/area/}=k0 >{dependency:/compound/} {lemma:/no/}=k1)'
+    comment: no area of XXX
+  - id: nn770
+    pattern: '{}=f <{dependency:/nmod:of/} ({lemma:/development/}=k0 >{dependency:/case/} {lemma:/without/}=k1)'
+    comment: without development of XXX
+  - id: nn780
+    pattern: '{}=f <{dependency:/nsubjpass/} ({lemma:/see/}=k0 >{} {lemma:/no/}=k1)'
+    comment: XXX is no longer seen
+  - id: nn790
+    pattern: '{}=f <{} ({lemma:/see/}=k0 >{} ({lemma:/evidence/}=k1 >{} {lemma:/without/}=k2))'
+    comment: without evidence seen for XXX
+  - id: nn800
+    pattern: '{}=f <{} ({lemma:/appearance/}=k0 >{} {lemma:/normal|unremarkable/}=k1)'
+    comment: normal/unremarkable appearance of XXX
+  - id: nn810
+    pattern: '{}=f >{dependency:/dobj/} {lemma:/clear/}=k0'
+    comment: cleared XXX. a clear XXX is positive
+  - id: nn820
+    pattern: '{}=f <{} ({lemma:/associate.*/}=k0 >{} ({lemma:/obvious/}=k1 >{dependency:/neg/} {}=k2))'
+    comment: no obvious associated XXX
+  - id: nn830
+    pattern: '{}=f >{dependency:/neg/} {}=k0 & >{} {lemma:/obvious/}=k1 & >{} {lemma:/associate.*/}=k2'
+    comment: no obvious associated XXX
+  - id: nn840
+    pattern: '{}=f >{} {lemma:/new/}=k0 & >{dependency:/neg/} {lemma:/no/}=k1'
+    comment: no new XXX
+  - id: nn850
+    pattern: '{}=f > {dependency:/amod/} {lemma:/resolve/}'
+    comment: resolved XXX
+  - id: nn860
+    pattern: '{}=f < {dependency:/nsubjpass/} ({lemma:/delineate/} > {dependency:/neg/} {})'
+    comment: not delineated XXX
+  - id: nn870
+    pattern: '{}=f > {} {lemma:/visualize/} & > {dependency:/neg/} {lemma:/no/}'
+    comment: no visualized XXX
+double_negation:
+uncertainty_pre:
+  - id: nua10
+    pattern: '{}=f <{} ({lemma:/exclude/}=k0 >{} {lemma:/cannot/}=k1)'
+    comment: cannot exclude some XXX
+  - id: nua20
+    pattern: '{}=f <{} ({lemma:/exclude/}=k0 >{dependency:/neg/} {}=k1)'
+    comment: XXX is not excluded
+  - id: nua30
+    pattern: '{}=f >{} {lemma:/new/}=k0 & >{dependency:/neg/} {lemma:/no/}=k1'
+    comment: no new XXX
+  - id: nua40
+    pattern: '{}=f <{} ({lemma:/new/}=k0 >{} {lemma:/no/}=k1)'
+    comment: no new XXX
+  - id: nua50
+    pattern: '{}=f <{dependency:/compound/} ({}=k0 >{} {lemma:/new/}=k1 & >{} {lemma:/no/}=k2)'
+    comment: no new XXX
+  - id: nua60
+    pattern: '{}=f <{} ({lemma:/area/}=k0 >{} {lemma:/no/}=k1 >{} {lemma:/new/}=k2)'
+    comment: no new area of XXX
+  - id: nua70
+    pattern: '{}=f >{} ({lemma:/area/}=k0 >{} {lemma:/no/}=k1 >{} {lemma:/new/}=k2)'
+    comment: no new area of XXX
+  - id: nua80
+    pattern: '{}=f <{dependency:/nmod:out/} ({lemma:/rule/}=k0 >{} {lemma:/cannot/}=k1)'
+    comment: cannot rule out XXX
+  - id: nua90
+    pattern: '{}=f <{dependency:/nmod:out/} ({lemma:/rule/}=k0 <{} ({lemma:/evidence/}=k1 > {} {lemma:/no/}=k2))'
+    comment: no evidence to rule out XXX
+  - id: nua100
+    pattern: '{lemma:/cardiomediastinal|pericardial|mediastinal|mediastinum|cardiomediastinum|contour|configuration|silhouette|size|heart|shadow/}=f > {dependency:/amod/} {lemma:/stable|unchanged/}=k0'
+    comment: stable silhouette
+  - id: nua110
+    pattern: '{lemma:/cardiomediastinal|pericardial|mediastinal|mediastinum|cardiomediastinum|contour|configuration|silhouette|size|heart|shadow/}=f > {dependency:/xcomp/} {lemma:/stable|unchanged/}=k0'
+    comment: silhouette unchanged
+  - id: nua120
+    pattern: '{lemma:/cardiomediastinal|pericardial|mediastinal|mediastinum|cardiomediastinum|contour|configuration|silhouette|size|heart|shadow/}=f < {dependency:/nsubj/} {lemma:/stable|unchanged/}=k0'
+    comment: Silhouette/cardiomediastinal is stable
+  - id: nua130
+    pattern: '{}=f < {} ({lemma:/excluded|definitive/}=k0 > {dependency:/neg/} {}=k1)'
+    comment: not excluded
+uncertainty_post:
+  - id: nub10
+    pattern: '{}=f >{} {lemma:/possible|possibly|presumably|probable|questionable|suspect|suspected|suspicious/}=k0'
+    comment: possible XXXXX
+  - id: nub20
+    pattern: '{}=f <{dependency:/dobj/} ({lemma:/reflect|represent|indicate|include/}=k0 >{} {lemma:/may|could|would|might|possibly|can/}=k1)'
+    comment: may represent XXX
+  - id: nub30
+    pattern: '{}=f <{dependency:/dobj/} {lemma:/suspect|favor|question|consider|suggest|suggesting/}=k0'
+    comment: suspect XXX
+  - id: nub40
+    pattern: '{}=f <{dependency:/nmod:of/} {lemma:/question|suggestion|suggestive/}=k0'
+    comment: suggestive of XXX
+  - id: nub50
+    pattern: '{}=f <{dependency:/nmod:to/} ({lemma:/due/}=k0 >{} {lemma:/can|could|may|would|possibly|likely/}=k1)'
+    comment: may be due to XXX
+  - id: nub60
+    pattern: '{}=f > {} {lemma:/may|might|would|could/}=k0'
+    comment: could be XXX
+  - id: nub70
+    pattern: '{}=f <{dependency:/nmod:for/} {lemma:/concern|suspicion/}=k0'
+    comment: concern for XXX
+  - id: nub80
+    pattern: '{}=f <{dependency:/nmod:to/} {lemma:/secondary/}=k0'
+    comment: secondary to XXX
+  - id: nub90
+    pattern: '{}=f < {dependency:/conj:versus/} {}=k0'
+    comment: k0 versus XXX
+  - id: nub100
+    pattern: '{}=f < {dependency:/nmod:out/} {lemma:/cannot/}=k0'
+    comment: cannot rule out
+  - id: nub110
+    pattern: '{}=f < {} {lemma:/obscure/}=k0'
+    comment: silhouette is obscured
+  - id: nub120
+    pattern: '{lemma:/cardiomediastinal|pericardial|mediastinal|mediastinum|cardiomediastinum|contour|configuration|silhouette|size|heart|shadow/}=f > {} ({lemma:/change/}=k0 > {dependency:/neg/} {}=k1)'
+    comment: not changed silhouette/cardiomediastinal
+  - id: nub130
+    pattern: '{lemma:/cardiomediastinal|pericardial|mediastinal|mediastinum|cardiomediastinum|contour|configuration|silhouette|size|heart|shadow/}=f < {} ({lemma:/change/}=k0 > {dependency:/neg/} {}=k1)'
+    comment: silhouette has not changed
+  - id: nub140
+    pattern: '{lemma:/cardiomediastinal|pericardial|mediastinal|mediastinum|cardiomediastinum|contour|configuration|silhouette|size|heart|shadow/}=f < {} ({lemma:/similar/}=k0 > {dependency:/nmod:to/} {lemma:/prior/}=k1)'
+    comment: Silhouette/cardiomediastinal similar to prior
+  - id: nub150
+    pattern: '{lemma:/cardiomediastinal|pericardial|mediastinal|mediastinum|cardiomediastinum|contour|configuration|silhouette|size|heart|shadow/}=f < {} ({lemma:/similar/}=k0 > {dependency:/nmod:to/} ({}=k1 >{} {lemma:/prior/}=k2))'
+    comment: Silhouette/cardiomediastinal similar to prior
+  - id: nub160
+    pattern: '{lemma:/cardiomediastinal|pericardial|mediastinal|mediastinum|cardiomediastinum|contour|configuration|silhouette|size|heart|shadow/}=f > {} ({lemma:/similar/}=k0 > {dependency:/nmod:to/} {lemma:/prior/}=k1)'
+    comment: Silhouette/cardiomediastinal similar to prior
+  - id: nub170
+    pattern: '{lemma:/cardiomediastinal|pericardial|mediastinal|mediastinum|cardiomediastinum|contour|configuration|silhouette|size|heart|shadow/}=f > {} ({lemma:/similar/}=k0 > {dependency:/nmod:to/} ({}=k1 >{} {lemma:/prior/}=k2))'
+    comment: Silhouette/cardiomediastinal similar to prior
+  - id: nub180
+    pattern: '{lemma:/cardiomediastinal|pericardial|mediastinal|mediastinum|cardiomediastinum|contour|configuration|silhouette|size|heart|shadow/}=f < {dependency:/nmod:of/} ({lemma:/appearance/}=k0 > {} {lemma:/stable|unchanged/}=k1)'
+    comment: Stable apparence of silhouette/cardiomediastinal
+  - id: nub190
+    pattern: '{}=f < {dependency:/nmod:for/} {lemma:/suspicious/}=k0'
+    comment: suspicious for XXXXX
+  - id: nub200
+    pattern: '{}=f < {dependency:/dobj/} ({lemma:/represent/}=k0 > {dependency:/advmod/} {lemma:/possibly/}=k1)'
+    comment: possibly represent
+  - id: nub210
+    pattern: '{}=f > {dependency:/cc/} {lemma:/and.or/}=k0'
+    comment: XXX and/or k0
+  - id: nub220
+    pattern: '{}=f < {dependency:/conj:and.or/} {}=k0'
+    comment: k0 and/or XXX
+  - id: nub230
+    pattern: '{}=f < {dependency:/dep/} ({}=k0 > {dependency:/acl:relcl/} ({lemma:/represent/}=k1 < {dependency:/aux/} {lemma:/may/}=k2))'
+    comment: may represent XXX
+  - id: nub240
+    pattern: '{}=f < {dependency:/nmod:for/} {lemma:/worrisome/}=k0'
+    comment: worrisome for XXX
+  - id: nub250
+    pattern: '{}=f >{} {lemma:/minimal/}=k0'
+    comment: minimal XXX
+  - id: nub260
+    pattern: '{}=f <{dependency:/conj:and|conj:or/} ({}=k1 >{} {lemma:/minimal/}=k0)'
+    comment: parsing error; minimal k1 or XXX
+  - id: nub270
+    pattern: ({lemma:/angle/} > {dependency:/nsubj/} {lemma:/costophrenic/}) > {dependency:/nmod:of/} {lemma:/blunt.*/}
+    comment: '{}=f < {dependency:/nsubjpass/} ({lemma:/change/}=k0 > {dependency:/neg/} {}=k1)'
+  - id: nub280
+    pattern: '{}=f < {dependency:/nsubj/} ({}=k0 > {} ({lemma:/likely/}=k1 > {} {lemma:/less/}=k2))'
+    comment: less likely
+  - id: nub290
+    pattern: '{}=f >{} {lemma:/question/}=k0'
+    comment: question XXX
+  - id: nub300
+    pattern: '{}=f <{dependency:/nsubjpass/} {lemma:/suspect/}=k0'
+    comment: XXX is suspected
+  - id: nub310
+    pattern: '{}=f <{} {lemma:/possible/}=k0'
+    comment: possible
+  - id: nub320
+    pattern: '{}=f <{dependency:/dobj/} {lemma:/suspect/}=k0'
+    comment: suspected XXX
+  - id: nub330
+    pattern: '{}=f >{dependency:/advmod/} {lemma:/suspect/}=k0'
+    comment: suspected XXX
+  - id: nub340
+    pattern: '{}=f <{dependency:/dep/} {lemma:/maybe/}=k0'
+    comment: maybe due to XXX
+  - id: nub350
+    pattern: '{}=f < {} ({lemma:/presence/}=k0 <{dependency:/dobj/} ({lemma:/reflect|represent|indicate|include/}=k1 >{} {lemma:/may|could|would|might|possibly|can/}=k2))'
+    comment: may/could represent/reflect/indicate/include the presence of XXX
+  - id: nub360
+    pattern: '{}=f <{dependency:/nmod:to/} {lemma:/secondary/}=k0'
+    comment: maybe secondary to XXX
+  - id: nub370
+    pattern: '{}=f <{dependency:/nmod:to/} ({lemma:/relate/}=k0 >{} {lemma:/can|could|may|would|possibly|likely/}=k1)'
+    comment: could relate to XXX
+  - id: nub380
+    pattern: '{}=f <{dependency:/nmod:with/} ({lemma:/compatible/}=k0 >{} {lemma:/be|could|may|would/}=k1)'
+    comment: may be compatible with XXX
+  - id: nub390
+    pattern: '{}=f <{dependency:/dobj/} ({lemma:/left/}=k0 <{} {lemma:/question/}=k1)'
+    comment: question left XXX
+  - id: nub400
+    pattern: '{}=f >{} {lemma:/left/}=k0 <{} {lemma:/question/}=k1'
+    comment: question left XXX
+  - id: nub410
+    pattern: '{}=f <{dependency:/dobj/} ({lemma:/include/}=k0 >{} ({lemma:/diagnosis/}=k1 >{} {lemma:/differential/}=k2))'
+    comment: differential diagnosis includes
+  - id: nub420
+    pattern: '{}=f <{} {lemma:/be/}=k0 >{} {lemma:/may|could|would/}=k1'
+    comment: may be XXX
+  - id: nub430
+    pattern: '{}=f <{dependency:/nsubj/} {lemma:/suspect/,tag:/VBN/}=k0'
+    comment: XXX suspected
+  - id: nub440
+    pattern: '{}=f < {dependency:/nmod:of/} ({lemma:/symptom/}=k0 < {dependency:/nmod:for/} {lemma:/correlation/}=k1)'
+    comment: Correlation for symptoms of XXX
+  - id: nub450
+    pattern: '{lemma:/heart/}=f < {dependency:/compound/} ({lemma:/size/}=k0 > {} {lemma:/borderline/}=k1)'
+    comment: borderline heart size
+  - id: nub460
+    pattern: '{}=f < {} ({lemma:/present/}=k0 > {dependency:/aux/} {lemma:/could|might|may|possibly|can/}=k1)'
+    comment: XXX could/might/may/possibly be present
+  - id: nub470
+    pattern: '{}=f < {} ({lemma:/evaluate/}=k0 > {dependency:/advmod/} {lemma:/poorly/}=k1)'
+    comment: XXX is poorly evaluated
+  - id: nub480
+    pattern: '{}=f < {} ({lemma:/evaluate/}=k0 > {dependency:/advmod/} {lemma:/incompletely/}=k1)'
+    comment: XXX is incompletely evaluated
+  - id: nub490
+    pattern: '{}=f < {} ({lemma:/evaluate/}=k0 >{dependency:/neg/} {}=k1)'
+    comment: XXX is not evaluated
+  - id: nub500
+    pattern: '{}=f > {} ({lemma:/evaluate/}=k0 > {dependency:/neg/} {}=k1)'
+    comment: XXX is not evaluated
+  - id: nub510
+    pattern: '{}=f < {dependency:/nsubj/} ({lemma:/appear/}=k0 > {} {lemma:/could|may|might|can/}=k1)'
+    comment: XXX could appear
+  - id: nub520
+    pattern: '{}=f < {dependency:/nmod:with/} ({lemma:/consistent/}=k0 > {} {lemma:/may|might|can|could/}=k1)'
+    comment: may be consistent/compatible with XXX
+  - id: nub530
+    pattern: '{}=f < {dependency:/nmod:for/} ({lemma:/correlate/}=k0 > {dependency:/advmod/} {lemma:/clinically/}=k1)'
+    comment: correlate clinically for XXX
+  - id: nub540
+    pattern: '{}=f < {dependency:/nmod:of/} ({lemma:/evidence|sign|signs|symptoms|symptom/}=k0 < {dependency:/nmod:for/} ({lemma:/correlate/}=k1 > {dependency:/advmod/} {lemma:/clinically/}=k2))'
+    comment: correlate clinically for evidence of XXX
+  - id: nub550
+    pattern: '{}=f < {} (({lemma:/see/}=k0 > {dependency:/neg/} {}=k1) > {} {lemma:/clearly/}=k2)'
+    comment: XXX are not clearly seen
+  - id: nub560
+    pattern: '{}=f > {} (({lemma:/see/}=k0 > {dependency:/neg/} {}=k1) > {} {lemma:/clearly/}=k2)'
+    comment: XXX are not clearly seen
+  - id: nub570
+    pattern: '{}=f < {} ({lemma:/reflect/}=k0 > {} {lemma:/possibly/}=k1)'
+    comment: possibly reflecting a XXX
+  - id: nub580
+    pattern: '{}=f < {} ({lemma:/appreciate|definitive/}=k0 > {dependency:/neg/} {}=k1)'
+    comment: XXX was not appreciated|definitive
+  - id: nub590
+    pattern: '{}=f < {} (({lemma:/have/}=k0 > {} {lemma:/may|might|could/}=k1) > {} {lemma:/appearance/}=k2)'
+    comment: XXX may|might|could (also) have this appearance
+  - id: nub600
+    pattern: '{lemma:/congestion/}=f > {} {lemma:/vascular/}=k0'
+    comment: vascular prominence
+  - id: nub610
+    pattern: '{lemma:/congestion/}=f > {} {lemma:/pulmonary/}=k0'
+    comment: vascular prominence
+  - id: nub620
+    pattern: '{lemma:/indistinctness/}=f'
+    comment: vascular prominence
+  - id: nub630
+    pattern: '{lemma:/prominence/}=f > {} {lemma:/vascular/}=k0'
+    comment: vascular prominence
+  - id: nub640
+    pattern: '{lemma:/cardiomediastinal|pericardial|mediastinal|mediastinum|cardiomediastinum|contour|configuration|silhouette|size|heart|shadow/}=f < {dependency:/nmod:of/} ({lemma:/aspect|size/}=k0 > {} {lemma:/unchanged/}=k1)'
+    comment: Unchanged aspect of silhouette/cardiomediastinal
+  - id: nub650
+    pattern: '{lemma:/cardiomediastinal|pericardial|mediastinal|mediastinum|cardiomediastinum|contour|configuration|silhouette|size|heart|shadow/}=f < {dependency:/nmod:of/} ({lemma:/size/}=k0 > {} {lemma:/borderline|constant/}=k1)'
+    comment: borderline size of silhouette/cardiomediastinal

@@ -1,0 +1,4 @@
+- id: rdn10
+  pattern: (cannot|no evidence to) exclude (?P<f>XXXXX)
+- id: rdn20
+  pattern: (cannot be|is not) excluded (?P<f>XXXXX)

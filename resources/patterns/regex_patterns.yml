@@ -1,0 +1,107 @@
+negation:
+    - id: rn10
+      pattern: (exclude|negative for|no|rather than|resolved|rule out|without) XXXXX
+    - id: rn20
+      pattern: (no|without)( evidence of|developing)? XXXXX
+    - id: rn21
+      pattern: (no|without) evidence (of|for) (developing|increasing) XXXXX
+    - id: rn30
+      pattern: (clear|clearing) (of|without) XXXXX
+    - id: rn40
+      pattern: XXXXX (is|are|appears?|remains?) (normal|stable|unchanged|unremarkable)
+    - id: rn41
+      pattern: (normal|normal size|unchanged|unremarkable) XXXXX
+    - id: rn42
+      pattern: normal size of( the)? XXXXX
+    - id: rn50
+      pattern: XXXXX (is|are) within normal( radiographic)?( size)? limits
+    - id: rn51
+      pattern: XXXXX within normal( radiographic)?( size)? limits
+    - id: rn60
+      pattern: (disappearance|drainage|free|removal|resolution) of XXXXX
+    - id: rn70
+      pattern: no XXXXX disease
+    - id: rn80
+      pattern: XXXXX (has been|have been|was|is|has|have)( since)? (removed|resolved)
+    - id: rn81
+      pattern: XXXXX (has since been|have since been) (removed|resolved)
+    - id: rn90
+      pattern: XXXXX removal
+    - id: rn100
+      pattern: no XXXXX (is|are) seen
+    - id: rn110
+      pattern: XXXXX is at upper limit
+    - id: rn120
+      pattern: healed XXXXX
+    # relaxed
+    #- id: 5
+    #  pattern: (no|without) evidence of ([^ ]+ ){0,3}XXXXX[\\w]*
+    #  comment: no evidence of XXXXX
+    #- id: 7
+    #  pattern: (no|without) evidence of .* XXXXX[\\w]*\.
+    #  comment: no evidence of XXXXX
+    #- id: 8
+    #  pattern: (no|without) ([^ ]+ ){0,3}XXXXX[\\w]*
+    #  comment: no XXXXX
+double_negation:
+    - id: rdn10
+      pattern: (cannot|no evidence to) exclude XXXXX
+    - id: rdn20
+      pattern: (cannot be|is not) excluded XXXXX
+uncertainty_pre:
+    - id: rua10
+      pattern: XXXXX[\w]* cannot be ((entirely|certainly|fully) )?(excluded|evaluated|detected|identified|assessed|confirmed)
+      comment: XXXXX (cannot be|is not) excluded
+    - id: rua20
+      pattern: cannot (exclude|rule out) XXXXX
+    - id: rua30
+      pattern: no new( area of)? XXXXX
+    - id: rua40
+      pattern: no evidence to rule out XXXXX
+uncertainty_post:
+    - id: rub00
+      pattern: (concern for|concerning for|doubt|less likely|no convincing|possible|possibly|presumably|probable|question|questionable|suggesting|suggestive of|suspect|suspected|suspicious) XXXXX
+    - id: rub10
+      pattern: suspicious for XXXXX
+    #####################################
+
+    #- id: rub0
+    #  pattern: unchanged ([^ ]+ ){0,3}XXXXX
+    #  comment: unchanged XXXXX
+    - id: rub20
+      pattern: borderline size of the (cardiac )?silhouette
+      comment: overfitting to MIMIC-III CXR
+    - id: rub30
+      pattern: doubt ([^ ]+ ){0,3}XXXXX
+      comment: doubt XXXXX
+    - id: rub40
+      pattern: less likely ([^ ]+ ){0,3}XXXXX
+      comment: less likely XXXXX
+    - id: rub50
+      pattern: possible ([^ ]+ ){0,3}XXXXX
+      comment: possible XXXXX
+    - id: rub60
+      pattern: XXXXX[\w]* if any
+      comment: XXXXX if any
+    - id: rub70
+      pattern: may be related to ([^ ]+ ){0,3}XXXXX
+    - id: rub80
+      pattern: versus XXXXX
+    - id: rub90
+      pattern: (may|could|would|might|possibly|can) (reflect|represent|indicate|include) XXXXX
+    - id: rub100
+      pattern: (could be|may be) XXXXX
+    - id: rub110
+      pattern: possibly represent(ing)? XXXXX
+    - id: rub120
+      pattern: (may|could|would|might|possibly|can) relate to XXX
+    - id: rub130
+      pattern: XXXXX (is|are) possible
+    - id: rub140
+      pattern: XXXXX is suspected
+    - id: rub150
+      pattern: XXXXX may be present
+    - id: rub160
+      pattern: minimal(ly)? XXXXX
+    - id: rub170
+      pattern: \/\?XXXXX
