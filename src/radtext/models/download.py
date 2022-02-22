@@ -13,14 +13,18 @@ DEFAULT_CONFIG = {
 
 def download(argv):
     if argv['deid'] or argv['all']:
+        print('Downloading: NLTK averaged_perceptron_tagger')
         nltk.download('averaged_perceptron_tagger')
     if argv['stanza'] or argv['all']:
         import stanza
+        print('Downloading: Stanza en')
         stanza.download('en')
     if argv['spacy'] or argv['all']:
+        print('Downloading: space %s' % argv['--spacy-model'])
         subprocess.check_call([sys.executable, '-m', 'spacy', 'download',
                                argv['--spacy-model']])
     if argv['ssplit'] or argv['all']:
+        print('Downloading: NLTK punkt')
         nltk.download('punkt')
     if argv['bllip'] or argv['all']:
         from bllipparser import ModelFetcher
@@ -28,13 +32,15 @@ def download(argv):
         if not model_dir.exists():
             model_dir.mkdir(parents=True)
 
-        print("downloading GENIA+PubMed model ... [%s]" % model_dir)
+        print("Downloading: GENIA+PubMed model ... [%s]" % model_dir)
         ModelFetcher.download_and_install_model(MODELS['BLLIP-GENIA-PubMed'],
                                                 str(model_dir))
     if argv['tree2dep'] or argv['all']:
+        print("Downloading: StanfordDependencies")
         import StanfordDependencies
         StanfordDependencies.StanfordDependencies(download_if_missing=True)
     if argv['ner'] or argv['all']:
+        print('Downloading: NLTK stopwords')
         nltk.download('stopwords')
 
 
