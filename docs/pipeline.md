@@ -1,4 +1,4 @@
-# Pipeline (experimental)
+# Pipeline
 
 In this section, we introduce in more detail the options of RadText's pipeline.
 
