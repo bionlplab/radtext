@@ -84,5 +84,6 @@ page](https://radtext.readthedocs.io/en/latest/acknowledgments.html).
 
 ## License
 
-[MIT](https://github.com/bionlplab/radtext/blob/master/LICENSE) © 2022 BioNLP
-Lab at Weill Cornell Medicine
+Copyright BioNLP Lab at Weill Cornell Medicine, 2022.
+
+Distributed under the terms of the [MIT](https://github.com/bionlplab/radtext/blob/master/LICENSE) license, RadText is free and open soure software.
