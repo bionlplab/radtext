@@ -43,7 +43,7 @@ def _default_patterns():
 
 class BioCSectionSplitterRegex(BioCProcessor):
     def __init__(self, regex_pattern: Pattern=None):
-        super(BioCSectionSplitterRegex, self).__init__('split_section:regex')
+        super(BioCSectionSplitterRegex, self).__init__('secsplit:regex')
         if regex_pattern is None:
             self.pattern = _default_patterns()
         else:

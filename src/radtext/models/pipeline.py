@@ -26,7 +26,7 @@ from radtext.models.neg.neg import BioCNeg
 from radtext.models.sentence_split_nltk import BioCSSplitterNLTK
 from radtext.models.tree2dep import BioCPtb2DepConverter
 
-DEFAULT_ANNOTATORS = ['deid:philter', 'split_section:regex', 'ssplit', 'ner:regex',
+DEFAULT_ANNOTATORS = ['deid:philter', 'secsplit:regex', 'ssplit', 'ner:regex',
 					  'parse:bllip', 'tree2dep', 'neg:negbio']
 
 
@@ -47,13 +47,13 @@ class Pipeline(BioCPipeline):
 			if annotator == 'deid:philter':
 				processor = BioCDeidPhilter(argv['--repl'])
 				self.processors.append(processor)
-			elif annotator == 'split_section:regex':
+			elif annotator == 'secsplit:regex':
 				with open(argv['--section-titles']) as fp:
 					section_titles = [line.strip() for line in fp]
 				pattern = combine_patterns(section_titles)
 				processor = BioCSectionSplitterRegex(regex_pattern=pattern)
 				self.processors.append(processor)
-			elif annotator == 'split_section:medspacy':
+			elif annotator == 'secsplit:medspacy':
 				import medspacy
 				nlp = medspacy.load(enable=["sectionizer"])
 				processor = BioCSectionSplitterMedSpacy(nlp)

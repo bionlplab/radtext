@@ -1,31 +1,45 @@
-export PYTHONPATH=$PYTHONPATH:src
-examples='radtext/examples'
-$output='$output'
+#export PYTHONPATH=$PYTHONPATH:src
 
-[ -d $$output ] || mkdir $$output
+PHRASE=radtext/resources/chexpert_phrases.yml
+NGREX_PATTERN=radtext/resources/patterns/ngrex_patterns.yml
+REGEX_PATTERN=radtext/resources/patterns/regex_patterns.yml
+
+while getopts i:o:d: flag
+do
+  case "${flag}" in
+    i) input=${OPTARG};;
+    o) output=${OPTARG};;
+    d) top_dir=${OPTARG};;
+  esac
+done
+
+if [ -z "$top_dir" ]; then
+  top_dir=$(mktemp -d -t radtext-XXXXXXXXXX)
+else
+  [ -d $top_dir ] || mkdir $top_dir
+fi
+
+if [ -z "$input" ]; then
+  echo "No input file"
+fi
+
+if [ -z "$output" ]; then
+  echo "No output file"
+fi
+
+filename=$(basename -- "$output")
+extension="${filename##*.}"
+filename="${filename%.*}"
 
 # download models
-python src/radtext/cmd/download.py all
-# data preparation
-radtext-csv2bioc -i $examples/ex1.csv -o $output/ex1.xml
-radtext-cdm2bioc -i $examples/ex2.csv -o $output/ex2.xml
-# deid
-radtext-deid --repl=X -i $examples/ex3.xml -o $output/ex3.deid_philter.xml
-# split section
-radtext-split_section reg -i $examples/ex4.xml -o $output/ex4.secsplit_regex.xml
-radtext-split_section medspacy -i $examples/ex4.xml -o $output/ex4.secsplit_medspacy.xml
-# preprocess
-radtext-preprocess spacy -i $examples/ex4.secsplit_medspacy.xml -o $output/ex4.preprocess_spacy.xml
-radtext-preprocess stanza -i $examples/ex4.secsplit_medspacy.xml -o $output/ex4.preprocess_stanza.xml
-# ssplit
-radtext-ssplit -i $examples/ex4.secsplit_medspacy.xml -o $output/ex4.ssplit.xml
-# parse
-radtext-parse -i $examples/ex4.ssplit.xml -o $output/ex4.parse.xml
-# convert constituency tree to dependencies
-radtext-tree2dep -i $examples/ex4.parse.xml -o $output/ex4.depparse_billp.xml
+radtext-download all
 # ner
-radtext-ner regex --phrase radtext/resources/chexpert_phrases.yml -i $examples/ex4.secsplit_medspacy.xml -o $output/ex4.ner_regex.xml
-radtext-ner spacy --radlex radtext/resources/Radlex4.1.xlsx -i $examples/ex4.secsplit_medspacy.xml -o $output/ex4.ner_radlex.xml
+radtext-ner regex --phrase $PHRASE -i $input -o $top_dir/$filename.ner.xml
+# ssplit
+radtext-ssplit -i $top_dir/$filename.ner.xml -o $top_dir/$filename.ssplit.xml
+# parse
+radtext-parse -i $top_dir/$filename.ssplit.xml -o $top_dir/$filename.bllip.xml
+# convert constituency tree to dependencies
+radtext-tree2dep -i $top_dir/$filename.bllip.xml -o $top_dir/$filename.depparse.xml
 # neg
-# convert bioc to note_nlp table
-radtext-bioc2cdm -i $examples/ex4.depparse_billp.xml -o $output/ex4.deparser_billp.csv
+radtext-neg --ngrex_negation $NGREX_PATTERN --regex_patterns $REGEX_PATTERN -i $top_dir/$filename.depparse.xml -o $output

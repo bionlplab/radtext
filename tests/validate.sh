@@ -27,5 +27,9 @@ radtext-tree2dep -i $examples/ex4.parse.xml -o $output/ex4.depparse_billp.xml
 radtext-ner regex --phrase radtext/resources/chexpert_phrases.yml -i $examples/ex4.secsplit_medspacy.xml -o $output/ex4.ner_regex.xml
 radtext-ner spacy --radlex radtext/resources/Radlex4.1.xlsx -i $examples/ex4.secsplit_medspacy.xml -o $output/ex4.ner_radlex.xml
 # neg
+#radtext-neg --ngrex_negation radtext/resources/patterns/ngrex_negation.yml \
+#  --regex_patterns radtext/resources/patterns/regex_patterns.yml \
+#  -i $examples/ex4.secsplit_medspacy.xml \
+#  -o $output/ex4.ner_radlex.xml
 # convert bioc to note_nlp table
 radtext-bioc2cdm -i $examples/ex4.depparse_billp.xml -o $output/ex4.deparser_billp.csv

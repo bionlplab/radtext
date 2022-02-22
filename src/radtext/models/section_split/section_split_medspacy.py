@@ -8,7 +8,7 @@ from radtext.utils import is_passage_empty, strip_passage
 
 class BioCSectionSplitterMedSpacy(BioCProcessor):
     def __init__(self, nlp):
-        super(BioCSectionSplitterMedSpacy, self).__init__('split_section:medspacy')
+        super(BioCSectionSplitterMedSpacy, self).__init__('secsplit:medspacy')
         self.nlp = nlp
 
     def process_collection(self, collection: BioCCollection) -> BioCCollection:
