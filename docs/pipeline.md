@@ -1,6 +1,6 @@
-# Advanced Usage
+# Pipeline (experimental)
 
-This document covers some more advanced features of RadText.
+In this section, we introduce in more detail the options of RadText's pipeline.
 
 ## De-identification
 
@@ -76,23 +76,7 @@ $ radext-parse -i /path/to/input.xml -o /path/to/output.xml
 
 ## Named Entity Recognition
 
-This module recognizes the named entities (e.g., disease findings) from the reports.
-
-The **rule-based method** uses regular expressions that combine information from
-terminological resources and characteristics of the entities of interest.
-They are manually constructed by domain experts.
-
-```shell
-$ radext-ner regex --phrase /path/to/patterns.yml -i /path/to/input.xml -o /path/to/output.xml
-```
-
-[**SpaCy's PhraseMatcher**](https://spacy.io/api/phrasematcher) provides another
-way to efficiently match large terminology lists. RadText uses PhraseMatcher to
-recognize concepts in the [RadLex ontology](http://radlex.org/).
-
-```shell
-$ radext-ner spacy --radlex /path/to/Radlex4.1.xlsx -i /path/to/input.xml -o /path/to/output.xml
-```
+See [this doc](pipeline/ner.md).
 
 ## Dependency Parsing
 

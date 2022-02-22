@@ -117,7 +117,7 @@ of string. For example, here we only load the default de-identification and
 ssplit processors:
 
 ```python
-nlp = radtext.Pipeline(annotators=['deid', 'ssplit'])
+nlp = radtext.Pipeline(annotators=['deid:philter', 'ssplit'])
 ```
 
 ### Annotating text
@@ -158,7 +158,7 @@ for doc in collection.documents:
     for passage in doc.passages:
         for ann in passage.annotations:
             if 'nlp_system' in ann.infons \
-                and 'NER_Regex' in ann.infons['nlp_system']:
+                and 'ner:regex' in ann.infons['nlp_system']:
                 print(ann.text)
 ```
 
