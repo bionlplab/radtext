@@ -119,7 +119,7 @@ def download(annotators: List[str]=None, argv=None, proxies=None):
             model_dir = argv['--bllip-model']
             if not model_dir.exists():
                 model_dir.mkdir(parents=True)
-            ModelFetcher.download_and_install_model(BLLIP_MODEL_URL, str(model_dir))
+            ModelFetcher.download_and_install_model(BLLIP_MODEL_URL, str(model_dir.parent))
         elif annotator == 'ssplit:nltk':
             print('Downloading: NLTK punkt')
             nltk.download('punkt')
