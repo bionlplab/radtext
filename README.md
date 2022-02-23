@@ -41,7 +41,7 @@ $ source venv/bin/activate
 $ pip install -U pip setuptools wheel
 $ pip install -U radtext
 $ python -m spacy download en_core_web_sm
-$ radtext-download all
+$ radtext-download --all
 ```
 
 To see RadText’s pipeline in action, you can launch the Python interactive

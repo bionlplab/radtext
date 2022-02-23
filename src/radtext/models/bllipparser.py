@@ -6,8 +6,8 @@ from typing import Union
 from bioc import BioCSentence
 from bllipparser import RerankingParser
 
-from radtext import DEFAULT_LOCAL_MODELS
 from radtext.core import BioCProcessor
+from radtext.models.constants import DEFAULT_OPTIONS
 
 
 def is_punct(text) -> bool:
@@ -28,7 +28,7 @@ def singleton(cls, *args, **kw):
 
 @singleton
 class BllipParser:
-    def __init__(self, model_dir: str=DEFAULT_LOCAL_MODELS['BLLIP-GENIA-PubMed']):
+    def __init__(self, model_dir: str=DEFAULT_OPTIONS['--bllip-model']):
         self.model_dir = os.path.expanduser(model_dir)
         print('loading model %s ...' % self.model_dir)
         self.rrp = RerankingParser.from_unified_model_dir(self.model_dir)
@@ -52,7 +52,7 @@ class BllipParser:
 
 
 class BioCParserBllip(BioCProcessor):
-    def __init__(self, model_dir: str=DEFAULT_LOCAL_MODELS['BLLIP-GENIA-PubMed']):
+    def __init__(self, model_dir: str=DEFAULT_OPTIONS['--bllip-model']):
         super(BioCParserBllip, self).__init__('parse:bllip')
         self.parser = BllipParser(model_dir=model_dir)
 

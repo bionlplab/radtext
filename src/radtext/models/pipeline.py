@@ -9,15 +9,13 @@ from stanza.pipeline.core import ResourcesFileNotFoundError
 from radtext.cmd.ner import load_yml
 from radtext.core import BioCProcessor, BioCPipeline
 from radtext.models.bllipparser import BioCParserBllip
-from radtext.models.constants import DEFAULT_OPTIONS
+from radtext.models.constants import DEFAULT_OPTIONS, DEFAULT_ANNOTATORS
 from radtext.models.deid import BioCDeidPhilter
 from radtext.models.ner.ner_spacy import BioCNerSpacy, NerSpacyExtractor
 from radtext.models.ner.radlex import RadLex4
 from radtext.models.preprocess_stanza import BioCStanza
-from radtext.models.section_split.section_split_medspacy import \
-				BioCSectionSplitterMedSpacy
-from radtext.models.section_split.section_split_regex import \
-	BioCSectionSplitterRegex, combine_patterns
+from radtext.models.section_split.section_split_medspacy import BioCSectionSplitterMedSpacy
+from radtext.models.section_split.section_split_regex import BioCSectionSplitterRegex, combine_patterns
 from radtext.models.preprocess_spacy import BioCSpacy
 from radtext.models.ner.ner_regex import NerRegExExtractor, BioCNerRegex
 from radtext.models.neg.match_ngrex import NegGrexPatterns
@@ -26,12 +24,9 @@ from radtext.models.neg.neg import BioCNeg
 from radtext.models.sentence_split_nltk import BioCSSplitterNLTK
 from radtext.models.tree2dep import BioCPtb2DepConverter
 
-DEFAULT_ANNOTATORS = ['deid:philter', 'secsplit:regex', 'ssplit', 'ner:regex',
-					  'parse:bllip', 'tree2dep', 'neg:negbio']
-
 
 class Pipeline(BioCPipeline):
-	def __init__(self, annotators=None, argv=None):
+	def __init__(self, annotators: List[str]=None, argv=None):
 		super(Pipeline, self).__init__()
 
 		if annotators is None:
@@ -62,8 +57,7 @@ class Pipeline(BioCPipeline):
 				try:
 					nlp = spacy.load(argv['--spacy-model'])
 				except IOError:
-					print('Install spacy model using '
-						  '\'python -m spacy download en_core_web_sm\'')
+					print('Install spacy model using \'python -m spacy download en_core_web_sm\'')
 					return
 				processor = BioCSpacy(nlp)
 				self.processors.append(processor)
