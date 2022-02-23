@@ -27,7 +27,7 @@ def main():
     for doc in tqdm.tqdm(collection.documents):
         for passage in tqdm.tqdm(doc.passages, leave=False):
             for sentence in tqdm.tqdm(passage.sentences, leave=False):
-                converter.process_sentence(sentence, doc.concept_id)
+                converter.process_sentence(sentence, doc.id)
 
     with open(argv['-o'], 'w') as fp:
         bioc.dump(collection, fp)
