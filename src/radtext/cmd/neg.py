@@ -25,7 +25,7 @@ import bioc
 import docopt
 import tqdm
 
-from cmd_utils import process_options
+from radtext.cmd.cmd_utils import process_options
 from radtext.models.neg.match_ngrex import NegGrexPatterns
 from radtext.models.neg import NegRegexPatterns
 from radtext.models.neg import NegCleanUp

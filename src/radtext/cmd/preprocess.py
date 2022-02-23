@@ -16,7 +16,7 @@ import tqdm
 import stanza
 from stanza.pipeline.core import ResourcesFileNotFoundError
 
-from cmd_utils import process_options
+from radtext.cmd.cmd_utils import process_options
 from radtext.models.preprocess_spacy import BioCSpacy
 from radtext.models.preprocess_stanza import BioCStanza
 

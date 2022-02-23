@@ -21,7 +21,7 @@ import tqdm
 import yaml
 
 # Numeric constants
-from cmd_utils import process_options
+from radtext.cmd.cmd_utils import process_options
 from radtext.models.constants import UNCERTAINTY, NEGATION
 
 POSITIVE = 'p'

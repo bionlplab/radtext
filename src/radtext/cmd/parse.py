@@ -11,7 +11,7 @@ Options:
 import bioc
 import docopt
 import tqdm
-from cmd_utils import process_options
+from radtext.cmd.cmd_utils import process_options
 from radtext.models.bllipparser import BioCParserBllip
 
 
