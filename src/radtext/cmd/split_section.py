@@ -14,7 +14,7 @@ import copy
 import bioc
 import docopt
 
-from cmd_utils import process_options
+from radtext.cmd.cmd_utils import process_options
 from radtext.models.section_split.section_split_regex import BioCSectionSplitterRegex, SECTION_TITLES, combine_patterns
 
 

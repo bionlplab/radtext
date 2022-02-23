@@ -16,7 +16,7 @@ import bioc
 import docopt
 import pandas as pd
 
-from cmd_utils import process_options
+from radtext.cmd.cmd_utils import process_options
 from radtext.models.csv2bioc import csv2bioc
 
 
