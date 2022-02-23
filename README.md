@@ -2,14 +2,13 @@
 
 <img src="https://github.com/yfpeng/radtext/blob/master/radtext.png?raw=true" alt="RadText" width="500"/>
 
-[![Build
-status](https://github.com/bionlplab/radtext/actions/workflows/pytest.yml/badge.svg)](https://github.com/bionlplab/radtext/)
-[![Latest version on
-PyPI](https://img.shields.io/pypi/v/radtext.svg)](https://pypi.python.org/pypi/radtext)
+[![Build status](https://github.com/bionlplab/radtext/actions/workflows/pytest.yml/badge.svg)](https://github.com/bionlplab/radtext/)
+[![Latest version on PyPI](https://img.shields.io/pypi/v/radtext.svg)](https://pypi.python.org/pypi/radtext)
 [![Downloads](https://img.shields.io/pypi/dm/radtext.svg)](https://pypi.python.org/pypi/radtext)
 [![License](https://img.shields.io/pypi/l/radtext.svg)](https://opensource.org/licenses/MIT)
 [![codecov](https://codecov.io/gh/bionlplab/radtext/branch/after_paper/graph/badge.svg?token=m4mJ9fD88s)](https://codecov.io/gh/bionlplab/radtext)
 [![Documentation Status](https://readthedocs.org/projects/radtext/badge/?version=latest)](https://radtext.readthedocs.io/en/latest/?badge=latest)
+[![Pythong version](https://img.shields.io/pypi/pyversions/radtext)](https://pypi.python.org/pypi/radtext)
 
 ## Purpose
 
