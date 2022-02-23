@@ -115,11 +115,11 @@ def download(annotators: List[str]=None, argv=None, proxies=None):
             stanza.download('en')
         elif annotator == 'parse:bllip':
             from bllipparser import ModelFetcher
-            print("Downloading: %s from [%s]" % (argv['--bllip-model'], BLLIP_MODEL_URL))
-            model_dir = argv['--bllip-model']
+            model_dir = argv['--bllip-model'].parent
+            print("Downloading: %s from [%s]" % (model_dir, BLLIP_MODEL_URL))
             if not model_dir.exists():
                 model_dir.mkdir(parents=True)
-            ModelFetcher.download_and_install_model(BLLIP_MODEL_URL, str(model_dir.parent))
+            ModelFetcher.download_and_install_model(BLLIP_MODEL_URL, str(model_dir))
         elif annotator == 'ssplit:nltk':
             print('Downloading: NLTK punkt')
             nltk.download('punkt')
