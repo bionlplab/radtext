@@ -1,5 +1,5 @@
-Pipeline (experimental)
-=======================
+Pipeline
+========
 
 This section runs through the API for common tasks to analyze the radiology
 reports.
@@ -10,5 +10,11 @@ reports.
 
    data_conversion
    ner
-
+   deid
+   secsplit
+   preprocess
+   ssplit
+   parse
+   depparse
+   neg
 

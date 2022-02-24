@@ -17,7 +17,6 @@ custom installation.
    
    install
    getting_started
-   pipeline
    pipeline/index
    acknowledgments
    reference

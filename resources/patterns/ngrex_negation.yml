@@ -214,7 +214,7 @@
   pattern: ({}=f >{} {lemma:/obvious/}=k0) >{dependency:/neg/} {}=k1
   comment: no obvious XXX
 - id: nn650
-  pattern: '{}=f <{} ({dependency:/exclude/}=k <{} ({}=k1 >{} {lemma:/no/}=k2))'
+  pattern: {}=f <{} ({lemma:/exclude/}=k <{} ({}=k1 >{} {lemma:/no/}=k2))
   comment: no exclude
 - id: nn660
   pattern: ({}=f >{dependency:/amod/} {lemma:/normal|unremarkable/}=k0) <{dependency:/dobj|nsubj/} {lemma:/demonstrate.*|display|present|show/}=k1

@@ -8,26 +8,26 @@ from bioc import BioCSentence, BioCPassage, BioCDocument, BioCLocation, BioCAnno
 from radtext.core import BioCProcessor
 from radtext.utils import is_passage_empty, strip_passage
 
-SECTION_TITLES = [
-    "ABDOMEN AND PELVIS:",
-    "CLINICAL HISTORY:",
-    "CLINICAL INDICATION:",
-    "COMPARISON:",
-    "COMPARISON STUDY DATE:",
-    "EXAM:",
-    "EXAMINATION:",
-    "FINDINGS:",
-    "HISTORY:",
-    "IMPRESSION:",
-    "INDICATION:",
-    "MEDICAL CONDITION:",
-    "PROCEDURE:",
-    "REASON FOR EXAM:",
-    "REASON FOR STUDY:",
-    "REASON FOR THIS EXAMINATION:",
-    "TECHNIQUE:",
-    "FINAL REPORT",
-]
+# SECTION_TITLES = [
+#     "ABDOMEN AND PELVIS:",
+#     "CLINICAL HISTORY:",
+#     "CLINICAL INDICATION:",
+#     "COMPARISON:",
+#     "COMPARISON STUDY DATE:",
+#     "EXAM:",
+#     "EXAMINATION:",
+#     "FINDINGS:",
+#     "HISTORY:",
+#     "IMPRESSION:",
+#     "INDICATION:",
+#     "MEDICAL CONDITION:",
+#     "PROCEDURE:",
+#     "REASON FOR EXAM:",
+#     "REASON FOR STUDY:",
+#     "REASON FOR THIS EXAMINATION:",
+#     "TECHNIQUE:",
+#     "FINAL REPORT",
+# ]
 
 
 def combine_patterns(patterns: List[str]) -> Pattern:
@@ -37,17 +37,14 @@ def combine_patterns(patterns: List[str]) -> Pattern:
     return re.compile(p, re.IGNORECASE | re.MULTILINE)
 
 
-def _default_patterns():
-    return combine_patterns(SECTION_TITLES)
+# def _default_patterns():
+#     return combine_patterns(SECTION_TITLES)
 
 
 class BioCSectionSplitterRegex(BioCProcessor):
-    def __init__(self, regex_pattern: Pattern=None):
+    def __init__(self, regex_pattern: Pattern):
         super(BioCSectionSplitterRegex, self).__init__('secsplit:regex')
-        if regex_pattern is None:
-            self.pattern = _default_patterns()
-        else:
-            self.pattern = regex_pattern
+        self.pattern = regex_pattern
 
     def process_collection(self, collection: BioCCollection) -> BioCCollection:
         new_docs = []

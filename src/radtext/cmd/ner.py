@@ -8,8 +8,8 @@ Options:
     -o FILE
     -i FILE
     --phrases FILE           Phrase patterns
-    --radlex FILE            The RadLex file [default: radtext/resources/Radlex4.1.xlsx]
-    --spacy-model NAME       spaCy traiend model [default: en_core_web_sm]
+    --radlex FILE            The RadLex ontology file [default: .radtext/resources/Radlex4.1.xlsx]
+    --spacy-model NAME       spaCy trained model [default: en_core_web_sm]
 """
 import logging
 import re

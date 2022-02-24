@@ -1,21 +1,19 @@
 """
 Usage:
-    split_section regex [--overwrite --section-titles FILE] -i FILE -o FILE
+    split_section regex [--overwrite] --section-titles FILE -i FILE -o FILE
     split_section medspacy [--overwrite] -i FILE -o FILE
 
 Options:
-    --section-titles FILE
+    --section-titles FILE   List of section titles [default: .radtext/resources/section_titles.txt]
     -o FILE
     -i FILE
     --overwrite
 """
-import copy
-
 import bioc
 import docopt
 
 from radtext.cmd.cmd_utils import process_options
-from radtext.models.section_split.section_split_regex import BioCSectionSplitterRegex, SECTION_TITLES, combine_patterns
+from radtext.models.section_split.section_split_regex import BioCSectionSplitterRegex, combine_patterns
 
 
 def main():
@@ -24,11 +22,8 @@ def main():
 
     try:
         if argv['regex']:
-            if argv['--section-titles']:
-                with open(argv['--section-titles']) as fp:
-                    section_titles = [line.strip() for line in fp]
-            else:
-                section_titles = SECTION_TITLES
+            with open(argv['--section-titles']) as fp:
+                section_titles = [line.strip() for line in fp]
             pattern = combine_patterns(section_titles)
             processor = BioCSectionSplitterRegex(regex_pattern=pattern)
         elif argv['medspacy']:
