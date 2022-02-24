@@ -283,6 +283,9 @@ negation:
   - id: nn870
     pattern: '{}=f > {} {lemma:/visualize/} & > {dependency:/neg/} {lemma:/no/}'
     comment: no visualized XXX
+  - id: nn880
+    pattern: '{}=f <{dependency:/dobj/} {lemma:/deny/}=k0'
+    comment: deny XXX
 double_negation:
 uncertainty_pre:
   - id: nua10
