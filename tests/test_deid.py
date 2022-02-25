@@ -1,34 +1,24 @@
-from pathlib import Path
-
 import bioc
 import pytest
 
 from radtext.models.deid import BioCDeidPhilter
-from tests import Example_Dir
 
 
 def test_deid():
     import warnings
     warnings.filterwarnings("ignore", category=DeprecationWarning)
 
-    file = Example_Dir / 'ex3.xml'
-    with open(file) as fp:
-        collection = bioc.load(fp)
-        passage = collection.documents[0].passages[0]
-
-    file = Example_Dir / 'ex3.deid_philter.xml'
-    with open(file) as fp:
-        deid_collection = bioc.load(fp)
-        deid_passage = deid_collection.documents[0].passages[0]
+    text = 'Comparison: July 18, 2010.'
+    passage = bioc.BioCPassage.of_text(text, 0)
 
     deid = BioCDeidPhilter()
-    passage = deid.process_passage(passage)
-    assert passage.text == deid_passage.text
+    deid_passage = deid.process_passage(passage)
+    assert deid_passage.text == 'Comparison: XXXXXXXXXXXXX.'
 
-    sentence = collection.documents[1].passages[0].sentences[0]
-    deid_sentence = deid_collection.documents[1].passages[0].sentences[0]
-    sentence = deid.process_sentence(sentence)
-    assert sentence.text == deid_sentence.text
+    text = "Patient's Name: LATTE, MONICA"
+    sentence = bioc.BioCSentence.of_text(text, 0)
+    deid_sentence = deid.process_sentence(sentence)
+    assert deid_sentence.text == "Patient's Name: XXXXXXXXXXXXX"
 
 
 def test_repl():

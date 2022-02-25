@@ -1,12 +1,10 @@
-from pathlib import Path
 import pandas as pd
 
 from radtext.models import csv2bioc
-from tests import Example_Dir
 
 
-def test_csv2bioc():
-    file = Example_Dir / 'ex1.csv'
+def test_csv2bioc(example_dir):
+    file = example_dir / 'ex1.csv'
     df = pd.read_csv(file, dtype=str)
     collection = csv2bioc.csv2bioc(df, 'note_id', 'note_text')
     assert len(collection.documents) == 2

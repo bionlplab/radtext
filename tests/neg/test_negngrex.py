@@ -1,22 +1,27 @@
 from typing import Tuple
 
 import bioc
+import pytest
 
 from radtext.models.neg import NegGrexPatterns
 from radtext.models.constants import NEGATION, UNCERTAINTY
 from radtext.models.tree2dep import BioCPtb2DepConverter
-from tests import Resource_Dir
 
 # negation = Resource_Dir / 'patterns/ngrex_negation.yml'
 # uncertainty_pre_neg = Resource_Dir / 'patterns/ngrex_uncertainty_pre_negation.yml'
 # uncertainty_post_neg = Resource_Dir / 'patterns/ngrex_uncertainty_post_negation.yml'
 # double_neg = Resource_Dir / 'patterns/ngrex_double_negation.yml'
-ngrex_patterns = Resource_Dir / 'patterns/ngrex_patterns.yml'
 
-negregex = NegGrexPatterns()
-negregex.load_yml2(ngrex_patterns)
 
 converter = BioCPtb2DepConverter()
+
+
+@pytest.fixture
+def negregex(resource_dir):
+    ngrex_patterns = resource_dir / 'patterns/ngrex_patterns.yml'
+    negregex = NegGrexPatterns()
+    negregex.load_yml2(ngrex_patterns)
+    return negregex
 
 
 def _get(text, tree, concept_start, concept_end) -> Tuple[bioc.BioCPassage, bioc.BioCAnnotation]:
@@ -34,7 +39,7 @@ def _get(text, tree, concept_start, concept_end) -> Tuple[bioc.BioCPassage, bioc
     return passage, ann
 
 
-def test_uncertainty_pre_neg():
+def test_uncertainty_pre_neg(negregex):
     passage, ann = _get('No new effusion.', '(ROOT (NP (DT No) (JJ new) (NN effusion) (. .)))', 7, 15)
     assertion = negregex.assert_(passage, ann, '0')
     m = assertion.assert_uncertainty_pre_neg()
@@ -43,7 +48,7 @@ def test_uncertainty_pre_neg():
     assert 'ngrex_uncertainty_pre_neg_pattern_id' in ann.infons
 
 
-def test_uncertainty_post_neg():
+def test_uncertainty_post_neg(negregex):
     passage, ann = _get('Possible effusion.', '(ROOT (NP (JJ Possible) (NN effusion) (. .)))', 9, 17)
     assertion = negregex.assert_(passage, ann, '0')
     m = assertion.assert_uncertainty_post_neg()
@@ -52,7 +57,7 @@ def test_uncertainty_post_neg():
     assert 'ngrex_uncertainty_post_neg_pattern_id' in ann.infons
 
 
-def test_neg():
+def test_neg(negregex):
     tree = """"
         (ROOT
           (S
@@ -90,5 +95,5 @@ def test_neg():
 #     assert 'ngrex_double_neg_pattern_id' in ann.infons
 
 
-if __name__ == '__main__':
-    test_neg()
+# if __name__ == '__main__':
+#     test_neg()

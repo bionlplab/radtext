@@ -2,11 +2,10 @@ import bioc
 
 from radtext.models.ner.ner_regex import NerRegExExtractor, BioCNerRegex
 from radtext.cmd.ner import load_yml
-from tests import Resource_Dir
 
 
-def test_ner():
-    phrases_file = Resource_Dir / 'chexpert_phrases.yml'
+def test_ner(resource_dir):
+    phrases_file = resource_dir / 'chexpert_phrases.yml'
     patterns = load_yml(phrases_file)
     extractor = NerRegExExtractor(patterns)
     processor = BioCNerRegex(extractor, name='chexpert_phrases')

@@ -1,12 +1,11 @@
 import pytest
 
 from radtext.models.bioc_cdm_converter import convert_note_nlp_table_to_bioc, NOTE_TABLE_HEADERS
-from tests import Example_Dir
 import pandas as pd
 
 
-def test():
-    file = Example_Dir / 'ex2.csv'
+def test(example_dir):
+    file = example_dir / 'ex2.csv'
     df = pd.read_csv(file, dtype=str)
     collection = convert_note_nlp_table_to_bioc(df)
     assert len(collection.documents) == 8
@@ -20,8 +19,8 @@ def test():
                 assert collection.documents[i].infons[k] == df[k][i]
 
 
-def test2():
-    file = Example_Dir / 'ex2.csv'
+def test2(example_dir):
+    file = example_dir / 'ex2.csv'
     df = pd.read_csv(file, dtype=str)
 
     df1 = df.drop(['note_text'], axis=1)
