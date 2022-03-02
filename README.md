@@ -28,7 +28,7 @@ $ sudo apt-get install python3-dev build-essential default-java
 ## Quickstart
 
 The latest radtext releases are available over
-[pypi](https://pypi.python.org/pypi/radtext).
+[pypi](https://pypi.org/project/radtext/).
 
 Using pip, RadText releases are available as source packages and binary wheels.
 It is also generally recommended installing packages in a virtual environment to
