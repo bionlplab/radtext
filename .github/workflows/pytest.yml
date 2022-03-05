@@ -2,7 +2,7 @@ name: build and test
 on:
   push:
     branches:
-      - after_paper
+      - master
 jobs:
   test:
     name: Test RadText
