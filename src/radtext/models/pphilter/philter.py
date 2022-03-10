@@ -118,7 +118,6 @@ class Philter:
         # first check that data is formatted, can be loaded etc.
         for i, pattern in enumerate(self.patterns):
             self.pattern_indexes[pattern['title']] = i
-            print(pattern['filepath'])
             if pattern["type"] in require_files and not os.path.exists(pattern["filepath"]):
                 raise Exception("Config filepath does not exist", pattern["filepath"])
             for k in reserved_list:
