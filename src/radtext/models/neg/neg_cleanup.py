@@ -37,7 +37,7 @@ class NegCleanUp(BioCProcessor):
             sort_anns: sort annotations by its location
             extend_anns: if A covers B, B has the same type as A.
         """
-        super(NegCleanUp, self).__init__()
+        super(NegCleanUp, self).__init__(nlp_system='regex')
         self.sort_anns = sort_anns
         self.extend_anns = extend_anns
 

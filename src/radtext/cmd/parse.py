@@ -14,8 +14,7 @@ import tqdm
 from radtext.cmd.cmd_utils import process_options
 from radtext.models.bllipparser import BioCParserBllip
 
-
-if __name__ == '__main__':
+def main():
     argv = docopt.docopt(__doc__)
     process_options(argv)
 
@@ -29,3 +28,6 @@ if __name__ == '__main__':
 
     with open(argv['-o'], 'w') as fp:
         bioc.dump(collection, fp)
+
+if __name__ == '__main__':
+    main()
