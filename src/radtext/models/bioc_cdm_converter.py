@@ -81,6 +81,7 @@ def convert_bioc_to_note_nlp(collection: bioc.BioCCollection) -> pd.DataFrame:
                 row = convert_ann_to_row(ann)
                 row['section_concept_id'] = section_concept
                 row['note_id'] = note_id
+                row['note_text'] = passage.text
                 rows.append(row)
             for sentence in passage.sentences:
                 for ann in sentence.annotations:
@@ -111,3 +112,17 @@ def convert_note_nlp_table_to_bioc(df: pd.DataFrame) -> bioc.BioCCollection:
             if col not in ('note_id', 'note_text') and col in df.columns:
                 doc.infons[col] = str(row[col])
     return collection
+
+class BioC2CDM():
+    def __init__(self):   
+        self.doc = None
+        
+    def __call__(self, doc: bioc.BioCCollection)-> pd.DataFrame:
+        return convert_bioc_to_note_nlp(doc)
+
+class CDM2BioC():
+    def __init__(self):
+        self.df = None
+        
+    def __call__(self, df: pd.DataFrame)-> bioc.BioCCollection:
+        return convert_note_nlp_table_to_bioc(df)

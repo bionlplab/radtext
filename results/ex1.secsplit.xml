@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes'?>
+<collection>
+  <source></source>
+  <date>2022-03-09</date>
+  <key></key>
+  <document>
+    <id>00000086</id>
+    <passage>
+      <infon key="nlp_system">secsplit:regex</infon>
+      <infon key="nlp_date_time">03/09/2022, 22:38:51</infon>
+      <infon key="section_concept">findings</infon>
+      <infon key="type">title_1</infon>
+      <offset>0</offset>
+      <text>findings:</text>
+    </passage>
+    <passage>
+      <infon key="nlp_system">secsplit:regex</infon>
+      <infon key="nlp_date_time">03/09/2022, 22:38:51</infon>
+      <offset>10</offset>
+      <text>pa and lat cxr at 7:34 p.m.. heart and mediastinum are&#13;
+stable. lungs are unchanged. air- filled cystic changes. no&#13;
+pneumothorax. osseous structures unchanged scoliosis</text>
+    </passage>
+    <passage>
+      <infon key="nlp_system">secsplit:regex</infon>
+      <infon key="nlp_date_time">03/09/2022, 22:38:51</infon>
+      <infon key="section_concept">impression</infon>
+      <infon key="type">title_1</infon>
+      <offset>181</offset>
+      <text>impression:</text>
+    </passage>
+    <passage>
+      <infon key="nlp_system">secsplit:regex</infon>
+      <infon key="nlp_date_time">03/09/2022, 22:38:51</infon>
+      <offset>193</offset>
+      <text>stable chest.&#13;
+dictating</text>
+    </passage>
+    <annotation id="S0">
+      <infon key="section_concept">findings</infon>
+      <infon key="type">title_1</infon>
+      <infon key="nlp_system">secsplit:regex</infon>
+      <infon key="nlp_date_time">03/09/2022, 22:38:51</infon>
+      <location offset="0" length="9"/>
+      <text>findings:</text>
+    </annotation>
+    <annotation id="S0">
+      <infon key="section_concept">impression</infon>
+      <infon key="type">title_1</infon>
+      <infon key="nlp_system">secsplit:regex</infon>
+      <infon key="nlp_date_time">03/09/2022, 22:38:51</infon>
+      <location offset="181" length="11"/>
+      <text>impression:</text>
+    </annotation>
+  </document>
+  <document>
+    <id>00019248</id>
+    <passage>
+      <infon key="nlp_system">secsplit:regex</infon>
+      <infon key="nlp_date_time">03/09/2022, 22:38:51</infon>
+      <infon key="section_concept">findings</infon>
+      <infon key="type">title_1</infon>
+      <offset>0</offset>
+      <text>findings:</text>
+    </passage>
+    <passage>
+      <infon key="nlp_system">secsplit:regex</infon>
+      <infon key="nlp_date_time">03/09/2022, 22:38:51</infon>
+      <offset>11</offset>
+      <text>chest:</text>
+    </passage>
+    <passage>
+      <infon key="nlp_system">secsplit:regex</infon>
+      <infon key="nlp_date_time">03/09/2022, 22:38:51</infon>
+      <infon key="section_concept">four images</infon>
+      <infon key="type">title_1</infon>
+      <offset>18</offset>
+      <text>four images:</text>
+    </passage>
+    <passage>
+      <infon key="nlp_system">secsplit:regex</infon>
+      <infon key="nlp_date_time">03/09/2022, 22:38:51</infon>
+      <offset>32</offset>
+      <text>right picc with tip within the upper svc.&#13;
+probable enlargement of the main pulmonary artery.&#13;
+mild cardiomegaly.&#13;
+no evidence of focal infiltrate, effusion or pneumothorax.&#13;
+dictating</text>
+    </passage>
+    <annotation id="S0">
+      <infon key="section_concept">findings</infon>
+      <infon key="type">title_1</infon>
+      <infon key="nlp_system">secsplit:regex</infon>
+      <infon key="nlp_date_time">03/09/2022, 22:38:51</infon>
+      <location offset="0" length="9"/>
+      <text>findings:</text>
+    </annotation>
+    <annotation id="S0">
+      <infon key="section_concept">four images</infon>
+      <infon key="type">title_1</infon>
+      <infon key="nlp_system">secsplit:regex</infon>
+      <infon key="nlp_date_time">03/09/2022, 22:38:51</infon>
+      <location offset="18" length="12"/>
+      <text>four images:</text>
+    </annotation>
+  </document>
+</collection>

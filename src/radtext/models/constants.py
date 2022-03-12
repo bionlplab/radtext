@@ -4,13 +4,13 @@ UNCERTAINTY = "possible"
 NEGATION = "absent"
 POSITIVE = "present"
 
-# HOME_DIR = Path.home()
+#HOME_DIR = Path.home()
 LOCAL_DIR = Path.home() / '.radtext'
 LOCAL_RESOURCE_DIR = LOCAL_DIR / 'resources'
 RADTEXT_RESOURCES_GITHUB = 'https://raw.githubusercontent.com/bionlplab/radtext-resources/main/resources'
 
 DEFAULT_OPTIONS = {
-	'--rep': 'X',
+	'--repl': 'X',
 	'--section-titles': LOCAL_RESOURCE_DIR / 'section_titles.txt',
 	'--spacy-model': 'en_core_web_sm',
 	'--bllip-model': LOCAL_DIR / 'bllipparser/BLLIP-GENIA-PubMed',

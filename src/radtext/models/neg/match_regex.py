@@ -67,6 +67,7 @@ class NegRegexPatterns:
     def load_yml2(self, pattern_file):
         with open(pattern_file) as fp:
             objs = yaml.load(fp, yaml.FullLoader)
+        print(objs)
         for obj in objs['negation']:
             self.negation_patterns.append(NegRegexPattern.compile(obj['id'], obj['pattern']))
         for obj in objs['uncertainty_pre']:

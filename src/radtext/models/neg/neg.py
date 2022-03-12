@@ -26,9 +26,9 @@ class BioCNeg(BioCProcessor):
                 ann.infons['nlp_date_time'] = self.nlp_date_time
 
             regex_assertion = self.regex_actor.assert_(passage, ann)
-            if regex_assertion.match_uncertainty_pre_neg():
+            if regex_assertion.assert_uncertainty_pre_neg():
                 continue
-            if regex_assertion.match_double_neg():
+            if regex_assertion.assert_double_neg():
                 continue
             if regex_assertion.assert_neg():
                 continue
