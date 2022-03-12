@@ -38,6 +38,7 @@ jobs:
       - name: Install packages
         run: |
           python -m spacy download en_core_web_sm
+          python -m nltk.downloader stopwords
           python src/radtext/cmd/download.py --all
 
       - name: Test with pytest and generate coverage report
