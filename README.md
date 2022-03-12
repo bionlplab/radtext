@@ -49,8 +49,11 @@ interpreter, and try the following commands:
 ```python
 import radtext
 nlp = radtext.Pipeline()
-doc = nlp('There is no plural effusion')
-print(doc)
+with open(’/PATH/TO/BIOC_FILE.xml’) as fp:
+    doc = bioc.load(fp)
+    
+annotations = nlp(doc)
+print(annotations)
 ```
 
 RadText also supports command-line interfaces for specific NLP tasks (e.g.,

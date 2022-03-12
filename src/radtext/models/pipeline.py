@@ -30,6 +30,9 @@ class Pipeline(BioCPipeline):
         super(Pipeline, self).__init__()
         if annotators is None:
             annotators = DEFAULT_ANNOTATORS
+        else:
+            annotators = [annotator for annotator in DEFAULT_ANNOTATORS if annotator.split(':')[0] in annotators]
+            
         if argv is None:
             argv = DEFAULT_OPTIONS
         
