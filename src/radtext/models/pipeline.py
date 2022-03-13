@@ -30,14 +30,14 @@ class Pipeline(BioCPipeline):
         super(Pipeline, self).__init__()
         if annotators is None:
             annotators = DEFAULT_ANNOTATORS
-        else:
-            annotator = annotators[0].split(':')[0]
-            annotators = None
-            for idx in range(len(DEFAULT_ANNOTATORS)):
-                if annotator in DEFAULT_ANNOTATORS[idx]:
-                    annotators = [DEFAULT_ANNOTATORS[id] for id in range(len(DEFAULT_ANNOTATORS)) if id<=idx]
-            if annotators is None:
-                raise KeyError('%s: Do not support this annotator' % annotator)
+        #else:
+        #    annotator = annotators[0].split(':')[0]
+        #    annotators = None
+        #    for idx in range(len(DEFAULT_ANNOTATORS)):
+        #        if annotator in DEFAULT_ANNOTATORS[idx]:
+        #            annotators = [DEFAULT_ANNOTATORS[id] for id in range(len(DEFAULT_ANNOTATORS)) if id<=idx]
+        #    if annotators is None:
+        #        raise KeyError('%s: Do not support this annotator' % annotator)
                 
         if argv is None:
             argv = DEFAULT_OPTIONS
