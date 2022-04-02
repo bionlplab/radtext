@@ -1,7 +1,7 @@
 import logging
 import os
 import string
-from typing import Union
+from typing import Union, List
 
 from bioc import BioCSentence, BioCPassage, BioCAnnotation
 from bllipparser import RerankingParser
@@ -62,14 +62,17 @@ class BioCParserBllip(BioCProcessor):
         self.parser = BllipParser(model_dir=model_dir)
         self.only_ner = only_ner
 
-    def has_ner(self, passage: BioCPassage, sentence: BioCSentence) -> bool:
-        sen_anns = [ann for ann in passage.annotations
-                    if ann.total_span in sentence.total_span and is_ner(ann)]
+    def has_ner(self, sentence: BioCSentence, annotations: List[BioCAnnotation]) -> bool:
+        """
+        :return: True if the sentence contains named entities
+        """
+        named_entities = [ann for ann in annotations if is_ner(ann)]
+        sen_anns = [ann for ann in named_entities if ann.total_span in sentence.total_span]
         return len(sen_anns) > 0
 
     def process_passage(self, passage: BioCPassage, docid: str = None) -> BioCPassage:
         for sentence in passage.sentences:
-            if self.only_ner and self.has_ner(passage, sentence):
+            if self.only_ner and self.has_ner(sentence, passage.annotations):
                 self.process_sentence(sentence, docid)
         return passage
 
