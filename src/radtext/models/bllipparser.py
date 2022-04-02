@@ -3,11 +3,12 @@ import os
 import string
 from typing import Union
 
-from bioc import BioCSentence
+from bioc import BioCSentence, BioCPassage, BioCAnnotation
 from bllipparser import RerankingParser
 
 from radtext.core import BioCProcessor
 from radtext.models.constants import DEFAULT_OPTIONS
+from radtext.utils import is_ner
 
 
 def is_punct(text) -> bool:
@@ -52,15 +53,31 @@ class BllipParser:
 
 
 class BioCParserBllip(BioCProcessor):
-    def __init__(self, model_dir: str=DEFAULT_OPTIONS['--bllip-model']):
+    def __init__(self, model_dir: str=DEFAULT_OPTIONS['--bllip-model'], only_ner: bool=True):
+        """
+        :param model_dir: Bllip parser model path
+        :param only_ner: Parse the sentences with NER annotations.
+        """
         super(BioCParserBllip, self).__init__('parse:bllip')
         self.parser = BllipParser(model_dir=model_dir)
+        self.only_ner = only_ner
+
+    def has_ner(self, passage: BioCPassage, sentence: BioCSentence) -> bool:
+        sen_anns = [ann for ann in passage.annotations
+                    if ann.total_span in sentence.total_span and is_ner(ann)]
+        return len(sen_anns) > 0
+
+    def process_passage(self, passage: BioCPassage, docid: str = None) -> BioCPassage:
+        for sentence in passage.sentences:
+            if self.only_ner and self.has_ner(passage, sentence):
+                self.process_sentence(sentence, docid)
+        return passage
 
     def process_sentence(self, sentence: BioCSentence, docid: str = None) -> BioCSentence:
         sentence.infons['parse_tree'] = None
         try:
             text = sentence.text
-            print(text)
+            # print(text)
             if not is_punct(text):
                 sentence.infons['nlp_system'] = self.nlp_system
                 sentence.infons['nlp_date_time'] = self.nlp_date_time

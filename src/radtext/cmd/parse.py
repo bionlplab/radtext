@@ -4,9 +4,10 @@ Usage:
 
 Options:
     --overwrite
-    --bllip_model DIR     Bllip parser model path [default: ~/.radtext/bllipparser/BLLIP-GENIA-PubMed]
+    --bllip-model DIR       Bllip parser model path [default: ~/.radtext/bllipparser/BLLIP-GENIA-PubMed]
     -o FILE
     -i FILE
+    --only-ner              Parse the sentences with NER annotations at the passage level
 """
 import bioc
 import docopt
@@ -18,7 +19,7 @@ def main():
     argv = docopt.docopt(__doc__)
     process_options(argv)
 
-    processor = BioCParserBllip(model_dir=argv['--bllip_model'])
+    processor = BioCParserBllip(model_dir=argv['--bllip-model'], only_ner=argv['--only-ner'])
 
     with open(argv['-i']) as fp:
         collection = bioc.load(fp)

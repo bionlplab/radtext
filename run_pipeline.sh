@@ -1,9 +1,9 @@
 #export PYTHONPATH=$PYTHONPATH:src
 SECTION_TITLES=resources/section_titles.txt
 PHRASE=resources/chexpert_phrases.yml
-RADLEX=resources/Radlex4.1.xlsx
-NGREX_PATTERN=resources/patterns/ngrex_patterns.yml
-REGEX_PATTERN=resources/patterns/regex_patterns.yml
+#RADLEX=resources/Radlex4.1.xlsx
+#NGREX_PATTERN=resources/patterns/ngrex_patterns.yml
+#REGEX_PATTERN=resources/patterns/regex_patterns.yml
 
 while getopts i:o:d: flag
 do
@@ -11,6 +11,7 @@ do
     i) input=${OPTARG};;
     o) output=${OPTARG};;
     d) top_dir=${OPTARG};;
+    *)
   esac
 done
 
@@ -29,7 +30,7 @@ if [ -z "$output" ]; then
 fi
 
 filename=$(basename -- "$output")
-extension="${filename##*.}"
+#extension="${filename##*.}"
 filename="${filename%.*}"
 
 if [ "$1" != "" ]; then
@@ -38,38 +39,38 @@ if [ "$1" != "" ]; then
 
     echo "-- CSV2BIOC --"
     # convert csv file to bioc format
-    radtext-csv2bioc -i $input -o $top_dir/$filename.xml
+    radtext-csv2bioc -i "$input" -o "$top_dir/$filename.xml"
 
     echo "-- De-identification --"
-    radtext-deid -i $top_dir/$filename.xml -o $top_dir/$filename.deid.xml
+    radtext-deid -i "$top_dir/$filename.xml" -o "$top_dir/$filename.deid.xml"
 
     echo "-- Section split --"
     # section split - using regex
-    radtext-secsplit regex --section-titles $SECTION_TITLES -i $top_dir/$filename.deid.xml -o $top_dir/$filename.secsplit.xml
+    radtext-secsplit regex --section-titles $SECTION_TITLES -i "$top_dir/$filename.deid.xml" -o "$top_dir/$filename.secsplit.xml"
     # section split - using medspacy
     #radtext-secsplit medspacy -i $top_dir/$filename.deid.xml -o $top_dir/$filename.secsplit.xml
 
     #radtext-preprocess
 
     echo "-- Sentence split --"
-    radtext-ssplit -i $top_dir/$filename.secsplit.xml -o $top_dir/$filename.ssplit.xml
+    radtext-ssplit -i "$top_dir/$filename.secsplit.xml" -o "$top_dir/$filename.ssplit.xml"
 
     echo "-- NER --"
-    radtext-ner regex --phrase $PHRASE -i $top_dir/$filename.ssplit.xml -o $top_dir/$filename.ner.xml
+    radtext-ner regex --phrase $PHRASE -i "$top_dir/$filename.ssplit.xml" -o "$top_dir/$filename.ner.xml"
     #radtext-ner spacy --radlex $RADLEX -i $top_dir/$filename.ssplit.xml -o $top_dir/$filename.ner.xml
 
     echo "-- Parse --"
-    radtext-parse -i $top_dir/$filename.ner.xml -o $top_dir/$filename.parse.xml
+    radtext-parse -i "$top_dir/$filename.ner.xml" -o "$top_dir/$filename.parse.xml"
 
     echo "-- Tree2dep --"
     # convert constituency tree to dependencies
-    radtext-tree2dep -i $top_dir/$filename.parse.xml -o $top_dir/$filename.depparse.xml
+    radtext-tree2dep -i "$top_dir/$filename.parse.xml" -o "$top_dir/$filename.depparse.xml"
 
     echo "-- NEG --"
-    radtext-neg -i $top_dir/$filename.depparse.xml -o $top_dir/$filename.neg.xml
+    radtext-neg -i "$top_dir/$filename.depparse.xml" -o "$top_dir/$filename.neg.xml"
 
     echo "-- Collect labels --"
-    radtext-collect --phrases $PHRASE -i $top_dir/$filename.neg.xml -o $output
+    radtext-collect --phrases $PHRASE -i "$top_dir/$filename.neg.xml" -o "$output"
 fi
 
 

@@ -1,7 +1,11 @@
 import logging
 from typing import Tuple
 
-from bioc import BioCPassage
+from bioc import BioCPassage, BioCAnnotation
+
+
+def is_ner(annotation: BioCAnnotation) -> bool:
+    return 'nlp_system' in annotation.infons and 'ner' in annotation.infons['nlp_system']
 
 
 def intersect(range1: Tuple[float, float], range2: Tuple[float, float]) -> bool:
