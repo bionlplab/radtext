@@ -38,8 +38,9 @@ def test_split_newline():
 
 def test_BioCSSplitterNLTK():
     text = 'No pneumothorax.\nNo pneumothorax.'
-    document = bioc.BioCDocument.of_text(text)
-    p = document.passages[0]
+    document = bioc.BioCDocument()
+    p = bioc.BioCPassage.of_text(text)
+    document.add_passage(p)
     assert p.text == text
     assert len(p.sentences) == 0
 

@@ -11,7 +11,8 @@ def test(example_dir):
     assert len(collection.documents) == 8
 
     for i in range(8):
-        assert collection.documents[i].passages[0].text == df['note_text'][i]
+        print(collection.documents[i])
+        assert collection.documents[i].text == df['note_text'][i]
         assert collection.documents[i].id == df['note_id'][i]
 
         for k in NOTE_TABLE_HEADERS:

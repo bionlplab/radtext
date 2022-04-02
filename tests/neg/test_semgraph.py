@@ -6,6 +6,7 @@ from radtext.models.neg import semgraph
 
 json_str = r"""
 {
+  "bioctype": "BioCSentence",
   "offset": 0, 
   "infons": {"parse tree": "(S1 (S (NP (NP (NNS findings)) (: :) (NP (NN chest)) (: :) (NP (CD four) (NNS images)) (: :) (NP (NP (JJ right) (NN picc)) (PP (IN with) (NP (NN tip))) (PP (IN within) (NP (DT the) (JJ upper) (NN svc)))) (. .))))"}, 
   "text": "findings:\nchest: four images:\nright picc with tip within the upper svc.", 
@@ -49,13 +50,13 @@ json_str = r"""
 
 
 def _read_graph():
-    s = biocjson.fromJSON(json.loads(json_str), bioc.SENTENCE)
+    s = biocjson.fromJSON(json.loads(json_str))
     g = semgraph.load(s)
     return g
 
 
 def test_load():
-    s = biocjson.fromJSON(json.loads(json_str), bioc.SENTENCE)
+    s = biocjson.fromJSON(json.loads(json_str))
     g = semgraph.load(s)
     assert len(g) == 16
     assert g.size() == 15

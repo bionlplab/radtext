@@ -21,7 +21,7 @@ import spacy
 import tqdm
 import yaml
 
-from radtext.cmd.cmd_utils import process_options
+from radtext.cmd.cmd_utils import process_options, process_file
 from radtext.models.ner.ner_regex import NerRegExExtractor, BioCNerRegex, NerRegexPattern
 from radtext.models.ner.ner_spacy import NerSpacyExtractor, BioCNerSpacy
 
@@ -76,15 +76,7 @@ def main():
     except KeyError as e:
         raise e
 
-    with open(argv['-i']) as fp:
-        collection = bioc.load(fp)
-
-    for doc in tqdm.tqdm(collection.documents):
-        for passage in tqdm.tqdm(doc.passages, leave=False):
-            processor.process_passage(passage, doc.id)
-
-    with open(argv['-o'], 'w') as fp:
-        bioc.dump(collection, fp)
+    process_file(argv['-i'], argv['-o'], processor, bioc.PASSAGE)
 
 
 if __name__ == '__main__':

@@ -11,7 +11,7 @@ import bioc
 import docopt
 import tqdm
 
-from radtext.cmd.cmd_utils import process_options
+from radtext.cmd.cmd_utils import process_options, process_file
 from radtext.models.sentence_split_nltk import BioCSSplitterNLTK
 
 
@@ -20,16 +20,7 @@ def main():
     process_options(argv)
 
     processor = BioCSSplitterNLTK(newline=argv['--newline'])
-
-    with open(argv['-i']) as fp:
-        collection = bioc.load(fp)
-
-    for doc in tqdm.tqdm(collection.documents):
-        for passage in tqdm.tqdm(doc.passages, leave=False):
-            processor.process_passage(passage, doc.id)
-
-    with open(argv['-o'], 'w') as fp:
-        bioc.dump(collection, fp)
+    process_file(argv['-i'], argv['-o'], processor, bioc.PASSAGE)
 
 
 if __name__ == '__main__':

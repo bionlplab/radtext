@@ -16,7 +16,7 @@ import tqdm
 import stanza
 from stanza.pipeline.core import ResourcesFileNotFoundError
 
-from radtext.cmd.cmd_utils import process_options
+from radtext.cmd.cmd_utils import process_options, process_file
 from radtext.models.preprocess_spacy import BioCSpacy
 from radtext.models.preprocess_stanza import BioCStanza
 
@@ -42,14 +42,7 @@ def main():
     else:
         raise KeyError
 
-    with open(argv['-i']) as fp:
-        collection = bioc.load(fp)
-
-    for doc in tqdm.tqdm(collection.documents):
-        processor.process_document(doc)
-
-    with open(argv['-o'], 'w') as fp:
-        bioc.dump(collection, fp)
+    process_file(argv['-i'], argv['-o'], processor, bioc.DOCUMENT)
 
 
 if __name__ == '__main__':

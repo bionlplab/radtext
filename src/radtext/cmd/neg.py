@@ -11,6 +11,7 @@ Options:
     -i FILE
 """
 import bioc
+from radtext.core import BioCProcessor, BioCPipeline
 
 """
     --regex_negation FILE               [default: resources/patterns/regex_negation.yml]
@@ -25,7 +26,7 @@ import bioc
 import docopt
 import tqdm
 
-from radtext.cmd.cmd_utils import process_options
+from radtext.cmd.cmd_utils import process_options, process_file
 from radtext.models.neg.match_ngrex import NegGrexPatterns
 from radtext.models.neg import NegRegexPatterns
 from radtext.models.neg import NegCleanUp
@@ -42,17 +43,10 @@ def main():
 
     neg_actor = BioCNeg(regex_actor=regex_actor, ngrex_actor=ngrex_actor)
     cleanup_actor = NegCleanUp(argv['--sort_anns'])
+    pipeline = BioCPipeline()
+    pipeline.processors = [neg_actor, cleanup_actor]
 
-    with open(argv['-i']) as fp:
-        collection = bioc.load(fp)
-
-    for doc in tqdm.tqdm(collection.documents):
-        for passage in tqdm.tqdm(doc.passages, leave=False):
-            neg_actor.process_passage(passage, doc.id)
-            cleanup_actor.process_passage(passage, doc.id)
-
-    with open(argv['-o'], 'w') as fp:
-        bioc.dump(collection, fp)
+    process_file(argv['-i'], argv['-o'], pipeline, bioc.PASSAGE)
 
 
 if __name__ == '__main__':

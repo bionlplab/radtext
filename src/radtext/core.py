@@ -28,8 +28,9 @@ class BioCProcessor:
         raise NotImplementedError
 
 
-class BioCPipeline:
+class BioCPipeline(BioCProcessor):
     def __init__(self):
+        super(BioCPipeline, self).__init__('pipeline')
         self.processors = []  # type: List[BioCProcessor]
 
     def process_collection(self, collection: BioCCollection) -> BioCCollection:
@@ -42,14 +43,14 @@ class BioCPipeline:
             document = processor.process_document(document)
         return document
 
-    def process_passage(self, passage: BioCPassage) -> BioCPassage:
+    def process_passage(self, passage: BioCPassage, docid: str = None) -> BioCPassage:
         for processor in self.processors:
-            passage = processor.process_passage(passage)
+            passage = processor.process_passage(passage, docid)
         return passage
 
-    def process_sentence(self, sentence: BioCSentence) -> BioCSentence:
+    def process_sentence(self, sentence: BioCSentence, docid: str = None) -> BioCSentence:
         for processor in self.processors:
-            sentence = processor.process_sentence(sentence)
+            sentence = processor.process_sentence(sentence, docid)
         return sentence
 
     def __call__(self, doc: Union[BioCCollection, BioCDocument, BioCPassage, BioCSentence, str]):

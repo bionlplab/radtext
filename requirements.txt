@@ -1,4 +1,4 @@
-bioc
+bioc>=2.0
 bllipparser==2021.11.7
 Cython
 docopt

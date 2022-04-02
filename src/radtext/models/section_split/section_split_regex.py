@@ -3,6 +3,8 @@ import re
 from typing import List, Pattern
 
 import tqdm
+
+import bioc
 from bioc import BioCSentence, BioCPassage, BioCDocument, BioCLocation, BioCAnnotation, BioCCollection
 
 from radtext.core import BioCProcessor
@@ -75,49 +77,92 @@ class BioCSectionSplitterRegex(BioCProcessor):
             strip_passage(passage)
             return passage
 
-        passages = list(doc.passages)
-        del doc.passages[:]
+        offset, text = bioc.utils.get_text(doc)
+        local_start = 0
         anns = []
-        for i, passage in enumerate(passages):
-            text = passage.text
-            offset = passage.offset
-            local_start = 0
-            for matcher in self.pattern.finditer(text):
-                logging.debug('Match: %s', matcher.group())
-                # add last
-                local_end = matcher.start()
-                if local_end != local_start:
-                    passage = create_passage(text, offset, local_start, local_end)
-                    if not is_passage_empty(passage):
-                        doc.add_passage(passage)
-
-                local_start = local_end
-
-                # add title
-                local_end = matcher.end()
-                passage = create_passage(text, offset, local_start, local_end, text[local_start:local_end])
-                if not is_passage_empty(passage):
-                    doc.add_passage(passage)
-
-                    ann = BioCAnnotation()
-                    ann.id = 'S{}'.format(i)
-                    ann.text = passage.text
-                    ann.infons['section_concept'] = passage.infons['section_concept']
-                    ann.infons['type'] = passage.infons['type']
-                    ann.infons['nlp_system'] = self.nlp_system
-                    ann.infons['nlp_date_time'] = self.nlp_date_time
-                    ann.add_location(BioCLocation(offset + local_start, local_end - local_start))
-                    anns.append(ann)
-
-                local_start = local_end
-
-            # add last piece
-            local_end = len(text)
-            if local_start < local_end:
+        ann_id = 0
+        for matcher in self.pattern.finditer(text):
+            logging.debug('Match: %s', matcher.group())
+            # add last
+            local_end = matcher.start()
+            if local_end != local_start:
                 passage = create_passage(text, offset, local_start, local_end)
                 if not is_passage_empty(passage):
                     doc.add_passage(passage)
-            doc.annotations += anns
+
+            local_start = local_end
+
+            # add title
+            local_end = matcher.end()
+            passage = create_passage(text, offset, local_start, local_end, text[local_start:local_end])
+            if not is_passage_empty(passage):
+                doc.add_passage(passage)
+
+                ann = BioCAnnotation()
+                ann.id = 'S{}'.format(ann_id)
+                ann.text = passage.text
+                ann.infons['section_concept'] = passage.infons['section_concept']
+                ann.infons['type'] = passage.infons['type']
+                ann.infons['nlp_system'] = self.nlp_system
+                ann.infons['nlp_date_time'] = self.nlp_date_time
+                ann.add_location(BioCLocation(offset + local_start, local_end - local_start))
+                anns.append(ann)
+                ann_id += 1
+
+            local_start = local_end
+
+        # add last piece
+        local_end = len(text)
+        if local_start < local_end:
+            passage = create_passage(text, offset, local_start, local_end)
+            if not is_passage_empty(passage):
+                doc.add_passage(passage)
+        doc.annotations += anns
+
+
+        # passages = list(doc.passages)
+        # del doc.passages[:]
+        # anns = []
+        # for i, passage in enumerate(passages):
+        #     text = passage.text
+        #     offset = passage.offset
+        #     local_start = 0
+        #     for matcher in self.pattern.finditer(text):
+        #         logging.debug('Match: %s', matcher.group())
+        #         # add last
+        #         local_end = matcher.start()
+        #         if local_end != local_start:
+        #             passage = create_passage(text, offset, local_start, local_end)
+        #             if not is_passage_empty(passage):
+        #                 doc.add_passage(passage)
+        #
+        #         local_start = local_end
+        #
+        #         # add title
+        #         local_end = matcher.end()
+        #         passage = create_passage(text, offset, local_start, local_end, text[local_start:local_end])
+        #         if not is_passage_empty(passage):
+        #             doc.add_passage(passage)
+        #
+        #             ann = BioCAnnotation()
+        #             ann.id = 'S{}'.format(i)
+        #             ann.text = passage.text
+        #             ann.infons['section_concept'] = passage.infons['section_concept']
+        #             ann.infons['type'] = passage.infons['type']
+        #             ann.infons['nlp_system'] = self.nlp_system
+        #             ann.infons['nlp_date_time'] = self.nlp_date_time
+        #             ann.add_location(BioCLocation(offset + local_start, local_end - local_start))
+        #             anns.append(ann)
+        #
+        #         local_start = local_end
+        #
+        #     # add last piece
+        #     local_end = len(text)
+        #     if local_start < local_end:
+        #         passage = create_passage(text, offset, local_start, local_end)
+        #         if not is_passage_empty(passage):
+        #             doc.add_passage(passage)
+        #     doc.annotations += anns
         return doc
 
     def process_sentence(self, sentence: BioCSentence, docid: str = None) -> BioCSentence:

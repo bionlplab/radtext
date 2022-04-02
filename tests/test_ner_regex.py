@@ -15,7 +15,8 @@ stable. lungs are unchanged. air- filled cystic changes. no
 pneumothorax. osseous structures unchanged scoliosis
 impression: stable chest.
 dictating """
-    doc = bioc.BioCDocument.of_text(text)
+    doc = bioc.BioCDocument()
+    doc.add_passage(bioc.BioCPassage.of_text(text))
     processor.process_document(doc)
 
     extracted_terms = set(ann.text for ann in doc.passages[0].annotations)

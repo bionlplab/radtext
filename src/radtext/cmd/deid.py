@@ -10,9 +10,8 @@ Options:
 """
 import bioc
 import docopt
-import tqdm
 
-from radtext.cmd.cmd_utils import process_options
+from radtext.cmd.cmd_utils import process_options, process_file
 from radtext.models.deid import BioCDeidPhilter
 
 
@@ -21,15 +20,7 @@ def main():
     process_options(argv)
 
     processor = BioCDeidPhilter(argv['--repl'])
-
-    with open(argv['-i']) as fp:
-        collection = bioc.load(fp)
-
-    for doc in tqdm.tqdm(collection.documents):
-        processor.process_document(doc)
-
-    with open(argv['-o'], 'w') as fp:
-        bioc.dump(collection, fp)
+    process_file(argv['-i'], argv['-o'], processor, bioc.DOCUMENT)
 
 
 if __name__ == '__main__':
