@@ -3,7 +3,7 @@ from typing import List
 from bioc import BioCAnnotation, BioCPassage
 
 from radtext.core import BioCProcessor
-from radtext.models.constants import UNCERTAINTY, NEGATION
+from radtext.models.constants import UNCERTAINTY, NEGATION, POSITIVE
 
 
 def extend_anns(annotations: List[BioCAnnotation]):
@@ -53,4 +53,10 @@ class NegCleanUp(BioCProcessor):
             for i, ann in enumerate(anns):
                 ann.id = str(i)
             passage.annotations = anns
+
+        for ann in passage.annotations:
+            if NEGATION in ann.infons or UNCERTAINTY in ann.infons:
+                if POSITIVE in ann.infons:
+                    ann.infons.pop(POSITIVE)
+
         return passage
