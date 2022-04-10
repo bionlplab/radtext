@@ -14,7 +14,7 @@ ply
 PyStanfordDependencies
 PyYAML
 spacy
-stanza
+stanza>=1.3
 tqdm
 xlrd
 cachetools
