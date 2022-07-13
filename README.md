@@ -49,7 +49,7 @@ interpreter, and try the following commands:
 ```python
 import radtext
 nlp = radtext.Pipeline()
-with open(’/PATH/TO/BIOC_FILE.xml’) as fp:
+with open('/PATH/TO/BIOC_FILE.xml') as fp:
     doc = bioc.load(fp)
     
 annotations = nlp(doc)
