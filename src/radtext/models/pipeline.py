@@ -4,8 +4,6 @@ from typing import List
 import stanza
 import spacy
 
-from stanza.pipeline.core import ResourcesFileNotFoundError
-
 from radtext.cmd.ner import load_yml
 from radtext.core import BioCProcessor, BioCPipeline
 from radtext.models.bllipparser import BioCParserBllip
@@ -72,7 +70,7 @@ class Pipeline(BioCPipeline):
             elif annotator == 'preprocess:stanza':
                 try:
                     nlp = stanza.Pipeline('en', processors='tokenize,pos,lemma,depparse')
-                except ResourcesFileNotFoundError:
+                except FileNotFoundError:
                     print('Install stanza model using \'stanza.download()')
                     return
                 processor = BioCStanza(nlp)
