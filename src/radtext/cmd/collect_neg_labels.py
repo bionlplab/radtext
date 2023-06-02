@@ -82,7 +82,7 @@ def aggregate(doc: bioc.BioCDocument, start_with_finding: bool=False) -> Dict[st
     no_finding = True
     for p in doc.passages[i:]:
         for ann in p.annotations:
-            category = ann.infons['source_concept']
+            category = ann.infons['note_nlp_concept']
             # Don't add any labels for No Finding
             if category == "No Finding":
                 continue
@@ -142,8 +142,7 @@ def create_prediction(source, dest, phrases_file, start_with_findings: bool):
     if cnt:
         logger.debug('Label statistics: \n%s', cnt)
 
-
-if __name__ == '__main__':
+def main():
     argv = docopt.docopt(__doc__)
     process_options(argv)
 
@@ -151,3 +150,6 @@ if __name__ == '__main__':
                       dest=argv['-o'],
                       phrases_file=argv['--phrases'],
                       start_with_findings=argv['--start_with_findings'])
+
+if __name__ == '__main__':
+    main()

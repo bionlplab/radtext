@@ -1,6 +1,6 @@
 #export PYTHONPATH=$PYTHONPATH:src
 SECTION_TITLES=resources/section_titles.txt
-PHRASE=resources/chexpert_phrases.yml
+PHRASE=resources/cxr14_phrases_v2.yml
 #RADLEX=resources/Radlex4.1.xlsx
 #NGREX_PATTERN=resources/patterns/ngrex_patterns.yml
 #REGEX_PATTERN=resources/patterns/regex_patterns.yml
