@@ -35,7 +35,7 @@ filename="${filename%.*}"
 
 if [ "$1" != "" ]; then
     echo "-- Download models --"
-    radtext-download all
+    radtext-download --all
 
     echo "-- CSV2BIOC --"
     # convert csv file to bioc format
